@@ -1,0 +1,83 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 24px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+	
+	
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/military-ball-program.jpg"  class="with-border responsive" width="375" alt="GAR"/>
+      <div class="bio-text">
+
+		  <p>The GAR began for Union veterans in 1866 for fraternity, charity and loyalty. President Lincoln had pledged care for “those who have borne the burden, his widows and orphans.” However, the federal government had very little experience or knowledge to fulfill this promise.</p>
+	    <p><italic>GAR Military Ball Program, District of Washington</italic></p>
+ 
+		   <!-- 
+		  <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/Jane Masters-prices of commodities.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+
+      // Reset audio if user navigates away
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+
+      // Attempt to autoplay if audio has been enabled
+      window.addEventListener('DOMContentLoaded', () => {
+        const audioEnabled = localStorage.getItem("audio-enabled");
+        if (audioEnabled === "true") {
+          setTimeout(() => {
+            audio.play().catch(err => {
+              console.warn("Autoplay blocked or failed:", err);
+            });
+          }, 3000);
+        }
+      });
+    </script> -->
+</div>
+</body>
+</html>

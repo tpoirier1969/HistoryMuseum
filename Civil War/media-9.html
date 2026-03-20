@@ -1,0 +1,56 @@
+<!-- VERSION 1.4 -->
+<!-- Civil War/media-2.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media 2</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+  .profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/Emanc-Proc 2.jpg" class="responsive" alt="Edward M Watson" style="margin-top: 0;" />
+      <div class="bio-text">
+	  <h1>Emancipation Proclamation</h1>
+
+    <p>
+In January 1863, Lincoln signed the Emancipation Proclamation which freed slaves in the Confederate states. After General Sherman’s march through Georgia, in which his troops destroyed factories, bridges, railroads and public buildings and captured Atlanta, General Lee surrendered on April 9th of 1865 at the Appomattox Courthouse.
+    </p>
+
+  </div>
+</body>
+</html>

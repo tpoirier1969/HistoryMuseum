@@ -1,0 +1,64 @@
+<!-- VERSION 1.7 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    /* Only this page’s long excerpt is smaller */
+    .content-wrapper .smaller {
+      font-size: 20px;           /* drop a couple points from 28 */
+      line-height: 1.35;
+    }
+
+    .profile-layout {
+      display: flex;
+      align-items: flex-start; /* Corrected value */
+      gap: 20px;
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+    }
+
+    .bio-text {
+      flex: 1;
+    }
+
+    /* 🔥 This is what aligns the top of the text block with the image */
+    .bio-text > *:first-child {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <h2>Speech of a Loyal Indian to the Indians of the 1st Michigan Sharpshooters</h2>
+    <p><strong>Excerpts from <em>The Detroit Advertiser and Tribune</em>, July 11, 1863</strong></p>
+    <p>The following speech of Nock-ke-chick-jaw-me, Chief of the Chippeways, was delivered to the Indian Company of the 1st Michigan Sharpshooters at Dearbornville, on Saturday by his special interpreter, Rev. H. Jackson, who has been interpreter for the Government.... </p>
+
+    <!-- Only this paragraph is reduced in size -->
+    <p class="smaller">
+      <em>My children!—I have come a long way from the home of your fathers to see and counsel you; to see you on parade and in camp and learn if you behave like true sons and noble braves. Listen to my words and I will advise you.—You must obey the officers set over you; discharge every duty to our country; be loyal to our great father, the President of the United States.... Save your money. Your fathers are growing old. They are left behind and will need it—remember them in gratitude for the care and instruction given you. They would be sad to have you misdemean yourselves, for they respect the brave and valiant heroes who fight for their country and the right....<br><br>
+      My children! You are young and inexperienced. I desire you to reflect on your duty.—Do not trifle. Understand for what you are fighting; be not boys, but brave and good men. You know but little of the history of our tribe. We are descendants of braves, who united with our younger brothers, the Ottawas, drove the powerful tribes now beyond the “great river” from these our once beautiful hunting grounds! The young men fitted themselves for warriors by the severest training and fasting, and confidence in the Great Spirit.—They listened to the words of their Chiefs and obeyed them. I desire you, my children, to listen to the instruction of your officers; learn you duty and do it, and like your ancestors, you will be heroic and brave. Have confidence in the Great Spirit, and when you die your forefathers will welcome you to the spirit land as brave sons....<br><br>
+      As I sat in my wigwam I thought of you—I love you—I am full of joy and gratitude for this privilege of talking to you....I shall visit you and instruct you; and, if necessary, go South to watch and care for you. Do not desert. It will disgrace your people and bring punishment on your hands. Be faithful to your country, brave and valiant, and the Great Spirit will reward you.
+      </em>
+    </p>
+  </div>
+</body>
+</html>

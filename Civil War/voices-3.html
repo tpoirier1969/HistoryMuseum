@@ -1,0 +1,68 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto<audio id="media-audio" controls playsinline preload="metadata">
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+	        <div class="profile-layout">
+      <img src="../Civil%20War/civil%20war%20media/Pics/edward-watson.jpg"  class="with-border responsive" alt="Edward M Watson"/>
+      <div class="bio-text">
+  
+    <h1>On Picket Duty
+	 </h1>
+    <p>
+      “After supper I was stationed at one of the outposts and sat in the saddle till daylight the morning. It was very tiresome work and along towards morning I got very cold and sleepy. In fact, I got so sleepy after a while that every time I shut my eyes to wink I would fall asleep and dream of a nice feather bed with warm blankets, before I could open them. I would wake up with a start when I found myself falling off my horse and grab for the saddle. Then I would promise myself not to go to sleep again but in less than five minutes in spite of running the risk of being shot by the rebels, or by our own men for being asleep on my post, I would find myself sliding off again.”
+    </p>
+    <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/04 - Watson - Picket Duty.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    </script>
+  </div>
+</body>
+</html>

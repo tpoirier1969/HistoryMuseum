@@ -1,0 +1,83 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 24px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+	
+	
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/goods for sale 3.jpg"  class="with-border responsive" width="600" alt="battle"/>
+      <div class="bio-text">
+    <h1>Price of Commodities</h1>
+    <p><italic>
+       "Prices of commodities were almost beyond reach but somehow we managed to eke out a living. Flour soared to $18 per barrel, calico sold at 85 cents a yard, and kerosene oil as high as 50 cents a gallon. But
+prices of the other foods were low and pork sold for 10 cents a pound. Tobacco was plentiful and the men never paid more that 5 cents a pound. The matter of clothing was not vexatious, but no attention was paid to style. The women made their children's clothes, dresses, pants and shirts, caps, and stockings and there was not a murmur if the fit was not proper. I remember buying three or four men's handkerchiefs with which to make aprons."</p>
+<p></p>"I recall a few young Englishmen who probably possessed the only fashionable clothes of the day. When they appeared after payday in their broadcloth suits, high hats, and other decorations, the single young women would look upon them with awe. But the men looked at them from another angle and when they came home that evening they had battered faces and bandaged heads"</italic></p>
+   <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/Jane Masters-prices of commodities.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+
+      // Reset audio if user navigates away
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+
+      // Attempt to autoplay if audio has been enabled
+      window.addEventListener('DOMContentLoaded', () => {
+        const audioEnabled = localStorage.getItem("audio-enabled");
+        if (audioEnabled === "true") {
+          setTimeout(() => {
+            audio.play().catch(err => {
+              console.warn("Autoplay blocked or failed:", err);
+            });
+          }, 3000);
+        }
+      });
+    </script>
+  </div>
+</body>
+</html>

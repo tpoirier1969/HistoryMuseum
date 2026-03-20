@@ -1,0 +1,121 @@
+<!-- VERSION 1.8 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper{
+      max-width: 1100px;      /* narrower to match rest of project */
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      box-sizing: border-box;
+      overflow-wrap: anywhere; /* safety: no horizontal scroll from long strings */
+    }
+
+    /* ===== Layout A: photos stacked LEFT, text RIGHT (default) ===== */
+    .profile-layout.stack-left{
+      display: grid;
+      grid-template-columns: 340px 1fr; /* left column for images */
+      gap: 24px;
+      align-items: start;
+    }
+    .photo-stack{
+      display: flex; 
+      flex-direction: column; 
+      gap: 16px;
+    }
+
+    /* ===== Layout B: photos on TOP, text BELOW ===== */
+    .profile-layout.photos-top{
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .photo-row{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Shared media styles */
+    img.with-border{
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+      box-sizing: border-box;
+    }
+
+    /* Cap image sizes so they never force a scroll */
+    .stack-left .photo-stack img{ max-width: 320px; }
+    .photos-top .photo-row img{ max-width: 520px; }  /* side-by-side; wraps if tight */
+
+    .bio-text{ 
+      flex: 1 1 360px; 
+      min-width: 280px; 
+    }
+
+    /* Top-align text block with first image */
+    .bio-text > *:first-child{ margin-top: 0; }
+
+    /* Responsive: on narrower screens, Layout A collapses to photos on top */
+    @media (max-width: 1200px){
+      .profile-layout.stack-left{
+        grid-template-columns: 1fr;
+      }
+      .stack-left .photo-stack{
+        flex-direction: row; 
+        flex-wrap: wrap;
+      }
+      .stack-left .photo-stack img{
+        max-width: 520px;   /* allow larger when full-width */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+
+    <!-- Choose ONE of these classes on .profile-layout:
+         - "stack-left"  (photos stacked left, text right)  ← CURRENT
+         - "photos-top"  (photos on top, text below)
+    -->
+    <div class="profile-layout stack-left">
+      <!-- Layout A uses a vertical photo stack -->
+      <div class="photo-stack">
+        <img src="../Civil War/Pics/1953-1-20(1) Keweenaw County Copper MIning.jpg"
+             class="with-border" alt="Keweenaw County copper mining"/>
+        <img src="../Civil War/Pics/Isle Royale- Rock Harbor.jpg"
+             class="with-border" alt="Isle Royale, Rock Harbor"/>
+      </div>
+
+      <!-- For Layout B, replace the div above with this one:
+      <div class="photo-row">
+        <img src="../Civil War/Pics/1953-1-20(1) Keweenaw County Copper MIning.jpg"
+             class="with-border" alt="Keweenaw County copper mining"/>
+        <img src="../Civil War/Pics/Isle Royale- Rock Harbor.jpg"
+             class="with-border" alt="Isle Royale, Rock Harbor"/>
+      </div>
+      -->
+
+      <div class="bio-text">
+        <h1>Jane Masters</h1>
+        <p>
+          Jane was born in Cornwall, England. After marrying, the new couple traveled to New York City. Curious about all the talk of the upper Great Lakes region, they traveled to the region. They lived briefly on Isle Royale where the small group of copper miners ran out of meat in 1852. They moved next to Northwest Mine (Delaware Location in the Keweenaw Peninsula) when the “war of Rebellion” broke out. Jane had a total of 16 children and lived to be 96 years old, and made the Keweenaw her home.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

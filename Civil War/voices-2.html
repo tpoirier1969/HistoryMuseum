@@ -1,0 +1,61 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    .profile-layout {
+      display: flex;
+      align-items: flex-start; /* Corrected value */
+      gap: 20px;
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+    }
+
+    .bio-text { flex: 1; }
+
+    /* 🔥 This aligns the top of the text block with the image */
+    .bio-text > *:first-child { margin-top: 0; }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil%20War/civil%20war%20media/Pics/edward-watson.jpg" class="with-border responsive" alt="Edward M Watson"/>
+      <div class="bio-text">
+        <h1>Food</h1>
+        <p>
+          “After a week's work, the greater part of which has been the saddle, until yesterday our only food has been
+          hard bread and coffee, the last only whenever we stayed in one place long enough to make it. But yesterday
+          and today we have lived on the fat of the land. The boys make no bones about shooting a pig right in the
+          street or exercising their sabers in cutting off the heads of chickens wherever they are to be found.”
+        </p>
+
+        <!-- Controls added; preload optional -->
+        <audio id="media-audio" controls playsinline preload="metadata">
+          <source src="../Civil%20War/audio/WatsonFood.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div> <!-- .profile-layout -->
+  </div> <!-- .content-wrapper -->
+</body>
+</html>

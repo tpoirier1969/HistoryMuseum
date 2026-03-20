@@ -1,0 +1,72 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/samual-moody.jpg"  class="with-border responsive" alt="Samual Moody"/>
+      <div class="bio-text">
+    <h1>Captain Moody
+	 </h1>
+    <p>
+      “Capt. Moody takes pleasure in acknowledging the receipt of frequent packages of the Gazette, which he distributes among
+the boys. We are grateful for the favor and return [to] you our hearty thanks. We married men would also tender our
+sincere thanks to the Supervisors County Clerk, and others interested in obtaining the county bounty due our families in
+Houghton County, for the promptness and attention they have exhibited in this department. While complaints are made
+from other sources, I have not heard any from the Houghton boys. The Regiment is very healthy, the medical department
+is managed with skill by experienced Surgeons.
+    </p>
+    <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/02 - Hardtack - capt Moody.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    </script>
+  </div>
+</body>
+</html>

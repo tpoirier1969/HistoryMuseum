@@ -1,0 +1,57 @@
+<!-- VERSION 1.5 -->
+<!-- Civil War/media-2.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media 2</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+ .profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/IS cavalry.jpg" class="responsive"  alt="IS Cavalry"  style="margin-top: 0;" />
+      <div class="bio-text">
+    <h1>Lake Superior Cavalry</h1>
+    <p>
+      The August 24, 1861 issue of <em>The Lake Superior News</em> of Marquette reported on the first of many groups of men to leave from the Lake Superior region on the Planet for Detroit to join the 1st Michigan Infantry. To date 150 had left from the region.
+While Peter White is listed, he did not leave, but felt his efforts were needed at home and so he paid $300 for a substitute. This was a legal exemption to the draft.
+    </p>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil%20War/civil%20war%20media/Pics/edward-watson.jpg"  class="with-border responsive" alt="Edward M Watson"/>
+      <div class="bio-text">
+        <h1>Edward M. Watson</h1>
+        <p>
+          Edward entered the service as corporal in Company B, First Michigan Cavalry. He was wounded in action at Morristown, Tennessee and sent to Michigan to recruit. He returned to serve as lieutenant and captain in Company L, Ninth Cavalry. The J.M. Longyear Research Library has seventy letters written by Edward Watson between 1862 and 1864 to family members in Marquette. Watson uses humor in describing his harsh conditions and the challenges they faced.
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

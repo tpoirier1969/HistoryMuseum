@@ -1,0 +1,57 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+	
+	
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/census1.jpg"  class="with-border responsive" width="350" alt="Samual Moody"/>
+      <img src="../Civil War/Pics/census2.jpg"  class="with-border responsive" width="370" alt="Samual Moody"/>
+      <div class="bio-text">
+    <p>Two Ojibwe men from Marquette volunteered for the 1st Michigan Sharpshooters: Thomas Wightman enlisted on Aug. 19, 1863 for three years, age 37. Mustered, Company I, Aug. 28, 1863. Promoted to Corporal. Promoted to Sergeant May 1, 1865. Mustered out at Delany House, DC, May 28, 1865.</p>
+    <p>Moses Williams enlisted July 4, 1863 for three years, age 30. Mustered, Company K, July 20, 1863. Killed in action July 30, 1863 at&nbsp; Crater, VA.</p>
+    <p>&nbsp;The 1890 Special Census of veterans and their survivors lists “George Madosh Indian.” It gives no service record, but remarks, “I have applied for a Pension but never received any. I am destitute and need help.” </p>
+  </div>
+</body>
+</html>

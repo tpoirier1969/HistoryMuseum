@@ -1,0 +1,83 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 24px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+	
+	
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/1983.15.10(1).jpg"  class="with-border responsive" width="600" alt="GAR"/>
+      <div class="bio-text">
+		  <p>The GAR grew into a social and political force around the country. By 1890, it had about half a million members across the nation. The Albert Jackson Post Memorial Book lists 107 members, some of whom enlisted from other areas and settled here later.<p>
+		  <p><italic>Eleven GAR members in Marquette with President Theodore Roosevelt (here for the Newett libel trial) in 1913: Mason W. Burt, William A. Jellison, Gustav Bahrman, Allen Cowden, Addison Cole, Edward C. Anthony, Courtland Moore, Anton "Cap" Kruger, Robert P. Byrne, Sam P. Byrne at Peter White/George Shiras III home on Ridge St.</italic>
+		  </p>
+	
+		   <!-- 
+		  <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/Jane Masters-prices of commodities.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+
+      // Reset audio if user navigates away
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+
+      // Attempt to autoplay if audio has been enabled
+      window.addEventListener('DOMContentLoaded', () => {
+        const audioEnabled = localStorage.getItem("audio-enabled");
+        if (audioEnabled === "true") {
+          setTimeout(() => {
+            audio.play().catch(err => {
+              console.warn("Autoplay blocked or failed:", err);
+            });
+          }, 3000);
+        }
+      });
+    </script> -->
+  </div>
+</body>
+</html>

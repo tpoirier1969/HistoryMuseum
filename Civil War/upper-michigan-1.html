@@ -1,0 +1,58 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+	
+	
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/1955.34.3.jpg"  class="with-border responsive" width="600" alt="civil war dead"/>
+      <div class="bio-text">
+    <h1>Iron Mining at Jackson Iron Company, Negaunee</h1>
+    <p>
+      During the Civil War, Michigan iron produced much of the arms. Iron was necessary for the development of the railway as well as nails, steam engines and bridges. The war, in turn, developed the iron mines; output grew from 45,430 tons in 1861 to 196,256 tons in 1865.</p>
+	  <p><em>Jackson Iron Company, Negaunee 1860s</em></p>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/1176a.jpg"  class="with-border responsive" alt="1176a"/>
+      <div class="bio-text">
+    <h1>Albert Hoover "Hard Tack"
+	 </h1>
+    <p>
+      These letters were printed in the <em> Portage Lake Mining Gazette </em> and signed “Hard Tack.” The soldier was from Capt. Moody’s company. The writer may be Albert Hoover of Houghton. He enlisted as a private in Company B, 27th Michigan Infantry on August 11, 1862. He was promoted to first lieutenant, Company K and acting assistant commissary of subsistence. He was mustered out with the regiment on July 26, 1865.
+    </p>
+    <!-- <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/01 - Hardtack - we crossed rapidan.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    </script> -->
+  </div>
+</body>
+</html>

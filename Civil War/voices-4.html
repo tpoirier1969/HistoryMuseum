@@ -1,0 +1,73 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+	        <div class="profile-layout">
+      <img src="../Civil%20War/civil%20war%20media/Pics/edward-watson.jpg"  class="with-border responsive" alt="Edward M Watson"/>
+      <div class="bio-text">
+  
+    <h1>First Shooting
+	 </h1>
+    <p>
+“When I stood up for a mark the first time in my life for three fellows to get off from their horses and take
+aim over a rail fence at me, the first ball passes close to my head, the second fell short and the third
+struck the fence a little ways off. I hollered to the last one that he couldn't shoot worth shucks. His ball
+went way to the right. He answered back that he would do better next time, but when I pulled my carbine
+and sent a bullet in amongst them it would have made you laugh to see how quick they scattered and got
+on their horses and traveled.”
+    </p>
+    <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/05 - Watson - First Shooting.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    </script>
+  </div>
+</body>
+</html>

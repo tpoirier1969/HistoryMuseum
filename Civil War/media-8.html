@@ -1,0 +1,58 @@
+<!-- VERSION 1.4 -->
+<!-- Civil War/media-2.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media 2</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+  .profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/1975.33.1.jpg" class="responsive" alt="Edward M Watson" style="margin-top: 0;" />
+      <div class="bio-text">
+	  <h1>Music</h1>
+
+    <p>
+Young boys, such as the one pictured here, often served as musicians.
+Music was used for enlistment, during battles and at home. Military bands often played at recruitment rallies, using patriotic marching tunes to inspire young men to enlist.
+Drummers and fifers played to support the troops’ spirits, even in the midst of battle. Drums communicated orders as well as morning wake up, roll call, guard duty. The Cavalry used buglers to share orders. Civil War songs which are sung today include “The Yellow Rose of Texas” and “When Johnny Comes Marching Home Again.”
+    </p>
+
+  </div>
+</body>
+</html>

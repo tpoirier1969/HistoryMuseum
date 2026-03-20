@@ -1,0 +1,106 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 24px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start;  /* top‑align text with top image */
+  gap: 20px;                /* space between image‑stack and text */
+}
+
+.image-stack {
+  display: flex;
+  flex-direction: column;   /* stack the two images vertically */
+  gap: 20px;                /* space between the two images */
+}
+
+.bio-text {
+  flex: 1;                  /* let text fill the remaining width */
+}
+
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+	
+	
+</head>
+<body>
+  <div class="content-wrapper">
+  <div class="profile-layout">
+    <div class="image-stack">
+      <img src="../Civil War/Pics/Arlington House.jpg"
+           class="with-border responsive" width="350" alt="GAR"/>
+      <img src="../Civil War/Pics/arlington-cemetery-now.jpg"
+           class="with-border responsive" width="350" alt="GAR"/>
+    </div>
+    <div class="bio-text">
+     
+		  <h1>Original Arlington House</h1>
+		  <p>The home was built as a memorial by George Washington’s adopted grandson in 1802. Ownership passed to his daughter, but Robert E. Lee and his wife lived there at the time the Civil War began. They left, realizing they would probably never be able to return. When taxes were unpaid, the government took possession of the property.</p>
+<p>Military installations were set up around the estate, and in 1864 it was first used as a military cemetery. Brig Gen. Montgomery C. Meigs purposefully built a monument near the house in the rose garden with 1,800 Union casualties in order to make the house uninhabitable. The federal government also built a model farm community for 1,100 freed slaves there in 1863.</p>
+<p>Lee never returned or publicly tried to recover the home. Following Lee’s death, Lee’s eldest son, George Washington Curtis Lee (to whom ownership would have passed), claimed the government had illegally confiscated the property. In 1882 the US Supreme Court ruled in his favor, and the following year, Congress purchased the property for $150,000. Freedman’s village was removed at that time.</p>
+	  <p><em>Arlington National Cemetery, Virginia. Today over 250,000 US soldiers are buried here.</em>
+	  </p>
+    </div>
+  </div>
+</div>
+	
+		   <!-- 
+		  <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/Jane Masters-prices of commodities.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+
+      // Reset audio if user navigates away
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+
+      // Attempt to autoplay if audio has been enabled
+      window.addEventListener('DOMContentLoaded', () => {
+        const audioEnabled = localStorage.getItem("audio-enabled");
+        if (audioEnabled === "true") {
+          setTimeout(() => {
+            audio.play().catch(err => {
+              console.warn("Autoplay blocked or failed:", err);
+            });
+          }, 3000);
+        }
+      });
+    </script> -->
+  </div>
+</body>
+</html>

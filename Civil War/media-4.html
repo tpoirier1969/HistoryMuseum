@@ -1,0 +1,58 @@
+<!-- VERSION 1.4 -->
+<!-- Civil War/media-2.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media 2</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    .profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/Pics/Harpers Weekly Headline.jpg" class="responsive" alt="Harpers Weekly" style="margin-top: 0;" />
+      <div class="bio-text">
+	  <h1>War Correspondents</h1>
+	 <h1>Harper's Weekly</h1>
+    <p>
+This weekly newspaper was a common way for the public to follow the war. Etchings of portraits, maps, and scenes of battles all illustrated the articles. <br>
+<br>
+Bound collections were made available following the war.
+    </p>
+
+  </div>
+</body>
+</html>

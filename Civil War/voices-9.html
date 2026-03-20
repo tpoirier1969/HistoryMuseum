@@ -1,0 +1,81 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+<style>
+  .lavake-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .top-row,
+  .bottom-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  .top-row img {
+    width: 30%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .bottom-row img {
+    width: 32%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .lavake-text {
+    flex: 1;
+/*    background: rgba(255,255,255,0.85);*/
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  img.with-border {
+    border: 6px solid black;
+    border-radius: 6px;
+    filter: sepia(0.2) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  }
+	
+	.small-img {
+  width: 20% !important;
+  object-fit: contain;
+}
+	
+</style>
+
+	
+	</head>
+<body>
+<div class="lavake-grid">
+  <div class="top-row">
+    <img src="../Civil War/Pics/LaVake Color Guard.jpg" alt="Color Guard" class="with-border responsive">
+    <img src="../Civil War/Pics/LaVake funeral 2.jpg" alt="Funeral 2" class="with-border responsive">
+    <div class="lavake-text">
+      <h1>John B. LaVake</h1>
+      <p>
+      John LaVake served in Sherman’s march to the sea. He enlisted at 22 in  1862. His last battle was Atlanta, and he was discharged  in 1865.&nbsp; &nbsp;He was raised in Sault Ste. Marie and resettled in St. Ignace. His grandfather was a tribal leader who signed the 1825 Prairie du Chien treaty. He served as color bearer of the Fuller Post and died at 89.</p>
+    </div>
+  </div>
+  <div class="bottom-row">
+    <img src="../Civil War/Pics/LaVake Veteran.jpg" alt="Veteran" width="200" class="with-border small-img ">
+    <img src="../Civil War/Pics/LaVake Funeral.jpg" alt="Funeral" class="with-border responsive">
+    <img src="../Civil War/Pics/LaVake funeral 3.jpg" alt="Funeral 3" class="with-border responsive">
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+	        <div class="profile-layout">
+      <img src="../Civil%20War/civil%20war%20media/Pics/edward-watson.jpg"  class="with-border responsive" alt="Edward M Watson"/>
+      <div class="bio-text">
+  
+    <h1>July 1863
+	 </h1>
+    <p>
+      “Because of the continual rain the company slept in a church. As far as your humble servant was concerned,
+he had no fault to find what ever with his bed. Having had the pleasure before in times gone past of sleeping
+with a crowd, I couldn't see the propriety of indulging myself this time, and as the altar was unoccupied
+save by the large Bible generally found there, I concluded the place was good enough for me, so I took
+possession. The Bible and my two revolvers made a pretty good pillow, my horse blanket folded once
+made a soft bed and my coat over my shoulders made a good coverlid. I debated quite a while within
+myself as to whether I would remove my boots or not, but after considering the pros and cons all over, I
+came to the conclusion that if I should oversleep myself and someone should accidently happen to walk off
+in my boots that I should have to make the remainder of the trip barefoot. So for that reason I slept
+with them on." </p>
+    <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/06 - Watson - July 1863.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    </script>
+  </div>
+</body>
+</html>

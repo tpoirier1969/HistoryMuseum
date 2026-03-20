@@ -1,0 +1,77 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 22px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+    <div class="profile-layout">
+      <img src="../Civil War/civil war media/jpgs/1173a.jpg"  class="with-border responsive" width="600" alt="1173a"/>
+      <div class="bio-text">
+    <h1>Crossing the Rapidan and Battle of the Wilderness
+	 </h1>
+    <p>
+      “We crossed the Rapidan [River] on the 5th and on the 6th took part in the battle of Wilderness. This wilderness is a
+large tract of land covered with small trees and bushes principally fine/ and in places so dense as to prevent a passage
+through. We came upon the enemy about noon, connected our line, and, seeing a regiment in front, Major Moody gave
+orders not to fire until he gave the command. Our skirmishers were sent forward and had advanced but a few rods when
+this regiment in front poured a volley into our ranks, and then we saw they were rebels dressed in our clothes, and we paid
+them back with interest. The battle continued with great fury all the afternoon. About 3 o'clock P.M. the line of battle was
+formed [again] and we advanced on the rebels and drove them from two lines of breastworks. As we advanced our line
+was broken up and when our regiment halted we found ourselves almost alone there being few other regiments with us,
+the enemy seeing us thus unsupported and far in advance marched a column on our flank compelling us to fall back to a
+position a little in advance of where we started. Another charge was attempted later in the afternoon but the enemy having
+been reinforced, we could not dislodge them. The result of this day's fighting was highly gratifying to our side, the ememy
+having been driven at all points, instead of driving us as [General] Lee intended to do.</p>
+    <audio id="media-audio" controls playsinline>
+      <source src="../Civil War/audio/01 - Hardtack - we crossed rapidan.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <script>
+      const audio = document.getElementById('media-audio');
+      window.addEventListener('beforeunload', () => {
+        audio.pause();
+        audio.currentTime = 0;
+      });
+    </script>
+  </div>
+</body>
+</html>
