@@ -1,0 +1,134 @@
+<!-- VERSION 2.0.0 -->
+<!-- Spanish-American/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Role of Upper Michigan</title>
+
+  <style>
+    :root{
+      --imgw: 425px;      /* MAX image width you requested */
+      --gap: 20px;
+      --border: 6px;
+      --radius: 6px;
+      --body-font: 28px;
+    }
+
+    html, body{
+      height: 100%;
+      margin: 0;
+    }
+
+    body{
+      overflow: hidden; /* kiosk: no scrollbars */
+      font-family: sans-serif;
+      color: #000;
+      font-size: var(--body-font);
+      box-sizing: border-box;
+    }
+
+    .content-wrapper{
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      box-sizing: border-box;
+    }
+
+    h1{
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    /* ROW 2: Photo | Photo | Text */
+    .content-row{
+      flex: 1;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: var(--imgw) var(--imgw) 1fr;
+      gap: var(--gap);
+      align-items: start; /* don’t stretch items vertically */
+    }
+
+    /* wrapper only controls placement, NOT border */
+    .photo{
+      align-self: start;
+      justify-self: start;
+      line-height: 0;   /* paranoia: kills any baseline/line box weirdness */
+      font-size: 0;
+    }
+
+    /* Border is on the IMG so it hugs the actual image size */
+    img.with-border{
+      display: block;
+      width: 100%;
+      max-width: var(--imgw);      /* shrinks to <= 350px */
+      height: auto;
+      border: var(--border) solid #000;
+      border-radius: var(--radius);
+      box-sizing: border-box;      /* border included in the 350px */
+      filter: sepia(.20) brightness(1.0) contrast(1.0);
+    }
+
+    .bio-text{
+      min-width: 0;
+      overflow: hidden;
+      line-height: 1.25;
+    }
+    .bio-text p{ margin: 0; }
+
+    @media (max-width: 900px){
+      body{ overflow: auto; }
+      .content-wrapper{ height: auto; }
+      .content-row{ grid-template-columns: 1fr-50px; }
+      .bio-text{ overflow: visible; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+
+    <!-- ROW 1: Title -->
+    <h1>Upper Peninsula Communities supported Soldiers</h1>
+
+    <!-- ROW 2: Photo | Photo | Text -->
+    <div class="content-row">
+
+      <div class="photo">
+        <img
+          src="/Spanish-American/photos/10-HD-Ishpeming collects c copy.jpg"
+          class="with-border"
+          alt="Ishpeming community collection drive">
+      </div>
+
+      <div class="photo">
+        <img
+          src="/Spanish-American/photos/11-HD-Escanaba raises mone copy.jpg"
+          class="with-border"
+          alt="Escanaba fundraising for soldiers">
+      </div>
+
+      <div class="bio-text">
+        <p>
+          Living conditions in Cuba and the other areas affected by the war were miserable
+          for the local boys of Company L. When letters began arriving from the front, local
+          individuals began fundraising for the soldiers. Lawn socials were held and chain
+          letters were sent to raise dollars for the effort. At the same time, Ishpeming
+          people began collecting clothes and others prepared relief “care” packages to be
+          sent to local boys. By the time the local effort was organized and packages were
+          sent, the war was nearly over.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</body>
+</html>

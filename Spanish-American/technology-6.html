@@ -1,0 +1,72 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+	  /* remove default figure margins so images/text align at the top */
+  figure.image-block { margin: 0; }
+  /* optional: keep the row’s children aligned on their top edges */
+  .image-row { align-items: flex-start; }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+  <div class="profile-layout">
+    <img src="/Spanish-American/photos/Olive Pendill3.jpg" class="with-border responsive" alt="War Meeting" style="margin-top: 0;" />
+    <figure class="image-block" style="margin:0">
+
+    <div class="bio-text">
+      <p> <em>Miss Pendill, St. Lukes Hospital, Chicago, 1897</em> </p>
+		<p>In 1896, at the age of 30, Olive Pendill of Marquette chose a nursing career.  With two years of training in Chicago at St. Luke’s Hospital, she was prepared to serve in Cuba for her idol, Clara Barton, the founder of the American Red Cross. Years later, Olive wrote of her Spanish-American experiences.  <br>
+
+<em>“On Christmas morning it mizzled, there was no dry spot, the wind blew, the stove smoked, the rain fell.  The cook deserved our sympathy, although all of us nurses felt sorry for ourselves as we ate a cheerless breakfast of black coffee, cold Boston baked beans and hardtack…”<br>
+
+“We were not allowed to leave camp.  Havana was quite forbidden.  Besides brawls, there were the dread diseases to be feared that might have been brought back to the hospital, such as malaria and typhoid.”<br>
+
+“We hear there are dangue, malaria and typhoid in (other) camps, and, if these be at all severe, they will be brought to us at the Division Hospital.”<br>
+
+“Water is brought four miles in barrels.  The well water in the near ravine…is forbidden to us.”<br>
+
+“Just a few feet from the kitchen stood the receptacles for soiled linen and secreta.  Is it not a wonder that more than one corpsman did not occupy beds in the wards?”</em></p>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>

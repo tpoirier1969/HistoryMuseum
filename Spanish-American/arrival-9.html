@@ -1,0 +1,68 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Role of Upper Michigan</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto; 
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+	  /* remove default figure margins so images/text align at the top */
+  figure.image-block { margin: 0; }
+  /* optional: keep the row’s children aligned on their top edges */
+  .image-row { align-items: flex-start; }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+  <div class="profile-layout">
+<figure class="image-block" style="margin:0">
+
+      <div class="bio-text">
+      <h1> All the men located</h1>
+
+<p>Present where abouts and condition of the men in the Marquette Company.&nbsp; Seven gave up their lives in a foreign clime.
+</p>
+    </div>
+		          <figcaption class="caption">
+            <em> List of the dead, List of those sick in hospitals, Names of those who returned with the Company and on other Furloughs.</em>
+					 <br> COMPLETE RECORD OF THE COMPANY
+					  <br> Captain Samuel Wheeler, in Detroit.<br>
+					  First Lieutenant John S. Wilson, in hospital in Boston.<br>Seconed Lieutenant James A. Leisen, in Menominee on furlough.<br>Peter Vandenboom, Marquette; died in Cuba.<br>Joe Berry, Marquette; died in Cuba.<br>Robert M'Killup, Marquette; died at sea during return voyage to United States; buried in midocean.  Was known as "Scotty."<br>Ed Mayotte, Negaunee; died in Cub.<br>Olaf Husby, Ishpeming; died in Cuba.<br>George Martin, Escanaba; died in Cuba.<br>Joseph A. Thoney, Marquette; returned with Company.<br>Fred B. Elliott, Marquette; returned with Company.<br>Peter Grant, Jr., Marquette; returned with Company.<br>John Flynn, Jr., Marquette; returned with Company.
+          </figcaption>
+  </div>
+</div>
+</body>
+</html>

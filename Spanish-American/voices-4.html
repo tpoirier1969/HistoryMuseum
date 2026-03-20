@@ -1,0 +1,66 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+	  /* remove default figure margins so images/text align at the top */
+  figure.image-block { margin: 0; }
+  /* optional: keep the row’s children aligned on their top edges */
+  .image-row { align-items: flex-start; }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+  <div class="profile-layout">
+<figure class="image-block" style="margin:0">
+
+    <div class="bio-text">
+      <h1>Direct News from Santiago.&nbsp;&nbsp;</h1>
+      <p>Many home friends of the boys at the front were gladdened yesterday by the receipt of letters.&nbsp; Most of the eipstles indicate that paper is a scarce article at Santiago.&nbsp; A letter from Stewart Zyrd, received by his sister, was written on an Arbuckle coffee label.&nbsp; One from Joe Shepard to his mother was written on the back of a letter received from home and sent in an envelope turned inside out.&nbsp; Both write in cheerful vein.</p>
+      <p>John Thoney has received the following letter from his son, Corporal Joe Thoney, now in Cuba with Company L.&nbsp; The letter is dated at Santiago July 11 and reads as follows:</p>
+      <em></3m><p>"We are well located here about two miles from Sntiago.&nbsp; If you were here you could hear them bombarding the city.</p>
+      <p>We&nbsp; left Camp Alger June 22 and marched to Dunn Luring, where we took a train for Alexandria, Va., and boarded the steamer Norfolk, and steamed down the Potomac to Old Point Comfort, where we rested and visited the many historic points of interest around the fort.</p>
+      <p>We boarded the Tale June 23 and started on our present trip to Santiago.&nbsp; The trip was void of anything of interest.</p>
+      <p>I took care of a sick man on the way down and got a chance to get something to eat.&nbsp; The boys could not get anything for days at a time.&nbsp; The treatment on board the boat was rotten.</p>
+      <p>We finally landed at a place called Siboney on June 27, and I had the 'pleasure' of...&nbsp;&nbsp;</p></em>
+    </div>
+  </div>
+</div>
+</body>
+</html>

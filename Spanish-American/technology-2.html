@@ -1,0 +1,59 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+	  /* remove default figure margins so images/text align at the top */
+  figure.image-block { margin: 0; }
+  /* optional: keep the row’s children aligned on their top edges */
+  .image-row { align-items: flex-start; }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+  <div class="profile-layout">
+    <div class="bio-text">
+      <h1>Disease</h1>
+      <p>Disease was an important factor in the Spanish American War. More men died of disease – malaria, typhoid fever, yellow fever- than died of battle injuries during the Spanish American War. The disease total was 500 deaths in Cuba and an additional 250 deaths in the Long Island, NY camp where the sick men were treated upon return to the US. Battle deaths were 300 plus 260 men who died during the explosion of the Maine.&nbsp;</p>
+      <p>Edward C. Watson from Marquette was a volunteer soldier in Cuba during the war. He arrived in Cuba on June 29, 1898. His company “plodded wearily through the intense, insect-thick heat of Cuba’s interior.” These conditions caused the incidence of malaria and dysentery to skyrocket. Food was scarce. The men had little food except fruit they picked up from the ground. Barely two months after the war had been declared, the Spanish stacked their arms in surrender. That night Watson fell sick with malaria and dysentery. His company returned to Marquette early in September 1898, and Watson became dangerously ill and for several days it was touch and go. Fortunately he recovered, but during the next ten years he had recurring bouts of malaria. Out of the original 76 members of his Company L, two men died in Cuba and six died upon return.</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

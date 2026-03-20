@@ -1,0 +1,46 @@
+<!-- VERSION 1.8.4 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Civil War Media</title>
+  <style>
+    /* Stage fills the kiosk viewport minus your header/padding.
+       Tweak the 220px subtraction if you still see a scrollbar. */
+    .fit-screen {
+      width: 100%;
+      height: calc(100vh - 220px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    /* Border hugs the actual bitmap; constrain by max-* so it never overflows */
+    .fit-screen > img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;             /* keep intrinsic aspect ratio */
+      height: auto;
+      display: block;
+
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(.20) brightness(1) contrast(1)
+              drop-shadow(0 0 10px rgba(255,220,100,.15));
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="fit-screen">
+    <img
+      src="/Spanish-American/photos/12-HD-President proclaims  copy.jpg"
+      alt="Proclamation headline">
+  </div>
+</body>
+</html>

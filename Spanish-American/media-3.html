@@ -1,0 +1,106 @@
+<!-- VERSION 1.9 -->
+<!-- Spanish-American/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spanish–American War • Media 1</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    .profile-layout {
+      display: flex;
+      align-items: flex-start;   /* top-align the two columns */
+      gap: 20px;
+    }
+
+    /* Left column: images (second image has its own caption) */
+    figure.image-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0; /* remove default figure margin */
+    }
+
+    .image-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    /* Make a figure just for the second image */
+    .image-row figure {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0; /* no default margins */
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 22px;
+      line-height: 1.2;
+      color: #333;
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+    }
+
+    .bio-text { flex: 1; }
+    .bio-text > *:first-child { margin-top: 0; }
+
+    /* Fix size for these two images (overrides parent .responsive width:auto) */
+    .image-row img.with-border.responsive {
+      width: 450px !important;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+
+      <!-- LEFT: two images; caption under the SECOND image only -->
+      <figure class="image-block">
+        <div class="image-row">
+          <img src="/Spanish-American/photos/15-t-roosevelt copy.jpg"
+               class="with-border responsive" width="450"
+               alt="Teddy Roosevelt" />
+
+          <figure>
+            <img src="/Spanish-American/photos/Charge-Up-San-Juan-Hill copy.jpg"
+                 class="with-border responsive" width="450"
+                 alt="Charge Up San Juan Hill" />
+            <figcaption class="caption"><em>Frederic Remington’s “Charge Up San Juan Hill”.</em></figcaption>
+          </figure>
+        </div>
+      </figure>
+
+      <!-- RIGHT: explanatory text -->
+      <div class="bio-text">
+        <p>
+          Frederic Remington, the famous illustrator of the West, was sent to Cuba to supply sketches
+          depicting the Spanish atrocities to Hearst’s <em>New York Journal</em>. Remington remained in Cuba
+          after war was declared. When Theodore Roosevelt led the famous charge up San Juan Hill,
+          Remington documented it.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

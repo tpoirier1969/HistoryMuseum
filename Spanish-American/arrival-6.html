@@ -1,0 +1,68 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Role of Upper Michigan</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto; 
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+	  /* remove default figure margins so images/text align at the top */
+  figure.image-block { margin: 0; }
+  /* optional: keep the row’s children aligned on their top edges */
+  .image-row { align-items: flex-start; }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+  <div class="profile-layout">
+	      <img src="/Spanish-American/photos/Lambert-children copy.jpg" class="with-border responsive" alt="War Meeting" style="margin-top: 0;" />
+    <figure class="image-block" style="margin:0">
+
+    <div class="bio-text">
+      <h1> Clara's Story, continued 3/3</h1>
+
+<p>Affidavit – stating financial status of Clara M. Lambert<br>
+Date June 24, 1921<br>
+To: Widow’s Division<br>
+From: Father Jodacy Pastor of St. John’s Church <br>
+and Alice M. La Londe, Marquette<br>
+<br>
+Excerpt: <em>"That Clara has no real or personal property of value. Except sum of one thousand dollars death benefit from Knights of Columbus, was required to pay over two hundred dollars of debt from this money, no fixed income, keeps boarders which she receives fifteen dollars monthly. With this income she supports herself and three children. Has no income for clothes for herself and children."</p></em>
+    </div>
+  </div>
+</div>
+</body>
+</html>

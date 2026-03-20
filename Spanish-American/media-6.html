@@ -1,0 +1,108 @@
+<!-- VERSION 1.8.2 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      box-sizing: border-box;
+    }
+
+    /* ====== TOP: two images side-by-side, each with its own caption ====== */
+    .photo-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: nowrap;     /* ← keep them on one row */
+    }
+
+    /* Each image+caption is its own figure */
+    .photo-row figure {
+      margin: 0;             /* remove UA default margins */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex: 0 0 auto;        /* ← size to contents, don’t stretch */
+    }
+
+    /* Shared image styling */
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      height: auto;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    /* ✅ Beat parent .responsive { width:auto } with specific selectors */
+    .photo-row img.with-border.responsive.img-1 { width: 450px !important; }
+    .photo-row img.with-border.responsive.img-2 { width: 450px !important; }
+
+    /* Captions under each image */
+    .caption {
+      margin-top: 8px;
+      font-size: 22px;
+      line-height: 1.2;
+      color: #333;
+    }
+
+    /* ====== BOTTOM: body text block ====== */
+    .bio-text { margin-top: 18px; }
+    .bio-text > *:first-child { margin-top: 0; }
+
+    /* Only stack on truly small screens (unlikely in the kiosk) */
+    @media (max-width: 600px){
+      .photo-row { flex-wrap: wrap; }
+      .photo-row figure { flex: 1 1 100%; }
+      .photo-row img.with-border { width: 100% !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+
+    <!-- TOP: two images with individual captions -->
+    <div class="photo-row">
+      <figure>
+        <img
+          src="/Spanish-American/photos/11-rough-riders copy.jpg"
+          class="with-border responsive img-1"
+          alt="Rough Riders">
+        <figcaption class="caption"><em>Roosevelt's "Rough Riders" arrive in Tampa, FL USA</em></figcaption>
+      </figure>
+
+      <figure>
+        <img
+          src="/Spanish-American/photos/10-troop1 copy.jpg"
+          class="with-border responsive img-2"
+          alt="Troops">
+        <figcaption class="caption"><em>Troop 1, 6th US Calvary, Camp Tampa, FL, 1898</em></figcaption>
+      </figure>
+    </div>
+
+    <!-- BOTTOM: single text block -->
+    <div class="bio-text">
+      <h1>“Rough Riders”</h1>
+      <p>
+        African Americans served in the Navy and Army. Native Americans fought in the war,
+        especially in the First Volunteer Cavalry (Rough Riders) and in the First Territorial
+        Volunteer Infantry. Women served in the U.S. Army Nurse Corps.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

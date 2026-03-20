@@ -1,0 +1,57 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+  <div class="profile-layout">
+    <img src="/Spanish-American/photos/headline-war begins copy.jpg" class="with-border responsive" alt="War Meeting" style="margin-top: 0;" />
+    
+    <div class="bio-text">
+    
+      <p> Pulitzer sent the famous author Stephen Crane <em>(The Red Badge of Courage)</em> to cover the war in Cuba.&nbsp;</p>
+      <p>&nbsp;When war was declared in April of 1898, President McKinley requested funding from Congress to refurbish the armed forces. The size of the army rapidly expanded from 28,000 to 250,000. The following are local headlines which reflect the involvement of Upper Peninsula volunteers in the war effort. </p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

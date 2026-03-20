@@ -1,0 +1,123 @@
+<!-- VERSION 1.8 (caption between images, no scroll) -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper{
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      box-sizing: border-box;
+    }
+
+    /* Top text block */
+    .intro { margin-bottom: 18px; }
+    .intro > *:first-child { margin-top: 0; }
+
+    /* Three-column row: LEFT image • MIDDLE caption • RIGHT image */
+    .photo-row{
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
+      column-gap: 20px;
+      align-items: start;
+    }
+
+    figure.photo{
+      margin: 0;
+      display: block; /* each figure is a grid item */
+    }
+
+    /* Shared image styling */
+    img.with-border{
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255,220,100,.15));
+      box-sizing: border-box;
+      display: block;
+      height: auto;
+    }
+
+    /* Keep images side-by-side and inside the kiosk viewport */
+    figure.photo img.with-border.responsive{
+      /* cap width per-image via --w, but never exceed ~46% of viewport width */
+      width: min(var(--w, 480px), 46vw) !important;
+      height: auto !important;
+      /* cap height so we avoid vertical scrollbar in the kiosk content pane */
+      max-height: 68vh !important;
+    }
+
+    /* Middle caption belongs to LEFT image; keep it narrow and left-aligned */
+    .middle-caption{
+      align-self: start;
+      font-size: 22px;
+      line-height: 1.2;
+      color: #333;
+      max-width: 360px;   /* keeps the gap visually tight */
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      margin-top: 8px;    /* slight drop to align nicely with image top */
+    }
+
+    /* Small screens (unlikely in kiosk): allow stacking */
+    @media (max-width: 600px){
+      .photo-row{
+        grid-template-columns: 1fr;
+        row-gap: 12px;
+      }
+      .middle-caption{ max-width: none; }
+      figure.photo img.with-border.responsive{
+        width: 100% !important;
+        max-height: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+
+    <!-- TOP: heading + text -->
+    <div class="intro">
+      <h1>War Begins</h1>
+      <p>“Yellow Journalism” had its start in the Spanish American War. Newspapers were the primary source for information in the country at the time. Editors often offered their interpretation of the news over objective journalism. If the facts presented were distorted, the public had few options for fact checking. Flamboyant headlines increased circulation and this irresponsible approach to journalism became know as “yellow journalism.”</p>
+      <p>William Randolph Hearst and Joseph Pulitzer lead the charge for American involvement in Cuba. Their competing publications reported alleged brutality of the Spanish toward Cuban rebels. By the time the USS <em>Maine</em> exploded in Havana Harbor, the pro-war press made it difficult for President McKinley to make any other choice but to enter the war. His political future rested upon that.</p>
+    </div>
+
+    <!-- BOTTOM: LEFT image • MIDDLE caption (for LEFT) • RIGHT image -->
+    <div class="photo-row">
+      <!-- LEFT image (set --w to taste) -->
+      <figure class="photo" style="--w: 400px;">
+        <img
+          src="/Spanish-American/photos/16-burial copy.jpg"
+          class="with-border responsive"
+          alt="Burial of victims of the Maine, Arlington Cemetery, 1899"
+			 style="max-width: 340px !important; width: 100% !important; height: auto !important;"
+
+          aria-describedby="cap-left">
+      </figure>
+
+      <!-- MIDDLE caption (visually tied to LEFT; ARIA ties it semantically too) -->
+      <div class="middle-caption" id="cap-left">
+        <em>Burial of victims of the <span style="white-space:nowrap;">Maine</span> in Arlington Cemetery, Virginia, 1899.</em>
+      </div>
+
+      <!-- RIGHT image -->
+      <figure class="photo" style="--w: 500px;">
+        <img
+          src="/Spanish-American/photos/headline-war begins copy.jpg"
+          class="with-border responsive"
+          alt="Newspaper headline announcing war begins">
+      </figure>
+    </div>
+
+  </div>
+</body>
+</html>

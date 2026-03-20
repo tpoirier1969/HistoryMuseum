@@ -1,0 +1,107 @@
+<!-- VERSION 1.7.3 (captions wrap under each image correctly) -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Civil War Media</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      box-sizing: border-box;
+    }
+
+    .photo-row{
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      flex-wrap: nowrap;          /* side-by-side on kiosk */
+      justify-content: flex-start;
+    }
+
+    /* Key change: make each figure an inline-block capped to --maxw,
+       so the caption’s width follows the rendered image width. */
+    figure.photo{
+      margin: 0;
+      display: inline-block;
+      vertical-align: top;
+      max-width: var(--maxw, 520px);   /* per-image cap */
+    }
+
+    img.with-border{
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255,220,100,.15));
+      box-sizing: border-box;
+      display: block;
+    }
+
+    /* No distortion: never force width; just cap to figure */
+    figure.photo img.with-border.responsive{
+      max-width: 100% !important;   /* fill figure, but don’t upscale past its cap */
+      height: auto !important;
+      max-height: 68vh !important;  /* avoid vertical scrollbar in kiosk pane */
+    }
+
+    .caption{
+      margin-top: 8px;
+      font-size: 22px;
+      line-height: 1.2;
+      color: #333;
+      max-width: 100%;              /* wraps within figure width (i.e., image width) */
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    @media (max-width: 600px){
+      .photo-row{ flex-wrap: wrap; }
+      figure.photo{ max-width: 100%; }
+      figure.photo img.with-border.responsive{ max-width: 100% !important; max-height: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+
+    <h1><br>
+      <em>Olive Pendill</em>      
+      <br>
+    </h1>
+      <p>&nbsp;</p>
+<div class="photo-row">
+    <!-- LEFT image (cap width; caption wraps under image) -->
+    <figure class="photo" style="--maxw: 520px;">
+        <img
+          src="/Spanish-American/photos/Olive Pendill1 copy.jpg"
+          class="with-border responsive"
+          alt="Some of the graduates of St. Luke’s Hospital, Chicago, 1898. Miss Pendill—front row, third from left.">
+        <figcaption class="caption">
+          <em>Some of the graduates of <br>
+          St. Lukes Hospital, Chicago, 1898. <br>
+          Olive Pendill — 3rd from left, front row.</em>
+        </figcaption>
+      </figure>
+
+      <!-- RIGHT image (no distortion; separate caption) -->
+      <figure class="photo" style="--maxw: 520px;">
+        <img
+          src="/Spanish-American/photos/Olive Pendill2.jpg"
+          class="with-border responsive"
+          alt="Miss Pendill as a Red Cross Sister, 1897">
+        <figcaption class="caption">
+          <em>Miss Pendill as a Red Cross Sister, 1897</em>
+        </figcaption>
+      </figure>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!-- VERSION 1.8 -->
+<!-- Spanish-American/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spanish–American War • Media 1</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    .profile-layout {
+      display: flex;
+      align-items: flex-start;   /* top-align the two columns */
+      gap: 20px;
+    }
+
+    /* Left side: images + caption grouped together */
+    figure.image-block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0;                 /* <-- remove default figure margin */
+    }
+
+    .image-row {
+      display: flex;
+      align-items: flex-start;   /* belt-and-suspenders */
+      gap: 20px;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 22px;
+      line-height: 1.2;
+      color: #333;
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+    }
+
+    .bio-text { flex: 1; }
+    .bio-text > *:first-child { margin-top: 0; }
+
+    /* Keep these two images at a fixed width inside this page
+       (overrides parent .responsive { width:auto }) */
+    .image-row img.with-border.responsive {
+      width: 450px !important;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+
+      <!-- LEFT: images with caption underneath -->
+      <figure class="image-block">
+        <div class="image-row">
+          <img src="/Spanish-American/photos/18-battleship-maine-a.jpg"
+               class="with-border responsive" width="450"
+               alt="Battleship Maine before the explosion" />
+          <img src="/Spanish-American/photos/17-maine-wreck copy.jpg"
+               class="with-border responsive" width="450"
+               alt="Wreck of the Battleship Maine" />
+        </div>
+        <figcaption class="caption"><em>The Battleship Maine — before and after.</em></figcaption>
+      </figure>
+
+      <!-- RIGHT: explanatory text -->
+      <div class="bio-text">
+        <p>
+          The mysterious explosion of the Battleship <em>Maine</em> in Havana’s harbor
+          was instrumental in committing American troops to what became the
+          Spanish–American War.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

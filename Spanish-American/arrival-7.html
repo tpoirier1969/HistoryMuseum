@@ -1,0 +1,70 @@
+<!-- VERSION 1.6 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Role of Upper Michigan</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto; 
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+	  /* remove default figure margins so images/text align at the top */
+  figure.image-block { margin: 0; }
+  /* optional: keep the row’s children aligned on their top edges */
+  .image-row { align-items: flex-start; }
+
+.profile-layout {
+  display: flex;
+  align-items: flex-start; /* Corrected value */
+  gap: 20px;
+}
+
+img.with-border {
+  border: 6px solid black;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+  flex-shrink: 0;
+}
+
+.bio-text {
+  flex: 1;
+}
+
+/* 🔥 This is what aligns the top of the text block with the image */
+.bio-text > *:first-child {
+  margin-top: 0;
+}
+	  
+  </style>
+</head>
+<body>
+<div class="content-wrapper">
+  <div class="profile-layout">
+    <div class="bio-text">
+      <h1> From Manual of Laws, Relating to Pensions</h1>
+
+<p><em>Pension is granted by the general laws to all persons disabled by reason of any wound or injury received or disease contracted in line of duty while in the military or naval service of the United States at any time.<br><br>
+
+The disability resulting from disease there are five general grades of pension per month, as follows: Rate varies with rank from $8-$30.</em><br><br>
+
+<b>Specific Rates for disabilities</b><br>
+<em>Loss of both hands $100.00<br>
+Total disability in both hands; loss of both feet; loss of both eyes; loss of one eye, if the other was lost before enlistment $72.00<br>
+Total disability of arm or leg; loss of one hand and foot; total disability in one hand and foot; amputation at or above elbow or knee. $36<br>
+Loss of hand or foot; total disability of one hand or one foot; total deafness $30<br>
+For disability requiring the regular aid and attendance of another person…. $72<br>
+For disability requiring the frequent but not regular attendance of another person…. $50<br>
+For total inability to perform any manual labor…$30</em></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
