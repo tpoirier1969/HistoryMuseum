@@ -1,0 +1,295 @@
+<!-- Version 5.18 (glow fixed, robust init, script closed) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arrivals and Departures</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000 url('images/background images/home/arrivals-and-departures working pages background.png') no-repeat center center;
+      background-size: cover;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    #container { display: flex; height: 100%; }
+    #sidebar   { width: 220px; padding: 75px 0 0 30px; }
+    #rightSide { flex: 1; display: flex; flex-direction: column; }
+    #sectionNav{ height: 80px; padding: 18px 0 0 70px; }
+
+    #mainContent {
+      flex: 1;
+      padding: 0px 0 0 120px;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+    }
+    #mainContent::before {
+      content: "";
+      position: fixed;
+      top: 130px; left: 270px; right: 60px; bottom: 60px;
+      background: rgba(255, 255, 255, 0.15);
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50px;
+      box-shadow: 0 0 150px 80px rgba(255, 255, 255, 0.1);
+    }
+    #mainContent > * { position: relative; z-index: 1; }
+
+    img.responsive {
+      max-width: 800px; max-height: 600px;
+      width: auto; height: auto; display: block;
+    }
+
+    #subNavButtons { display: flex; justify-content: space-between; padding: 8px 150px 0 150px; }
+    #subNavButtons img { height: 60px; cursor: pointer; }
+    #mainContent img { max-width: 100%; height: auto; display: block; margin-bottom: 20px; }
+
+    /* =========================
+       GLOW (clean + surgical)
+       ========================= */
+
+    .inactive-glow {
+      filter:
+        drop-shadow(0 0 8px rgba(70, 45, 20, 0.75))
+        drop-shadow(0 0 18px rgba(70, 45, 20, 0.55));
+      transition: filter 0.3s ease;
+    }
+
+    .active-glow {
+      animation: warmPulse 6s infinite;
+      transition: filter 0.3s ease;
+    }
+
+    @keyframes warmPulse {
+      0% {
+        filter:
+          drop-shadow(0 0 10px rgba(255, 195, 32, 0.72))
+          drop-shadow(0 0 18px rgba(255, 195, 32, 0.58))
+          drop-shadow(0 0 10px rgba(255, 96, 0, 0.18));
+      }
+      50% {
+        filter:
+          drop-shadow(0 0 24px rgba(255, 210, 60, 1.00))
+          drop-shadow(0 0 36px rgba(255, 210, 60, 0.78))
+          drop-shadow(0 0 22px rgba(255, 96, 0, 0.25));
+      }
+      100% {
+        filter:
+          drop-shadow(0 0 10px rgba(255, 195, 32, 0.72))
+          drop-shadow(0 0 18px rgba(255, 195, 32, 0.58))
+          drop-shadow(0 0 10px rgba(255, 96, 0, 0.18));
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="sidebar">
+      <!-- NOTE: IDs are btn-<warKey>; no spaces -->
+      <img src="images/background images/home/button-civil.png"  id="btn-civil-war" onclick="switchWar('civil war')" />
+      <img src="images/background images/home/button-spanish.png" id="btn-spanish"    onclick="switchWar('spanish')" />
+      <img src="images/background images/home/button-wwi.png"     id="btn-wwi"       onclick="switchWar('wwi')" />
+      <img src="images/background images/home/button-wwii.png"    id="btn-wwii"      onclick="switchWar('wwii')" />
+      <img src="images/background images/home/button-cold.png"    id="btn-cold"      onclick="switchWar('cold')" />
+    </div>
+
+    <div id="rightSide">
+      <div id="sectionNav">
+        <!-- Section IDs are section-<sectionKey> -->
+        <img src="images/background images/home/Media and the message.png"  id="section-media"      onclick="switchSection('media')" />
+        <img src="images/background images/home/Voices of veterans.png"     id="section-voices"     onclick="switchSection('voices')" />
+        <!-- Databases removed -->
+        <img src="images/background images/home/technology factors.png"      id="section-technology" onclick="switchSection('technology')" />
+        <img src="images/background images/home/role of upper michigan.png" id="section-upper"      onclick="switchSection('upper')" />
+        <img src="images/background images/home/arrival home.png"           id="section-arrival"    onclick="switchSection('arrival')" />
+      </div>
+
+      <div id="subNavButtons">
+        <img src="images/background images/home/back button.png"    alt="Back"    onclick="navigate(-1)"/>
+        <img src="images/background images/home/forward button.png" alt="Forward" onclick="navigate(1)"/>
+      </div>
+
+      <div id="mainContent">
+        <h1>Welcome</h1>
+        <p>Select a war from the left to begin.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentWar = "";
+    let currentSection = "media";
+    let currentPageIndex = 0;
+    let contentMap = {};
+
+    // War key (from JSON/URL) → folder name on disk
+    const WAR_TO_FOLDER = {
+      "civil war": "Civil War",
+      "spanish": "Spanish-American",
+      "wwi": "World War 1",
+      "wwii": "World War 2",
+      "cold": "Cold War"
+    };
+
+    // Utilities
+    const warIdFromKey = (warKey) => `btn-${warKey.replace(/\s+/g,'-')}`;
+
+    // Seed deep-brown glow on all war + section + nav buttons
+    function seedInactiveGlow() {
+      document.querySelectorAll('#sidebar img, #sectionNav img, #subNavButtons img').forEach(el => {
+        el.classList.remove('active-glow');
+        el.classList.add('inactive-glow');
+      });
+    }
+
+    // Apply glow to the current war and section (both pulse yellow)
+    function highlightCurrent(war, section) {
+      // Reset all to inactive brown
+      document.querySelectorAll('#sidebar img, #sectionNav img').forEach(el => {
+        el.classList.remove('active-glow');
+        if (!el.classList.contains('inactive-glow')) el.classList.add('inactive-glow');
+      });
+
+      // Active WAR (yellow pulse)
+      const warBtn = document.getElementById(warIdFromKey(war));
+      if (warBtn) {
+        warBtn.classList.remove('inactive-glow');
+        warBtn.classList.add('active-glow');
+      }
+
+      // Active SECTION (yellow pulse)
+      const sectionBtn = document.getElementById(`section-${section}`);
+      if (sectionBtn) {
+        sectionBtn.classList.remove('inactive-glow');
+        sectionBtn.classList.add('active-glow');
+      }
+    }
+
+    // Core navigation
+    function switchWar(war) {
+      currentWar = war;
+      currentSection = "media";
+      currentPageIndex = 0;
+      highlightCurrent(war, currentSection);
+      loadCurrent();
+    }
+
+    function switchSection(section) {
+      currentSection = section;
+      currentPageIndex = 0;
+      highlightCurrent(currentWar, section);
+      loadCurrent();
+    }
+
+    function navigate(offset) {
+      const pages = contentMap[currentWar]?.[currentSection];
+      const newIndex = currentPageIndex + offset;
+
+      if (pages && newIndex >= 0 && newIndex < pages.length) {
+        currentPageIndex = newIndex;
+        loadCurrent();
+      } else if (offset > 0) {
+        const sectionKeys = Object.keys(contentMap[currentWar]);
+        const currentSectionIndex = sectionKeys.indexOf(currentSection);
+        if (currentSectionIndex + 1 < sectionKeys.length) {
+          currentSection = sectionKeys[currentSectionIndex + 1];
+          currentPageIndex = 0;
+          highlightCurrent(currentWar, currentSection);
+          loadCurrent();
+        } else {
+          window.location.href = "AandD Home.html";
+        }
+      } else if (offset < 0 && currentPageIndex === 0) {
+        const sectionKeys = Object.keys(contentMap[currentWar]);
+        const currentSectionIndex = sectionKeys.indexOf(currentSection);
+        if (currentSectionIndex > 0) {
+          currentSection = sectionKeys[currentSectionIndex - 1];
+          currentPageIndex = contentMap[currentWar][currentSection].length - 1;
+          highlightCurrent(currentWar, currentSection);
+          loadCurrent();
+        } else {
+          window.location.href = "AandD Home.html";
+        }
+      }
+    }
+
+    function loadCurrent() {
+      const pages = contentMap[currentWar]?.[currentSection];
+      if (pages && pages.length > 0) {
+        // Map key → folder; if missing, fall back to key
+        const folder = (typeof WAR_TO_FOLDER !== "undefined" && WAR_TO_FOLDER[currentWar]) || currentWar;
+        const file   = pages[currentPageIndex];
+        const url    = `${folder}/${file}`;
+
+        // Show the human-readable file path in the URL hash
+        const displayPath = `${folder}/${file}`;
+        const u = new URL(location.href);
+        u.searchParams.set("war", currentWar);
+        u.searchParams.set("section", currentSection);
+        u.searchParams.set("index", String(currentPageIndex));
+        u.hash = encodeURIComponent(displayPath);
+        history.replaceState(null, "", u);
+
+        fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const container = document.getElementById("mainContent");
+            const temp = document.createElement("div");
+            temp.innerHTML = html;
+
+            container.innerHTML = '<div class="content-background"></div>';
+            temp.querySelectorAll("script").forEach(script => script.remove());
+            container.innerHTML += temp.innerHTML;
+
+            temp.querySelectorAll("script").forEach(script => {
+              const newScript = document.createElement("script");
+              if (script.src) newScript.src = script.src;
+              else newScript.textContent = script.textContent;
+              document.body.appendChild(newScript);
+            });
+
+            setTimeout(triggerInjectedAudioAutoplay, 100);
+          })
+          .catch(() => {
+            document.getElementById("mainContent").innerHTML = "<p>Error loading content.</p>";
+          });
+      }
+    }
+
+    // Autoplay helper
+    function triggerInjectedAudioAutoplay() {
+      const audio = document.querySelector("#mainContent audio");
+      const audioEnabled = localStorage.getItem("audio-enabled");
+      if (audio && audioEnabled === "true") {
+        audio.muted = false;
+        audio.play().catch(() => {});
+      }
+    }
+
+    // Initial load: respect war/section/index from URL
+    fetch('contentMap.json')
+      .then(res => res.json())
+      .then(data => {
+        contentMap = data;
+
+        const params  = new URLSearchParams(location.search);
+        const war     = params.get("war")     || "civil war";
+        const section = params.get("section") || "media";
+        const index   = parseInt(params.get("index") || "0", 10);
+
+        currentWar = war;
+        currentSection = section;
+        currentPageIndex = Number.isFinite(index) ? index : 0;
+
+        seedInactiveGlow();
+        highlightCurrent(currentWar, currentSection);
+        loadCurrent();
+      });
+  </script>  <!-- ←←← this was missing -->
+</body>
+</html>

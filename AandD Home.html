@@ -1,0 +1,265 @@
+<!-- Version 4.10 (Buttons spaced, deep-link to Media-1) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AandD Home</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-image: url('images/background%20images/home/New%20Home%20Background.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      overflow: hidden;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      width: 1867px;
+      height: 962px;
+      border: 2px solid transparent;
+      margin: 0;
+      padding: 0;
+    }
+
+    td {
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    .glow-animated {
+      animation: glowPulse 4s infinite;
+      transition: filter 0.3s ease;
+    }
+
+    @keyframes glowPulse {
+      0% { filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.3)); }
+      50% { filter: drop-shadow(0 0 20px rgba(255, 255, 0, 0.8)); }
+      100% { filter: drop-shadow(0 0 5px rgba(255, 255, 0, 0.3)); }
+    }
+
+    .glitch-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      background-image: url('images/background%20images/home/New%20Home%20Background.png');
+      background-size: cover;
+      background-position: center center;
+      opacity: 0;
+      z-index: 1000;
+    }
+
+    body.glitch-active .glitch-overlay {
+      opacity: 0.15;
+      animation: glitchOverlay 0.5s infinite;
+    }
+
+    /* was invalid CSS placed here; keep for reference only
+       localStorage.setItem("audio-enabled", "true");
+    */
+
+    @keyframes glitchOverlay {
+      0%   { transform: translateX(-10px) scaleX(1.05); filter: hue-rotate(0deg); }
+      25%  { transform: translateX(10px) scaleX(1.1);  filter: hue-rotate(45deg); }
+      50%  { transform: translateX(-10px) scaleX(0.95); filter: hue-rotate(90deg); }
+      75%  { transform: translateX(10px) scaleX(1.0);  filter: hue-rotate(135deg); }
+      100% { transform: translateX(0)     scaleX(1.0);  filter: hue-rotate(180deg); }
+    }
+
+    .scanlines {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 2000;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15),
+        rgba(0,0,0,0.15) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      mix-blend-mode: multiply;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    body.glitch-active .scanlines { opacity: 1; }
+
+    .noise-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: url('images/giphy-1.gif');
+      background-size: cover;
+      pointer-events: none;
+      z-index: 1999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    body.glitch-active .noise-overlay { opacity: 0.05; }
+
+    body.glitch-active table img { animation: buttonGlitch 1s infinite; }
+
+    @keyframes buttonGlitch {
+      0%, 100% { transform: translate(0, 0); }
+      25%      { transform: translate(1px, -1px); }
+      50%      { transform: translate(-1px, 0.5px); }
+      75%      { transform: translate(0.5px, 1px); }
+    }
+
+    #enable-audio-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: rgba(255, 90, 0, 0.8);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 3000;
+    }
+
+    /* --- KIOSK SAFE OVERRIDES: disable motion globally (non-destructive) --- */
+    .glow-animated { animation: none !important; transition: none !important; filter: none !important; }
+    body.glitch-active .glitch-overlay,
+    body.glitch-active .noise-overlay,
+    body.glitch-active .scanlines { opacity: 0 !important; animation: none !important; }
+    table img { animation: none !important; }
+  </style>
+</head>
+<body>
+  <table border="0" align="left" cellpadding="1" cellspacing="1">
+    <tbody>
+      <!-- Column widths row establishes 5 columns -->
+      <tr>
+        <td width="13" height="217"></td>
+        <td width="828"></td>
+        <td width="395"></td>
+        <td width="365"></td>
+        <td width="238"></td>
+      </tr>
+
+      <!-- Spacer row (unchanged) -->
+      <tr>
+        <td height="133"></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <!-- ============================ -->
+      <!-- ROW 1 (2 buttons, centered)  -->
+      <!-- ============================ -->
+      <tr>
+        <td height="240"></td>
+        <td></td>
+        <td>
+          <a href="arrivals%20and%20departures.html?war=civil%20war&amp;section=media&amp;index=0">
+            <img src="images/background images/home/button-civil.png" width="140" height="140" alt="Civil War" class="glow-animated"/>
+          </a>
+        </td>
+        <td>
+          <a href="arrivals%20and%20departures.html?war=spanish&amp;section=media&amp;index=0">
+            <img src="images/background images/home/button-spanish.png" width="210" height="170" alt="Spanish–American War" class="glow-animated"/>
+          </a>
+        </td>
+        <td></td>
+      </tr>
+
+      <!-- ============================ -->
+      <!-- ROW 2 (3 buttons, balanced)  -->
+      <!-- ============================ -->
+      <tr>
+        <td height="84"></td>
+        <td></td>
+        <td>
+          <a href="arrivals%20and%20departures.html?war=wwi&amp;section=media&amp;index=0">
+            <img src="images/background images/home/button-wwi.png" width="120" height="140" alt="WWI" class="glow-animated"/>
+          </a>
+        </td>
+        <td>
+          <a href="arrivals%20and%20departures.html?war=wwii&amp;section=media&amp;index=0">
+            <img src="images/background images/home/button-wwii.png" width="100" height="140" alt="WWII" class="glow-animated"/>
+          </a>
+        </td>
+        <td>
+          <a href="arrivals%20and%20departures.html?war=cold&amp;section=media&amp;index=0">
+            <img src="images/background images/home/button-cold.png" width="170" height="190" alt="Cold War" class="glow-animated"/>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="glitch-overlay"></div>
+  <div class="noise-overlay"></div>
+  <div class="scanlines"></div>
+
+  <!--
+  <audio id="glitch-audio" preload="auto" autoplay playsinline muted>
+    <source src="Audio/Touch me.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  -->
+
+  <script>
+  /*  KIOSK SAFE: disable all glitch/audio JS without deleting it
+
+    let idleTimer;
+    const delay = 5000;
+    const audio = document.getElementById('glitch-audio');
+    let glitchActive = false;
+
+    function clearIdleTimer() {
+      if (idleTimer) clearTimeout(idleTimer);
+    }
+
+    function startIdleTimer() {
+      clearIdleTimer();
+      idleTimer = setTimeout(() => {
+        if (!glitchActive) {
+          document.body.classList.add('glitch-active');
+          glitchActive = true;
+          audio.muted = false;
+          audio.play().catch(err => console.log("Audio play error:", err));
+        }
+      }, delay);
+    }
+
+    function stopGlitch() {
+      if (glitchActive) {
+        document.body.classList.remove('glitch-active');
+        glitchActive = false;
+        audio.pause();
+        audio.currentTime = 0;
+      }
+      startIdleTimer();
+    }
+
+    ['mousemove', 'mousedown', 'keydown', 'touchstart'].forEach(event =>
+      window.addEventListener(event, stopGlitch)
+    );
+
+    startIdleTimer();
+  */
+  </script>
+</body>
+</html>
