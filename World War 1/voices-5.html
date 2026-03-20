@@ -1,0 +1,141 @@
+<!-- VERSION 2.1 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    *{ box-sizing: border-box; }
+
+    .content-wrapper{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      overflow-wrap: anywhere;
+    }
+
+    .profile-layout.photos-top{
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    figure.image-block{
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    /* Center images as a group */
+    .photo-row{
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 16px;
+      justify-content: center;
+      align-items: start;
+    }
+
+    .photo-item{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    img.with-border{
+      display: block;
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+    }
+
+    /* IMPORTANT: use width:100% + max-width to prevent "natural size" filling the container */
+    .photo-item img.with-border{
+      width: 800px;
+      height: auto;
+    }
+
+    /* Image 1 sizing */
+    .photo-item.first img.with-border{
+      max-width: 350px;
+      max-height: 550px;
+    }
+
+    /* Image 2 sizing (if/when you add it back) */
+    .photo-item.second img.with-border{
+      max-width: 320px;
+      max-height: 500px;
+    }
+
+    .caption-line{
+      font-size: 22px;
+      line-height: 1.2;
+      color: #333;
+      text-align: center;
+    }
+
+    .bio-text > *:first-child{ margin-top: 0; }
+
+    /* Responsive: stack columns, but DO NOT blow away your max-width caps */
+    @media (max-width: 1000px){
+      .photo-row{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout photos-top">
+
+      <div class="bio-text">
+        <h1>Movement Overseas</h1>
+      </div>
+
+      <figure class="image-block">
+        <div class="photo-row">
+          <div class="photo-item first">
+            <img
+              src="/World%20War%201/Pictures/map-2-to%20Europe.jpg"
+              class="with-border"
+              alt="Movement overseas map"
+            />
+          </div>
+
+          <!-- If you later want the second image back, uncomment this block
+          <div class="photo-item second">
+            <img
+              src="/World%20War%201/Pictures/SECONDIMAGE.jpg"
+              class="with-border"
+              alt="Second image"
+            />
+          </div>
+          -->
+        </div>
+      </figure>
+
+      <div class="bio-text">
+        <p>
+          On January 2, 1918 the Division moved to the ports of embarkation of Hoboken, Newport News, and New York.
+          On January 13 advance detachments sailed from Hoboken and arrived on January 24th at Brest, France.
+          Between January 23rd and February 18th, large parts of the division sailed to England. Other units of the
+          division arrived in St. Nazaire and Brest in late February and early March. The troops which had landed in
+          England, after a short stay in rest camps proceeded to Le Havre.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!-- VERSION 1.8 — image column +50% wider; text narrows to make room; no crop/no aspect changes -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+
+  <style>
+    *{ box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+    .content-wrapper{
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: #000;
+      font-family: sans-serif;
+      font-size: 28px;
+      overflow-wrap: anywhere;
+    }
+
+    h1{ margin: 0 0 8px 0; line-height: 1.1; }
+    p{ margin: 0; line-height: 1.22; }
+    .p1{ margin-bottom: 14px; }
+
+    /* Row under the first paragraph: text left, image right */
+    .two-col{
+      display: grid;
+
+      /* was 420px; +50% => 630px */
+      grid-template-columns: 1fr 630px;
+
+      gap: 20px;
+      align-items: start;
+      min-width: 0;
+    }
+
+    /* Image styling (border hugs image, no crop, no distortion) */
+    img.with-border{
+      display: block;
+      width: 100%;
+      height: auto;           /* preserves aspect ratio */
+      max-width: 100%;
+
+      border: 6px solid #000;
+      border-radius: 6px;
+      box-sizing: border-box;
+
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+    }
+
+    figure{ margin: 0; }
+
+    /* Responsive: stack on narrow widths */
+    @media (max-width: 1100px){
+      .two-col{
+        grid-template-columns: 1fr;
+      }
+      img.with-border{
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <h1>Certificates</h1>
+
+    <p class="p1">
+      The city of Marquette issued certificates of appreciation to those who served in WWI.
+    </p>
+
+    <div class="two-col">
+      <p>
+        In 1920, the Marquette Women’s Welfare Club organized the effort to plant a memorial grove of trees at Presque Isle Park to honor the 28 Marquette servicemen who died in the war. American Elm were planted on both sides of Peter White Drive (near what is now the marina). The Boy Scouts were in charge of planting and placing a brass plaque with a soldier’s name on each tree. That Memorial Day and for many years after, the trees were decorated with flowers.
+      </p>
+
+      <figure>
+        <img class="with-border" src="/World war 1/Pictures/27-certificate.jpg" alt="Certificate image">
+      </figure>
+    </div>
+  </div>
+</body>
+</html>

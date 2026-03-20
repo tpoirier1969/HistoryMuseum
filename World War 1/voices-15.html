@@ -1,0 +1,151 @@
+<!-- VERSION 1.9 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    .content-wrapper {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    /* ===== Photo sizing: ONE default + per-image override ===== */
+    :root {
+      --photoW: 350px;   /* global default width for photos */
+      --audioW: 520px;   /* width for the audio controls next to title */
+    }
+
+    .photo-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;     /* ✅ TOPS align */
+      justify-content: space-between;
+      margin-bottom: 6px;          /* ✅ less space before title */
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+        drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+      display: block;              /* ✅ kills the bottom-gap / border mismatch */
+      box-sizing: border-box;      /* ✅ border behaves predictably */
+    }
+
+    /* Width is the magic number; height follows (no cropping) */
+    img.photo {
+      width: var(--w, var(--photoW));  /* per-image override: style="--w: 330px;" */
+      height: auto;
+    }
+
+    /* ===== Title + Audio on same line ===== */
+    .title-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 10px 0;          /* tight to photos, some breathing room below */
+      flex-wrap: nowrap;
+    }
+
+    .title-bar h1 {
+      margin: 0;
+      flex: 1 1 auto;
+    }
+
+    .title-audio {
+      width: var(--audioW);
+      flex: 0 0 auto;
+    }
+
+    /* --- TEXT UNDER PHOTOS --- */
+    .text-block > *:first-child { margin-top: 0; }
+
+    .em-paragraph { margin-top: 10px; }
+
+    /* 4 points smaller than 28px => 24px */
+    .quote-block {
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .audio-note {
+      margin-top: 6px;
+      font-size: 22px;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+
+    <!-- 3 photos on top -->
+    <div class="photo-row"> </div>
+
+    <div class="text-block">
+      <!-- Title + audio controls on the SAME line -->
+      <div class="title-bar">
+        <h1>Tom S. Smith</h1>
+
+        <audio id="media-audio" class="title-audio" controls playsinline preload="metadata" autoplay>
+          <source src="../World%20War%201/audio/WWI-Tom S. Smith - CELEBRATION.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <p>
+        Letter he wrote November 10, 1910 (Note: The ‘Bosche’ or ‘Boshe’ are the Germans)
+      </p>
+
+      <p class="em-paragraph quote-block">
+        <em>
+          <b>Celebration</b> <br>
+        "The people here celebrated the 1st Sunday in a wonderful church. They couldn't believe it was over. The Bosche had held the town for 4 years. The other towns we took had no civilians. Many of the houses had remnants of wonderful libraries and dining rooms, but most of the good stuff was gone and the pIanes smashed. The Bosche here did not seem to have used the people very rough but I guess they had lots of rules for them to observe. The American Red Cross fed the people here, but I suppose occasionally they didn't get it all. Miss Margaret Wilson came here several days after to see the people and her trip here must have been a sight for her, dead horses, Bosche, shell holes and the saddest of all, good American boys lying on the battlefield, altho even during the battle the Chaplains worked to bury and record the Americans killed. Our path led to victory, Pat, but I think no war ever witnessed the use of Artillery and Machine  guns, worst of all the Artillery. The airplanes would see your troops, a few burst of shrapnel to get the range, the fire adjusted, and then it was hell. No one was safe, even for miles back, you just took your chance and roads were the worst of all. The troops in the field could hit the dirt on the close ones, but if you were hurrying to the battle C.P. via road in an auto or motor car, you couldn't hear the squeal but just sit tight and wonder if this trip was going to end or be a series of close shaves. One thing the Bosche was methodical, he usually shelled at certain hours and if he picked out a particular curve on the road, generally in about 30 minutes you could pass, or time them to see if he was sending 3 a minute etc., and then beat it there in the interval, of course that would have been no time for your motor to stop. Enclosed find some things the airplanes used to drop. One is German propaganda and the other was dropped to encourage us on when the going was hard. Propaganda worked on the Bosche but our men never paid any attention. We are on outpost duty, advancing our lines from time to time and cover quite a stretch. If you want a trip after the war I could show you some interesting old places that I will never forget. President Poiscard was here yesterday. 
+
+Regards, Smitty </em>
+      </p>
+
+      <div id="audio-note" class="audio-note" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+    // Autoplay is sometimes blocked unless there's a user gesture.
+    // This tries immediately, and then tries again on the first tap/click.
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('media-audio');
+      const note = document.getElementById('audio-note');
+      if (!audio) return;
+
+      const tryPlay = () => {
+        const p = audio.play();
+        if (!p || !p.catch) return;
+
+        p.then(() => {
+          if (note) note.textContent = "";
+        }).catch(() => {
+          if (note) note.textContent =
+            "Autoplay was blocked by the browser. Tap/click once to start the audio.";
+        });
+      };
+
+      tryPlay();
+
+      document.addEventListener('pointerdown', function once() {
+        tryPlay();
+        document.removeEventListener('pointerdown', once);
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>

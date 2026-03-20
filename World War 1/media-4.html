@@ -1,0 +1,142 @@
+<!-- VERSION 3.7.9 — One-row layout under title: Text | Certificate | Dear Flag (fills space; no crop; no distortion; no scroll) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>World War I Media</title>
+
+<style>
+  :root{
+    --pageW: 1400px;
+    --gap: 14px;
+
+    /* tune these if needed */
+    --colTextMin: 560px;
+    --colCertMin: 330px;
+    --colFlagMin: 260px;
+
+    /* Civil War/Media-1.html image vibe */
+    --borderW: 6px;
+    --borderC: #000;
+    --radius: 6px;
+    --sepia: 0.20;
+    --bright: 1.0;
+    --contrast: 1.0;
+    --glow: 0 0 10px rgba(255, 220, 100, 0.15);
+  }
+
+  html, body{ height: 100%; margin: 0; }
+  body{ overflow: hidden; } /* no vertical scroll */
+
+  .content-wrapper{
+    max-width: var(--pageW);
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+
+    color: #000;
+    font-family: sans-serif;
+    font-size: 28px;
+    overflow-wrap: anywhere;
+
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    row-gap: 10px;
+  }
+
+  h1{ margin: 0 0 6px 0; line-height: 1.1; }
+  .lede{ margin: 0; line-height: 1.22; }
+
+  /* ===== Main one-row layout ===== */
+  .main{
+    min-height: 0;  /* critical: allows children to fit inside 1fr without forcing scroll */
+    display: grid;
+    gap: var(--gap);
+
+    /* Text gets the biggest share; certificate medium; flag narrower */
+    grid-template-columns:
+      minmax(var(--colTextMin), 1.65fr)
+      minmax(var(--colCertMin), 1.05fr)
+      minmax(var(--colFlagMin), 0.85fr);
+
+    align-items: start;
+  }
+
+  .text-block{
+    min-width: 0;
+  }
+
+  .img-cell{
+    min-height: 0;
+    display: flex;
+    align-items: flex-start;   /* top-align so it feels “attached” to the text block */
+    justify-content: center;
+  }
+
+  /* SAFE IMAGE RULES: no crop, no distortion */
+  .img-cell img{
+    display: block;
+    box-sizing: border-box;
+
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+
+    object-fit: contain;   /* full image visible */
+    object-position: center;
+
+    border: var(--borderW) solid var(--borderC);
+    border-radius: var(--radius);
+
+    filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
+            drop-shadow(var(--glow));
+  }
+
+  /* Small-screen behavior (kiosk probably won't hit this, but safe) */
+  @media (max-width: 1100px){
+    body{ overflow: auto; }
+    .content-wrapper{ height: auto; }
+
+    .main{
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+
+    .img-cell img{
+      width: 100%;
+      max-height: none;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="header">
+      <h1>First Casualties</h1>
+    </div>
+
+    <section class="main">
+      <!-- 1) Text -->
+      <div class="text-block">
+        <p class="lede">
+          The doughboys suffered their first casualties: three were killed and eleven captured when the Germans conducted a trench raid on their position. Throughout the winter of 1917 and the spring of 1918, American units would continue their training with the Allies and take over portions of the Allies' trench to sharpen their combat skills. In April 1918, a German attack on the American trenches near Seicheprey France left over 650 American killed and wounded and 100 taken prisoner. It was a costly learning experience for the Doughboys, but they quickly learned the skills they would need to take the fight to the Germans. In the great battles of the fall of 1918, the AEF would leave the trenches, going on the offense and bringing about the final deft of the enemy and an end to the Great War.
+        </p>
+      </div>
+
+      <!-- 2) Certificate (medium/wide) -->
+      <div class="img-cell">
+        <img src="/World%20War%201/Pictures/15-certificate.jpg" alt="Certificate image">
+      </div>
+
+      <!-- 3) Dear Flag (narrower column) -->
+      <div class="img-cell">
+        <img src="/World%20War%201/Pictures/16-dear-flag.jpg" alt="Dear Flag image">
+      </div>
+    </section>
+  </div>
+</body>
+</html>

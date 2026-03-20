@@ -1,0 +1,158 @@
+<!-- VERSION 2.1 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    .content-wrapper {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    :root {
+      --photoW: 360px;    /* default photo width (override per image with style="--w: 320px") */
+      --audioW: 520px;    /* audio control width on the right */
+    }
+
+    /* ===== Left photo / right text layout ===== */
+    .profile-layout {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start; /* tops align */
+    }
+
+    .photo-column {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 0 0 auto;
+    }
+
+    .bio-text {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+        drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+      display: block;         /* kills bottom-gap / border mismatch */
+      box-sizing: border-box; /* border behaves predictably */
+    }
+
+    /* Width is the magic number; height follows (no cropping) */
+    img.photo {
+      width: var(--w, var(--photoW));
+      height: auto;
+    }
+
+    /* ===== Right-side content ===== */
+    .bio-text > *:first-child { margin-top: 0; }
+
+    h1 { margin: 0 0 10px 0; }
+
+    .audio-player {
+      width: var(--audioW);
+      max-width: 100%;
+      margin: 6px 0 12px 0;
+      display: block;
+    }
+
+    .audio-note {
+      margin: 0 0 12px 0;
+      font-size: 22px;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+
+      <!-- LEFT: photos -->
+      <div class="photo-column">
+        <img
+          src="/World War 1/Pictures/08-song-book.jpg"
+          class="with-border photo"
+          alt="William Wisti (Photo 1)"
+          style="--w: 360px;"
+        />
+
+        <!-- If you really only want ONE portrait image on the left, delete this second <img>. -->
+      </div>
+
+      <!-- RIGHT: title, text, audio controls -->
+      <div class="bio-text">
+        <h1>William Wisti</h1>
+
+        <p>William enlisted on his 18th birthday and was assigned to D Company 108 Engineer Battalion, 33rd Division.</p>
+        <p>He was the third son of Finnish immigrants who had settled in the western U.P. Some of his letters home were written in Finnish.</p>
+
+        <!-- Line that starts: "This letter was sent home on..." -->
+        <p>This letter was sent home on October 14, 1918.</p>
+
+        <!-- FIRST audio: AUTOPLAY (controls placed immediately after the line above) -->
+        <audio id="audio-1" class="audio-player" controls playsinline preload="metadata" autoplay>
+          <!-- TODO: replace with your Oct 14, 1918 audio file -->
+          <source src="../World%20War%201/audio/WWI-Wisti1.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <div id="audio-note-1" class="audio-note" aria-live="polite"></div>
+
+        <!-- Line that starts: "This excerpt is from another letter..." -->
+        <p>This excerpt is from a letter he wrote in January of 1919 when troops were beginning to head home.</p>
+
+        <!-- SECOND audio: NO AUTOPLAY (controls placed immediately after the line above) -->
+        <audio id="audio-2" class="audio-player" controls playsinline preload="metadata">
+          <!-- TODO: replace with your Jan 1919 audio file -->
+          <source src="../World%20War%201/audio/WWI-Wisti2.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Autoplay is sometimes blocked unless there's a user gesture.
+    // Only applies to the FIRST audio player.
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio1 = document.getElementById('audio-1');
+      const note1 = document.getElementById('audio-note-1');
+      if (!audio1) return;
+
+      const tryPlay1 = () => {
+        const p = audio1.play();
+        if (!p || !p.catch) return;
+
+        p.then(() => {
+          if (note1) note1.textContent = "";
+        }).catch(() => {
+          if (note1) note1.textContent =
+            "Autoplay was blocked by the browser. Tap/click once to start the audio.";
+        });
+      };
+
+      tryPlay1();
+
+      document.addEventListener('pointerdown', function once() {
+        tryPlay1();
+        document.removeEventListener('pointerdown', once);
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>

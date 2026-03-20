@@ -1,0 +1,157 @@
+<!-- VERSION 2.0 — true 2x2 grid; top row merged for text; bottom row holds two photos -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Civil War Media</title>
+
+  <style>
+    *{ box-sizing: border-box; }
+
+    .content-wrapper{
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: #000;
+      font-family: sans-serif;
+      font-size: 22px;
+      overflow-wrap: anywhere;
+    }
+
+    h1{
+      margin: 0 0 8px 0;
+      line-height: 1.1;
+      font-size: 1.4em;
+    }
+
+    p{
+      margin: 0;
+      line-height: 1.22;
+    }
+
+    .merged-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "text text"
+        "photo1 photo2";
+      gap: 18px 24px;
+      align-items: start;
+    }
+
+    .text-block{
+      grid-area: text;
+    }
+
+    .text-block p + p{
+      margin-top: 14px;
+    }
+
+    .photo-left{
+      grid-area: photo1;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+    }
+
+    .photo-right{
+      grid-area: photo2;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+    }
+
+    figure{
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    img.with-border{
+      display: block;
+      border: 6px solid #000;
+      border-radius: 6px;
+      box-sizing: border-box;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+    }
+
+    .caption{
+      font-size: 0.9em;
+      line-height: 1.2;
+      text-align: center;
+      color: #222;
+      max-width: 90%;
+    }
+
+    @media (max-width: 1100px){
+      .merged-grid{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "text"
+          "photo1"
+          "photo2";
+      }
+
+      .photo-left,
+      .photo-right{
+        justify-content: flex-start;
+      }
+
+      figure{
+        align-items: flex-start;
+      }
+
+      .caption{
+        text-align: left;
+        max-width: 100%;
+      }
+
+      img.with-border{
+        max-width: 100%;
+        height: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <h1>Taking Care of Veterans at Home</h1>
+
+    <div class="merged-grid">
+      <div class="text-block">
+        <p>There were approximately 4.5 million American veterans of the 18 month U.S. participation in World War I. The average had served 12 months. Nearly half went overseas for an average of 5.5 months. Some 1.1 actually saw combat; of these 204,000 were wounded or otherwise disabled. Veterans were simply mustered out from their bases in the U.S. The government was unprepared to deal with the problems faced by returning Doughboys, especially those who were unemployed or disabled. A postwar recession brought unemployment to over 16% by 1921. That year the Veterans Bureau was established (forerunner of the Veterans Administration established in 1930). A system of hospitals was established to provide long-term care for war-related wounds and illnesses, tuberculosis caused by poison gas and mental illness caused by “shell shock.”</p>
+
+        <p>In both WWI and WWII an emotional disorder called Post Traumatic Stress Syndrome that develops after a traumatic event was called shell shock. Symptoms include depression, anxiety, nightmares, flashbacks and hyper-vigilance.</p>
+      </div>
+
+      <div class="photo-left">
+        <figure>
+          <img
+            class="with-border"
+            src="Pictures/American Legion post 44 firing squad in 1924.jpg"
+            alt="American Legion Post 44 firing squad in 1924"
+            style="height: 450px; width: auto;"
+          >
+        </figure>
+      </div>
+
+      <div class="photo-right">
+        <figure>
+          <img
+            class="with-border"
+            src="/World War 1/Pictures/32-marquette-american-legion.jpg"
+            alt="Second World War I photo"
+            style="height: 450px; width: auto;"
+          >
+          <figcaption class="caption"><em>WWI veterans in the American Legion firing squad, 1924.</em></figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

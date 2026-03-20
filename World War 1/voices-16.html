@@ -1,0 +1,151 @@
+<!-- VERSION 1.9 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    .content-wrapper {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    /* ===== Photo sizing: ONE default + per-image override ===== */
+    :root {
+      --photoW: 350px;   /* global default width for photos */
+      --audioW: 520px;   /* width for the audio controls next to title */
+    }
+
+    .photo-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;     /* ✅ TOPS align */
+      justify-content: space-between;
+      margin-bottom: 6px;          /* ✅ less space before title */
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+        drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+      display: block;              /* ✅ kills the bottom-gap / border mismatch */
+      box-sizing: border-box;      /* ✅ border behaves predictably */
+    }
+
+    /* Width is the magic number; height follows (no cropping) */
+    img.photo {
+      width: var(--w, var(--photoW));  /* per-image override: style="--w: 330px;" */
+      height: auto;
+    }
+
+    /* ===== Title + Audio on same line ===== */
+    .title-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 10px 0;          /* tight to photos, some breathing room below */
+      flex-wrap: nowrap;
+    }
+
+    .title-bar h1 {
+      margin: 0;
+      flex: 1 1 auto;
+    }
+
+    .title-audio {
+      width: var(--audioW);
+      flex: 0 0 auto;
+    }
+
+    /* --- TEXT UNDER PHOTOS --- */
+    .text-block > *:first-child { margin-top: 0; }
+
+    .em-paragraph { margin-top: 10px; }
+
+    /* 4 points smaller than 28px => 24px */
+    .quote-block {
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .audio-note {
+      margin-top: 6px;
+      font-size: 22px;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+
+    <!-- 3 photos on top -->
+    <div class="photo-row"> </div>
+
+    <div class="text-block">
+      <!-- Title + audio controls on the SAME line -->
+      <div class="title-bar">
+        <h1>Tom S. Smith</h1>
+
+        <audio id="media-audio" class="title-audio" controls playsinline preload="metadata" autoplay>
+          <source src="../World%20War%201/audio/WWI-Tom S. Smith - NEWS OF OTHER SOLDIERS.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <p>
+        Letter he wrote November 10, 1910 (Note: The ‘Bosche’ or ‘Boshe’ are the Germans)
+      </p>
+
+      <p class="em-paragraph quote-block">
+        <em>
+          <b>News of Other Soldiers</b> <br>
+        "Haven't any news of my old bunch except that Lieut. Donnelly who had charge of my Company is in the hospital with a M.G. (machine gun) bullet thru his lung. That makes all old "G" Company (Company G, 32nd Division, Michigan National Guard) officers left wounded, except Theriault who was knocked out several times. I never was wounded, but 2 of my orderlies were killed and 1 wounded carrying my papers. In these cases the shells were not as close as some I had seen, but the fragmentation spread so that stray pieces caught them. The Colonel just before the last advance was sent to the hospital from the effects of gas, and when the rest of our bunch around headquarters got bumped it only left the Lieut. Colonel and myself. He was from Virginia and a good fighter and an ideal leader. He had been in every scrap over here, having been in the 1st Division was wounded at Chateau Thierry and had  absolutely no fear at all. He always moved his advance C.P. to the old C.P. of the assaulting battalion, so that when they jumped, and the Bosche barrage came down, it was sometimes very difficult to transact routine business. He was attached for several weeks to the old 125th and knew all my friends. About a week ago I went over to inspect our farthest outpost and found the 126th Inf. in the town where we had a company, also brigade headquarters. I beat it into the old chateau and thought surely I was going to meet some Michigan men, and I was sure surprised. I knew none of them around headquarters and I had mustered in a large part, including brigade, at Grand Rapids. On the way back who should come along the road but Colonel Henkel, a full colonel now, won on the battlefield. His orderly, a Russian Cossack named O'Karsky from my old company was with him. He was in a hurry but we were sure glad to see each other. He said the regiment was bivouacked down the road and that they were on the way to Germany. I have since heard the 32d was honored by being one of the first to be sent in and are now part of the III Army. Our work was good also, and we are hoping our turn will be next. It won't take us long. I chased back and couldn't locate any of the supply co. of the regiment and the rest were around in the hills making themselves cozy in some elephant huts. The 107 Engineers built the bridge across the Meuse where we crossed. We were holding the gap and they came up and built it, but later crossed further south. Must tell them if it was any copper country bunch that about 30 minutes before they started work that we were having a hot time down there with some machine guns and minnehauffers. They also dropped work and helped some of our men retake 5 ambulances the Bosche had captured on the other side of the river. Finis. 
+
+Regards, Smitty" </em>
+      </p>
+
+      <div id="audio-note" class="audio-note" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+    // Autoplay is sometimes blocked unless there's a user gesture.
+    // This tries immediately, and then tries again on the first tap/click.
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('media-audio');
+      const note = document.getElementById('audio-note');
+      if (!audio) return;
+
+      const tryPlay = () => {
+        const p = audio.play();
+        if (!p || !p.catch) return;
+
+        p.then(() => {
+          if (note) note.textContent = "";
+        }).catch(() => {
+          if (note) note.textContent =
+            "Autoplay was blocked by the browser. Tap/click once to start the audio.";
+        });
+      };
+
+      tryPlay();
+
+      document.addEventListener('pointerdown', function once() {
+        tryPlay();
+        document.removeEventListener('pointerdown', once);
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>

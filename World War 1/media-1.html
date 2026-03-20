@@ -1,0 +1,168 @@
+<!-- VERSION 3.6.2 — Lusitania shows FULL image (no crop), constrained to column width, border fits image exactly -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>World War I Media</title>
+
+<style>
+  :root{
+    --pageW: 1400px;
+
+    /* layout */
+    --gap: 12px;
+    --leftH: 340px;
+    --rightH: 300px;
+
+    /* captions */
+    --captionSize: 14px;
+    --rowGap: 4px;
+    --rowGapTight: 0px;
+
+    /* Civil War/Media-1.html “image vibe” */
+    --borderW: 6px;
+    --borderC: #000;
+    --radius: 6px;
+
+    --sepia: 0.20;
+    --bright: 1.0;
+    --contrast: 1.0;
+    --glow: 0 0 10px rgba(255, 220, 100, 0.15);
+  }
+
+  .content-wrapper{
+    max-width: var(--pageW);
+    margin: 0 auto;
+    padding: 15px;
+    color: #000;
+    font-family: sans-serif;
+    font-size: 28px;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+  }
+
+  h1{ margin: 0 0 6px 0; line-height: 1.1; }
+  .lede{ margin: 0 0 8px 0; line-height: 1.22; }
+
+  .gallery{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap);
+    align-items: start;
+  }
+
+  figure{ margin: 0; }
+  figcaption{ margin: 0; }
+
+  .tile{
+    display: grid;
+    grid-template-rows: auto auto;
+    row-gap: var(--rowGap);
+  }
+  .tile.tight{ row-gap: var(--rowGapTight); }
+
+  /* Default framed tiles: fixed heights + crop */
+  .frame{
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+    border: var(--borderW) solid var(--borderC);
+    border-radius: var(--radius);
+    box-sizing: border-box;
+
+    background: transparent;
+    filter: drop-shadow(var(--glow));
+  }
+  .frame.left  { height: var(--leftH); }
+  .frame.right { height: var(--rightH); }
+
+  .frame img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    object-fit: cover;
+    object-position: center top;
+
+    filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast));
+  }
+
+  /* NEW: “fit” mode — no crop, border hugs the actual image height */
+  .frame.fit{
+    height: auto;          /* border height follows image */
+    overflow: visible;     /* no clipping needed in fit mode */
+  }
+  .frame.fit img{
+    position: static;      /* let it size naturally */
+    width: 100%;           /* constrained to column width */
+    height: auto;          /* preserve aspect ratio */
+    object-fit: contain;   /* full image visible */
+    display: block;
+  }
+
+  figcaption{
+    font-size: var(--captionSize);
+    line-height: 1.15;
+    text-align: center;
+	  font-style: italic;
+  }
+
+  @media (max-width: 900px){
+    .gallery{ grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <h1>The Local Paper Followed the Progress of the War</h1>
+    <p class="lede">Headlines leading up to the entrance of U.S. into war.</p>
+
+    <section class="gallery">
+      <!-- LEFT COL, ROW 1 -->
+      <figure class="tile">
+        <div class="frame left">
+          <img
+            src="/World%20War%201/Pictures/HD-Heir%20to%20throne%20killed.jpg"
+            alt="Heir to the throne of Austria-Hungary is killed headline">
+        </div>
+        <figcaption>June 1914: Archduke Franz Ferdinand assassinated.</figcaption>
+      </figure>
+
+      <!-- RIGHT COL, ROW 1 -->
+      <figure class="tile">
+        <div class="frame right">
+          <img
+            src="/World%20War%201/Pictures/HD-War%20in%20Europe.jpg"
+            alt="War now proclaimed headline">
+        </div>
+        <figcaption>July 1914: War spreads across Europe.</figcaption>
+      </figure>
+
+      <!-- LEFT COL, ROW 2 (Lusitania) — FULL IMAGE, no crop; border fits exactly -->
+      <figure class="tile tight">
+        <div class="frame fit">
+          <img
+            src="/World%20War%201/Pictures/HD-Lusitania.jpg"
+            alt="Lusitania torpedoed headline">
+        </div>
+        <figcaption>May 1915: RMS <i>Lusitania</i> sunk by U-boat.</figcaption>
+      </figure>
+
+      <!-- RIGHT COL, ROW 2 -->
+      <figure class="tile">
+        <div class="frame right">
+          <img
+            src="/World%20War%201/Pictures/HD-War%20is%20declared.jpg"
+            alt="War is declared headline">
+        </div>
+        <figcaption>April 1917: U.S. declares war on Germany.</figcaption>
+      </figure>
+    </section>
+  </div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!-- VERSION 1.7 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    .content-wrapper{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    .profile-layout{
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    img.with-border{
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .bio-text{ flex: 1; }
+    .bio-text h1{ margin: 0 0 12px 0; line-height: 1.1; }
+
+    /* ===== Two-column organization list ===== */
+    .org-columns{
+      --indent: 38px;        /* how far the indented lines shift */
+      columns: 2;
+      column-gap: 70px;
+      margin-top: 10px;
+    }
+
+    /* Keep groups together so a heading doesn't get separated from its items */
+    .org-group{
+      break-inside: avoid;
+      page-break-inside: avoid;
+      margin: 0 0 10px 0;
+    }
+
+    .org-line{
+      line-height: 1.18;
+      margin: 0;
+      padding: 0;
+      white-space: normal;
+    }
+
+    /* Headings: NOT indented */
+    .org-line.heading{
+      padding-left: 0;
+      font-weight: 700;
+    }
+
+    /* All other lines: indented */
+    .org-line.item{
+      padding-left: var(--indent);
+    }
+
+    /* Responsive: drop to one column if the viewport gets tight */
+    @media (max-width: 980px){
+      .org-columns{ columns: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout">
+      <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson" /> -->
+
+      <div class="bio-text">
+        <h1>Division Organization<br>
+          Headquarters, Troops and Detachments</h1>
+        <p>&nbsp;</p>
+<div class="org-columns">
+        <div class="org-group">
+            <div class="org-line heading">63rd Brigade Headquarters</div>
+            <div class="org-line item">125th Infantry Regiment</div>
+          <div class="org-line item">126th Infantry Regiment</div>
+          <div class="org-line item">120th Machine Gun Battalion</div>
+          <div class="org-line heading">
+            <p>57th Field Artillery Brigade</p>
+          </div>
+<div class="org-line item">119th Field Artillery Regiment</div>
+            <div class="org-line item">120th Field Artillery Regiment</div>
+            <div class="org-line item">121st Field Artillery Regiment</div>
+            <div class="org-line item">147th Field Artillery Regiment (Attached)</div>
+            <div class="org-line item">107th Trench Mortar Battery</div>
+            <div class="org-line item">107th Mobile Ordinance Repair Shop</div>
+            <div class="org-line item">119th Machine Gun Battalion</div>
+            <div class="org-line item">107th Engineer Battalion</div>
+            <div class="org-line item">107th Signal Battalion</div>
+            <div class="org-line item">32nd Military Police company</div>
+        </div>
+
+          <div class="org-group">
+            <div class="org-line heading">64th Brigade Headquarters</div>
+            <div class="org-line item">127th Infantry Regiment</div>
+            <div class="org-line item">128th Infantry Regiment</div>
+            <div class="org-line item">121st Machine Gun Battalion</div>
+            <div class="org-line heading">
+              <p>&nbsp;</p>
+              <p>158th Field Artillery Brigade (attached)</p>
+            </div>
+            <div class="org-line item">322nd Field Artillery Regiment</div>
+            <div class="org-line item">323rd Field Artillery Regiment</div>
+          </div>
+        </div>
+
+        <p>&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

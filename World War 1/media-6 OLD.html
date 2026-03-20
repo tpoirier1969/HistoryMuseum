@@ -1,0 +1,214 @@
+<!-- VERSION 3.9.1 — adds image-size knob + border hugs image exactly (no tall frames); no crop; no aspect changes; no scroll -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Music for the War</title>
+
+  <style>
+    *{ box-sizing: border-box; }
+
+    :root{
+      --pageW: 1400px;
+      --pad: 15px;
+
+      /* ===== IMAGE SIZE KNOB =====
+         Lower = smaller images. This is the one you change.
+      */
+      --imgMax: 80%;
+
+      /* spacing */
+      --gap: 12px;     /* between images (columns) */
+      --rowGap: 1px;  /* between the two rows */
+      --textGap: 4px;  /* between text block and images */
+
+      /* “Media-1.html vibe” */
+      --borderW: 6px;
+      --borderC: #000;
+      --radius: 6px;
+
+      --sepia: 0.20;
+      --bright: 1.0;
+      --contrast: 1.0;
+      --glow: 0 0 10px rgba(255, 220, 100, 0.15);
+    }
+
+    html, body{
+      margin: 0;
+      height: 100%;
+      overflow: hidden !important; /* hard no-scroll */
+    }
+
+    body{
+      font-family: sans-serif;
+      color: #000;
+    }
+
+    .content-wrapper{
+      max-width: var(--pageW);
+      margin: 0 auto;
+      padding: var(--pad);
+      overflow-wrap: anywhere;
+    }
+
+    h1{
+      margin: 0;
+      line-height: 1.1;
+      font-size: 56px;
+    }
+
+    .bio-text p{
+      margin: 8px 0 0 0;
+      line-height: 1.22;
+      font-size: 28px;
+    }
+
+    /* JS will lock the two row heights to fit remaining viewport space */
+    .images-area{
+      margin-top: var(--textGap);
+      display: grid;
+      grid-template-rows: auto auto;
+      row-gap: var(--rowGap);
+      min-height: 0;
+    }
+
+    .img-row{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      column-gap: var(--gap);
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .tile{
+      min-height: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Border on the IMAGE (not a frame) so it always hugs the visible pixels */
+    .tile img{
+      display: block;
+      box-sizing: border-box;
+
+      /* Force scale caps even if global CSS tries to override */
+      max-width: var(--imgMax) !important;   /* % of tile width */
+      max-height: var(--imgMax) !important;  /* % of tile height */
+      width: auto !important;
+      height: auto !important;
+
+      /* No crop, no distortion */
+      object-fit: contain;
+      object-position: center;
+
+      border: var(--borderW) solid var(--borderC);
+      border-radius: var(--radius);
+
+      filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
+              drop-shadow(var(--glow));
+    }
+
+    /* Mobile fallback: allow scroll */
+    @media (max-width: 1100px){
+      html, body{ overflow: auto !important; }
+      .images-area{ height: auto !important; }
+      .img-row{ grid-template-columns: 1fr 1fr; height: auto !important; row-gap: var(--gap); }
+      .tile{ height: auto; }
+
+      .tile img{
+        max-width: 100% !important;
+        max-height: none !important;
+        width: 100% !important;
+        height: auto !important;
+      }
+    }
+
+    @media (max-width: 700px){
+      .img-row{ grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper" id="wrap">
+    <h1>Music for the War</h1>
+
+    <div class="bio-text">
+      <p>All during the long months of war, patriotic songs, songs of separation, songs of love, were played on pianos in parlors of homes throughout America.&nbsp;</p>
+      <p>Popular recording artists made records which made these songs instant hits. It helped keep the memories of those away from home alive.&nbsp;</p>
+    </div>
+
+    <div class="images-area" id="imagesArea" aria-label="Music for the War images">
+      <!-- ROW 1 -->
+      <section class="img-row" aria-label="Row 1">
+        <div class="tile"><img src="/World%20War%201/Pictures/Post-music-battlefield%20in%20france.jpg" alt="On a Battlefield in France sheet music cover"></div>
+        <div class="tile"><img src="/World%20War%201/Pictures/Post-music-blue%20star.jpg" alt="There's a Little Blue Star in the Window sheet music cover"></div>
+        <div class="tile"><img src="/World%20War%201/Pictures/post-music-germ%20out%20of%20germany.jpg" alt="We'll Take the Germ Out of Germany sheet music cover"></div>
+        <div class="tile"><img src="/World%20War%201/Pictures/Post-music-going%20over.jpg" alt="We're Going Over sheet music cover"></div>
+      </section>
+
+      <!-- ROW 2 -->
+      <section class="img-row" aria-label="Row 2">
+        <div class="tile"><img src="/World%20War%201/Pictures/post-music-home%20fires.jpg" alt="Keep the Home Fires Burning sheet music cover"></div>
+        <div class="tile"><img src="/World%20War%201/Pictures/post-music-Mr%20Zip.jpg" alt="Good Morning Mr. Zip-Zip-Zip sheet music cover"></div>
+        <div class="tile"><img src="/World%20War%201/Pictures/Post-music-over%20there.jpg" alt="Over There sheet music cover"></div>
+        <div class="tile"><img src="/World%20War%201/Pictures/post-music.jpg" alt="Don't Try to Steal the Sweetheart of a Soldier sheet music cover"></div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+  (() => {
+    const wrap = document.getElementById('wrap');
+    const imagesArea = document.getElementById('imagesArea');
+    const rows = Array.from(imagesArea.querySelectorAll('.img-row'));
+
+    function npx(v){ const n = parseFloat(v); return Number.isFinite(n) ? n : 0; }
+
+    function fitRows(){
+      if (!wrap || !imagesArea || rows.length !== 2) return;
+
+      const imagesTop = imagesArea.getBoundingClientRect().top;
+      const vh = window.innerHeight;
+
+      const wrapCS = getComputedStyle(wrap);
+      const padBottom = npx(wrapCS.paddingBottom);
+
+      const areaCS = getComputedStyle(imagesArea);
+      const rowGap = npx(areaCS.rowGap);
+
+      const available = Math.max(0, vh - imagesTop - padBottom);
+      const rowH = Math.max(0, (available - rowGap) / 2);
+
+      rows[0].style.height = rowH + 'px';
+      rows[1].style.height = rowH + 'px';
+    }
+
+    const imgs = Array.from(document.images || []);
+    let pending = 0;
+
+    const done = () => {
+      pending--;
+      if (pending <= 0){
+        fitRows();
+        requestAnimationFrame(fitRows);
+      }
+    };
+
+    imgs.forEach(img => {
+      if (img.complete) return;
+      pending++;
+      img.addEventListener('load', done, { once:true });
+      img.addEventListener('error', done, { once:true });
+    });
+
+    fitRows();
+    window.addEventListener('resize', () => requestAnimationFrame(fitRows));
+    window.addEventListener('load', () => requestAnimationFrame(fitRows));
+  })();
+  </script>
+</body>
+</html>

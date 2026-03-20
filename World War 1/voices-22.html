@@ -1,0 +1,106 @@
+<!-- VERSION 2.2 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    *{ box-sizing: border-box; }
+
+    .content-wrapper{
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      overflow-wrap: anywhere;
+    }
+
+    /* ↓ This gap is the main spacing between title block and the figure */
+    .profile-layout.photos-top{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;                 /* ✅ was 16px — reduced */
+      align-items: stretch;
+    }
+
+    figure.image-block{
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;                 /* ✅ was 12px — reduced */
+    }
+
+    /* Tighten the h1 itself (default h1 margins are big) */
+    .bio-text h1{
+      margin: 0 0 4px 0;         /* ✅ smaller bottom margin */
+      line-height: 1.05;
+    }
+
+    /* Center image */
+    .photo-row{
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;     /* ✅ centers the image */
+      align-items: start;
+    }
+
+    img.with-border{
+      display: block;
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+    }
+
+    /* Image sizing: use max-width + auto height (avoid forced stretching) */
+    .photo-row img.with-border{
+      width: 650px;
+      height: auto;
+      max-width: 300px;          /* adjust if you want it larger/smaller */
+      max-height: auto;
+    }
+
+    .caption-line{
+      font-size: 22px;
+      line-height: 1.2;
+      color: #333;
+      text-align: center;
+    }
+
+    .bio-text > *:first-child{ margin-top: 0; }
+
+    @media (max-width: 800px){
+      .photo-row img.with-border{
+        max-width: 300px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout photos-top">
+
+      <div class="bio-text">
+        <h1>Women in the Great War I</h1>
+      </div>
+
+      <figure class="image-block">
+        <div class="photo-row"> </div>
+      </figure>
+
+      <div class="bio-text">
+        <p>
+        The more than 25,000 US women who served in Europe in World War I did so on an entrepreneurial basis, especially before 1917, They helped nurse the wounded, provide food and other supplies to the military, serve as telephone operators (the "Hello Girls"), entertain troops, and work as journalists. Many of these "self-selected adventurous women ... found their own work, improvised their own tools ,., argued, persuaded, and scrounged for supplies. They created new organizations where none had existed, "Despite hardships, the women had "fun" and "were glad they went." Women sent out to "canteen" for the US Army - providing entertainment, sewing on buttons, handing out cigarettes and sweeps -were "virtuous women" sent to "keep the boys straight."</p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

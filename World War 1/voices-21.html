@@ -1,0 +1,124 @@
+<!-- VERSION 2.0c -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    .content-wrapper{
+      max-width: 1100px;          /* keeps width well under 1920 */
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      box-sizing: border-box;
+      overflow-wrap: anywhere;
+    }
+
+    :root{
+      --logoW: 220px;             /* <-- magic number for the logo */
+    }
+
+    .profile-layout.photos-top{
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .title-bar{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 6px 0;
+    }
+
+    .title-bar h1{
+      margin: 0;
+      line-height: 1.05;
+    }
+
+    /* General “museum style” image treatment (keep for other pages/images) */
+    img.with-border{
+      display: block;
+      border: 6px solid black;
+      border-radius: 6px;
+      box-sizing: border-box;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+    }
+
+    /* Logo sizing is independent of border/styling */
+    img.logo{
+      width: var(--logoW);
+      height: auto;
+      flex: 0 0 auto;
+      display: block;
+    }
+
+    /* Logo-specific: NO border/shadow/filter */
+    img.logo.no-border{
+      border: none;
+      border-radius: 0;
+      filter: none;
+    }
+
+    .bio-text > *:first-child{ margin-top: 0; }
+    .bio-text p{ margin: 0 0 12px 0; }
+
+    @media (max-width: 700px){
+      .title-bar{
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      img.logo{
+        width: min(var(--logoW), 100%);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout photos-top">
+
+      <div class="title-bar">
+        <img
+          src="/World War 1/Pictures/gold-star-logo-300x273.jpg"
+          class="logo no-border"
+          alt="American Gold Star Mothers emblem"
+        />
+        <h1>Gold Star Mothers</h1>
+      </div>
+
+      <div class="bio-text">
+        <p>
+          A Women’s Committee of National Defense was begun in 1918. They recommended that women wear a black band with a gold star on the upper left arm.
+          This was suggested instead of the traditional mourning attire of the time.
+        </p>
+
+        <p>
+          The term “Gold Star Mother” was first used by President Wilson in a letter to the Women’s Committee. The star was intended to show the sacrifice of a
+          family member as well as to provide a measure of pride and consolation. In 1928 a group of women made plans to begin the American Gold Star Mothers, Inc.
+        </p>
+
+        <p>
+          This organization began to take on additional responsibilities. In addition to promoting peace and good will, the organization: assisted veterans and
+          dependents in presenting claims to the V.A., preserved the memory of those who sacrificed, taught patriotism and respect for the flag.
+        </p>
+
+        <p>
+          This organization is active today, providing support to veteran’s hospitals and attending veteran’s ceremonies. Today a small gold star pin is presented to
+          the mother and often the other family members, by the U.S. Government.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

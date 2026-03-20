@@ -1,0 +1,181 @@
+<!-- VERSION 3.8.1 — 4 posters in ONE ROW, full image visible (no crop), border hugs image, NO vertical scroll
+     Only the LAST image has a caption (tight to image). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>World War I Media</title>
+
+<style>
+  :root{
+    --pageW: 1400px;
+    --gap: 12px;
+
+    /* caption (only used on last tile) */
+    --captionSize: 14px;
+    --captionGap: 2px;
+    --captionReserve: 28px; /* reserve height so caption doesn't push away */
+
+    /* “image vibe” */
+    --borderW: 6px;
+    --borderC: #000;
+    --radius: 6px;
+
+    --sepia: 0.20;
+    --bright: 1.0;
+    --contrast: 1.0;
+    --glow: 0 0 10px rgba(255, 220, 100, 0.15);
+  }
+
+  html, body{ height: 100%; margin: 0; }
+  body{ overflow: hidden; } /* hard “no vertical scroll” on kiosk/desktop */
+
+  .content-wrapper{
+    max-width: var(--pageW);
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+
+    color: #000;
+    font-family: sans-serif;
+    font-size: 28px;
+    overflow-wrap: anywhere;
+
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr; /* header then gallery gets the rest */
+    row-gap: 6px;
+  }
+
+  h1{ margin: 0 0 6px 0; line-height: 1.1; }
+  .lede{ margin: 0; line-height: 1.22; }
+
+  .gallery{
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    gap: var(--gap);
+
+    /* 4 images = 4 columns, 1 row */
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: 1fr;
+    align-items: stretch;
+  }
+
+  figure{ margin: 0; min-height: 0; }
+
+  .tile{
+    min-height: 0;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  /* Stack keeps caption glued to image when present */
+  .stack{
+    height: 100%;
+    width: 100%;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--captionGap);
+  }
+
+  /* Full image visible (no crop), scales down to fit tile; border hugs image */
+  .stack img{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    box-sizing: border-box;
+
+    border: var(--borderW) solid var(--borderC);
+    border-radius: var(--radius);
+
+    filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
+            drop-shadow(var(--glow));
+  }
+
+  /* Only the captioned tile reserves space for text */
+  .tile.has-cap .stack img{
+    max-height: calc(100% - var(--captionReserve));
+  }
+
+  figcaption{
+    margin: 0;
+    padding: 0;
+    font-size: var(--captionSize);
+    line-height: 1.15;
+    text-align: center;
+    font-style: italic;
+  }
+
+  /* Mobile: allow scroll + stack to one column */
+  @media (max-width: 900px){
+    body{ overflow: auto; }
+    .content-wrapper{ height: auto; display: block; }
+    .gallery{
+      height: auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+    .tile{ height: auto; }
+    .stack{ height: auto; }
+    .stack img{ width: 100%; max-height: none; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="header">
+      <h1>The Food Supply</h1>
+      <p class="lede">
+        The U.S. Food Administration was faced with the challenge of feeding the Allied Nations. European allies were fighting a war, not on the farm raising food.
+        In addition, fertile lands and livestock were destroyed during the war. America was a main source of food during the harsh winter of 1918.
+        A national campaign was developed to save food.
+      </p>
+    </div>
+
+    <section class="gallery">
+      <figure class="tile">
+        <div class="stack">
+          <img
+            src="/World%20War%201/Pictures/19-save-food.jpg"
+            alt="Save Food (U.S. Food Administration) window card">
+        </div>
+      </figure>
+
+      <figure class="tile">
+        <div class="stack">
+          <img
+            src="/World%20War%201/Pictures/20-home-card.jpg"
+            alt="Home Card (U.S. Food Administration) conserving food instructions">
+        </div>
+      </figure>
+
+      <figure class="tile">
+        <div class="stack">
+          <img
+            src="/World%20War%201/Pictures/post-eat%20more%20less.jpg"
+            alt="Eat More / Eat Less (U.S. Food Administration) poster">
+        </div>
+      </figure>
+
+      <figure class="tile has-cap">
+        <div class="stack">
+          <img
+            src="/World%20War%201/Pictures/post-litalia.jpg"
+            alt="Italian-language U.S. Food Administration poster">
+          <figcaption>A similar poster was printed for distribution in Italy</figcaption>
+        </div>
+      </figure>
+    </section>
+  </div>
+</body>
+</html>

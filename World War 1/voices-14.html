@@ -1,0 +1,149 @@
+<!-- VERSION 1.9 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    .content-wrapper {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    /* ===== Photo sizing: ONE default + per-image override ===== */
+    :root {
+      --photoW: 350px;   /* global default width for photos */
+      --audioW: 520px;   /* width for the audio controls next to title */
+    }
+
+    .photo-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;     /* ✅ TOPS align */
+      justify-content: space-between;
+      margin-bottom: 6px;          /* ✅ less space before title */
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+        drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+      display: block;              /* ✅ kills the bottom-gap / border mismatch */
+      box-sizing: border-box;      /* ✅ border behaves predictably */
+    }
+
+    /* Width is the magic number; height follows (no cropping) */
+    img.photo {
+      width: var(--w, var(--photoW));  /* per-image override: style="--w: 330px;" */
+      height: auto;
+    }
+
+    /* ===== Title + Audio on same line ===== */
+    .title-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 10px 0;          /* tight to photos, some breathing room below */
+      flex-wrap: nowrap;
+    }
+
+    .title-bar h1 {
+      margin: 0;
+      flex: 1 1 auto;
+    }
+
+    .title-audio {
+      width: var(--audioW);
+      flex: 0 0 auto;
+    }
+
+    /* --- TEXT UNDER PHOTOS --- */
+    .text-block > *:first-child { margin-top: 0; }
+
+    .em-paragraph { margin-top: 10px; }
+
+    /* 4 points smaller than 28px => 24px */
+    .quote-block {
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .audio-note {
+      margin-top: 6px;
+      font-size: 22px;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+
+    <!-- 3 photos on top -->
+    <div class="photo-row"> </div>
+
+    <div class="text-block">
+      <!-- Title + audio controls on the SAME line -->
+      <div class="title-bar">
+        <h1>Tom S. Smith</h1>
+
+        <audio id="media-audio" class="title-audio" controls playsinline preload="metadata" autoplay>
+          <source src="../World%20War%201/audio/WWI-Richard%20Mather%20Joplin.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <p>
+        Letter he wrote November 10, 1910 (Note: The ‘Bosche’ or ‘Boshe’ are the Germans)
+      </p>
+
+      <p class="em-paragraph quote-block">
+        <em>
+          <b>Current News</b> <br>
+        "No doubt you are curious about the Armistice and how we took it. We had crossed the Meuse and advanced up the right bank to a little town, and started our troops through the woods, fought that night and the next day, and jumped off again at a town that was giving us trouble, about 9 we got the Corps order to cut it out at 11, and it was up to us to get the information around. I don't know how we did it, but you talk about a football game. Everything stopped promptly on both sides, and then we had to send in immediately the exact location and towns on our front line, and also did the men. Our fellows had heard some rumors off and on and could hardly believe it, and gave no demonstration at all, but the Bosche started yelling and jumping around over where they had their darned machine guns, but our men took no chances with them. Then they started to come over to beg cigarettes and our men chased them back as we were not allowed to fraternize at all. We never believed that they would start fulfilling the terms of the Armistice but the next day prisoners and refugees started to come back. The night we quit, campfires and lights were allowed for the first time, no aeroplanes overhead, and no whine of the Bosche shells or the banging of our big guns. The town we were in had 700 civilians, mostly women and children. The Bosche shelled the town with gas and high explosive the night we entered. A major was wounded outside our C.P. (Command Post) in a French house, also all his captains, and a 1st lieutenant from Indiana started off and fought the battalion and made a fine showing. A couple of old men were killed by the shelling but there were not many gas casualties among the civilians which was remarkable as they had no masks. I was on the phone and didn't bother with my mask, but have a nice cold now which I think was caused by it. Gas hasn't the terror for our troops you imagine, it only makes them mad, and I really believe they are a little careless about not wearing their masks more. A few whiffs used to make my teeth ache like _____, but so did the mask and an hour with it on was agony. Regards, Smitty"</em>
+      </p>
+
+      <div id="audio-note" class="audio-note" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+    // Autoplay is sometimes blocked unless there's a user gesture.
+    // This tries immediately, and then tries again on the first tap/click.
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('media-audio');
+      const note = document.getElementById('audio-note');
+      if (!audio) return;
+
+      const tryPlay = () => {
+        const p = audio.play();
+        if (!p || !p.catch) return;
+
+        p.then(() => {
+          if (note) note.textContent = "";
+        }).catch(() => {
+          if (note) note.textContent =
+            "Autoplay was blocked by the browser. Tap/click once to start the audio.";
+        });
+      };
+
+      tryPlay();
+
+      document.addEventListener('pointerdown', function once() {
+        tryPlay();
+        document.removeEventListener('pointerdown', once);
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>

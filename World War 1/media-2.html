@@ -1,0 +1,196 @@
+<!-- VERSION 3.7.3 — auto layout + safeguard + TOP-aligned images (removes big gap between text and images) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>World War I Media</title>
+
+<style>
+  :root{
+    --pageW: 1400px;
+    --gap: 12px;
+
+    /* Civil War/Media-1.html image vibe */
+    --borderW: 6px;
+    --borderC: #000;
+    --radius: 6px;
+
+    --sepia: 0.20;
+    --bright: 1.0;
+    --contrast: 1.0;
+    --glow: 0 0 10px rgba(255, 220, 100, 0.15);
+  }
+
+  html, body{ height: 100%; margin: 0; }
+  body{ overflow: hidden; } /* hard “no vertical scroll” */
+
+  .content-wrapper{
+    max-width: var(--pageW);
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+
+    color: #000;
+    font-family: sans-serif;
+    font-size: 28px;
+    overflow-wrap: anywhere;
+
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;   /* header then gallery gets the rest */
+    row-gap: 6px;                  /* slightly tighter; adjust if desired */
+  }
+
+  h1{ margin: 0 0 6px 0; line-height: 1.1; }
+  .lede{ margin: 0; line-height: 1.22; }
+
+  /* ===== Gallery Plan (auto) ===== */
+  .gallery{
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    gap: var(--gap);
+
+    /* JS sets these */
+    --cols: 4;
+    --rows: 1;
+
+    grid-template-columns: repeat(var(--cols), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+  }
+
+  figure{ margin: 0; min-height: 0; }
+
+  .tile{
+    min-height: 0;
+    height: 100%;
+    display: flex;
+
+    /* FIX: pin images to the top of each tile */
+    align-items: flex-start;
+
+    /* keep horizontal centering */
+    justify-content: center;
+  }
+
+  /* Full image, no crop. Scales down to fit its tile. Border hugs image exactly. */
+  .tile img{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    box-sizing: border-box;
+
+    border: var(--borderW) solid var(--borderC);
+    border-radius: var(--radius);
+
+    filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
+            drop-shadow(var(--glow));
+  }
+
+  @media (max-width: 900px){
+    /* On narrow screens: allow scroll + stack */
+    body{ overflow: auto; }
+    .content-wrapper{ height: auto; display: block; }
+    .gallery{
+      height: auto;
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+    }
+    .tile{ height: auto; }
+    .tile img{ width: 100%; max-height: none; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="header">
+      <h1>Mobilizing the Troops</h1>
+      <p class="lede">
+        When the United States entered World War in Aprii of 1917 American industry was not prepared to meet the needs of the American military. In order to get the American Expeditionary Force in battle as soon as possible, the AEF would have to be equipped with mostly British and French weapons and equipment. All of the tanks used by the AEF were provided by the French as well as most of the light and heavy machine guns. Of the 3,500 artillery pieces used by the AEF in France, over 3,000 were British or French. Of the 2,698 air planes flown by the Army Air Service over 2,000 were provided by the French or British. But what the Allies needed most was what American provided the most of, 1.8 million Doughboys. With the Allied armies bled dry after three years of horrendous casualties, only the Unites States could provide the man power to defeat the Central Powers.
+      </p>
+    </div>
+
+    <!-- Optional manual override per-problem-page:
+         data-cols="2" data-rows="2" (or whatever) -->
+    <section class="gallery" data-auto="1">
+      <figure class="tile">
+        <img src="/World%20War%201/Pictures/post-join the navy.jpg" alt="Enlist in the Navy poster">
+      </figure>
+
+      <figure class="tile">
+        <img src="/World%20War%201/Pictures/10-Joplin-Co-C-9th TR-Reg.jpg" alt="Troops marching photograph">
+      </figure>
+
+      <figure class="tile">
+        <img src="../images/world war 1 media/Pictures/working/Calesthenics copy.jpg" alt="Calisthenics at Camp Custer">
+      </figure>
+
+      <figure class="tile">
+        <img src="/World%20War%201/Pictures/13-answer-the-call.jpg" alt="Answer the call postcard">
+      </figure>
+    </section>
+  </div>
+
+<script>
+(() => {
+  const gallery = document.querySelector('.gallery[data-auto="1"]');
+  if (!gallery) return;
+
+  const imgs = Array.from(gallery.querySelectorAll('img')).filter(img => img.getAttribute('src'));
+  const n = imgs.length;
+
+  // Manual override (reliable): set data-cols/data-rows and JS applies it.
+  const manualCols = parseInt(gallery.getAttribute('data-cols') || '', 10);
+  const manualRows = parseInt(gallery.getAttribute('data-rows') || '', 10);
+  if (Number.isFinite(manualCols) && Number.isFinite(manualRows) && manualCols > 0 && manualRows > 0){
+    gallery.style.setProperty('--cols', manualCols);
+    gallery.style.setProperty('--rows', manualRows);
+    return;
+  }
+
+  // Base layout by count:
+  let cols, rows;
+  if (n <= 4) { cols = Math.max(n, 1); rows = 1; }
+  else if (n <= 6) { cols = 3; rows = 2; }
+  else { cols = 4; rows = Math.ceil(n / 4); }
+
+  gallery.style.setProperty('--cols', cols);
+  gallery.style.setProperty('--rows', rows);
+
+  // Aspect-ratio safeguard (very wide images):
+  const loadPromises = imgs.map(img => (img.complete && img.naturalWidth)
+    ? Promise.resolve()
+    : new Promise(res => {
+        img.addEventListener('load', res, { once:true });
+        img.addEventListener('error', res, { once:true });
+      })
+  );
+
+  Promise.all(loadPromises).then(() => {
+    const ars = imgs
+      .filter(img => img.naturalWidth && img.naturalHeight)
+      .map(img => img.naturalWidth / img.naturalHeight);
+
+    if (!ars.length) return;
+
+    const maxAR = Math.max(...ars);
+    const VERY_WIDE = 2.0;
+
+    if (n === 4 && cols === 4 && maxAR >= VERY_WIDE) {
+      gallery.style.setProperty('--cols', 2);
+      gallery.style.setProperty('--rows', 2);
+    }
+
+    if ((n === 5 || n === 6) && cols === 3 && rows === 2 && maxAR >= VERY_WIDE) {
+      gallery.style.setProperty('--cols', 2);
+      gallery.style.setProperty('--rows', 3);
+    }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!-- VERSION 2.2 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    *{ box-sizing: border-box; }
+
+    .content-wrapper{
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+      overflow-wrap: anywhere;
+    }
+
+    /* ↓ This gap is the main spacing between title block and the figure */
+    .profile-layout.photos-top{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;                 /* ✅ was 16px — reduced */
+      align-items: stretch;
+    }
+
+    figure.image-block{
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;                 /* ✅ was 12px — reduced */
+    }
+
+    /* Tighten the h1 itself (default h1 margins are big) */
+    .bio-text h1{
+      margin: 0 0 4px 0;         /* ✅ smaller bottom margin */
+      line-height: 1.05;
+    }
+
+    /* Center image */
+    .photo-row{
+      display: grid;
+      grid-template-columns: 1fr;
+      justify-items: center;     /* ✅ centers the image */
+      align-items: start;
+    }
+
+    img.with-border{
+      display: block;
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+    }
+
+    /* Image sizing: use max-width + auto height (avoid forced stretching) */
+    .photo-row img.with-border{
+      width: 650px;
+      height: auto;
+      max-width: 700px;          /* adjust if you want it larger/smaller */
+      max-height: auto;
+    }
+
+    .caption-line{
+      font-size: 22px;
+      line-height: 1.2;
+      color: #333;
+      text-align: center;
+    }
+
+    .bio-text > *:first-child{ margin-top: 0; }
+
+    @media (max-width: 800px){
+      .photo-row img.with-border{
+        max-width: 600px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="profile-layout photos-top">
+
+      <div class="bio-text">
+        <h1>Cleveland Cliffs Gwinn&nbsp; <br>
+        Service Members</h1>
+      </div>
+
+      <figure class="image-block">
+        <div class="photo-row">
+          <img
+            src="/World War 1/Pictures/06-CCI-Gwinn-Service-Men.jpg"
+            class="with-border"
+            alt="Alsace sector map"
+          />
+        </div>
+      </figure>
+
+      <div class="bio-text">
+        <p>
+        Back Row: <em><br>
+        Onnie Isaacson, A.S. Quinnell, C.E. Thompson, Wm. Barth, Jr. </em><br>
+        Front Row: <em><br>
+        Julius Flack, Donald Francis, D,C. Eisele, J.ML Gleason, Emil Nicolle</em></p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

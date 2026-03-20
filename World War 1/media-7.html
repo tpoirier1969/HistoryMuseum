@@ -1,0 +1,189 @@
+<!-- VERSION 3.7.5 — fixes <4 images (JS sets grid templates directly) + keeps everything else the same -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>World War I Media</title>
+
+<style>
+  :root{
+    --pageW: 1400px;
+    --gap: 12px;
+
+    /* Civil War/Media-1.html image vibe */
+    --borderW: 6px;
+    --borderC: #000;
+    --radius: 6px;
+
+    --sepia: 0.20;
+    --bright: 1.0;
+    --contrast: 1.0;
+    --glow: 0 0 10px rgba(255, 220, 100, 0.15);
+  }
+
+  html, body{ height: 100%; margin: 0; }
+  body{ overflow: hidden; } /* hard “no vertical scroll” */
+
+  .content-wrapper{
+    max-width: var(--pageW);
+    margin: 0 auto;
+    padding: 15px;
+    box-sizing: border-box;
+
+    color: #000;
+    font-family: sans-serif;
+    font-size: 28px;
+    overflow-wrap: anywhere;
+
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;   /* header then gallery gets the rest */
+    row-gap: 6px;                  /* slightly tighter; adjust if desired */
+  }
+
+  h1{ margin: 0 0 6px 0; line-height: 1.1; }
+  .lede{ margin: 0; line-height: 1.22; }
+
+  /* Gallery base (CSS fallback for 1–4 images even if JS fails) */
+  .gallery{
+    min-height: 0;
+    height: 100%;
+    display: grid;
+    gap: var(--gap);
+
+    /* fallback: auto-fit makes 1–4 images become 1–4 columns automatically */
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    grid-template-rows: 1fr;
+    align-items: stretch;
+  }
+
+  figure{ margin: 0; min-height: 0; }
+
+  .tile{
+    min-height: 0;
+    height: 100%;
+    display: flex;
+
+    /* pin images to top of tile */
+    align-items: flex-start;
+
+    /* keep horizontal centering */
+    justify-content: center;
+  }
+
+  /* Full image, no crop. Scales down to fit its tile. Border hugs image exactly. */
+  .tile img{
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    display: block;
+    box-sizing: border-box;
+
+    border: var(--borderW) solid var(--borderC);
+    border-radius: var(--radius);
+
+    filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
+            drop-shadow(var(--glow));
+  }
+
+  @media (max-width: 900px){
+    /* On narrow screens: allow scroll + stack */
+    body{ overflow: auto; }
+    .content-wrapper{ height: auto; display: block; }
+    .gallery{
+      height: auto;
+      grid-template-columns: 1fr !important;
+      grid-template-rows: none !important;
+    }
+    .tile{ height: auto; }
+    .tile img{ width: 100%; max-height: none; }
+  }
+</style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+    <div class="header">
+      <h1>Cards from War-time&nbsp;</h1>
+      <p class="lede"> Even valentines reflected the thoughts of loved one at home.&nbsp;</p>
+      <p class="lede">&nbsp;</p>
+      <p class="lede">This also served to keep up the spirits of servicemen and families at home</p>
+      <p class="lede">&nbsp;</p>
+    </div>
+
+    <!-- Optional manual override per-problem-page:
+         <section class="gallery" data-auto="1" data-cols="2" data-rows="1"> -->
+    <section class="gallery" data-auto="1">
+      <figure class="tile">
+        <img src="/World War 1/Pictures/card-closed.jpg" alt="Certificate image">
+      </figure>
+
+      <figure class="tile">
+        <img src="/World War 1/Pictures/card-open.jpg" alt="Dear Flag image">
+      </figure>
+    </section>
+  </div>
+
+<script>
+(() => {
+  const gallery = document.querySelector('.gallery[data-auto="1"]');
+  if (!gallery) return;
+
+  const imgs = Array.from(gallery.querySelectorAll('img')).filter(img => img.getAttribute('src'));
+  const n = imgs.length;
+  if (!n) return;
+
+  const setGrid = (cols, rows) => {
+    gallery.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+    gallery.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+  };
+
+  // Manual override (reliable):
+  const manualCols = parseInt(gallery.getAttribute('data-cols') || '', 10);
+  const manualRows = parseInt(gallery.getAttribute('data-rows') || '', 10);
+  if (Number.isFinite(manualCols) && Number.isFinite(manualRows) && manualCols > 0 && manualRows > 0){
+    setGrid(manualCols, manualRows);
+    return;
+  }
+
+  // Base layout by count:
+  let cols, rows;
+  if (n <= 4) { cols = n; rows = 1; }
+  else if (n <= 6) { cols = 3; rows = 2; }
+  else { cols = 4; rows = Math.ceil(n / 4); }
+
+  setGrid(cols, rows);
+
+  // Aspect-ratio safeguard (very wide images):
+  const loadPromises = imgs.map(img => (img.complete && img.naturalWidth)
+    ? Promise.resolve()
+    : new Promise(res => {
+        img.addEventListener('load', res, { once:true });
+        img.addEventListener('error', res, { once:true });
+      })
+  );
+
+  Promise.all(loadPromises).then(() => {
+    const ars = imgs
+      .filter(img => img.naturalWidth && img.naturalHeight)
+      .map(img => img.naturalWidth / img.naturalHeight);
+
+    if (!ars.length) return;
+
+    const maxAR = Math.max(...ars);
+    const VERY_WIDE = 2.0;
+
+    if (n === 4 && cols === 4 && maxAR >= VERY_WIDE) {
+      setGrid(2, 2);
+    }
+
+    if ((n === 5 || n === 6) && cols === 3 && rows === 2 && maxAR >= VERY_WIDE) {
+      setGrid(2, 3);
+    }
+  });
+})();
+</script>
+</body>
+</html>

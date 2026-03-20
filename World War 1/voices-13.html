@@ -1,0 +1,185 @@
+<!-- VERSION 1.9 -->
+<!-- Civil War/media-1.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Civil War Media</title>
+
+  <style>
+    .content-wrapper {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 28px;
+    }
+
+    /* ===== Photo sizing: ONE default + per-image override ===== */
+    :root {
+      --photoW: 350px;   /* global default width for photos */
+      --audioW: 520px;   /* width for the audio controls next to title */
+    }
+
+    .photo-row {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;     /* ✅ TOPS align */
+      justify-content: space-between;
+      margin-bottom: 6px;          /* ✅ less space before title */
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1)
+        drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+      display: block;              /* ✅ kills the bottom-gap / border mismatch */
+      box-sizing: border-box;      /* ✅ border behaves predictably */
+    }
+
+    /* Width is the magic number; height follows (no cropping) */
+    img.photo {
+      width: var(--w, var(--photoW));  /* per-image override: style="--w: 330px;" */
+      height: auto;
+    }
+
+    /* ===== Title + Audio on same line ===== */
+    .title-bar {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 10px 0;          /* tight to photos, some breathing room below */
+      flex-wrap: nowrap;
+    }
+
+    .title-bar h1 {
+      margin: 0;
+      flex: 1 1 auto;
+    }
+
+    .title-audio {
+      width: var(--audioW);
+      flex: 0 0 auto;
+    }
+
+    /* --- TEXT UNDER PHOTOS --- */
+    .text-block > *:first-child { margin-top: 0; }
+
+    .em-paragraph { margin-top: 10px; }
+
+    /* 4 points smaller than 28px => 24px */
+    .quote-block {
+      font-size: 20px;
+      line-height: 1.25;
+    }
+
+    .audio-note {
+      margin-top: 6px;
+      font-size: 22px;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="content-wrapper">
+
+    <!-- 3 photos on top -->
+    <div class="photo-row">
+      <img
+        src="/World%20War%201/Pictures/04-Jopling-ambulance-france.jpg"
+        class="with-border photo"
+        alt="Army Field Service ambulance in France"
+        style="--w: 350px;"
+      />
+
+      <img
+        src="/World%20War%201/Pictures/03-ambulance.jpg"
+        class="with-border photo"
+        alt="Ambulance and crew"
+        style="--w: 350px;"
+      />
+
+      <img
+        src="/World%20War%201/Pictures/10-Joplin-Co-C-9th%20TR-Reg.jpg"
+        class="with-border photo"
+        alt="Richard Mather Joplin with unit"
+        style="--w: 350px;"
+      />
+    </div>
+
+    <div class="text-block">
+      <!-- Title + audio controls on the SAME line -->
+      <div class="title-bar">
+        <h1>Richard Mather Joplin</h1>
+
+        <audio id="media-audio" class="title-audio" controls playsinline preload="metadata" autoplay>
+          <source src="../World%20War%201/audio/WWI-Richard%20Mather%20Joplin.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <p>
+        Richard Mather Joplin joined the Army Field Service as an ambulance driver before the U.S. had entered the war.
+        Ambulance drivers navigated through heavy artillery fire and nighttime bombing raids bringing the wounded to field hospitals located
+        between trenches. The following is from a letter he wrote in November of 1917. (Note: The ‘Bosche’ or ‘Boshe’ are the Germans)
+      </p>
+
+      <p class="em-paragraph quote-block">
+        <em>
+          <strong>AMBULANCE DRIVER</strong> <br>
+          "I am now comfortably "couche" in my ambulance, where all sleeping, writing, reading is done with most of us.
+          The car makes quite a tidy little home, with everything at one's elbow, and we Americans have had plenty of practice
+          for them with our Pullman car berths (on the railway) .... We live very irregularly out there, having to be ready day
+          or night for a call at a moment's notice, and snatch bits of sleep when possible. The most trying part on the nerves is
+          driving through blackness without lights, straining one's eyes for something that may lie not 10 yards ahead on the road.
+          Then it is a great question for judgment just how fast to run, when there are men in behind who may not survive the long ride
+          to the hospital. But the sense of the dramatic passes quickly. After one night it becomes mere matter-of-fact business, like any
+          fairly hazardous occupation. One thing that impresses me greatly at first was the absolute casualness of the life at the postes de secours.
+          The men there go about their days' work as if in some frontier lumbering or mining camp; and when Boche obus begin landing a bit too close
+          and they take to abris [shelter], it is in the same way that miners step aside to avoid a blast. The guns roaring and pounding around us become
+          simply the noise of some gigantic industry that never ceases, and the wounded are merely those who happen to have been caught in the machinery.
+          This was the way it appeared to me on a quiet sector of the front. We did comparatively little, so little, that I am really ashamed, and was
+          hoping for some more duty before winter set in."
+        </em>
+      </p>
+
+      <div id="audio-note" class="audio-note" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <script>
+    // Autoplay is sometimes blocked unless there's a user gesture.
+    // This tries immediately, and then tries again on the first tap/click.
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('media-audio');
+      const note = document.getElementById('audio-note');
+      if (!audio) return;
+
+      const tryPlay = () => {
+        const p = audio.play();
+        if (!p || !p.catch) return;
+
+        p.then(() => {
+          if (note) note.textContent = "";
+        }).catch(() => {
+          if (note) note.textContent =
+            "Autoplay was blocked by the browser. Tap/click once to start the audio.";
+        });
+      };
+
+      tryPlay();
+
+      document.addEventListener('pointerdown', function once() {
+        tryPlay();
+        document.removeEventListener('pointerdown', once);
+      }, { once: true });
+    });
+  </script>
+</body>
+</html>
