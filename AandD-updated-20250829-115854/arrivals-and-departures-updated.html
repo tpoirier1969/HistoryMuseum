@@ -1,0 +1,300 @@
+<!-- Version 5.16 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arrivals and Departures</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #000 url('images/background images/home/arrivals-and-departures working pages background.png') no-repeat center center;
+      background-size: cover;
+      font-family: sans-serif;
+      overflow: hidden;
+    }
+
+    #container {
+      display: flex;
+      height: 100%;
+    }
+
+    #sidebar {
+      width: 220px;
+      padding: 75px 0 0 30px;
+    }
+
+    #rightSide {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #sectionNav {
+      height: 80px;
+      padding: 18px 0 0 70px;
+    }
+
+    #mainContent {
+      flex: 1;
+      padding: 5px 0 0 120px;
+      overflow-y: auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    #mainContent::before {
+      content: "";
+      position: fixed;
+      top: 130px;
+      left: 270px;
+      right: 60px;
+      bottom: 60px;
+      background: rgba(255, 255, 255, 0.15);
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50px;
+      box-shadow: 0 0 150px 80px rgba(255, 255, 255, 0.1);
+    }
+
+    #mainContent > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    img.responsive {
+      max-width: 800px;
+      max-height: 600px;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    .glow-animated {
+      animation: glowPulse 3s infinite;
+      transition: filter 0.3s ease;
+      cursor: pointer;
+    }
+
+    @keyframes glowPulse {
+      0% { filter: drop-shadow(0 0 20px rgba(100, 200, 90, 0.5)); }
+      50% { filter: drop-shadow(0 0 35px rgba(100, 200, 80, 1)); }
+      100% { filter: drop-shadow(0 0 20px rgba(100, 200, 90, 0.5)); }
+    }
+
+    .active-glow {
+      animation: activeGlowPulse 2.5s infinite !important;
+      filter: drop-shadow(0 0 25px rgba(255, 90, 60, 1)) !important;
+    }
+
+    @keyframes activeGlowPulse {
+      0% { filter: drop-shadow(0 0 25px rgba(255, 90, 0, 0.4)); }
+      50% { filter: drop-shadow(0 0 35px rgba(255, 90, 0, 1)); }
+      100% { filter: drop-shadow(0 0 25px rgba(255, 90, 0, 0.4)); }
+    }
+
+    #subNavButtons {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 150px 0 150px;
+    }
+
+    #subNavButtons img {
+      height: 60px;
+      cursor: pointer;
+    }
+
+    #mainContent img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin-bottom: 20px;
+    }
+  
+/* --- Kiosk: High-Visibility Active States --- */
+
+.active-glow{
+  outline: 6px solid rgba(255,215,0,0.95) !important; /* bright gold ring */
+  outline-offset: 6px !important;
+  filter: drop-shadow(0 0 26px rgba(255,220,120,1)) !important;
+  transform: scale(1.15) !important;
+  transition: transform 120ms ease-out, filter 120ms ease-out, outline-offset 120ms ease-out !important;
+}
+/* Subtle base for non-active */
+.glow-animated{
+  animation: none !important;
+  filter: drop-shadow(0 0 8px rgba(120,200,100,0.35)) !important;
+}
+
+</style>
+</head>
+<body>
+  <div id="container">
+    <div id="sidebar">
+      <img src="images/background images/home/button-civil.png" class="glow-animated" id="btn-civil war" onclick="switchWar('civil war')" />
+      <img src="images/background images/home/button-spanish.png" class="glow-animated" id="btn-spanish" onclick="switchWar('spanish')" />
+      <img src="images/background images/home/button-wwi.png" class="glow-animated" id="btn-wwi" onclick="switchWar('wwi')" />
+      <img src="images/background images/home/button-wwii.png" class="glow-animated" id="btn-wwii" onclick="switchWar('wwii')" />
+      <img src="images/background images/home/button-cold.png" class="glow-animated" id="btn-cold" onclick="switchWar('cold')" />
+    </div>
+
+    <div id="rightSide">
+      <div id="sectionNav">
+        <img src="images/background images/home/Media and the message.png" class="glow-animated" id="section-media" onclick="switchSection('media')" />
+        <img src="images/background images/home/Voices of veterans.png" class="glow-animated" id="section-voices" onclick="switchSection('voices')" />
+<img src="images/background images/home/technology factors.png" class="glow-animated" id="section-technology" onclick="switchSection('technology')" />
+        <img src="images/background images/home/role of upper michigan.png" class="glow-animated" id="section-upper" onclick="switchSection('upper')" />
+        <img src="images/background images/home/arrival home.png" class="glow-animated" id="section-arrival" onclick="switchSection('arrival')" />
+      </div>
+      <div id="subNavButtons">
+        <img src="images/background images/home/back button.png" alt="Back" onclick="navigate(-1)" class="glow-animated"/>
+        <img src="images/background images/home/forward button.png" alt="Forward" onclick="navigate(1)" class="glow-animated"/>
+      </div>
+      <div id="mainContent">
+        <h1>Welcome</h1>
+        <p>Select a war from the left to begin.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentWar = "";
+    let currentSection = "media";
+    let currentPageIndex = 0;
+    let contentMap = {};
+
+    fetch('contentMap.json')
+      .then(res => res.json())
+      .then(data => {
+        contentMap = data;
+        const params = new URLSearchParams(window.location.search);
+        const initialWar = params.get("war");
+        if (initialWar) switchWar(initialWar);
+      });
+
+    function switchWar(war) {
+      currentWar = war;
+      currentSection = "media";
+      currentPageIndex = 0;
+      highlightCurrent(war, currentSection);
+      loadCurrent();
+    }
+
+    function switchSection(section) {
+      currentSection = section;
+      currentPageIndex = 0;
+      highlightCurrent(currentWar, section);
+      loadCurrent();
+    }
+
+    function navigate(offset) {
+      let pages = contentMap[currentWar]?.[currentSection];
+      let newIndex = currentPageIndex + offset;
+
+      if (newIndex >= 0 && newIndex < pages.length) {
+        currentPageIndex = newIndex;
+        loadCurrent();
+      } else if (offset > 0) {
+        const sectionKeys = Object.keys(contentMap[currentWar]);
+        const currentSectionIndex = sectionKeys.indexOf(currentSection);
+        if (currentSectionIndex + 1 < sectionKeys.length) {
+          currentSection = sectionKeys[currentSectionIndex + 1];
+          currentPageIndex = 0;
+          highlightCurrent(currentWar, currentSection);
+          loadCurrent();
+        } else {
+          window.location.href = "AandD Home.html";
+        }
+      } else if (offset < 0 && currentPageIndex === 0) {
+        const sectionKeys = Object.keys(contentMap[currentWar]);
+        const currentSectionIndex = sectionKeys.indexOf(currentSection);
+        if (currentSectionIndex > 0) {
+          currentSection = sectionKeys[currentSectionIndex - 1];
+          currentPageIndex = contentMap[currentWar][currentSection].length - 1;
+          highlightCurrent(currentWar, currentSection);
+          loadCurrent();
+        } else {
+          window.location.href = "AandD Home.html";
+        }
+      }
+    }
+
+    function loadCurrent() {
+      const pages = contentMap[currentWar]?.[currentSection];
+      if (pages && pages.length > 0) {
+        const url = `${currentWar}/${pages[currentPageIndex]}`;
+        fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const container = document.getElementById("mainContent");
+
+            const temp = document.createElement("div");
+            temp.innerHTML = html;
+
+            container.innerHTML = '<div class="content-background"></div>';
+            temp.querySelectorAll("script").forEach(script => script.remove());
+            container.innerHTML += temp.innerHTML;
+
+            temp.querySelectorAll("script").forEach(script => {
+              const newScript = document.createElement("script");
+              if (script.src) {
+                newScript.src = script.src;
+              } else {
+                newScript.textContent = script.textContent;
+              }
+              document.body.appendChild(newScript);
+            });
+
+            // Trigger autoplay for injected audio
+            setTimeout(triggerInjectedAudioAutoplay, 100);
+          })
+          .catch(() => {
+            document.getElementById("mainContent").innerHTML = "<p>Error loading content.</p>";
+          });
+      }
+    }
+	  
+	  document.getElementById("mainContent").innerHTML = html;
+
+// ✅ Autoplay logic
+setTimeout(() => {
+  const audio = document.querySelector('#mainContent audio');
+  if (audio) {
+    audio.muted = false;
+    audio.play().catch(err => {
+      console.warn("Autoplay blocked or failed:", err);
+    });
+  }
+}, 500);
+
+
+    function highlightCurrent(war, section) {
+      document.querySelectorAll('.active-glow').forEach(el => el.classList.remove('active-glow'));
+      const warBtn = document.getElementById(`btn-${war}`);
+      const sectionBtn = document.getElementById(`section-${section}`);
+      if (warBtn) warBtn.classList.add('active-glow');
+      if (sectionBtn) sectionBtn.classList.add('active-glow');
+    }
+
+    function triggerInjectedAudioAutoplay() {
+      const audio = document.querySelector("#mainContent audio");
+      const audioEnabled = localStorage.getItem("audio-enabled");
+
+      if (audio && audioEnabled === "true") {
+        try {
+          audio.muted = false;
+          audio.play().then(() => {
+            console.log("\u2705 Audio autoplayed via injected trigger.");
+          }).catch(err => {
+            console.warn("\u26D4 Autoplay blocked even after injection:", err);
+          });
+        } catch (err) {
+          console.error("\u274C Audio error:", err);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!-- VERSION 0.5 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radar</title>
+  <style>
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 15px;
+      color: black;
+      font-family: sans-serif;
+      font-size: 24px;
+    }
+
+    .profile-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .image-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .image-single {
+      display: block;
+    }
+
+    img.with-border {
+      border: 6px solid black;
+      border-radius: 6px;
+      filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+      flex-shrink: 0;
+      display: block;
+      height: auto;
+      box-sizing: border-box;
+    }
+
+    .media-link-box {
+      display: block;
+      width: 350px;
+      box-sizing: border-box;
+      padding: 18px 20px;
+      border: 6px solid black;
+      border-radius: 6px;
+      background: #f3f3f3;
+      color: black;
+      text-decoration: none;
+      line-height: 1.25;
+    }
+
+    .media-link-box.placeholder {
+      background: #f8f8f8;
+    }
+
+    .bio-text {
+      flex: 1;
+    }
+
+    .bio-text > *:first-child {
+      margin-top: 0;
+    }
+
+    .bio-text h1 {
+      margin-top: 0;
+      margin-bottom: 0.6em;
+    }
+
+    .bio-text p {
+      margin-top: 0;
+      margin-bottom: 0.8em;
+      line-height: 1.2;
+    }
+
+    .no-media {
+      max-width: 1400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="content-wrapper">
+    <div class="bio-text no-media">
+        <h1>Radar</h1>
+        <p>The threat of a nuclear attack led to the development of radar to determine others ability to produce nuclear weapons.</p>
+    </div>
+  </div>
+</body>
+</html>

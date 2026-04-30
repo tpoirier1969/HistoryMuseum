@@ -1,0 +1,274 @@
+{
+  "civil war": {
+    "media": [
+      "media-1.html",
+      "media-2.html",
+      "media-3.html",
+      "media-4.html",
+      "media-5.html",
+      "media-6.html",
+      "media-7.html",
+      "media-8.html",
+      "media-9.html"
+    ],
+    "voices": [
+      "voices-1.html",
+      "voices-2.html",
+      "voices-3.html",
+      "voices-4.html",
+      "voices-5.html",
+      "voices-6.html",
+      "voices-7.html",
+      "voices-8.html",
+      "voices-9.html",
+      "voices-10.html",
+      "voices-11.html",
+      "voices-12.html"
+    ],
+    "technology": [
+      "technology-1.html",
+      "technology-2.html"
+    ],
+    "upper": [
+      "upper-michigan-1.html",
+      "upper-michigan-2.html",
+      "upper-michigan-3.html",
+      "upper-michigan-4.html",
+      "upper-michigan-5.html",
+      "upper-michigan-6.html",
+      "upper-michigan-7.html",
+      "upper-michigan-8.html",
+      "upper-michigan-9.html",
+      "upper-michigan-10.html"
+    ],
+    "arrival": [
+      "arrival-1.html",
+      "arrival-2.html",
+      "arrival-3.html",
+      "arrival-4.html",
+      "arrival-5.html",
+      "arrival-6.html",
+      "arrival-7.html",
+      "arrival-8.html",
+      "arrival-9.html",
+      "arrival-10.html",
+      "arrival-11.html",
+      "arrival-12.html",
+      "arrival-13.html",
+      "arrival-14.html",
+      "arrival-15.html",
+      "arrival-16.html"
+    ]
+  },
+  "spanish": {
+    "media": [
+      "media-1.html",
+      "media-2.html",
+      "media-3.html",
+      "media-4.html",
+      "media-5.html",
+      "media-6.html",
+      "media-7.html",
+      "media-8.html",
+      "media-9.html",
+      "media-10.html",
+      "media-11.html",
+      "media-12.html",
+      "media-14.html",
+      "media-15.html"
+    ],
+    "voices": [
+      "voices-1.html",
+      "voices-3.html",
+      "voices-4.html",
+      "voices-5.html",
+      "voices-6.html"
+    ],
+    "technology": [
+      "technology-1.html",
+      "technology-2.html",
+      "technology-4.html",
+      "technology-6.html",
+      "technology-7.html"
+    ],
+    "upper": [
+      "upper-michigan-1.html",
+      "upper-michigan-2.html"
+    ],
+    "arrival": [
+      "arrival-1.html",
+      "arrival-2.html",
+      "arrival-3.html",
+      "arrival-4.html",
+      "arrival-5.html",
+      "arrival-6.html",
+      "arrival-7.html",
+      "arrival-8.html",
+      "arrival-9.html"
+    ]
+  },
+  "wwi": {
+    "media": [
+      "media-1.html",
+      "media-2.html",
+      "media-3.html",
+      "media-4.html",
+      "media-5.html",
+      "media-6.html",
+      "media-7.html"
+    ],
+    "voices": [
+      "voices-1.html",
+      "voices-2.html",
+      "voices-3.html",
+      "voices-4.html",
+      "voices-5.html",
+      "voices-6.html",
+      "voices-7.html",
+      "voices-8.html",
+      "voices-9.html",
+      "voices-10.html",
+      "voices-11.html",
+      "voices-12.html",
+      "voices-13.html",
+      "voices-14.html",
+      "voices-15.html",
+      "voices-16.html",
+      "voices-17.html",
+      "voices-18.html",
+      "voices-19.html",
+      "voices-20.html",
+      "voices-21.html",
+      "voices-22.html",
+      "voices-23.html",
+      "voices-24.html",
+      "voices-25.html"
+    ],
+    "technology": [
+      "technology-1.html",
+      "technology-2.html",
+      "technology-3.html",
+      "technology-4.html",
+      "technology-5.html",
+      "technology-6.html"
+    ],
+    "upper": [
+      "upper-michigan-1.html",
+      "upper-michigan-2.html",
+      "upper-michigan-3.html",
+      "upper-michigan-4.html",
+      "upper-michigan-4.5.html",
+      "upper-michigan-5.html",
+      "upper-michigan-6.html",
+      "upper-michigan-7.html"
+    ],
+    "arrival": [
+      "arrival-1.html",
+      "arrival-2.html",
+      "arrival-3.html",
+      "arrival-4.html",
+      "arrival-5.html",
+      "arrival-6.html",
+      "arrival-7.html",
+      "arrival-8.html",
+      "arrival-9.html"
+    ]
+  },
+  "wwii": {
+    "media": [
+      "media-1.html",
+      "media-2.html",
+      "media-3.html",
+      "media-4.html",
+      "media-5.html",
+      "media-6.html",
+      "media-7.html",
+      "media-8.html"
+    ],
+    "voices": [
+      "voices-1.html",
+      "voices-2.html",
+      "voices-3.html",
+      "voices-4.html",
+      "voices-5.html",
+      "voices-6.html",
+      "voices-7.html",
+      "voices-8.html"
+    ],
+    "technology": [
+      "technology-1.html",
+      "technology-2.html",
+      "technology-3.html",
+      "technology-4.html",
+      "technology-5.html",
+      "technology-6.html",
+      "technology-7.html",
+      "technology-8.html"
+    ],
+    "upper": [
+      "upper-1.html",
+      "upper-2.html",
+      "upper-3.html",
+      "upper-4.html",
+      "upper-5.html",
+      "upper-6.html",
+      "upper-7.html",
+      "upper-8.html"
+    ],
+    "arrival": [
+      "arrival-1.html",
+      "arrival-2.html",
+      "arrival-3.html",
+      "arrival-4.html",
+      "arrival-5.html",
+      "arrival-6.html",
+      "arrival-7.html",
+      "arrival-8.html"
+    ]
+  },
+  "cold": {
+    "media": [
+      "media-1.html",
+      "media-2.html",
+      "media-3.html",
+      "media-4.html",
+      "media-5.html",
+      "media-6.html",
+      "media-7.html",
+      "media-8.html"
+    ],
+    "voices": [
+      "voices-1.html",
+      "voices-2.html",
+      "voices-3.html",
+      "voices-4.html",
+      "voices-5.html",
+      "voices-6.html",
+      "voices-7.html",
+      "voices-8.html"
+    ],
+    "technology": [
+      "technology-1.html",
+      "technology-2.html",
+      "technology-3.html",
+      "technology-4.html",
+      "technology-5.html",
+      "technology-6.html",
+      "technology-7.html",
+      "technology-8.html"
+    ],
+    "upper": [
+      "upper-michigan-f1.html"
+    ],
+    "arrival": [
+      "arrival-1.html",
+      "arrival-2.html",
+      "arrival-3.html",
+      "arrival-4.html",
+      "arrival-5.html",
+      "arrival-6.html",
+      "arrival-7.html",
+      "arrival-8.html"
+    ]
+  }
+}
