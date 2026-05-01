@@ -1,101 +1,83 @@
 <style>
-  .cold-war-menu-panel {
-    max-width: 980px;
-    margin: 10px auto 0 auto;
-    padding: 26px 34px 30px 34px;
-    color: #f8ecd0;
-    font-family: Georgia, "Times New Roman", serif;
-    text-align: center;
-  }
-
-  .cold-war-menu-panel h1 {
-    margin: 0 0 12px 0;
-    font-size: 44px;
-    font-weight: normal;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 7px rgba(0, 0, 0, 0.85);
-  }
-
-  .cold-war-menu-panel p {
-    max-width: 760px;
-    margin: 0 auto 26px auto;
-    font-size: 21px;
-    line-height: 1.35;
-    color: #f1dfba;
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.85);
-  }
-
-  .cold-war-menu-buttons {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 22px;
-    align-items: stretch;
-  }
-
-  .cold-war-menu-button {
-    min-height: 178px;
-    padding: 22px 18px;
-    border: 2px solid rgba(255, 214, 128, 0.68);
-    border-radius: 22px;
-    background:
-      radial-gradient(circle at top, rgba(255, 215, 135, 0.20), rgba(80, 43, 18, 0.52) 46%, rgba(15, 10, 6, 0.78) 100%);
-    color: #ffe7af;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 27px;
-    line-height: 1.18;
-    cursor: pointer;
-    box-shadow:
-      0 0 18px rgba(255, 195, 32, 0.24),
-      inset 0 0 20px rgba(0, 0, 0, 0.48);
-    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95);
-    transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .cold-war-menu-button span {
-    display: block;
-    margin-top: 12px;
-    font-size: 17px;
-    line-height: 1.25;
-    color: #f0d7a1;
-  }
-
-  .cold-war-menu-button:hover,
-  .cold-war-menu-button:focus {
-    transform: translateY(-2px);
-    filter: brightness(1.12);
-    box-shadow:
-      0 0 30px rgba(255, 207, 67, 0.55),
-      inset 0 0 22px rgba(0, 0, 0, 0.44);
-    outline: none;
-  }
-
-  @media (max-width: 1150px) {
-    .cold-war-menu-buttons {
-      grid-template-columns: 1fr;
-      gap: 14px;
-    }
-
-    .cold-war-menu-button {
-      min-height: 95px;
-    }
-  }
+.cold-war-menu-panel {
+  max-width: 980px;
+  min-height: min(650px, calc(100vh - 245px));
+  margin: 0 auto;
+  padding: 26px 34px 30px;
+  color: #000;
+  font-family: Georgia, "Times New Roman", serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cold-war-menu-panel h1 {
+  margin: 0 0 10px;
+  color: #000;
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+.cold-war-menu-panel p {
+  max-width: 760px;
+  margin: 0 auto 26px;
+  font-size: 21px;
+  line-height: 1.35;
+  color: #000;
+}
+.cold-war-menu-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+.cold-war-menu-button {
+  min-height: 178px;
+  padding: 22px 18px;
+  border: 2px solid rgba(255, 214, 128, 0.68);
+  border-radius: 22px;
+  background: radial-gradient(circle at top, rgba(255, 215, 135, 0.20), rgba(80, 43, 18, 0.52) 46%, rgba(15, 10, 6, 0.78) 100%);
+  color: #ffe7af;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 27px;
+  line-height: 1.18;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(255, 195, 32, 0.24), inset 0 0 20px rgba(0, 0, 0, 0.48);
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.95);
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+.cold-war-menu-button span {
+  display: block;
+  margin-top: 12px;
+  font-size: 17px;
+  line-height: 1.25;
+  color: #f0d7a1;
+}
+.cold-war-menu-button:hover,
+.cold-war-menu-button:focus {
+  transform: translateY(-2px);
+  filter: brightness(1.12);
+  box-shadow: 0 0 30px rgba(255, 207, 67, 0.55), inset 0 0 22px rgba(0, 0, 0, 0.44);
+  outline: none;
+}
+@media (max-width: 1150px) {
+  .cold-war-menu-panel { min-height: 0; }
+  .cold-war-menu-buttons { grid-template-columns: 1fr; gap: 14px; }
+  .cold-war-menu-button { min-height: 95px; }
+}
 </style>
-
 <div class="cold-war-menu-panel">
   <h1>Cold War Era</h1>
   <p>Choose a section to continue inside the Arrivals and Departures kiosk.</p>
-
   <div class="cold-war-menu-buttons">
     <button class="cold-war-menu-button" type="button" onclick="currentWar='cold'; currentSection='media'; currentPageIndex=1; highlightCurrent(currentWar,currentSection); loadCurrent();">
       Cold War and Air Bases
       <span>Strategic defense, K. I. Sawyer, Kincheloe, Wurtsmith, and the nuclear age.</span>
     </button>
-
     <button class="cold-war-menu-button" type="button" onclick="switchWar('korea');">
       Korean War
       <span>The Korean conflict and its place in the wider Cold War era.</span>
     </button>
-
     <button class="cold-war-menu-button" type="button" onclick="switchWar('vietnam');">
       Vietnam War
       <span>Vietnam-era service, media, technology, and Upper Michigan veterans.</span>
