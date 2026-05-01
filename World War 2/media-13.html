@@ -1,14 +1,14 @@
 <style>
 .ad-fragment {
   --ad-work-w: 1260px;
-  --ad-gap: 10px;
+  --ad-text-w: 940px;
+  --ad-gap: 14px;
   --ad-border: 5px solid #000;
   --ad-radius: 6px;
-  --ad-caption: 13px;
   box-sizing: border-box;
   max-width: var(--ad-work-w);
   margin: 0 auto;
-  padding: 4px 6px 18px;
+  padding: 4px 8px 18px;
   color: #000;
   font-family: sans-serif;
   font-size: 20px;
@@ -16,204 +16,67 @@
 }
 .ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
 .ad-fragment .content-wrapper { max-width: 100%; margin: 0 auto; padding: 0; color: inherit; font-family: inherit; font-size: inherit; line-height: inherit; }
-.ad-fragment h1 { margin: 0 0 8px; font-size: 33px; line-height: 1.05; }
+.ad-fragment h1 { margin: 0 0 8px; font-size: 33px; line-height: 1.05; text-align: left; }
 .ad-fragment p { margin: 0 0 8px; line-height: 1.2; }
-.ad-fragment .lead-text { width: min(1160px, 100%); max-width: min(1160px, 100%); margin: 0 auto 12px; }
-.ad-fragment .lead-text.wide-title h1 { white-space: nowrap; font-size: 32px; }
-.ad-fragment .lead-text.tight { margin-bottom: 8px; }
-.ad-fragment .split-layout { display: grid; grid-template-columns: minmax(300px,.45fr) minmax(0,.55fr); gap: var(--ad-gap); align-items: start; }
-.ad-fragment .split-layout .lead-text { max-width: 62ch; margin: 0; }
-.ad-fragment .gallery,
-.ad-fragment .headline-top,
-.ad-fragment .headline-bottom {
-  display: flex;
-  flex-wrap: wrap;
+.ad-fragment .lead-text { width: min(var(--ad-text-w), 100%); margin: 0 auto 10px; }
+.ad-fragment .mixed-three {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, .78fr);
+  grid-template-rows: auto auto;
+  column-gap: var(--ad-gap);
+  row-gap: 12px;
+  width: min(1120px, 100%);
+  min-height: 580px;
+  align-content: center;
   justify-content: center;
-  align-items: flex-start;
-  gap: var(--ad-gap);
-  margin: 12px auto 0;
-  width: 100%;
+  margin: 10px auto 0;
 }
-.ad-fragment .headline-bottom { margin-top: 10px; }
 .ad-fragment figure {
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  flex: 0 1 auto;
-  width: auto;
-  min-width: 0;
+  justify-self: center;
+  width: fit-content;
   max-width: 100%;
+  min-width: 0;
   text-align: center;
 }
-.ad-fragment img, .ad-fragment video {
+.ad-fragment figure:nth-of-type(1) { grid-column: 1; grid-row: 1; }
+.ad-fragment figure:nth-of-type(2) { grid-column: 1; grid-row: 2; }
+.ad-fragment figure:nth-of-type(3) { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+.ad-fragment img {
   display: block;
   width: auto;
   max-width: 100%;
   height: auto;
   object-fit: contain;
-  box-sizing: border-box;
   border: var(--ad-border);
   border-radius: var(--ad-radius);
   background: transparent;
 }
+.ad-fragment figure:nth-of-type(1) img,
+.ad-fragment figure:nth-of-type(2) img { max-height: 255px; }
+.ad-fragment figure:nth-of-type(3) img { max-height: 525px; }
 .ad-fragment figcaption {
   display: block;
-  margin: 2px 0 0;
-  padding: 0;
   width: 100%;
   max-width: 100%;
-  font-size: var(--ad-caption);
+  margin: 2px 0 0;
+  padding: 0;
+  font-size: 13px;
   line-height: 1.12;
   font-style: italic;
   text-align: center;
   overflow-wrap: anywhere;
 }
-.ad-fragment .one-image img { max-height: 500px; }
-.ad-fragment .two-images { min-height: 450px; align-content: center; }
-.ad-fragment .two-images figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-.ad-fragment .two-images img { max-height: 470px; max-width: 100%; }
-.ad-fragment .three-images { min-height: 520px; align-content: center; }
-.ad-fragment .three-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .three-images img { max-height: 355px; max-width: 100%; }
-.ad-fragment .four-wide {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 14px;
-  row-gap: 12px;
-  width: min(1060px, 100%);
-  min-height: 560px;
-  align-content: center;
-  justify-content: center;
-  margin-top: 18px;
-}
-.ad-fragment .four-wide figure { width: 100%; }
-.ad-fragment .four-wide img { max-height: 265px; max-width: 100%; }
-.ad-fragment .four-posters { flex-wrap: nowrap; min-height: 560px; align-content: center; }
-.ad-fragment .four-posters figure { max-width: calc((100% - (3 * var(--ad-gap))) / 4); }
-.ad-fragment .four-posters img { max-height: 430px; max-width: 100%; }
-.ad-fragment .five-landscape figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .five-landscape figure:nth-last-child(-n+2) img { max-height: 290px; }
-.ad-fragment .five-landscape img { max-height: 250px; max-width: 100%; }
-.ad-fragment .five-posters { flex-wrap: nowrap; }
-.ad-fragment .five-posters figure { max-width: calc((100% - (4 * var(--ad-gap))) / 5); }
-.ad-fragment .five-posters img { max-height: 370px; max-width: 100%; }
-.ad-fragment .many-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .many-images img { max-height: 250px; max-width: 100%; }
-.ad-fragment .poster-3 { flex-wrap: nowrap; min-height: 620px; align-content: center; margin-top: 26px; }
-.ad-fragment .poster-3 figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .poster-3 img { max-height: 520px; max-width: 100%; }
-.ad-fragment .headline-top figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-.ad-fragment .headline-bottom figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .headline-top img { max-height: 245px; max-width: 100%; }
-.ad-fragment .headline-bottom img { max-height: 165px; max-width: 100%; }
-.ad-fragment .split-layout figure img { max-width: min(520px,100%); max-height: 500px; }
-.ad-fragment .placeholder {
-  width: min(280px, 100%);
-  min-height: 145px;
-  border: 5px dashed #555;
-  border-radius: var(--ad-radius);
-  background: rgba(240,240,240,.82);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  font-weight: bold;
-  text-align: center;
-}
-.ad-fragment .audio-block { margin: 14px auto 0; text-align: center; display:flex; flex-direction:column; align-items:center; }
-.ad-fragment audio { width: min(780px,100%); }
-/* Page-specific helpers */
-.ad-fragment .gallery.media6-grid {
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 14px;
-  row-gap: 10px;
-  width:min(1060px,100%);
-  min-height: 560px;
-  align-content:center;
-  justify-content:center;
-  margin-top: 18px;
-}
-.ad-fragment .gallery.media6-grid figure { width:100%; }
-.ad-fragment .gallery.media6-grid img { width:auto; max-width:100%; max-height:245px; }
-.ad-fragment .gallery.media6-grid figcaption { width:min(92%, 300px); max-width:min(92%, 300px); margin:1px auto 0; line-height:1.08; }
-.ad-fragment .gallery.media8-large {
-  min-height: 650px;
-  align-content:center;
-  justify-content:center;
-  margin-top: 36px;
-}
-.ad-fragment .gallery.media8-large figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .gallery.media8-large img { max-height: 555px; max-width:100%; }
-.ad-fragment .gallery.media9-centered {
-  min-height: 600px;
-  align-content:center;
-  justify-content:center;
-  margin-top: 24px;
-}
-.ad-fragment .gallery.media9-centered figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-.ad-fragment .gallery.media9-centered img { max-height: 500px; max-width:100%; }
-.ad-fragment .gallery.media13-mixed {
-  display:grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
-  grid-template-rows: auto auto;
-  column-gap: 16px;
-  row-gap: 12px;
-  width:min(1060px,100%);
-  min-height: 580px;
-  align-content:center;
-  justify-content:center;
-  margin-top: 18px;
-}
-.ad-fragment .gallery.media13-mixed figure { width:100%; max-width:100%; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(1) { grid-column: 1; grid-row: 1; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(2) { grid-column: 1; grid-row: 2; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(3) { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(1) img,
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(2) img { max-height: 235px; max-width:100%; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(3) img { max-height: 500px; max-width:100%; }
-@media (max-width:1100px){
+@media (max-width: 1100px) {
   .ad-fragment { font-size: 18px; }
-  .ad-fragment .lead-text.wide-title h1 { white-space: normal; }
-  .ad-fragment .split-layout { grid-template-columns: 1fr; }
-  .ad-fragment .four-posters,
-  .ad-fragment .five-posters,
-  .ad-fragment .poster-3,
-  .ad-fragment .gallery.media6-grid,
-  .ad-fragment .gallery.media13-mixed,
-  .ad-fragment .four-wide { display:flex; flex-wrap:wrap; }
-  .ad-fragment .two-images figure,
-  .ad-fragment .three-images figure,
-  .ad-fragment .four-wide figure,
-  .ad-fragment .four-posters figure,
-  .ad-fragment .five-landscape figure,
-  .ad-fragment .five-posters figure,
-  .ad-fragment .many-images figure,
-  .ad-fragment .poster-3 figure,
-  .ad-fragment .gallery.media8-large figure,
-  .ad-fragment .gallery.media9-centered figure,
-  .ad-fragment .gallery.media13-mixed figure,
-  .ad-fragment .headline-top figure,
-  .ad-fragment .headline-bottom figure { max-width: min(720px,96%); }
-  .ad-fragment .gallery.media6-grid figure { width:min(720px,96%); }
-  .ad-fragment .one-image img,
-  .ad-fragment .two-images img,
-  .ad-fragment .three-images img,
-  .ad-fragment .four-wide img,
-  .ad-fragment .four-posters img,
-  .ad-fragment .five-landscape img,
-  .ad-fragment .five-posters img,
-  .ad-fragment .many-images img,
-  .ad-fragment .poster-3 img,
-  .ad-fragment .gallery.media6-grid img,
-  .ad-fragment .gallery.media8-large img,
-  .ad-fragment .gallery.media9-centered img,
-  .ad-fragment .gallery.media13-mixed img,
-  .ad-fragment .split-layout figure img,
-  .ad-fragment .headline-top img,
-  .ad-fragment .headline-bottom img { max-height: none; }
+  .ad-fragment .mixed-three { display: flex; flex-wrap: wrap; min-height: 0; }
+  .ad-fragment figure { max-width: min(720px, 96%); }
+  .ad-fragment figure:nth-of-type(1) img,
+  .ad-fragment figure:nth-of-type(2) img,
+  .ad-fragment figure:nth-of-type(3) img { max-height: none; }
 }
-</style><div class="ad-fragment"><div class="content-wrapper"><div class="lead-text"><h1>Cartoon Strips - Sad Sack meets Willie and Joe</h1><p>Two U.S. army cartoonist Bill Mauldin and George Baker cheered millions of GIs with their humorous and often poignant portrayals of army life. Baker’s Sad Sack strip appeared in Yank Magazine and reached an estimated 10 million readers. Mauldin portrayed the hardships of two infantryman, Willie and Joe, as they soldiered through the war in Europe</p></div><div class="gallery media13-mixed"><figure><img src="World War 2/Pictures/Post-Sad Sack 1.JPG" alt="Cartoon Strips - Sad Sack meets Willie and Joe"></figure><figure><img src="World War 2/Pictures/Post-Sad Sack 2.JPG" alt="Cartoon Strips - Sad Sack meets Willie and Joe"></figure><figure><img src="World War 2/Pictures/Post-Yank.JPG" alt="Cartoon Strips - Sad Sack meets Willie and Joe"></figure></div></div></div>
+</style><div class="ad-fragment"><div class="content-wrapper"><div class="lead-text"><h1>Cartoon Strips - Sad Sack Meets Willie and Joe</h1><p>Two U.S. Army cartoonists, Bill Mauldin and George Baker, cheered millions of GIs with their humorous and often poignant portrayals of Army life. Baker&rsquo;s Sad Sack strip appeared in Yank Magazine and reached an estimated 10 million readers. Mauldin portrayed the hardships of two infantrymen, Willie and Joe, as they soldiered through the war in Europe.</p></div><div class="mixed-three"><figure><img src="World War 2/Pictures/Post-Sad Sack 1.JPG" alt="Cartoon Strips - Sad Sack Meets Willie and Joe" decoding="async"></figure><figure><img src="World War 2/Pictures/Post-Sad Sack 2.JPG" alt="Cartoon Strips - Sad Sack Meets Willie and Joe" decoding="async"></figure><figure><img src="World War 2/Pictures/Post-Yank.JPG" alt="Cartoon Strips - Sad Sack Meets Willie and Joe" decoding="async"></figure></div></div></div>
