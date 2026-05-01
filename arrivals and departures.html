@@ -139,7 +139,8 @@
         el.classList.remove('active-glow');
         if (!el.classList.contains('inactive-glow')) el.classList.add('inactive-glow');
       });
-      const warBtn = document.getElementById(warIdFromKey(war));
+      const activeWarButton = (war === "korea" || war === "vietnam") ? "cold" : war;
+      const warBtn = document.getElementById(warIdFromKey(activeWarButton));
       if (warBtn) {
         warBtn.classList.remove('inactive-glow');
         warBtn.classList.add('active-glow');
