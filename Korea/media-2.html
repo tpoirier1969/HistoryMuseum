@@ -1,81 +1,168 @@
 <style>
 .ad-fragment {
+  --ad-work-w: 1260px;
+  --ad-text-w: 960px;
+  --ad-gap: 18px;
+  --ad-border: 6px solid #111;
+  --ad-radius: 6px;
   box-sizing: border-box;
-  max-width: 1260px;
+  max-width: var(--ad-work-w);
   margin: 0 auto;
-  padding: 14px 18px 24px;
+  padding: 8px 16px 18px;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 1.3;
+  line-height: 1.28;
 }
-.ad-fragment * { box-sizing: border-box; }
+.ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
+.ad-fragment .content-wrapper {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+}
 .ad-fragment h1 {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: #000;
   font-size: 34px;
   line-height: 1.08;
   font-weight: 700;
 }
-.ad-fragment p { margin: 0 0 14px; }
-.content-wrapper {
-  max-width: 1220px;
-  margin: 0 auto;
+.ad-fragment p { margin: 0 0 10px; }
+.ad-fragment .lead-text,
+.ad-fragment .bio-text,
+.ad-fragment .kiosk-text {
+  width: min(var(--ad-text-w), 100%);
+  max-width: min(var(--ad-text-w), 100%);
+  margin: 0 auto 14px;
 }
-.split-layout {
+.ad-fragment .lead-text,
+.ad-fragment .kiosk-text,
+.ad-fragment .center-copy {
+  text-align: center;
+}
+.ad-fragment .center-stage {
+  min-height: min(650px, calc(100vh - 245px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ad-fragment .visual-area {
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ad-fragment .split-layout {
+  width: 100%;
   display: grid;
-  grid-template-columns: minmax(430px, 48%) 1fr;
-  gap: 28px;
-  align-items: start;
+  grid-template-columns: minmax(420px, 0.92fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
 }
-.media-figure {
+.ad-fragment .split-layout.image-heavy {
+  grid-template-columns: minmax(500px, 1.08fr) minmax(0, .72fr);
+}
+.ad-fragment .image-row,
+.ad-fragment .gallery {
+  width: 100%;
+  display: grid;
+  gap: var(--ad-gap);
+  align-items: start;
+  justify-items: center;
+}
+.ad-fragment .image-row.two,
+.ad-fragment .gallery.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ad-fragment .gallery.five {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  row-gap: 12px;
+  column-gap: 18px;
+}
+.ad-fragment .gallery.five figure:nth-child(-n+3) { grid-column: span 2; }
+.ad-fragment .gallery.five figure:nth-child(n+4) { grid-column: span 3; }
+.ad-fragment .image-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.ad-fragment figure {
   margin: 0;
   padding: 0;
-  width: 100%;
-  max-width: 600px;
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.media-figure img {
+.ad-fragment img {
   display: block;
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 555px;
   object-fit: contain;
-  border: 6px solid #111;
-  border-radius: 6px;
-  margin-bottom: 0 !important;
-  filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15));
+  border: var(--ad-border);
+  border-radius: var(--ad-radius);
+  background: transparent;
 }
-figcaption {
+.ad-fragment figcaption,
+.ad-fragment .caption {
   display: block;
-  width: auto;
+  width: 100%;
   max-width: 100%;
   margin: 4px auto 0;
   padding: 0;
   color: #000;
   font-size: 15px;
-  line-height: 1.15;
+  line-height: 1.14;
   font-style: italic;
   text-align: center;
 }
-.bio-text { min-width: 0; }
+.ad-fragment .text-only {
+  width: min(900px, 100%);
+  text-align: center;
+}
+.ad-fragment .single-hero img { max-height: 560px; }
+.ad-fragment .split-layout img { max-height: 550px; }
+.ad-fragment .image-row.two img { max-height: 440px; }
+.ad-fragment .gallery.five img { max-height: 245px; }
+.ad-fragment .large-poster img { max-height: 640px; }
+.ad-fragment .wide-headline img { max-height: 230px; }
+.ad-fragment .scene-img img { max-height: 425px; }
+.ad-fragment .plane-img img { max-height: 285px; }
 @media (max-width: 1050px) {
-  .split-layout { grid-template-columns: 1fr; }
-  .media-figure { max-width: 100%; }
+  .ad-fragment { font-size: 19px; }
+  .ad-fragment .center-stage { min-height: 0; }
+  .ad-fragment .split-layout,
+  .ad-fragment .split-layout.image-heavy,
+  .ad-fragment .image-row.two,
+  .ad-fragment .gallery.five {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ad-fragment .gallery.five figure { grid-column: auto !important; }
+  .ad-fragment img { max-height: none !important; }
 }
 </style>
-<div class="ad-fragment">
-  <div class="content-wrapper split-layout">
-    <figure class="media-figure">
-      <img class="with-border responsive" src="Korea/Pictures/blasting.jpg" alt="American troops blasting Yongdok with their 105-mm howitzer">
-      <figcaption>American troops blasting Yongdok with their 105-mm howitzer. 23 July 1950. Yongdok, Korea. Signal Corps Photo #8A/FEC-50-4506 (Sgt. Riley)</figcaption>
-    </figure>
-    <section class="bio-text">
-      <h1>Korean War</h1>
-      <p>The Allied victory over fascism ended WWII but it did not ensure global peace. Even before the last shots of WWII had been fired, a new and even greater evil threaten the existence of the free world. Communism under the leadership of the dictators Stalin and Mao would plunge the world in to a forty five year conflict know as the Cold War. Starting with an attempt to overthrow the Greek government, the occupation of eastern Europe, an invasion of Iran and the threaten invasion of Turkey, Stalin ignited the Cold War in Europe while in China the resumption of the Chinese Civil War would spread communism through Asia. The First Indo China War, the Malayan Emergency, the invasion of Tibet and the Korean War were the early campaigns in the Cold War.</p>
-    </section>
+
+<div class="ad-fragment media-2-panel">
+  <div class="content-wrapper center-stage">
+    <div class="split-layout">
+      <figure>
+        <img decoding="async" src="Korea/Pictures/blasting.jpg" alt="American troops blasting Yongdok with their 105-mm howitzer">
+        <figcaption>American troops blasting Yongdok with their 105-mm howitzer. 23 July 1950. Yongdok, Korea. Signal Corps Photo #8A/FEC-50-4506 (Sgt. Riley)</figcaption>
+      </figure>
+      <section class="bio-text">
+        <h1>Korean War</h1>
+        <p>The Allied victory over fascism ended WWII but it did not ensure global peace. Even before the last shots of WWII had been fired, a new and even greater evil threatened the existence of the free world. Communism under the leadership of the dictators Stalin and Mao would plunge the world into a forty-five-year conflict known as the Cold War. Starting with an attempt to overthrow the Greek government, the occupation of eastern Europe, an invasion of Iran and the threatened invasion of Turkey, Stalin ignited the Cold War in Europe while in China the resumption of the Chinese Civil War would spread communism through Asia. The First Indo China War, the Malayan Emergency, the invasion of Tibet and the Korean War were the early campaigns in the Cold War.</p>
+      </section>
+    </div>
   </div>
 </div>

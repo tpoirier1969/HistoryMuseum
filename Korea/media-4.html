@@ -1,115 +1,182 @@
 <style>
 .ad-fragment {
+  --ad-work-w: 1260px;
+  --ad-text-w: 960px;
+  --ad-gap: 18px;
+  --ad-border: 6px solid #111;
+  --ad-radius: 6px;
   box-sizing: border-box;
-  max-width: 1260px;
+  max-width: var(--ad-work-w);
   margin: 0 auto;
-  padding: 10px 18px 18px;
+  padding: 8px 16px 18px;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 19px;
-  line-height: 1.24;
+  font-size: 20px;
+  line-height: 1.28;
 }
-.ad-fragment * { box-sizing: border-box; }
+.ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
+.ad-fragment .content-wrapper {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
+}
 .ad-fragment h1 {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   color: #000;
   font-size: 34px;
   line-height: 1.08;
   font-weight: 700;
 }
-.ad-fragment p { margin: 0; }
-.content-wrapper {
-  max-width: 1220px;
-  height: min(735px, calc(100vh - 220px));
-  min-height: 0;
-  margin: 0 auto;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 10px;
+.ad-fragment p { margin: 0 0 10px; }
+.ad-fragment .lead-text,
+.ad-fragment .bio-text,
+.ad-fragment .kiosk-text {
+  width: min(var(--ad-text-w), 100%);
+  max-width: min(var(--ad-text-w), 100%);
+  margin: 0 auto 14px;
 }
-.lead-text {
-  max-width: 1160px;
-  margin: 0 auto;
+.ad-fragment .lead-text,
+.ad-fragment .kiosk-text,
+.ad-fragment .center-copy {
+  text-align: center;
 }
-.visual-area {
+.ad-fragment .center-stage {
+  min-height: min(650px, calc(100vh - 245px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ad-fragment .visual-area {
+  width: 100%;
   min-height: 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.gallery.five {
+.ad-fragment .split-layout {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 13px 20px;
-  align-items: start;
+  grid-template-columns: minmax(420px, 0.92fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
 }
-.gallery.five .media-figure:nth-child(-n+3) { grid-column: span 2; }
-.gallery.five .media-figure:nth-child(n+4) { grid-column: span 3; }
-.media-figure {
+.ad-fragment .split-layout.image-heavy {
+  grid-template-columns: minmax(500px, 1.08fr) minmax(0, .72fr);
+}
+.ad-fragment .image-row,
+.ad-fragment .gallery {
+  width: 100%;
+  display: grid;
+  gap: var(--ad-gap);
+  align-items: start;
+  justify-items: center;
+}
+.ad-fragment .image-row.two,
+.ad-fragment .gallery.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ad-fragment .gallery.five {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  row-gap: 12px;
+  column-gap: 18px;
+}
+.ad-fragment .gallery.five figure:nth-child(-n+3) { grid-column: span 2; }
+.ad-fragment .gallery.five figure:nth-child(n+4) { grid-column: span 3; }
+.ad-fragment .image-stack {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+}
+.ad-fragment figure {
   margin: 0;
   padding: 0;
   min-width: 0;
-  width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.media-figure img {
+.ad-fragment img {
   display: block;
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: 210px;
   object-fit: contain;
-  border: 6px solid #111;
-  border-radius: 6px;
-  margin-bottom: 0 !important;
-  filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15));
+  border: var(--ad-border);
+  border-radius: var(--ad-radius);
+  background: transparent;
 }
-figcaption {
+.ad-fragment figcaption,
+.ad-fragment .caption {
   display: block;
-  width: auto;
+  width: 100%;
   max-width: 100%;
-  margin: 3px auto 0;
+  margin: 4px auto 0;
   padding: 0;
   color: #000;
-  font-size: 14px;
-  line-height: 1.12;
+  font-size: 15px;
+  line-height: 1.14;
   font-style: italic;
   text-align: center;
 }
+.ad-fragment .text-only {
+  width: min(900px, 100%);
+  text-align: center;
+}
+.ad-fragment .single-hero img { max-height: 560px; }
+.ad-fragment .split-layout img { max-height: 550px; }
+.ad-fragment .image-row.two img { max-height: 440px; }
+.ad-fragment .gallery.five img { max-height: 245px; }
+.ad-fragment .large-poster img { max-height: 640px; }
+.ad-fragment .wide-headline img { max-height: 230px; }
+.ad-fragment .scene-img img { max-height: 425px; }
+.ad-fragment .plane-img img { max-height: 285px; }
 @media (max-width: 1050px) {
-  .content-wrapper { height: auto; display: block; }
-  .gallery.five { grid-template-columns: 1fr; }
-  .gallery.five .media-figure { grid-column: auto !important; }
+  .ad-fragment { font-size: 19px; }
+  .ad-fragment .center-stage { min-height: 0; }
+  .ad-fragment .split-layout,
+  .ad-fragment .split-layout.image-heavy,
+  .ad-fragment .image-row.two,
+  .ad-fragment .gallery.five {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ad-fragment .gallery.five figure { grid-column: auto !important; }
+  .ad-fragment img { max-height: none !important; }
 }
 </style>
+
 <div class="ad-fragment media-4-panel">
-  <div class="content-wrapper">
+  <div class="content-wrapper center-stage">
     <section class="lead-text">
       <h1>Headlines</h1>
-      <p>The advent of truce talks in July 1951 came on the heels of a successful United Nations offensive that had not only cleared most of South Korea of Communist forces but captured limited areas of North Korea as well. The negotiations would drag on for two years as the sides tried to reach agreements on such issues as a cease fire line, new border between North and South Korea and the repartition of prisoners of war. The last being a major issue as tens of thousands of Chinese and North Korean did not want to return to their communist homelands.</p>
+      <p>The advent of truce talks in July 1951 came on the heels of a successful United Nations offensive that had not only cleared most of South Korea of Communist forces but captured limited areas of North Korea as well. The negotiations would drag on for two years as the sides tried to reach agreements on such issues as a cease fire line, a new border between North and South Korea, and the repatriation of prisoners of war. The last was a major issue, as tens of thousands of Chinese and North Korean prisoners did not want to return to their communist homelands.</p>
     </section>
     <div class="visual-area">
       <div class="gallery five">
-        <figure class="media-figure">
-          <img class="with-border responsive" src="Korea/Pictures/liberate Seoul.jpg" alt="MacArthur liberates Seoul">
+        <figure>
+          <img decoding="async" src="Korea/Pictures/liberate Seoul.jpg" alt="MacArthur liberates Seoul">
           <figcaption>September 15-16, 1960, MacArthur liberates Seoul</figcaption>
         </figure>
-        <figure class="media-figure">
-          <img class="with-border responsive" src="Korea/Pictures/liberate Seoul.jpg" alt="MacArthur pushes toward the northern border">
-          <figcaption>Oct 16, 1950 War, was thought to be at end when MacArthur takes the northern capitol and drives all the way to nortehr border</figcaption>
+        <figure>
+          <img decoding="async" src="Korea/Pictures/liberate Seoul.jpg" alt="MacArthur pushes toward the northern border">
+          <figcaption>Oct 16, 1950 War, was thought to be at end when MacArthur takes the northern capitol and drives all the way to northern border</figcaption>
         </figure>
-        <figure class="media-figure">
-          <img class="with-border responsive" src="Korea/Pictures/HD-badly mauled.jpg" alt="Chinese troops attack UN forces">
+        <figure>
+          <img decoding="async" src="Korea/Pictures/HD-badly mauled.jpg" alt="Chinese troops attack UN forces">
           <figcaption>Nov 29, 1950, The Chinese troops attack UN forces taking back the northern capitol, then continually on south of the 38th parallel to retake Seoul.</figcaption>
         </figure>
-        <figure class="media-figure">
-          <img class="with-border responsive" src="Korea/Pictures/tank.jpg" alt="Tank">
+        <figure>
+          <img decoding="async" src="Korea/Pictures/tank.jpg" alt="Tank">
         </figure>
-        <figure class="media-figure">
-          <img class="with-border responsive" src="Korea/Pictures/Flames.jpg" alt="Flames">
+        <figure>
+          <img decoding="async" src="Korea/Pictures/Flames.jpg" alt="Flames">
         </figure>
       </div>
     </div>

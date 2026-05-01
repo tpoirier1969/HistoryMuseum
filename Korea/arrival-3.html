@@ -1,117 +1,165 @@
 <style>
 .ad-fragment {
+  --ad-work-w: 1260px;
+  --ad-text-w: 960px;
+  --ad-gap: 18px;
+  --ad-border: 6px solid #111;
+  --ad-radius: 6px;
   box-sizing: border-box;
-  max-width: 1260px;
+  max-width: var(--ad-work-w);
   margin: 0 auto;
-  padding: 12px 18px 22px;
+  padding: 8px 16px 18px;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 1.32;
+  line-height: 1.28;
 }
-.ad-fragment * {
-  box-sizing: border-box;
+.ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
+.ad-fragment .content-wrapper {
+  width: 100%;
+  max-width: 1220px;
+  margin: 0 auto;
 }
 .ad-fragment h1 {
-  margin: 0 0 14px;
+  margin: 0 0 10px;
   color: #000;
   font-size: 34px;
   line-height: 1.08;
   font-weight: 700;
 }
-.ad-fragment p {
-  margin: 0 0 14px;
+.ad-fragment p { margin: 0 0 10px; }
+.ad-fragment .lead-text,
+.ad-fragment .bio-text,
+.ad-fragment .kiosk-text {
+  width: min(var(--ad-text-w), 100%);
+  max-width: min(var(--ad-text-w), 100%);
+  margin: 0 auto 14px;
 }
-.content-wrapper {
-  max-width: 1180px;
-  margin: 0 auto;
+.ad-fragment .lead-text,
+.ad-fragment .kiosk-text,
+.ad-fragment .center-copy {
+  text-align: center;
 }
-.kiosk-text {
-  max-width: 1080px;
-  margin: 0 auto 20px;
+.ad-fragment .center-stage {
+  min-height: min(650px, calc(100vh - 245px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.image-row {
+.ad-fragment .visual-area {
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ad-fragment .split-layout {
+  width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px 34px;
+  grid-template-columns: minmax(420px, 0.92fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+  justify-content: center;
+}
+.ad-fragment .split-layout.image-heavy {
+  grid-template-columns: minmax(500px, 1.08fr) minmax(0, .72fr);
+}
+.ad-fragment .image-row,
+.ad-fragment .gallery {
+  width: 100%;
+  display: grid;
+  gap: var(--ad-gap);
   align-items: start;
   justify-items: center;
 }
-.image-stack {
+.ad-fragment .image-row.two,
+.ad-fragment .gallery.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ad-fragment .gallery.five {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  row-gap: 12px;
+  column-gap: 18px;
+}
+.ad-fragment .gallery.five figure:nth-child(-n+3) { grid-column: span 2; }
+.ad-fragment .gallery.five figure:nth-child(n+4) { grid-column: span 3; }
+.ad-fragment .image-stack {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
+  justify-content: center;
 }
-figure {
+.ad-fragment figure {
   margin: 0;
   padding: 0;
   min-width: 0;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-figure img,
-.with-border {
+.ad-fragment img {
   display: block;
   width: auto;
   height: auto;
   max-width: 100%;
-  border: 6px solid #111;
-  border-radius: 6px;
-  margin-bottom: 0 !important;
+  object-fit: contain;
+  border: var(--ad-border);
+  border-radius: var(--ad-radius);
+  background: transparent;
 }
-figcaption,
-.caption {
+.ad-fragment figcaption,
+.ad-fragment .caption {
   display: block;
-  margin: 7px 0 0;
+  width: 100%;
+  max-width: 100%;
+  margin: 4px auto 0;
   padding: 0;
   color: #000;
-  font-size: 17px;
-  line-height: 1.18;
+  font-size: 15px;
+  line-height: 1.14;
   font-style: italic;
   text-align: center;
 }
+.ad-fragment .text-only {
+  width: min(900px, 100%);
+  text-align: center;
+}
+.ad-fragment .single-hero img { max-height: 560px; }
+.ad-fragment .split-layout img { max-height: 550px; }
+.ad-fragment .image-row.two img { max-height: 440px; }
+.ad-fragment .gallery.five img { max-height: 245px; }
+.ad-fragment .large-poster img { max-height: 640px; }
+.ad-fragment .wide-headline img { max-height: 230px; }
+.ad-fragment .scene-img img { max-height: 425px; }
+.ad-fragment .plane-img img { max-height: 285px; }
 @media (max-width: 1050px) {
-  .image-row {
-    grid-template-columns: 1fr;
+  .ad-fragment { font-size: 19px; }
+  .ad-fragment .center-stage { min-height: 0; }
+  .ad-fragment .split-layout,
+  .ad-fragment .split-layout.image-heavy,
+  .ad-fragment .image-row.two,
+  .ad-fragment .gallery.five {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .ad-fragment {
-    font-size: 19px;
-  }
+  .ad-fragment .gallery.five figure { grid-column: auto !important; }
+  .ad-fragment img { max-height: none !important; }
 }
 </style>
+
 <div class="ad-fragment arrival-3-panel">
-  <style>
-    .arrival-3-panel .content-wrapper {
-      max-width: 1180px;
-      display: grid;
-      grid-template-columns: minmax(480px, 58%) 1fr;
-      gap: 28px;
-      align-items: flex-start;
-    }
-    .arrival-3-panel img {
-      max-height: 575px;
-      max-width: 100%;
-      width: auto;
-      height: auto;
-    }
-    .arrival-3-panel .bio-text {
-      text-align: left;
-    }
-    @media (max-width: 1050px) {
-      .arrival-3-panel .content-wrapper {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
-  <div class="content-wrapper">
-    <figure>
-      <img class="with-border responsive" src="Korea/Pictures/tank.jpg" alt="Detroit Arsenal Tank Plant">
-    </figure>
-    <section class="bio-text">
+  <div class="content-wrapper center-stage">
+    <section class="lead-text">
       <h1>Detroit Arsenal Tank Plant</h1>
       <p>Run by Chrysler but owned by the government.</p>
     </section>
+    <figure class="single-hero">
+      <img decoding="async" src="Korea/Pictures/tank.jpg" alt="Detroit Arsenal Tank Plant">
+    </figure>
   </div>
 </div>
