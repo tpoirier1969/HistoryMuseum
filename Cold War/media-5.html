@@ -1,109 +1,56 @@
 <style>
 .ad-fragment {
   --ad-work-w: 1260px;
-  --ad-text-w: 960px;
-  --ad-gap: 18px;
+  --ad-text-w: 1010px;
+  --ad-gap: 10px;
   --ad-border: 6px solid #111;
   --ad-radius: 6px;
   box-sizing: border-box;
   max-width: var(--ad-work-w);
   margin: 0 auto;
-  padding: 8px 16px 18px;
+  padding: 4px 12px 12px;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  line-height: 1.24;
+  font-size: 18px;
+  line-height: 1.18;
 }
 .ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
-.ad-fragment .content-wrapper {
-  width: 100%;
-  max-width: 1220px;
-  margin: 0 auto;
-}
+.ad-fragment .content-wrapper { width: 100%; max-width: 1220px; margin: 0 auto; }
 .ad-fragment h1 {
-  margin: 0 0 10px;
+  margin: 0 0 6px;
   color: #000;
-  font-size: 34px;
-  line-height: 1.08;
+  font-size: 30px;
+  line-height: 1.02;
   font-weight: 700;
 }
-.ad-fragment p { margin: 0 0 9px; }
-.ad-fragment em { font-style: italic; }
-.ad-fragment .lead-text,
-.ad-fragment .text-block,
-.ad-fragment .bio-text,
-.ad-fragment .kiosk-text {
+.ad-fragment p { margin: 0 0 6px; }
+.ad-fragment .lead-text {
   width: min(var(--ad-text-w), 100%);
   max-width: min(var(--ad-text-w), 100%);
-  margin: 0 auto 14px;
+  margin: 0 auto 8px;
   text-align: center;
 }
-.ad-fragment .lead-text.wide,
-.ad-fragment .text-block.wide {
-  width: min(1030px, 100%);
-  max-width: min(1030px, 100%);
-}
 .ad-fragment .center-stage {
-  min-height: min(650px, calc(100vh - 245px));
+  min-height: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.ad-fragment .text-only {
-  width: min(940px, 100%);
-  text-align: center;
-  font-size: 23px;
-  line-height: 1.24;
-}
-.ad-fragment .text-only h1 {
-  font-size: 40px;
-  line-height: 1.06;
-  margin-bottom: 12px;
 }
 .ad-fragment .visual-area {
   width: 100%;
-  min-height: 0;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.ad-fragment .image-grid {
-  width: 100%;
+.ad-fragment .image-grid.five {
+  width: min(1180px, 100%);
   display: grid;
-  gap: var(--ad-gap);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
   justify-content: center;
   justify-items: center;
   align-items: start;
-}
-.ad-fragment .image-grid.two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.ad-fragment .image-grid.four {
-  width: min(1080px, 100%);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.ad-fragment .image-grid.five {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  row-gap: 12px;
-  column-gap: 16px;
-}
-.ad-fragment .image-grid.five figure:nth-child(-n+3) { grid-column: span 2; }
-.ad-fragment .image-grid.five figure:nth-child(n+4) { grid-column: span 3; }
-.ad-fragment .image-stack {
-  width: min(1060px, 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-.ad-fragment .split-layout {
-  width: 100%;
-  display: grid;
-  grid-template-columns: minmax(500px, 1fr) minmax(0, .78fr);
-  gap: 24px;
-  justify-content: center;
-  align-items: center;
 }
 .ad-fragment figure {
   margin: 0;
@@ -117,9 +64,10 @@
 }
 .ad-fragment img {
   display: block;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
+  max-height: 230px;
   object-fit: contain;
   border: var(--ad-border);
   border-radius: var(--ad-radius);
@@ -133,56 +81,22 @@
   margin: 1px auto 0;
   padding: 0;
   color: #000;
-  font-size: 14px;
-  line-height: 1.08;
+  font-size: 12px;
+  line-height: 1.05;
   font-style: italic;
   text-align: center;
 }
-.ad-fragment .headline-large { width: min(545px, 100%); }
-.ad-fragment .headline { width: min(335px, 100%); }
-.ad-fragment .poster { width: min(385px, 100%); }
-.ad-fragment .wide { width: min(530px, 100%); }
-.ad-fragment .wide-tall { width: min(760px, 100%); }
-.ad-fragment .map { width: min(500px, 100%); }
-.ad-fragment .scan { width: min(370px, 100%); }
-.ad-fragment .single-large {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.ad-fragment .clip-list {
-  width: min(980px, 100%);
-  margin: 20px auto 0;
-  padding: 0;
-  list-style: none;
-  text-align: center;
-}
-.ad-fragment .clip-list li { margin: 0 0 9px; }
-.ad-fragment .clip-list a {
-  color: #000;
-  text-decoration: underline;
-  font-weight: 700;
-  font-size: 23px;
-  line-height: 1.16;
-}
-.ad-fragment .clip-list a::before { content: "▶ "; font-weight: 700; }
+.ad-fragment .scan { width: min(220px, 100%); }
 @media (max-width: 1050px) {
   .ad-fragment { font-size: 18px; }
-  .ad-fragment .center-stage { min-height: 0; }
-  .ad-fragment .split-layout,
-  .ad-fragment .image-grid.two,
-  .ad-fragment .image-grid.four,
   .ad-fragment .image-grid.five {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
   }
-  .ad-fragment .image-grid.five figure { grid-column: auto !important; }
-  .ad-fragment .text-only h1 { font-size: 36px; }
+  .ad-fragment img { max-height: none; }
 }
 </style>
-
 <div class="ad-fragment media-5-panel">
   <div class="content-wrapper center-stage">
     <section class="lead-text wide">
@@ -191,7 +105,7 @@
       <p>The two American officers, a South Korean officer, and several American enlisted men were escorting Korean Service Corps workers trimming trees in Panmunjom. After North Korean objections, additional guards arrived and the attack followed. Marquette resident John Moschetti was stationed near the DMZ at the time.</p>
     </section>
     <div class="visual-area">
-      <div class="image-grid five" style="width:min(1080px,100%);">
+      <div class="image-grid five">
         <figure class="scan">
           <img decoding="async" src="Cold War/pictures/scan0004.jpg" alt="Korea DMZ scan 0004">
           <figcaption>Personnel and terrain connected to the Panmunjom incident.</figcaption>

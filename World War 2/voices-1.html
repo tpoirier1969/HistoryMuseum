@@ -21,7 +21,7 @@
 .ad-fragment .lead-text { width: min(1160px, 100%); max-width: min(1160px, 100%); margin: 0 auto 12px; }
 .ad-fragment .lead-text.wide-title h1 { white-space: nowrap; font-size: 32px; }
 .ad-fragment .lead-text.tight { margin-bottom: 8px; }
-.ad-fragment .split-layout { display: grid; grid-template-columns: minmax(300px,.45fr) minmax(0,.55fr); gap: var(--ad-gap); align-items: start; }
+.ad-fragment .split-layout { display: grid; grid-template-columns: minmax(300px,.45fr) minmax(0,.55fr); gap: var(--ad-gap); align-items: center; }
 .ad-fragment .split-layout .lead-text { max-width: 62ch; margin: 0; }
 .ad-fragment .gallery,
 .ad-fragment .headline-top,
@@ -42,13 +42,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  gap: 2px;
   flex: 0 1 auto;
   width: auto;
   min-width: 0;
   max-width: 100%;
   text-align: center;
 }
-.ad-fragment img, .ad-fragment video {
+.ad-fragment img,
+.ad-fragment video {
   display: block;
   width: auto;
   max-width: 100%;
@@ -59,14 +61,15 @@
   border-radius: var(--ad-radius);
   background: transparent;
 }
+.ad-fragment video { background: #000; }
 .ad-fragment figcaption {
   display: block;
-  margin: 2px 0 0;
+  margin: 1px auto 0;
   padding: 0;
   width: 100%;
   max-width: 100%;
   font-size: var(--ad-caption);
-  line-height: 1.12;
+  line-height: 1.08;
   font-style: italic;
   text-align: center;
   overflow-wrap: anywhere;
@@ -77,7 +80,8 @@
 .ad-fragment .two-images img { max-height: 470px; max-width: 100%; }
 .ad-fragment .three-images { min-height: 520px; align-content: center; }
 .ad-fragment .three-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .three-images img { max-height: 355px; max-width: 100%; }
+.ad-fragment .three-images img,
+.ad-fragment .three-images video { max-height: 355px; max-width: 100%; }
 .ad-fragment .four-wide {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -91,25 +95,11 @@
 }
 .ad-fragment .four-wide figure { width: 100%; }
 .ad-fragment .four-wide img { max-height: 265px; max-width: 100%; }
-.ad-fragment .four-posters { flex-wrap: nowrap; min-height: 560px; align-content: center; }
-.ad-fragment .four-posters figure { max-width: calc((100% - (3 * var(--ad-gap))) / 4); }
-.ad-fragment .four-posters img { max-height: 430px; max-width: 100%; }
 .ad-fragment .five-landscape figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
 .ad-fragment .five-landscape figure:nth-last-child(-n+2) img { max-height: 290px; }
 .ad-fragment .five-landscape img { max-height: 250px; max-width: 100%; }
-.ad-fragment .five-posters { flex-wrap: nowrap; }
-.ad-fragment .five-posters figure { max-width: calc((100% - (4 * var(--ad-gap))) / 5); }
-.ad-fragment .five-posters img { max-height: 370px; max-width: 100%; }
 .ad-fragment .many-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
 .ad-fragment .many-images img { max-height: 250px; max-width: 100%; }
-.ad-fragment .poster-3 { flex-wrap: nowrap; min-height: 620px; align-content: center; margin-top: 26px; }
-.ad-fragment .poster-3 figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .poster-3 img { max-height: 520px; max-width: 100%; }
-.ad-fragment .headline-top figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-.ad-fragment .headline-bottom figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .headline-top img { max-height: 245px; max-width: 100%; }
-.ad-fragment .headline-bottom img { max-height: 165px; max-width: 100%; }
-.ad-fragment .split-layout figure img { max-width: min(520px,100%); max-height: 500px; }
 .ad-fragment .placeholder {
   width: min(280px, 100%);
   min-height: 145px;
@@ -123,97 +113,20 @@
   font-weight: bold;
   text-align: center;
 }
-.ad-fragment .audio-block { margin: 14px auto 0; text-align: center; display:flex; flex-direction:column; align-items:center; }
+.ad-fragment .audio-block { margin: 14px auto 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
 .ad-fragment audio { width: min(780px,100%); }
-/* Page-specific helpers */
-.ad-fragment .gallery.media6-grid {
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 14px;
-  row-gap: 10px;
-  width:min(1060px,100%);
-  min-height: 560px;
-  align-content:center;
-  justify-content:center;
-  margin-top: 18px;
-}
-.ad-fragment .gallery.media6-grid figure { width:100%; }
-.ad-fragment .gallery.media6-grid img { width:auto; max-width:100%; max-height:245px; }
-.ad-fragment .gallery.media6-grid figcaption { width:min(92%, 300px); max-width:min(92%, 300px); margin:1px auto 0; line-height:1.08; }
-.ad-fragment .gallery.media8-large {
-  min-height: 650px;
-  align-content:center;
-  justify-content:center;
-  margin-top: 36px;
-}
-.ad-fragment .gallery.media8-large figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .gallery.media8-large img { max-height: 555px; max-width:100%; }
-.ad-fragment .gallery.media9-centered {
-  min-height: 600px;
-  align-content:center;
-  justify-content:center;
-  margin-top: 24px;
-}
-.ad-fragment .gallery.media9-centered figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-.ad-fragment .gallery.media9-centered img { max-height: 500px; max-width:100%; }
-.ad-fragment .gallery.media13-mixed {
-  display:grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
-  grid-template-rows: auto auto;
-  column-gap: 16px;
-  row-gap: 12px;
-  width:min(1060px,100%);
-  min-height: 580px;
-  align-content:center;
-  justify-content:center;
-  margin-top: 18px;
-}
-.ad-fragment .gallery.media13-mixed figure { width:100%; max-width:100%; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(1) { grid-column: 1; grid-row: 1; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(2) { grid-column: 1; grid-row: 2; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(3) { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(1) img,
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(2) img { max-height: 235px; max-width:100%; }
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(3) img { max-height: 500px; max-width:100%; }
-@media (max-width:1100px){
+@media (max-width: 1100px) {
   .ad-fragment { font-size: 18px; }
   .ad-fragment .lead-text.wide-title h1 { white-space: normal; }
-  .ad-fragment .split-layout { grid-template-columns: 1fr; }
-  .ad-fragment .four-posters,
-  .ad-fragment .five-posters,
-  .ad-fragment .poster-3,
-  .ad-fragment .gallery.media6-grid,
-  .ad-fragment .gallery.media13-mixed,
-  .ad-fragment .four-wide { display:flex; flex-wrap:wrap; }
+  .ad-fragment .split-layout,
+  .ad-fragment .four-wide { display: flex; flex-wrap: wrap; justify-content: center; }
   .ad-fragment .two-images figure,
   .ad-fragment .three-images figure,
   .ad-fragment .four-wide figure,
-  .ad-fragment .four-posters figure,
   .ad-fragment .five-landscape figure,
-  .ad-fragment .five-posters figure,
-  .ad-fragment .many-images figure,
-  .ad-fragment .poster-3 figure,
-  .ad-fragment .gallery.media8-large figure,
-  .ad-fragment .gallery.media9-centered figure,
-  .ad-fragment .gallery.media13-mixed figure,
-  .ad-fragment .headline-top figure,
-  .ad-fragment .headline-bottom figure { max-width: min(720px,96%); }
-  .ad-fragment .gallery.media6-grid figure { width:min(720px,96%); }
-  .ad-fragment .one-image img,
-  .ad-fragment .two-images img,
-  .ad-fragment .three-images img,
-  .ad-fragment .four-wide img,
-  .ad-fragment .four-posters img,
-  .ad-fragment .five-landscape img,
-  .ad-fragment .five-posters img,
-  .ad-fragment .many-images img,
-  .ad-fragment .poster-3 img,
-  .ad-fragment .gallery.media6-grid img,
-  .ad-fragment .gallery.media8-large img,
-  .ad-fragment .gallery.media9-centered img,
-  .ad-fragment .gallery.media13-mixed img,
-  .ad-fragment .split-layout figure img,
-  .ad-fragment .headline-top img,
-  .ad-fragment .headline-bottom img { max-height: none; }
+  .ad-fragment .many-images figure { max-width: min(720px,96%); }
+  .ad-fragment img,
+  .ad-fragment video { max-height: none; }
 }
-</style><div class="ad-fragment"><div class="content-wrapper"><div class="lead-text"><h1>Women from Upper Michigan served as Army WACs  (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services).</h1><p>Most of these women served stateside in clerical positions or doing medical or aviation.</p></div><div class="gallery four-wide"><figure><img src="World War 2/Pictures/WAC-u-p-girls.jpg" alt="Women from Upper Michigan served as Army WACs  (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services)."><figcaption>Army Nurse stationed in Burma.</figcaption></figure><figure><img src="World War 2/Pictures/WAVE-jean-mcquade.jpg" alt="Women from Upper Michigan served as Army WACs  (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services)."><figcaption>Jean McQuade, WAVE</figcaption></figure><figure><img src="World War 2/Pictures/WAVE-lucy-beard.jpg" alt="Women from Upper Michigan served as Army WACs  (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services)."><figcaption>Lucy Beard, Army Nurses in Burma</figcaption></figure><figure><img src="World War 2/Pictures/red cross nurses.jpg" alt="Women from Upper Michigan served as Army WACs  (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services)."></figure></div></div></div>
+</style>
+<div class="ad-fragment"><div class="content-wrapper"><div class="lead-text"><h1>Women from Upper Michigan served as Army WACs (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services).</h1><p>Most of these women served stateside in clerical positions or doing medical or aviation.</p></div><div class="gallery four-wide"><figure><img src="World War 2/Pictures/WAC-u-p-girls.jpg" alt="Women from Upper Michigan served as Army WACs (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services)."><figcaption>Army Nurse stationed in Burma.</figcaption></figure><figure><img src="World War 2/Pictures/WAVE-jean-mcquade.jpg" alt="Women from Upper Michigan served as Army WACs (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services)."><figcaption>Jean McQuade, WAVE</figcaption></figure><figure><img src="World War 2/Pictures/WAVE-lucy-beard.jpg" alt="Women from Upper Michigan served as Army WACs (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services)."><figcaption>Lucy Beard, Army Nurses in Burma</figcaption></figure><figure><img src="World War 2/Pictures/red cross nurses.jpg" alt="Women from Upper Michigan served as Army WACs (Women’s Army Corps) and as Navy’s WAVEs (Women Accepted for Volunteer Emergency Services)."></figure></div></div></div>
