@@ -14,6 +14,8 @@
   max-width: 1240px;
   margin: 0 auto;
   padding: 0;
+  color: #000;
+  font-family: sans-serif;
 }
 .ad-fragment h1 {
   margin: 0 0 10px;
@@ -23,36 +25,65 @@
 }
 .ad-fragment p {
   margin: 0 0 8px;
+  max-width: 1080px;
 }
+.ad-fragment .header,
+.ad-fragment .bio-text,
+.ad-fragment .plain-text,
 .ad-fragment .text-block {
   max-width: 1080px;
-  margin: 0 auto 12px;
+  margin: 0 auto 10px;
 }
-.ad-fragment .text-block.narrow { max-width: 900px; }
-.ad-fragment .text-block.compact { max-width: 1080px; font-size: 18px; line-height: 1.18; }
-.ad-fragment .text-block.compact h1 { font-size: 32px; }
 .ad-fragment .role-note {
+  margin: 0 0 8px;
   font-style: italic;
   white-space: pre-line;
 }
+.ad-fragment .lede { max-width: 1080px; }
+.ad-fragment .note {
+  max-width: 1080px;
+  font-size: 18px;
+  line-height: 1.2;
+  font-style: italic;
+}
+.ad-fragment .layout-text-media,
+.ad-fragment .layout-media-text,
+.ad-fragment .layout-dense,
+.ad-fragment .center-layout {
+  display: block;
+}
+.ad-fragment .layout-dense,
+.ad-fragment .page.compact {
+  font-size: 18px;
+  line-height: 1.16;
+}
+.ad-fragment .layout-dense h1,
+.ad-fragment .page.compact h1 { font-size: 32px; }
 .ad-fragment .gallery,
+.ad-fragment .media-stack,
 .ad-fragment .media-grid {
   display: grid;
   gap: 14px;
-  align-items: start;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   margin: 10px auto 0;
+  min-height: 430px;
 }
 .ad-fragment .gallery.two,
+.ad-fragment .media-stack.two,
 .ad-fragment .media-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .ad-fragment .gallery.three,
+.ad-fragment .media-stack.three,
 .ad-fragment .media-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .ad-fragment .gallery.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .ad-fragment .gallery.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ad-fragment .gallery.tight,
+.ad-fragment .media-stack.tight { gap: 12px; }
 .ad-fragment figure {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin: 0 auto;
+  display: table;
+  max-width: 100%;
 }
 .ad-fragment img {
   display: block;
@@ -65,25 +96,36 @@
   background: transparent;
   filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,0.15));
 }
-.ad-fragment .gallery.two img { max-height: 470px; }
-.ad-fragment .gallery.three img { max-height: 340px; }
-.ad-fragment .gallery.four img { max-height: 300px; }
-.ad-fragment .gallery.six img { max-height: 240px; }
-.ad-fragment .gallery.posters img { max-height: 350px; }
+.ad-fragment .gallery.two img,
+.ad-fragment .media-stack.two img { max-height: 480px; }
+.ad-fragment .gallery.three img,
+.ad-fragment .media-stack.three img { max-height: 360px; }
+.ad-fragment .gallery.four img { max-height: 285px; }
+.ad-fragment .gallery.six img { max-height: 235px; }
 .ad-fragment .gallery.news img { max-height: 560px; }
-.ad-fragment .gallery.single {
+.ad-fragment .gallery.single,
+.ad-fragment .media-stack:not(.two):not(.three),
+.ad-fragment .media-grid:not(.two):not(.three):not(.four) {
   grid-template-columns: minmax(0, 1fr);
-  max-width: 900px;
+  max-width: 980px;
 }
-.ad-fragment .gallery.single img { max-height: 520px; }
+.ad-fragment .gallery.single img,
+.ad-fragment .media-stack:not(.two):not(.three) img { max-height: 540px; }
 .ad-fragment figcaption {
-  margin: 6px 0 0;
-  font-size: 14px;
-  line-height: 1.15;
+  display: table-caption;
+  caption-side: bottom;
+  margin: 0;
+  padding-top: 3px;
+  font-size: 13px;
+  line-height: 1.1;
   font-style: italic;
   text-align: center;
 }
-.ad-fragment .media-link {
+.ad-fragment .media-link,
+.ad-fragment .media-video,
+.ad-fragment .audio-card,
+.ad-fragment .doc-card,
+.ad-fragment .video-card {
   min-height: 126px;
   padding: 14px;
   border: 6px solid #000;
@@ -99,26 +141,32 @@
   gap: 8px;
   filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,0.15));
 }
-.ad-fragment .media-grid.three .media-link { min-height: 118px; }
-.ad-fragment .media-grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.ad-fragment .media-grid.four .media-link { min-height: 112px; }
-.ad-fragment .media-icon { font-size: 14px; font-weight: 700; letter-spacing: .06em; }
-.ad-fragment .media-title { font-size: 18px; line-height: 1.14; }
-.ad-fragment audio { width: 100%; max-width: 520px; }
-.ad-fragment .page.compact { font-size: 18px; line-height: 1.17; }
-.ad-fragment .page.compact h1 { font-size: 32px; }
-.ad-fragment .page.compact .gallery.four img { max-height: 250px; }
-.ad-fragment .page.compact .media-link { min-height: 110px; }
-.ad-fragment .page.compact .media-title { font-size: 17px; }
-.ad-fragment .page.compact figcaption { font-size: 13px; }
+.ad-fragment .media-icon {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+.ad-fragment .media-title {
+  font-size: 18px;
+  line-height: 1.14;
+}
+.ad-fragment audio {
+  width: 100%;
+  max-width: 520px;
+}
 @media (max-width: 1100px) {
   .ad-fragment { font-size: 18px; }
   .ad-fragment h1 { font-size: 31px; }
-  .ad-fragment .text-block.compact { font-size: 17px; }
+  .ad-fragment .gallery,
+  .ad-fragment .media-stack,
+  .ad-fragment .media-grid { min-height: 0; }
   .ad-fragment .gallery.two,
   .ad-fragment .gallery.three,
   .ad-fragment .gallery.four,
   .ad-fragment .gallery.six,
+  .ad-fragment .media-stack.two,
+  .ad-fragment .media-stack.three,
   .ad-fragment .media-grid.two,
   .ad-fragment .media-grid.three,
   .ad-fragment .media-grid.four { grid-template-columns: 1fr; }
@@ -127,25 +175,31 @@
   .ad-fragment .gallery.three img,
   .ad-fragment .gallery.four img,
   .ad-fragment .gallery.six img,
-  .ad-fragment .gallery.posters img,
   .ad-fragment .gallery.news img,
-  .ad-fragment .gallery.single img { max-height: none; width: 100%; }
+  .ad-fragment .gallery.single img,
+  .ad-fragment .media-stack.two img,
+  .ad-fragment .media-stack.three img {
+    max-height: none;
+    width: 100%;
+  }
 }
 </style>
 <div class="ad-fragment">
   <div class="content-wrapper">
-    <div class="page">
-<div class="text-block narrow">
+<section class="layout-text-media">
+<div class="bio-text">
+<div class="header">
 <h1>Draft Protest</h1>
-<p>Protests to the draft have occurred since at least the Spanish American War. During the Vietnam War, draft evasion and resistance reached an all-time peak. Some filed as conscientious objectors, some failed to report for induction, some attempted a disability claim, and some fled to Canada. Because of the high number, President Carter granted amnesty to those who fled the country in 1977.</p>
-<p>An estimated one third of the troops in Vietnam were volunteers. Unlike other conflicts, some men volunteered in order to avoid being a “grunt,” or infantryman.</p>
-<p>On college campuses, where young men faced the draft following graduation, protests against the draft and the war were the greatest.</p>
+<p class="lede">Protests to the draft have occurred since at least the Spanish American War. During the Vietnam War, draft evasion and resistance reached an all-time peak. Some filed as conscientious objectors, some failed to report for induction, some attempted a disability claim, and some fled to Canada. Because of the high number, President Carter granted amnesty to those who fled the country in 1977.</p>
+<p class="lede">An estimated one third of the troops in Vietnam were volunteers. Unlike other conflicts, some men volunteered in order to avoid being a “grunt,” or infantryman.</p>
+<p class="lede">On college campuses, where young men faced the draft following graduation, protests against the draft and the war were the greatest.</p>
 </div>
-<section class="gallery single">
+</div>
+<div class="media-stack">
 <figure>
-<img src="Vietnam/RuskDemonstration10-31-1967b.jpg" alt="Draft / anti-war protest"/>
+<img alt="Draft / anti-war protest" src="Vietnam/RuskDemonstration10-31-1967b.jpg"/>
 </figure>
+</div>
 </section>
-    </div>
   </div>
 </div>

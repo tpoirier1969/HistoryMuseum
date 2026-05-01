@@ -3,178 +3,76 @@
   box-sizing: border-box;
   max-width: 1260px;
   margin: 0 auto;
-  padding: 14px 18px 26px;
+  padding: 14px 18px 24px;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 1.32;
+  line-height: 1.3;
 }
-.ad-fragment * {
-  box-sizing: border-box;
-}
+.ad-fragment * { box-sizing: border-box; }
 .ad-fragment h1 {
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   color: #000;
   font-size: 34px;
   line-height: 1.08;
   font-weight: 700;
 }
-.ad-fragment p {
-  margin: 0 0 14px;
-}
+.ad-fragment p { margin: 0 0 14px; }
 .content-wrapper {
-  max-width: 1260px;
+  max-width: 1220px;
   margin: 0 auto;
-}
-.lead-text,
-.bio-text {
-  max-width: 1160px;
-}
-.lead-text {
-  margin: 0 auto 18px;
 }
 .split-layout {
   display: grid;
-  grid-template-columns: minmax(420px, 48%) 1fr;
+  grid-template-columns: minmax(500px, 55%) 1fr;
   gap: 28px;
   align-items: start;
 }
-.split-layout.narrow-media {
-  grid-template-columns: minmax(380px, 43%) 1fr;
-}
-.split-layout .bio-text {
-  max-width: none;
-}
-.gallery,
-.image-stack {
-  display: grid;
-  gap: 18px 22px;
-  align-items: start;
-}
-.gallery.one,
-.gallery.one-image,
-.image-stack {
-  grid-template-columns: 1fr;
-}
-.gallery.two,
-.gallery.two-images {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-.gallery.three,
-.gallery.three-images {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.gallery.five,
-.gallery.five-landscape {
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-}
-.gallery.five .media-figure:nth-child(-n+3),
-.gallery.five-landscape .media-figure:nth-child(-n+3) {
-  grid-column: span 2;
-}
-.gallery.five .media-figure:nth-child(n+4),
-.gallery.five-landscape .media-figure:nth-child(n+4) {
-  grid-column: span 3;
-}
-.media-figure,
-figure {
+.media-figure {
   margin: 0;
   padding: 0;
-  min-width: 0;
+  width: 100%;
+  max-width: 690px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.with-border,
-figure img {
+.media-figure img {
   display: block;
   width: auto;
-  max-width: 100%;
   height: auto;
-  max-height: 540px;
+  max-width: 100%;
+  max-height: 495px;
   object-fit: contain;
   border: 6px solid #111;
   border-radius: 6px;
+  margin-bottom: 0 !important;
+  filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15));
 }
-.split-layout .with-border,
-.split-layout figure img {
-  max-height: 555px;
-}
-.gallery.two .with-border,
-.gallery.two-images .with-border {
-  max-height: 500px;
-}
-.gallery.three .with-border,
-.gallery.three-images .with-border {
-  max-height: 430px;
-}
-.gallery.five .with-border,
-.gallery.five-landscape .with-border {
-  max-height: 265px;
-}
-.wide-headline {
-  width: min(100%, 1080px);
-  max-height: none;
-}
-.caption,
 figcaption {
   display: block;
-  margin: 7px 0 0;
+  width: auto;
+  max-width: 690px;
+  margin: 4px auto 0;
   padding: 0;
-  max-width: 100%;
   color: #000;
-  font-size: 17px;
-  line-height: 1.18;
+  font-size: 14px;
+  line-height: 1.12;
   font-style: italic;
   text-align: center;
 }
-.caption.small {
-  font-size: 15px;
-  line-height: 1.15;
-}
-.two-column-text {
-  columns: 2 430px;
-  column-gap: 34px;
-  max-width: 1160px;
-  margin: 18px auto 0;
-}
+.bio-text { min-width: 0; }
 @media (max-width: 1050px) {
-  .ad-fragment {
-    font-size: 19px;
-  }
-  .split-layout,
-  .split-layout.narrow-media {
-    grid-template-columns: 1fr;
-  }
-  .gallery.two,
-  .gallery.two-images,
-  .gallery.three,
-  .gallery.three-images,
-  .gallery.five,
-  .gallery.five-landscape {
-    grid-template-columns: 1fr;
-  }
-  .gallery.five .media-figure,
-  .gallery.five-landscape .media-figure {
-    grid-column: auto !important;
-  }
-  .two-column-text {
-    columns: 1;
-  }
-  .with-border,
-  figure img {
-    max-height: none;
-  }
+  .split-layout { grid-template-columns: 1fr; }
+  .media-figure { max-width: 100%; }
 }
 </style>
 <div class="ad-fragment">
   <div class="content-wrapper split-layout">
-    <div class="gallery one">
     <figure class="media-figure">
       <img class="with-border responsive" src="Korea/Pictures/vets-party.jpg" alt="Guam Vets Party, July 5, 1952">
-      <figcaption class="caption small">Guam Vets Party, July 5, 1952 At Phil Spear’s Camp<br>Front Row L to R: Adar (Navy Recruiter), Tom Dompiere, Vic Hytinen, Ken Persitz, Bill DeWinter, Einar Ahlstee.<br>Second Row: Joe Morrison, Ray Anderson, Tim Kle, Phil Spear, Frank Russell, Al Holcomb (Navy Recruiter)<br>Third Row: Jack Kreiger, Harry Habata, “Boots” Kukuk, Jack Thompson, Charles Rohl<br>Rear Row: Sig Wilson, unidentified, George Jelich, Sam Wartinbee, Harold Overholt, Carl Olson, Jr.</figcaption>
+      <figcaption>Guam Vets Party, July 5, 1952 At Phil Spear’s Camp<br>Front Row L to R: Adar (Navy Recruiter), Tom Dompiere, Vic Hytinen, Ken Persitz, Bill DeWinter, Einar Ahlstee.<br>Second Row: Joe Morrison, Ray Anderson, Tim Kle, Phil Spear, Frank Russell, Al Holcomb (Navy Recruiter)<br>Third Row: Jack Kreiger, Harry Habata, “Boots” Kukuk, Jack Thompson, Charles Rohl<br>Rear Row: Sig Wilson, unidentified, George Jelich, Sam Wartinbee, Harold Overholt, Carl Olson, Jr.</figcaption>
     </figure>
-    </div>
     <section class="bio-text">
       <h1>Forgotten War</h1>
       <p>The Korean War has been called the &quot;Forgotten War.&quot; Its veterans have been less recognized and honored, especially compared to World War II veterans.</p>
