@@ -1,135 +1,189 @@
 <style>
 .ad-fragment {
+  --ad-work-w: 1260px;
+  --ad-text-w: 960px;
+  --ad-gap: 18px;
+  --ad-border: 6px solid #111;
+  --ad-radius: 6px;
   box-sizing: border-box;
-  max-width: 1240px;
+  max-width: var(--ad-work-w);
   margin: 0 auto;
-  padding: 8px 12px 16px;
+  padding: 8px 16px 18px;
   color: #000;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 1.22;
+  line-height: 1.25;
 }
 .ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
 .ad-fragment .content-wrapper {
-  max-width: 1240px;
+  width: 100%;
+  max-width: 1220px;
   margin: 0 auto;
-  padding: 0;
-  color: #000;
-  font-family: sans-serif;
 }
 .ad-fragment h1 {
   margin: 0 0 10px;
+  color: #000;
   font-size: 34px;
-  line-height: 1.06;
+  line-height: 1.08;
   font-weight: 700;
 }
-.ad-fragment p {
-  margin: 0 0 8px;
-  max-width: 1080px;
-}
+.ad-fragment p { margin: 0 0 9px; }
+.ad-fragment .lead-text,
 .ad-fragment .header,
 .ad-fragment .bio-text,
-.ad-fragment .plain-text,
-.ad-fragment .text-block {
-  max-width: 1080px;
-  margin: 0 auto 10px;
+.ad-fragment .text-block,
+.ad-fragment .plain-text {
+  width: min(var(--ad-text-w), 100%);
+  max-width: min(var(--ad-text-w), 100%);
+  margin: 0 auto 14px;
+  text-align: center;
+}
+.ad-fragment .lead-text.wide,
+.ad-fragment .header.wide,
+.ad-fragment .bio-text.wide {
+  width: min(1040px, 100%);
+  max-width: min(1040px, 100%);
 }
 .ad-fragment .role-note {
   margin: 0 0 8px;
   font-style: italic;
   white-space: pre-line;
 }
-.ad-fragment .lede { max-width: 1080px; }
-.ad-fragment .note {
-  max-width: 1080px;
-  font-size: 18px;
-  line-height: 1.2;
-  font-style: italic;
-}
-.ad-fragment .layout-text-media,
-.ad-fragment .layout-media-text,
-.ad-fragment .layout-dense,
-.ad-fragment .center-layout {
-  display: block;
-}
-.ad-fragment .layout-dense,
-.ad-fragment .page.compact {
-  font-size: 18px;
-  line-height: 1.16;
-}
-.ad-fragment .layout-dense h1,
-.ad-fragment .page.compact h1 { font-size: 32px; }
-.ad-fragment .gallery,
-.ad-fragment .media-stack,
-.ad-fragment .media-grid {
-  display: grid;
-  gap: 14px;
-  align-items: center;
-  align-content: center;
+.ad-fragment .center-stage {
+  min-height: min(650px, calc(100vh - 245px));
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 10px auto 0;
-  min-height: 430px;
+  align-items: center;
 }
+.ad-fragment .text-only {
+  width: min(940px, 100%);
+  text-align: center;
+  font-size: 23px;
+  line-height: 1.24;
+}
+.ad-fragment .text-only h1 {
+  font-size: 40px;
+  line-height: 1.06;
+  margin-bottom: 12px;
+}
+.ad-fragment .visual-area {
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ad-fragment .split-layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(420px, 1fr);
+  gap: 22px;
+  justify-content: center;
+  align-items: center;
+}
+.ad-fragment .split-layout.media-first {
+  grid-template-columns: minmax(500px, 1fr) minmax(0, .82fr);
+}
+.ad-fragment .image-grid,
+.ad-fragment .gallery,
+.ad-fragment .media-stack {
+  width: 100%;
+  display: grid;
+  gap: var(--ad-gap);
+  justify-content: center;
+  justify-items: center;
+  align-items: start;
+}
+.ad-fragment .image-grid.two,
 .ad-fragment .gallery.two,
-.ad-fragment .media-stack.two,
-.ad-fragment .media-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ad-fragment .media-stack.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ad-fragment .image-grid.three,
 .ad-fragment .gallery.three,
-.ad-fragment .media-stack.three,
-.ad-fragment .media-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.ad-fragment .gallery.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.ad-fragment .gallery.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.ad-fragment .gallery.tight,
-.ad-fragment .media-stack.tight { gap: 12px; }
+.ad-fragment .media-stack.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.ad-fragment .image-grid.four,
+.ad-fragment .gallery.four {
+  width: min(1060px, 100%);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.ad-fragment .image-grid.six,
+.ad-fragment .gallery.six {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px 16px;
+}
+.ad-fragment .image-stack {
+  width: min(980px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
 .ad-fragment figure {
-  margin: 0 auto;
-  display: table;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
   max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .ad-fragment img {
   display: block;
-  max-width: 100%;
   width: auto;
   height: auto;
+  max-width: 100%;
   object-fit: contain;
-  border: 6px solid #000;
-  border-radius: 6px;
+  border: var(--ad-border);
+  border-radius: var(--ad-radius);
   background: transparent;
-  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,0.15));
 }
-.ad-fragment .gallery.two img,
-.ad-fragment .media-stack.two img { max-height: 480px; }
-.ad-fragment .gallery.three img,
-.ad-fragment .media-stack.three img { max-height: 360px; }
-.ad-fragment .gallery.four img { max-height: 285px; }
-.ad-fragment .gallery.six img { max-height: 235px; }
-.ad-fragment .gallery.news img { max-height: 560px; }
-.ad-fragment .gallery.single,
-.ad-fragment .media-stack:not(.two):not(.three),
-.ad-fragment .media-grid:not(.two):not(.three):not(.four) {
-  grid-template-columns: minmax(0, 1fr);
-  max-width: 980px;
-}
-.ad-fragment .gallery.single img,
-.ad-fragment .media-stack:not(.two):not(.three) img { max-height: 540px; }
-.ad-fragment figcaption {
-  display: table-caption;
-  caption-side: bottom;
-  margin: 0;
-  padding-top: 3px;
-  font-size: 13px;
-  line-height: 1.1;
+.ad-fragment figcaption,
+.ad-fragment .caption {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 4px auto 0;
+  padding: 0;
+  color: #000;
+  font-size: 14px;
+  line-height: 1.12;
   font-style: italic;
   text-align: center;
 }
+.ad-fragment .image-grid.two img,
+.ad-fragment .gallery.two img,
+.ad-fragment .media-stack.two img { max-height: 455px; }
+.ad-fragment .image-grid.three img,
+.ad-fragment .gallery.three img,
+.ad-fragment .media-stack.three img { max-height: 365px; }
+.ad-fragment .image-grid.four img,
+.ad-fragment .gallery.four img { max-height: 295px; }
+.ad-fragment .image-grid.six img,
+.ad-fragment .gallery.six img { max-height: 225px; }
+.ad-fragment .single-hero img { max-height: 560px; }
+.ad-fragment .media-card-grid {
+  width: min(1020px, 100%);
+  display: grid;
+  gap: 16px;
+  justify-content: center;
+  justify-items: stretch;
+  align-items: stretch;
+}
+.ad-fragment .media-card-grid.two { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+.ad-fragment .media-card-grid.three { grid-template-columns: repeat(3, minmax(220px, 1fr)); }
+.ad-fragment .media-card-grid.four { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
 .ad-fragment .media-link,
 .ad-fragment .media-video,
-.ad-fragment .audio-card,
-.ad-fragment .doc-card,
-.ad-fragment .video-card {
+.ad-fragment .media-audio,
+.ad-fragment .media-document {
   min-height: 126px;
   padding: 14px;
-  border: 6px solid #000;
-  border-radius: 6px;
+  border: var(--ad-border);
+  border-radius: var(--ad-radius);
   color: #000;
   text-decoration: none;
   background: transparent;
@@ -137,9 +191,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
   gap: 8px;
-  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,0.15));
+  text-align: center;
 }
 .ad-fragment .media-icon {
   display: block;
@@ -153,62 +206,58 @@
 }
 .ad-fragment audio {
   width: 100%;
-  max-width: 520px;
+  max-width: 560px;
 }
-@media (max-width: 1100px) {
+@media (max-width: 1050px) {
   .ad-fragment { font-size: 18px; }
-  .ad-fragment h1 { font-size: 31px; }
-  .ad-fragment .gallery,
-  .ad-fragment .media-stack,
-  .ad-fragment .media-grid { min-height: 0; }
+  .ad-fragment .center-stage { min-height: 0; }
+  .ad-fragment .split-layout,
+  .ad-fragment .split-layout.media-first,
+  .ad-fragment .image-grid.two,
+  .ad-fragment .image-grid.three,
+  .ad-fragment .image-grid.four,
+  .ad-fragment .image-grid.six,
   .ad-fragment .gallery.two,
   .ad-fragment .gallery.three,
   .ad-fragment .gallery.four,
   .ad-fragment .gallery.six,
   .ad-fragment .media-stack.two,
   .ad-fragment .media-stack.three,
-  .ad-fragment .media-grid.two,
-  .ad-fragment .media-grid.three,
-  .ad-fragment .media-grid.four { grid-template-columns: 1fr; }
-  .ad-fragment img,
-  .ad-fragment .gallery.two img,
-  .ad-fragment .gallery.three img,
-  .ad-fragment .gallery.four img,
-  .ad-fragment .gallery.six img,
-  .ad-fragment .gallery.news img,
-  .ad-fragment .gallery.single img,
-  .ad-fragment .media-stack.two img,
-  .ad-fragment .media-stack.three img {
-    max-height: none;
-    width: 100%;
+  .ad-fragment .media-card-grid.two,
+  .ad-fragment .media-card-grid.three,
+  .ad-fragment .media-card-grid.four {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+  .ad-fragment .text-only h1 { font-size: 36px; }
+  .ad-fragment img { max-height: none !important; }
 }
 </style>
-<div class="ad-fragment">
-  <div class="content-wrapper">
-<section class="layout-text-media layout-dense">
-<div class="bio-text">
-<div class="header">
-<h1>Steve Liubakka</h1>
-<p class="lede">Steven and Barbara Liubakka<br/>Barbara wearing Steve’s jacket<br/>“Wash day in Nam. Brand X is better than Tide.”<br/>Steve and Barbara<br/>“Vietnamese digging for candy bars. Notice their sand bags they put everything into. Sorry bunch of people: but they’re making a fortune on us.”<br/>Vietnamese fishing in the Hue River.<br/>“On the way to Tam Ky. Rice Paddies, Mountains. Beautiful. Hey Lover.”<br/>“Charlie model helicopter crashes behind the hanger.”<br/>Louie and Josh<br/>Steve with his Christmas tree<br/>“Just Me.”<br/>“Frank Burdine, Tom Mitchlei. Tired.”<br/>With sandbags<br/>“Picnic table is behind the barracks. Hose running down the hill is for the showers. Big black thing is the generator.”</p>
-</div>
-</div>
-<div class="media-stack two">
-<figure>
-<img alt="Steve Liubakka photo" src="Vietnam/pics/working/Steve L 1 copy.jpg"/>
-</figure>
-<figure>
-<img alt="Steve Liubakka photo" src="Vietnam/pics/working/Steve L 2 copy.jpg"/>
-</figure>
-<figure>
-<img alt="Steve Liubakka photo" src="Vietnam/pics/working/Steve L 3 copy.jpg"/>
-</figure>
-<figure>
-<img alt="Steve Liubakka photo" src="Vietnam/pics/working/Steve L 4 copy.jpg"/>
-</figure>
-<a class="media-link media-video" href="Vietnam/video/Liubakka-One moring I woke up.flv"><span class="media-icon">VIDEO</span><span class="media-title">Liubakka - One morning I woke up</span></a>
-<a class="media-link media-video" href="Vietnam/video/Liubakka-PTS.flv"><span class="media-icon">VIDEO</span><span class="media-title">Liubakka - PTS</span></a>
-</div>
-</section>
+
+<div class="ad-fragment voices-3-panel">
+  <div class="content-wrapper center-stage">
+    <section class="lead-text wide">
+      <h1>Steve Liubakka</h1>
+      <p>Steven and Barbara Liubakka<br>Barbara wearing Steve’s jacket<br>“Wash day in Nam. Brand X is better than Tide.”<br>Steve and Barbara<br>“Vietnamese digging for candy bars. Notice their sand bags they put everything into. Sorry bunch of people: but they’re making a fortune on us.”<br>Vietnamese fishing in the Hue River.<br>“On the way to Tam Ky. Rice Paddies, Mountains. Beautiful. Hey Lover.”<br>“Charlie model helicopter crashes behind the hanger.”<br>Louie and Josh<br>Steve with his Christmas tree<br>“Just Me.”<br>“Frank Burdine, Tom Mitchlei. Tired.”<br>With sandbags<br>“Picnic table is behind the barracks. Hose running down the hill is for the showers. Big black thing is the generator.”</p>
+    </section>
+    <div class="visual-area">
+      <div class="image-grid three" style="width:min(1120px,100%);">
+        <figure>
+          <img decoding="async" src="Vietnam/pics/working/Steve L 1 copy.jpg" alt="Steve Liubakka photo">
+        </figure>
+        <figure>
+          <img decoding="async" src="Vietnam/pics/working/Steve L 2 copy.jpg" alt="Steve Liubakka photo">
+        </figure>
+        <figure>
+          <img decoding="async" src="Vietnam/pics/working/Steve L 3 copy.jpg" alt="Steve Liubakka photo">
+        </figure>
+        <figure>
+          <img decoding="async" src="Vietnam/pics/working/Steve L 4 copy.jpg" alt="Steve Liubakka photo">
+        </figure>
+        <a class="media-link media-video" href="Vietnam/video/Liubakka-One moring I woke up.flv"><span class="media-icon">VIDEO</span><span class="media-title">Liubakka - One morning I woke up</span></a>
+        <a class="media-link media-video" href="Vietnam/video/Liubakka-PTS.flv"><span class="media-icon">VIDEO</span><span class="media-title">Liubakka - PTS</span></a>
+      </div>
+    </div>
   </div>
 </div>
