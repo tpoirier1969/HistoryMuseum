@@ -1,7 +1,7 @@
 <style>
 .ad-fragment {
   --ad-work-w: 1260px;
-  --ad-gap: 12px;
+  --ad-gap: 10px;
   --ad-border: 5px solid #000;
   --ad-radius: 6px;
   --ad-caption: 14px;
@@ -23,49 +23,124 @@
 .ad-fragment .lead-text.tight { margin-bottom: 8px; }
 .ad-fragment .split-layout { display: grid; grid-template-columns: minmax(300px,.45fr) minmax(0,.55fr); gap: var(--ad-gap); align-items: start; }
 .ad-fragment .split-layout .lead-text { max-width: 62ch; margin: 0; }
-.ad-fragment .gallery { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: var(--ad-gap); margin: 8px auto 0; width: 100%; }
-.ad-fragment figure { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; max-width: 100%; text-align: center; }
-.ad-fragment img, .ad-fragment video { display: block; max-width: 100%; height: auto; object-fit: contain; box-sizing: border-box; border: var(--ad-border); border-radius: var(--ad-radius); background: #f3f0e8; filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
-.ad-fragment figcaption { display: block; margin: 3px 0 0; padding: 0; width: 100%; font-size: var(--ad-caption); line-height: 1.12; font-style: italic; text-align: center; overflow-wrap: anywhere; }
-.ad-fragment .one-image figure { width: min(840px, 96%); }
-.ad-fragment .one-image img { max-height: 505px; }
-.ad-fragment .two-images figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 615px; }
-.ad-fragment .two-images img { width: 100%; max-height: 500px; }
-.ad-fragment .three-images figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
-.ad-fragment .three-images img { width: 100%; max-height: 460px; }
-.ad-fragment .four-wide figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 610px; }
-.ad-fragment .four-wide img { width: 100%; max-height: 335px; }
-.ad-fragment .four-posters { flex-wrap: nowrap; gap: 10px; }
-.ad-fragment .four-posters figure { width: calc((100% - 30px) / 4); min-width: 0; }
-.ad-fragment .four-posters img { width: 100%; max-height: 500px; }
-.ad-fragment .five-landscape figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
-.ad-fragment .five-landscape figure:nth-last-child(-n+2) { width: calc((100% - var(--ad-gap)) / 2); max-width: 600px; }
-.ad-fragment .five-landscape img { width: 100%; max-height: 340px; }
-.ad-fragment .five-posters { flex-wrap: nowrap; gap: 9px; }
-.ad-fragment .five-posters figure { width: calc((100% - 36px) / 5); min-width: 0; }
-.ad-fragment .five-posters img { width: 100%; max-height: 475px; }
-.ad-fragment .six-images figure, .ad-fragment .many-images figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
-.ad-fragment .six-images img, .ad-fragment .many-images img { width: 100%; max-height: 310px; }
-.ad-fragment .poster-3 { flex-wrap: nowrap; gap: 14px; }
-.ad-fragment .poster-3 figure { width: calc((100% - 28px) / 3); min-width: 0; }
-.ad-fragment .poster-3 img { width: 100%; max-height: 560px; }
-.ad-fragment .headline-top, .ad-fragment .headline-bottom { display: flex; justify-content: center; align-items: flex-start; gap: var(--ad-gap); margin-left: auto; margin-right: auto; }
-.ad-fragment .headline-top { margin-top: 8px; }
-.ad-fragment .headline-bottom { margin-top: 12px; }
-.ad-fragment .headline-top figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 610px; }
-.ad-fragment .headline-bottom figure { width: calc((100% - (2 * var(--ad-gap))) / 3); max-width: 398px; }
-.ad-fragment .headline-top img { width: 100%; max-height: 295px; }
-.ad-fragment .headline-bottom img { width: 100%; max-height: 215px; }
-.ad-fragment .split-layout figure img { width: 100%; max-height: 515px; }
-.ad-fragment .placeholder { width: 100%; min-height: 145px; border: 5px dashed #555; border-radius: var(--ad-radius); background: rgba(240,240,240,.82); display: flex; align-items: center; justify-content: center; padding: 16px; font-weight: bold; text-align: center; }
+.ad-fragment .gallery,
+.ad-fragment .headline-top,
+.ad-fragment .headline-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--ad-gap);
+  margin: 8px auto 0;
+  width: 100%;
+}
+.ad-fragment .headline-bottom { margin-top: 10px; }
+.ad-fragment figure {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 1 auto;
+  width: auto;
+  min-width: 0;
+  max-width: 100%;
+  text-align: center;
+}
+.ad-fragment img, .ad-fragment video {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  box-sizing: border-box;
+  border: var(--ad-border);
+  border-radius: var(--ad-radius);
+  background: transparent;
+  filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15));
+}
+.ad-fragment figcaption {
+  display: block;
+  margin: 3px 0 0;
+  padding: 0;
+  width: 100%;
+  font-size: var(--ad-caption);
+  line-height: 1.12;
+  font-style: italic;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.ad-fragment .one-image img { max-height: 500px; }
+.ad-fragment .two-images figure { max-width: calc((100% - var(--ad-gap)) / 2); }
+.ad-fragment .two-images img { max-height: 400px; max-width: 100%; }
+.ad-fragment .three-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
+.ad-fragment .three-images img { max-height: 355px; max-width: 100%; }
+.ad-fragment .four-wide figure { max-width: calc((100% - var(--ad-gap)) / 2); }
+.ad-fragment .four-wide img { max-height: 275px; max-width: 100%; }
+.ad-fragment .four-posters { flex-wrap: nowrap; }
+.ad-fragment .four-posters figure { max-width: calc((100% - (3 * var(--ad-gap))) / 4); }
+.ad-fragment .four-posters img { max-height: 430px; max-width: 100%; }
+.ad-fragment .five-landscape figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
+.ad-fragment .five-landscape figure:nth-last-child(-n+2) img { max-height: 290px; }
+.ad-fragment .five-landscape img { max-height: 250px; max-width: 100%; }
+.ad-fragment .five-posters { flex-wrap: nowrap; }
+.ad-fragment .five-posters figure { max-width: calc((100% - (4 * var(--ad-gap))) / 5); }
+.ad-fragment .five-posters img { max-height: 370px; max-width: 100%; }
+.ad-fragment .many-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
+.ad-fragment .many-images img { max-height: 250px; max-width: 100%; }
+.ad-fragment .poster-3 { flex-wrap: nowrap; }
+.ad-fragment .poster-3 figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
+.ad-fragment .poster-3 img { max-height: 460px; max-width: 100%; }
+.ad-fragment .headline-top figure { max-width: calc((100% - var(--ad-gap)) / 2); }
+.ad-fragment .headline-bottom figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
+.ad-fragment .headline-top img { max-height: 245px; max-width: 100%; }
+.ad-fragment .headline-bottom img { max-height: 165px; max-width: 100%; }
+.ad-fragment .split-layout figure img { max-width: min(520px,100%); max-height: 500px; }
+.ad-fragment .placeholder {
+  width: min(280px, 100%);
+  min-height: 145px;
+  border: 5px dashed #555;
+  border-radius: var(--ad-radius);
+  background: rgba(240,240,240,.82);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-weight: bold;
+  text-align: center;
+}
 .ad-fragment audio { width: min(780px,100%); }
-.ad-fragment .audio-block { margin: 14px auto 0; text-align: center; }
+.ad-fragment .audio-block { margin: 14px auto 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
+.ad-fragment .audio-block figcaption { max-width: min(780px, 100%); }
 @media (max-width:1100px){
   .ad-fragment { font-size: 18px; }
   .ad-fragment .lead-text.wide-title h1 { white-space: normal; }
   .ad-fragment .split-layout { grid-template-columns: 1fr; }
-  .ad-fragment .headline-top, .ad-fragment .headline-bottom, .ad-fragment .four-posters, .ad-fragment .five-posters, .ad-fragment .poster-3 { flex-wrap: wrap; }
-  .ad-fragment .two-images figure, .ad-fragment .three-images figure, .ad-fragment .four-wide figure, .ad-fragment .four-posters figure, .ad-fragment .five-landscape figure, .ad-fragment .five-landscape figure:nth-last-child(-n+2), .ad-fragment .five-posters figure, .ad-fragment .six-images figure, .ad-fragment .many-images figure, .ad-fragment .poster-3 figure, .ad-fragment .headline-top figure, .ad-fragment .headline-bottom figure { width: min(720px,96%); max-width: 96%; }
-  .ad-fragment .one-image img, .ad-fragment .two-images img, .ad-fragment .three-images img, .ad-fragment .four-wide img, .ad-fragment .four-posters img, .ad-fragment .five-landscape img, .ad-fragment .five-posters img, .ad-fragment .six-images img, .ad-fragment .many-images img, .ad-fragment .poster-3 img, .ad-fragment .split-layout figure img, .ad-fragment .headline-top img, .ad-fragment .headline-bottom img { max-height: none; }
+  .ad-fragment .four-posters,
+  .ad-fragment .five-posters,
+  .ad-fragment .poster-3 { flex-wrap: wrap; }
+  .ad-fragment .two-images figure,
+  .ad-fragment .three-images figure,
+  .ad-fragment .four-wide figure,
+  .ad-fragment .four-posters figure,
+  .ad-fragment .five-landscape figure,
+  .ad-fragment .five-posters figure,
+  .ad-fragment .many-images figure,
+  .ad-fragment .poster-3 figure,
+  .ad-fragment .headline-top figure,
+  .ad-fragment .headline-bottom figure { max-width: min(720px,96%); }
+  .ad-fragment .one-image img,
+  .ad-fragment .two-images img,
+  .ad-fragment .three-images img,
+  .ad-fragment .four-wide img,
+  .ad-fragment .four-posters img,
+  .ad-fragment .five-landscape img,
+  .ad-fragment .five-posters img,
+  .ad-fragment .many-images img,
+  .ad-fragment .poster-3 img,
+  .ad-fragment .split-layout figure img,
+  .ad-fragment .headline-top img,
+  .ad-fragment .headline-bottom img { max-height: none; }
 }
 </style><div class="ad-fragment"><div class="content-wrapper"><div class="lead-text"><h1>Dress Manufacturers</h1><p>The U.P. Dress Manufacturing Company in Marquette secured a government order to assemble 10,000 white cotton uniforms for nurses.  In 1942, the H. A. Satin Company in Negaunee contracted to make 25,000 mosquito nets for troops fighting in the tropics.</p></div><div class="gallery two-images"><figure><img src="World War 2/Pictures/Industry-up-dress-mfg.jpg" alt="Dress Manufacturers"><figcaption>1. Pictured here are the employees of the U.P. Dress Manufacturing Co. in 1943.</figcaption></figure><figure><img src="World War 2/Pictures/Industry-gossard.jpg" alt="Dress Manufacturers"></figure></div></div></div>
