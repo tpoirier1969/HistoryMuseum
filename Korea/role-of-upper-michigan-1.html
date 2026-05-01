@@ -1,73 +1,177 @@
-<!-- VERSION 1.1 - section-named filenames -->
-<!-- Korea/role-of-upper-michigan-1.html -->
-<!-- Generated from: History Museum A & D edits - Korea grid.csv -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Korean War Media</title>
-  <style>
-    .content-wrapper {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 15px;
-      color: black;
-      font-family: sans-serif;
-      font-size: 24px;
-    }
-
-    .profile-layout {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-    }
-
-    .media-column {
-      flex-shrink: 0;
-      max-width: 650px;
-    }
-
-    .media-column img {
-      display: block;
-      margin-bottom: 16px;
-      height: auto;
-      max-width: 100%;
-    }
-
-    img.with-border {
-      border: 6px solid black;
-      border-radius: 6px;
-      filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-      flex-shrink: 0;
-    }
-
-    .bio-text {
-      flex: 1;
-    }
-
-    .bio-text > *:first-child {
-      margin-top: 0;
-    }
-
-    .caption {
-      font-size: 20px;
-      line-height: 1.25;
-      margin-top: 0;
-    }
-  </style>
-</head>
-<body>
+<style>
+.ad-fragment {
+  box-sizing: border-box;
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 14px 18px 26px;
+  color: #000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  line-height: 1.32;
+}
+.ad-fragment * {
+  box-sizing: border-box;
+}
+.ad-fragment h1 {
+  margin: 0 0 16px;
+  color: #000;
+  font-size: 34px;
+  line-height: 1.08;
+  font-weight: 700;
+}
+.ad-fragment p {
+  margin: 0 0 14px;
+}
+.content-wrapper {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+.lead-text,
+.bio-text {
+  max-width: 1160px;
+}
+.lead-text {
+  margin: 0 auto 18px;
+}
+.split-layout {
+  display: grid;
+  grid-template-columns: minmax(420px, 48%) 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.split-layout.narrow-media {
+  grid-template-columns: minmax(380px, 43%) 1fr;
+}
+.split-layout .bio-text {
+  max-width: none;
+}
+.gallery,
+.image-stack {
+  display: grid;
+  gap: 18px 22px;
+  align-items: start;
+}
+.gallery.one,
+.gallery.one-image,
+.image-stack {
+  grid-template-columns: 1fr;
+}
+.gallery.two,
+.gallery.two-images {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.gallery.three,
+.gallery.three-images {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.gallery.five,
+.gallery.five-landscape {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.gallery.five .media-figure:nth-child(-n+3),
+.gallery.five-landscape .media-figure:nth-child(-n+3) {
+  grid-column: span 2;
+}
+.gallery.five .media-figure:nth-child(n+4),
+.gallery.five-landscape .media-figure:nth-child(n+4) {
+  grid-column: span 3;
+}
+.media-figure,
+figure {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.with-border,
+figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: contain;
+  border: 6px solid #111;
+  border-radius: 6px;
+}
+.split-layout .with-border,
+.split-layout figure img {
+  max-height: 555px;
+}
+.gallery.two .with-border,
+.gallery.two-images .with-border {
+  max-height: 500px;
+}
+.gallery.three .with-border,
+.gallery.three-images .with-border {
+  max-height: 430px;
+}
+.gallery.five .with-border,
+.gallery.five-landscape .with-border {
+  max-height: 265px;
+}
+.wide-headline {
+  width: min(100%, 1080px);
+  max-height: none;
+}
+.caption,
+figcaption {
+  display: block;
+  margin: 7px 0 0;
+  padding: 0;
+  max-width: 100%;
+  color: #000;
+  font-size: 17px;
+  line-height: 1.18;
+  font-style: italic;
+  text-align: center;
+}
+.caption.small {
+  font-size: 15px;
+  line-height: 1.15;
+}
+.two-column-text {
+  columns: 2 430px;
+  column-gap: 34px;
+  max-width: 1160px;
+  margin: 18px auto 0;
+}
+@media (max-width: 1050px) {
+  .ad-fragment {
+    font-size: 19px;
+  }
+  .split-layout,
+  .split-layout.narrow-media {
+    grid-template-columns: 1fr;
+  }
+  .gallery.two,
+  .gallery.two-images,
+  .gallery.three,
+  .gallery.three-images,
+  .gallery.five,
+  .gallery.five-landscape {
+    grid-template-columns: 1fr;
+  }
+  .gallery.five .media-figure,
+  .gallery.five-landscape .media-figure {
+    grid-column: auto !important;
+  }
+  .two-column-text {
+    columns: 1;
+  }
+  .with-border,
+  figure img {
+    max-height: none;
+  }
+}
+</style>
+<div class="ad-fragment">
   <div class="content-wrapper">
-    <div class="profile-layout">
-      <div class="media-column">
-        <!-- No media listed for this row. -->
-      </div>
-      <div class="bio-text">
-        <h1>Copper</h1>
-    <p>note: Federal government paid to reopen the White Pine Copper Mine</p>
-      </div>
-    </div>
+    <section class="bio-text">
+      <h1>Copper</h1>
+      <p>note: Federal government paid to reopen the White Pine Copper Mine</p>
+    </section>
   </div>
-</body>
-</html>
+</div>

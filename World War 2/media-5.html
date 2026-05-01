@@ -1,100 +1,71 @@
 <style>
 .ad-fragment {
   --ad-work-w: 1260px;
-  --ad-gap: 16px;
+  --ad-gap: 12px;
   --ad-border: 5px solid #000;
   --ad-radius: 6px;
-  --ad-caption: 15px;
+  --ad-caption: 14px;
   box-sizing: border-box;
   max-width: var(--ad-work-w);
   margin: 0 auto;
-  padding: 6px 10px 18px;
+  padding: 4px 6px 14px;
   color: #000;
   font-family: sans-serif;
   font-size: 20px;
-  line-height: 1.22;
+  line-height: 1.2;
 }
 .ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
-.ad-fragment .content-wrapper,
-.ad-fragment .wwii-media-2 {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-.ad-fragment h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.06; }
-.ad-fragment h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.1; }
-.ad-fragment p { margin: 0 0 9px; line-height: 1.22; }
-.ad-fragment .section-label { margin: 0 0 4px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #333; }
-.ad-fragment .profile-layout { display: grid; grid-template-columns: minmax(0,.95fr) minmax(340px,.85fr); gap: var(--ad-gap); align-items: start; }
-.ad-fragment .bio-text { min-width: 0; }
-.ad-fragment .media-column,
-.ad-fragment .image-stack,
-.ad-fragment .stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--ad-gap); align-items: start; min-width: 0; max-width: 100%; }
-.ad-fragment .gallery,
-.ad-fragment .media-gallery,
-.ad-fragment .headline-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--ad-gap); align-items: start; margin-top: 12px; min-width: 0; }
-.ad-fragment figure,
-.ad-fragment .media-figure,
-.ad-fragment .media-card,
-.ad-fragment .tile { margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; max-width: 100%; }
-.ad-fragment img,
-.ad-fragment img.with-border,
-.ad-fragment .with-border,
-.ad-fragment figure img,
-.ad-fragment .media-card img,
-.ad-fragment .media-figure img,
-.ad-fragment .image-stack img,
-.ad-fragment .media-column img,
-.ad-fragment .stack img { display: block; max-width: 100%; width: auto; height: auto; max-height: 520px; object-fit: contain; box-sizing: border-box; border: var(--ad-border); border-radius: var(--ad-radius); background: #f3f0e8; filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
-.ad-fragment .gallery img,
-.ad-fragment .media-gallery img,
-.ad-fragment .headline-gallery img,
-.ad-fragment .media-column img,
-.ad-fragment .image-stack img,
-.ad-fragment .stack img { max-height: 300px; }
-.ad-fragment .primary-headline img,
-.ad-fragment .hero img,
-.ad-fragment .profile-layout > figure:first-child img,
-.ad-fragment .profile-layout > .media-column:first-child img,
-.ad-fragment .profile-layout > .image-stack:first-child img { max-height: 520px; }
-.ad-fragment figcaption,
-.ad-fragment .caption { display: block; margin: 6px 0 0; padding: 0; max-width: 100%; font-size: var(--ad-caption); line-height: 1.15; font-style: italic; text-align: center; }
-.ad-fragment .caption-list { display: none; }
-.ad-fragment a.media-link,
-.ad-fragment .media-link,
-.ad-fragment .media-link-box { max-width: 100%; color: #000; }
-.ad-fragment audio,
-.ad-fragment video { max-width: 100%; max-height: 520px; }
+.ad-fragment .content-wrapper { max-width: 100%; margin: 0 auto; padding: 0; color: inherit; font-family: inherit; font-size: inherit; line-height: inherit; }
+.ad-fragment h1 { margin: 0 0 8px; font-size: 33px; line-height: 1.05; }
+.ad-fragment p { margin: 0 0 8px; line-height: 1.2; }
+.ad-fragment .lead-text { width: min(1160px, 100%); max-width: min(1160px, 100%); margin: 0 auto 12px; }
+.ad-fragment .lead-text.wide-title h1 { white-space: nowrap; font-size: 32px; }
+.ad-fragment .lead-text.tight { margin-bottom: 8px; }
+.ad-fragment .split-layout { display: grid; grid-template-columns: minmax(300px,.45fr) minmax(0,.55fr); gap: var(--ad-gap); align-items: start; }
+.ad-fragment .split-layout .lead-text { max-width: 62ch; margin: 0; }
+.ad-fragment .gallery { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: var(--ad-gap); margin: 8px auto 0; width: 100%; }
+.ad-fragment figure { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; max-width: 100%; text-align: center; }
+.ad-fragment img, .ad-fragment video { display: block; max-width: 100%; height: auto; object-fit: contain; box-sizing: border-box; border: var(--ad-border); border-radius: var(--ad-radius); background: #f3f0e8; filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
+.ad-fragment figcaption { display: block; margin: 3px 0 0; padding: 0; width: 100%; font-size: var(--ad-caption); line-height: 1.12; font-style: italic; text-align: center; overflow-wrap: anywhere; }
+.ad-fragment .one-image figure { width: min(840px, 96%); }
+.ad-fragment .one-image img { max-height: 505px; }
+.ad-fragment .two-images figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 615px; }
+.ad-fragment .two-images img { width: 100%; max-height: 500px; }
+.ad-fragment .three-images figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
+.ad-fragment .three-images img { width: 100%; max-height: 460px; }
+.ad-fragment .four-wide figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 610px; }
+.ad-fragment .four-wide img { width: 100%; max-height: 335px; }
+.ad-fragment .four-posters { flex-wrap: nowrap; gap: 10px; }
+.ad-fragment .four-posters figure { width: calc((100% - 30px) / 4); min-width: 0; }
+.ad-fragment .four-posters img { width: 100%; max-height: 500px; }
+.ad-fragment .five-landscape figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
+.ad-fragment .five-landscape figure:nth-last-child(-n+2) { width: calc((100% - var(--ad-gap)) / 2); max-width: 600px; }
+.ad-fragment .five-landscape img { width: 100%; max-height: 340px; }
+.ad-fragment .five-posters { flex-wrap: nowrap; gap: 9px; }
+.ad-fragment .five-posters figure { width: calc((100% - 36px) / 5); min-width: 0; }
+.ad-fragment .five-posters img { width: 100%; max-height: 475px; }
+.ad-fragment .six-images figure, .ad-fragment .many-images figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
+.ad-fragment .six-images img, .ad-fragment .many-images img { width: 100%; max-height: 310px; }
+.ad-fragment .poster-3 { flex-wrap: nowrap; gap: 14px; }
+.ad-fragment .poster-3 figure { width: calc((100% - 28px) / 3); min-width: 0; }
+.ad-fragment .poster-3 img { width: 100%; max-height: 560px; }
+.ad-fragment .headline-top, .ad-fragment .headline-bottom { display: flex; justify-content: center; align-items: flex-start; gap: var(--ad-gap); margin-left: auto; margin-right: auto; }
+.ad-fragment .headline-top { margin-top: 8px; }
+.ad-fragment .headline-bottom { margin-top: 12px; }
+.ad-fragment .headline-top figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 610px; }
+.ad-fragment .headline-bottom figure { width: calc((100% - (2 * var(--ad-gap))) / 3); max-width: 398px; }
+.ad-fragment .headline-top img { width: 100%; max-height: 295px; }
+.ad-fragment .headline-bottom img { width: 100%; max-height: 215px; }
+.ad-fragment .split-layout figure img { width: 100%; max-height: 515px; }
+.ad-fragment .placeholder { width: 100%; min-height: 145px; border: 5px dashed #555; border-radius: var(--ad-radius); background: rgba(240,240,240,.82); display: flex; align-items: center; justify-content: center; padding: 16px; font-weight: bold; text-align: center; }
+.ad-fragment audio { width: min(780px,100%); }
+.ad-fragment .audio-block { margin: 14px auto 0; text-align: center; }
 @media (max-width:1100px){
-  .ad-fragment{font-size:18px;}
-  .ad-fragment .profile-layout{grid-template-columns:1fr;}
-  .ad-fragment .gallery,.ad-fragment .media-gallery,.ad-fragment .headline-gallery,.ad-fragment .media-column,.ad-fragment .image-stack,.ad-fragment .stack{grid-template-columns:1fr;}
-  .ad-fragment img,.ad-fragment .gallery img,.ad-fragment .media-gallery img,.ad-fragment .headline-gallery img,.ad-fragment .media-column img,.ad-fragment .image-stack img,.ad-fragment .stack img{max-height:none;}
+  .ad-fragment { font-size: 18px; }
+  .ad-fragment .lead-text.wide-title h1 { white-space: normal; }
+  .ad-fragment .split-layout { grid-template-columns: 1fr; }
+  .ad-fragment .headline-top, .ad-fragment .headline-bottom, .ad-fragment .four-posters, .ad-fragment .five-posters, .ad-fragment .poster-3 { flex-wrap: wrap; }
+  .ad-fragment .two-images figure, .ad-fragment .three-images figure, .ad-fragment .four-wide figure, .ad-fragment .four-posters figure, .ad-fragment .five-landscape figure, .ad-fragment .five-landscape figure:nth-last-child(-n+2), .ad-fragment .five-posters figure, .ad-fragment .six-images figure, .ad-fragment .many-images figure, .ad-fragment .poster-3 figure, .ad-fragment .headline-top figure, .ad-fragment .headline-bottom figure { width: min(720px,96%); max-width: 96%; }
+  .ad-fragment .one-image img, .ad-fragment .two-images img, .ad-fragment .three-images img, .ad-fragment .four-wide img, .ad-fragment .four-posters img, .ad-fragment .five-landscape img, .ad-fragment .five-posters img, .ad-fragment .six-images img, .ad-fragment .many-images img, .ad-fragment .poster-3 img, .ad-fragment .split-layout figure img, .ad-fragment .headline-top img, .ad-fragment .headline-bottom img { max-height: none; }
 }
-</style>
-<div class="ad-fragment">
-<div class="content-wrapper">
-<div class="profile-layout">
-<img alt="Recruiting Posters" class="with-border responsive" src="World War 2/Pictures/Post-Join the nurses.JPG" width="450"/>
-<div class="bio-text">
-<h1>Recruiting Posters</h1>
-<p>The Armed Forces used recruiting posters to attract young men and women to their respective services.   The posters often extolled the proud history of the service or the role Americans had played in the defense of freedom.  Other themes appealed to citizens to join for the sake of their country and build a better future for themselves.  Potential soldiers were not the only target of government posters.  All citizens and especially those working in war related industries were urged to stay on the job and keep producing the material the Armed Forces would need to win the war.</p>
-</div>
-</div>
-<div class="media-gallery">
-<div class="media-card">
-<img alt="Recruiting Posters" class="with-border responsive" src="World War 2/Pictures/women-wanted.jpg" width="380"/>
-</div>
-<div class="media-card">
-<img alt="Recruiting Posters" class="with-border responsive" src="World War 2/Pictures/Post-recruiting.jpg" width="380"/>
-</div>
-<div class="media-card">
-<img alt="Recruiting Posters" class="with-border responsive" src="World War 2/Pictures/Post-Recruiting2.jpg" width="380"/>
-</div>
-</div>
-</div>
-</div>
+</style><div class="ad-fragment"><div class="content-wrapper"><div class="lead-text"><h1>Recruiting Posters</h1><p>The Armed Forces used recruiting posters to attract young men and women to their respective services.   The posters often extolled the proud history of the service or the role Americans had played in the defense of freedom.  Other themes appealed to citizens to join for the sake of their country and build a better future for themselves.  Potential soldiers were not the only target of government posters.  All citizens and especially those working in war related industries were urged to stay on the job and keep producing the material the Armed Forces would need to win the war.</p></div><div class="gallery four-posters"><figure><img src="World War 2/Pictures/Post-Join the nurses.JPG" alt="Recruiting Posters"></figure><figure><img src="World War 2/Pictures/women-wanted.jpg" alt="Recruiting Posters"></figure><figure><img src="World War 2/Pictures/Post-recruiting.jpg" alt="Recruiting Posters"></figure><figure><img src="World War 2/Pictures/Post-Recruiting2.jpg" alt="Recruiting Posters"></figure></div></div></div>

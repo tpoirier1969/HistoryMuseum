@@ -1,91 +1,201 @@
 <style>
 .ad-fragment {
-  --ad-work-w: 1260px;
-  --ad-gap: 16px;
-  --ad-border: 5px solid #000;
-  --ad-radius: 6px;
-  --ad-caption: 15px;
   box-sizing: border-box;
-  max-width: var(--ad-work-w);
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 6px 10px 18px;
+  padding: 8px 14px 14px;
   color: #000;
-  font-family: sans-serif;
-  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 21px;
   line-height: 1.22;
 }
 .ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
-.ad-fragment .content-wrapper,
-.ad-fragment .wwii-media-2 {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+.ad-fragment .content-wrapper { max-width: 100%; margin: 0 auto; }
+.ad-fragment h1 {
+  margin: 0 0 8px;
+  font-size: 34px;
+  line-height: 1.06;
+  font-weight: 700;
 }
-.ad-fragment h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.06; }
-.ad-fragment h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.1; }
-.ad-fragment p { margin: 0 0 9px; line-height: 1.22; }
-.ad-fragment .section-label { margin: 0 0 4px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #333; }
-.ad-fragment .profile-layout { display: grid; grid-template-columns: minmax(0,.95fr) minmax(340px,.85fr); gap: var(--ad-gap); align-items: start; }
-.ad-fragment .bio-text { min-width: 0; }
-.ad-fragment .media-column,
-.ad-fragment .image-stack,
-.ad-fragment .stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--ad-gap); align-items: start; min-width: 0; max-width: 100%; }
-.ad-fragment .gallery,
-.ad-fragment .media-gallery,
-.ad-fragment .headline-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--ad-gap); align-items: start; margin-top: 12px; min-width: 0; }
-.ad-fragment figure,
-.ad-fragment .media-figure,
-.ad-fragment .media-card,
-.ad-fragment .tile { margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; max-width: 100%; }
-.ad-fragment img,
-.ad-fragment img.with-border,
-.ad-fragment .with-border,
-.ad-fragment figure img,
-.ad-fragment .media-card img,
-.ad-fragment .media-figure img,
-.ad-fragment .image-stack img,
-.ad-fragment .media-column img,
-.ad-fragment .stack img { display: block; max-width: 100%; width: auto; height: auto; max-height: 520px; object-fit: contain; box-sizing: border-box; border: var(--ad-border); border-radius: var(--ad-radius); background: #f3f0e8; filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
-.ad-fragment .gallery img,
-.ad-fragment .media-gallery img,
-.ad-fragment .headline-gallery img,
-.ad-fragment .media-column img,
-.ad-fragment .image-stack img,
-.ad-fragment .stack img { max-height: 300px; }
-.ad-fragment .primary-headline img,
-.ad-fragment .hero img,
-.ad-fragment .profile-layout > figure:first-child img,
-.ad-fragment .profile-layout > .media-column:first-child img,
-.ad-fragment .profile-layout > .image-stack:first-child img { max-height: 520px; }
+.ad-fragment p {
+  margin: 0 0 8px;
+  line-height: 1.22;
+}
+.ad-fragment em { font-style: italic; }
+.ad-fragment .text-block {
+  max-width: 1120px;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+.ad-fragment .text-block.compact { margin-bottom: 8px; }
+.ad-fragment .text-block.wide { max-width: 1180px; }
+.ad-fragment .text-only {
+  max-width: 1050px;
+  margin: 44px auto 0;
+  text-align: center;
+  font-size: 25px;
+  line-height: 1.28;
+}
+.ad-fragment .text-only h1 { font-size: 42px; line-height: 1.08; margin-bottom: 12px; }
+.ad-fragment .media-grid {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  align-items: start;
+  justify-items: center;
+}
+.ad-fragment .grid-2 {
+  max-width: 1160px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+}
+.ad-fragment .grid-2.narrow { max-width: 980px; }
+.ad-fragment .grid-2.large { max-width: 1200px; gap: 10px 20px; }
+.ad-fragment .grid-3 {
+  max-width: 1200px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px 18px;
+}
+.ad-fragment .grid-4-two-by-two {
+  max-width: 1120px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+}
+.ad-fragment .single-large {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.ad-fragment .single-large.medium { max-width: 780px; }
+.ad-fragment .five-top-three-bottom-two {
+  max-width: 1180px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px 16px;
+}
+.ad-fragment .five-top-three-bottom-two figure:nth-child(-n+3) { grid-column: span 2; }
+.ad-fragment .five-top-three-bottom-two figure:nth-child(n+4) { grid-column: span 3; }
+.ad-fragment .media5-layout {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  gap: 10px;
+}
+.ad-fragment .media5-layout .row-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+  align-items: start;
+  justify-items: center;
+}
+.ad-fragment .media5-layout .bridge-row {
+  max-width: 620px;
+  margin: 0 auto;
+}
+.ad-fragment figure {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ad-fragment img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border: 6px solid #000;
+  border-radius: 6px;
+  filter: sepia(0.20) brightness(1.0) contrast(1.02) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+}
+.ad-fragment .headline img { max-height: 330px; }
+.ad-fragment .headline-large img { max-height: 360px; }
+.ad-fragment .poster img { max-height: 462px; }
+.ad-fragment .wide img { max-height: 382px; }
+.ad-fragment .wide-tall img { max-height: 455px; }
+.ad-fragment .map img { max-height: 445px; }
+.ad-fragment .scan img { max-height: 265px; }
+.ad-fragment .media5-layout .scan img { max-height: 245px; }
+.ad-fragment .media5-layout .bridge-row .scan img { max-height: 205px; }
+.ad-fragment .single-large img { max-height: 510px; }
+.ad-fragment .single-large.medium img { max-height: 430px; }
 .ad-fragment figcaption,
-.ad-fragment .caption { display: block; margin: 6px 0 0; padding: 0; max-width: 100%; font-size: var(--ad-caption); line-height: 1.15; font-style: italic; text-align: center; }
-.ad-fragment .caption-list { display: none; }
-.ad-fragment a.media-link,
-.ad-fragment .media-link,
-.ad-fragment .media-link-box { max-width: 100%; color: #000; }
-.ad-fragment audio,
-.ad-fragment video { max-width: 100%; max-height: 520px; }
-@media (max-width:1100px){
-  .ad-fragment{font-size:18px;}
-  .ad-fragment .profile-layout{grid-template-columns:1fr;}
-  .ad-fragment .gallery,.ad-fragment .media-gallery,.ad-fragment .headline-gallery,.ad-fragment .media-column,.ad-fragment .image-stack,.ad-fragment .stack{grid-template-columns:1fr;}
-  .ad-fragment img,.ad-fragment .gallery img,.ad-fragment .media-gallery img,.ad-fragment .headline-gallery img,.ad-fragment .media-column img,.ad-fragment .image-stack img,.ad-fragment .stack img{max-height:none;}
+.ad-fragment .caption {
+  display: block;
+  margin: 2px 0 0;
+  padding: 0;
+  color: #000;
+  font-size: 14px;
+  line-height: 1.08;
+  font-style: italic;
+  text-align: center;
+}
+.ad-fragment .side-caption-row {
+  max-width: 1160px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 20px;
+  align-items: start;
+}
+.ad-fragment .side-caption-row figure {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(118px, 150px);
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+.ad-fragment .side-caption-row figcaption {
+  margin: 0;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.1;
+}
+.ad-fragment .clip-list {
+  max-width: 1000px;
+  margin: 14px auto 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.ad-fragment .clip-list li { margin: 0 0 10px; }
+.ad-fragment .clip-list a {
+  color: #000;
+  text-decoration: underline;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.18;
+}
+.ad-fragment .clip-list a::before { content: "▶ "; font-weight: 700; }
+@media (max-width: 1100px) {
+  .ad-fragment { font-size: 19px; }
+  .ad-fragment .grid-2,
+  .ad-fragment .grid-2.large,
+  .ad-fragment .grid-3,
+  .ad-fragment .grid-4-two-by-two,
+  .ad-fragment .side-caption-row,
+  .ad-fragment .media5-layout .row-two { grid-template-columns: 1fr; max-width: 820px; }
+  .ad-fragment .five-top-three-bottom-two { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .ad-fragment .five-top-three-bottom-two figure:nth-child(n) { grid-column: auto; }
+  .ad-fragment .side-caption-row figure { grid-template-columns: 1fr; }
+  .ad-fragment .side-caption-row figcaption { text-align: center; }
+  .ad-fragment .text-only { margin-top: 24px; font-size: 23px; }
+  .ad-fragment .text-only h1 { font-size: 36px; }
 }
 </style>
 <div class="ad-fragment">
-<div class="content-wrapper">
-<div class="profile-layout">
-<div class="image-single">
-<a class="media-link-box" href="Cold War/video/old vids/Mook- Alert at KI.flv">Alert at Sawyer</a>
+  <div class="content-wrapper">
+<div class="text-only">
+  <h1>John Mook — Air Force</h1>
+  <p>Lt. Col., career Air Force. B-52 pilot and instructor.</p>
+  <p><em>Alert at Sawyer</em></p>
+  <ul class="clip-list">
+    <li><a href="Cold War/video/old vids/Mook- Alert at KI.flv">Alert at Sawyer</a></li>
+  </ul>
 </div>
-<div class="bio-text">
-<h1>John Mook - Air Force - Lt. Col. career Air Force - B52 Pilot and Instructor</h1>
-<p><em>Alert at Sawyer</em></p>
-</div>
-</div>
-</div>
+  </div>
 </div>

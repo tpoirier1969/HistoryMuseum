@@ -1,90 +1,182 @@
 <style>
 .ad-fragment {
-  --ad-work-w: 1260px;
-  --ad-gap: 16px;
-  --ad-border: 5px solid #000;
-  --ad-radius: 6px;
-  --ad-caption: 15px;
   box-sizing: border-box;
-  max-width: var(--ad-work-w);
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 6px 10px 18px;
+  padding: 14px 18px 26px;
   color: #000;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 1.22;
+  line-height: 1.32;
 }
-.ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
-.ad-fragment .content-wrapper,
-.ad-fragment .wwii-media-2 {
-  max-width: 100%;
+.ad-fragment * {
+  box-sizing: border-box;
+}
+.ad-fragment h1 {
+  margin: 0 0 16px;
+  color: #000;
+  font-size: 34px;
+  line-height: 1.08;
+  font-weight: 700;
+}
+.ad-fragment p {
+  margin: 0 0 14px;
+}
+.content-wrapper {
+  max-width: 1260px;
   margin: 0 auto;
-  padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
 }
-.ad-fragment h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.06; }
-.ad-fragment h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.1; }
-.ad-fragment p { margin: 0 0 9px; line-height: 1.22; }
-.ad-fragment .section-label { margin: 0 0 4px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #333; }
-.ad-fragment .profile-layout { display: grid; grid-template-columns: minmax(0,.95fr) minmax(340px,.85fr); gap: var(--ad-gap); align-items: start; }
-.ad-fragment .bio-text { min-width: 0; }
-.ad-fragment .media-column,
-.ad-fragment .image-stack,
-.ad-fragment .stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--ad-gap); align-items: start; min-width: 0; max-width: 100%; }
-.ad-fragment .gallery,
-.ad-fragment .media-gallery,
-.ad-fragment .headline-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--ad-gap); align-items: start; margin-top: 12px; min-width: 0; }
-.ad-fragment figure,
-.ad-fragment .media-figure,
-.ad-fragment .media-card,
-.ad-fragment .tile { margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; max-width: 100%; }
-.ad-fragment img,
-.ad-fragment img.with-border,
-.ad-fragment .with-border,
-.ad-fragment figure img,
-.ad-fragment .media-card img,
-.ad-fragment .media-figure img,
-.ad-fragment .image-stack img,
-.ad-fragment .media-column img,
-.ad-fragment .stack img { display: block; max-width: 100%; width: auto; height: auto; max-height: 520px; object-fit: contain; box-sizing: border-box; border: var(--ad-border); border-radius: var(--ad-radius); background: #f3f0e8; filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
-.ad-fragment .gallery img,
-.ad-fragment .media-gallery img,
-.ad-fragment .headline-gallery img,
-.ad-fragment .media-column img,
-.ad-fragment .image-stack img,
-.ad-fragment .stack img { max-height: 300px; }
-.ad-fragment .primary-headline img,
-.ad-fragment .hero img,
-.ad-fragment .profile-layout > figure:first-child img,
-.ad-fragment .profile-layout > .media-column:first-child img,
-.ad-fragment .profile-layout > .image-stack:first-child img { max-height: 520px; }
-.ad-fragment figcaption,
-.ad-fragment .caption { display: block; margin: 6px 0 0; padding: 0; max-width: 100%; font-size: var(--ad-caption); line-height: 1.15; font-style: italic; text-align: center; }
-.ad-fragment .caption-list { display: none; }
-.ad-fragment a.media-link,
-.ad-fragment .media-link,
-.ad-fragment .media-link-box { max-width: 100%; color: #000; }
-.ad-fragment audio,
-.ad-fragment video { max-width: 100%; max-height: 520px; }
-@media (max-width:1100px){
-  .ad-fragment{font-size:18px;}
-  .ad-fragment .profile-layout{grid-template-columns:1fr;}
-  .ad-fragment .gallery,.ad-fragment .media-gallery,.ad-fragment .headline-gallery,.ad-fragment .media-column,.ad-fragment .image-stack,.ad-fragment .stack{grid-template-columns:1fr;}
-  .ad-fragment img,.ad-fragment .gallery img,.ad-fragment .media-gallery img,.ad-fragment .headline-gallery img,.ad-fragment .media-column img,.ad-fragment .image-stack img,.ad-fragment .stack img{max-height:none;}
+.lead-text,
+.bio-text {
+  max-width: 1160px;
+}
+.lead-text {
+  margin: 0 auto 18px;
+}
+.split-layout {
+  display: grid;
+  grid-template-columns: minmax(420px, 48%) 1fr;
+  gap: 28px;
+  align-items: start;
+}
+.split-layout.narrow-media {
+  grid-template-columns: minmax(380px, 43%) 1fr;
+}
+.split-layout .bio-text {
+  max-width: none;
+}
+.gallery,
+.image-stack {
+  display: grid;
+  gap: 18px 22px;
+  align-items: start;
+}
+.gallery.one,
+.gallery.one-image,
+.image-stack {
+  grid-template-columns: 1fr;
+}
+.gallery.two,
+.gallery.two-images {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.gallery.three,
+.gallery.three-images {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.gallery.five,
+.gallery.five-landscape {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+.gallery.five .media-figure:nth-child(-n+3),
+.gallery.five-landscape .media-figure:nth-child(-n+3) {
+  grid-column: span 2;
+}
+.gallery.five .media-figure:nth-child(n+4),
+.gallery.five-landscape .media-figure:nth-child(n+4) {
+  grid-column: span 3;
+}
+.media-figure,
+figure {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.with-border,
+figure img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: contain;
+  border: 6px solid #111;
+  border-radius: 6px;
+}
+.split-layout .with-border,
+.split-layout figure img {
+  max-height: 555px;
+}
+.gallery.two .with-border,
+.gallery.two-images .with-border {
+  max-height: 500px;
+}
+.gallery.three .with-border,
+.gallery.three-images .with-border {
+  max-height: 430px;
+}
+.gallery.five .with-border,
+.gallery.five-landscape .with-border {
+  max-height: 265px;
+}
+.wide-headline {
+  width: min(100%, 1080px);
+  max-height: none;
+}
+.caption,
+figcaption {
+  display: block;
+  margin: 7px 0 0;
+  padding: 0;
+  max-width: 100%;
+  color: #000;
+  font-size: 17px;
+  line-height: 1.18;
+  font-style: italic;
+  text-align: center;
+}
+.caption.small {
+  font-size: 15px;
+  line-height: 1.15;
+}
+.two-column-text {
+  columns: 2 430px;
+  column-gap: 34px;
+  max-width: 1160px;
+  margin: 18px auto 0;
+}
+@media (max-width: 1050px) {
+  .ad-fragment {
+    font-size: 19px;
+  }
+  .split-layout,
+  .split-layout.narrow-media {
+    grid-template-columns: 1fr;
+  }
+  .gallery.two,
+  .gallery.two-images,
+  .gallery.three,
+  .gallery.three-images,
+  .gallery.five,
+  .gallery.five-landscape {
+    grid-template-columns: 1fr;
+  }
+  .gallery.five .media-figure,
+  .gallery.five-landscape .media-figure {
+    grid-column: auto !important;
+  }
+  .two-column-text {
+    columns: 1;
+  }
+  .with-border,
+  figure img {
+    max-height: none;
+  }
 }
 </style>
 <div class="ad-fragment">
-<div class="content-wrapper">
-<div class="profile-layout">
-<div class="media-column">
-<figure class="media-figure"><img alt="Mikoyan-Gurevich MiG-15" class="with-border responsive" src="Korea/Pictures/mig.jpg" width="560"/></figure>
-</div>
-<div class="bio-text">
-<h1>Mikoyan-Gurevich MiG-15</h1>
-</div>
-</div>
-</div>
+  <div class="content-wrapper split-layout narrow-media">
+    <div class="gallery one">
+    <figure class="media-figure">
+      <img class="with-border responsive" src="Korea/Pictures/mig.jpg" alt="Mikoyan-Gurevich MiG-15">
+    </figure>
+    </div>
+    <section class="bio-text">
+      <h1>Mikoyan-Gurevich MiG-15</h1>
+      
+    </section>
+  </div>
 </div>

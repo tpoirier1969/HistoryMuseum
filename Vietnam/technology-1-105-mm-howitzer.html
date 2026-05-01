@@ -1,200 +1,145 @@
-<!-- VERSION Vietnam HTML Batch v1.0 — generated from Vietnam Grid CSV; no-crop media grid; visible version flag -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Vietnam - 105 mm Howitzer</title>
 <style>
-  :root{
-    --pageW: 1400px;
-    --gap: 12px;
-    --borderW: 6px;
-    --borderC: #000;
-    --radius: 6px;
-    --sepia: 0.20;
-    --bright: 1.0;
-    --contrast: 1.0;
-    --glow: 0 0 10px rgba(255, 220, 100, 0.15);
-    --captionSize: 14px;
-    --captionGap: 2px;
-    --captionReserve: 42px;
-  }
-  *{ box-sizing: border-box; }
-  html, body{ height: 100%; margin: 0; }
-  body{ overflow: hidden; background:#fff; }
-  .content-wrapper{
-    max-width: var(--pageW);
-    margin: 0 auto;
-    padding: 15px;
-    box-sizing: border-box;
-    color: #000;
-    font-family: sans-serif;
-    font-size: 28px;
-    overflow-wrap: anywhere;
-    height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    row-gap: 6px;
-  }
-  h1{ margin: 0 0 6px 0; line-height: 1.1; font-size: 1.55em; }
-  .section-label{ margin: 0 0 4px 0; font-size: 0.55em; text-transform: uppercase; letter-spacing: 0.08em; color:#333; }
-  .lede{ margin: 0 0 8px 0; line-height: 1.18; }
-  .role-note{ margin: 0 0 8px 0; line-height: 1.2; font-style: italic; }
-  .gallery{
-    min-height: 0;
-    height: 100%;
-    display: grid;
-    gap: var(--gap);
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-    grid-template-rows: 1fr;
-    align-items: stretch;
-  }
-  figure{ margin: 0; min-height: 0; }
-  .tile{
-    --imgScale: 1;
-    min-height: 0;
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-  }
-  .stack{
-    height: 100%;
-    width: 100%;
-    min-height: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: var(--captionGap);
-  }
-  .stack img{
-    max-width: calc(100% * var(--imgScale));
-    max-height: calc(100% * var(--imgScale));
-    width: auto;
-    height: auto;
-    display: block;
-    box-sizing: border-box;
-    border: var(--borderW) solid var(--borderC);
-    border-radius: var(--radius);
-    filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
-            drop-shadow(var(--glow));
-  }
-  .tile.has-cap .stack img{ max-height: calc((100% - var(--captionReserve)) * var(--imgScale)); }
-  figcaption{
-    margin: 0;
-    padding: 0;
-    font-size: var(--captionSize);
-    line-height: 1.15;
-    text-align: center;
-  }
-  figcaption em{ font-style: italic; }
-  .media-link{
-    width: 100%;
-    min-height: 155px;
-    padding: 18px;
-    border: var(--borderW) solid var(--borderC);
-    border-radius: var(--radius);
-    color:#000;
-    text-decoration:none;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    gap:12px;
-    background:#f5f1e8;
-    filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
-            drop-shadow(var(--glow));
-    font-size:0.8em;
-  }
-  .media-link audio{ width:100%; max-width:520px; }
-  .media-icon{
-    display:inline-block;
-    border:3px solid #000;
-    border-radius:5px;
-    padding:4px 8px;
-    font-weight:bold;
-    font-size:0.75em;
-    letter-spacing:0.08em;
-  }
-  .version-flag{
-    justify-self:end;
-    font-size:12px;
-    color:#555;
-    opacity:0.85;
-  }
-  @media (max-width: 900px){
-    body{ overflow: auto; }
-    .content-wrapper{ height: auto; display: block; }
-    .gallery{ height: auto; grid-template-columns: 1fr !important; grid-template-rows: none !important; }
-    .tile{ height: auto; }
-    .stack{ height: auto; }
-    .stack img{ width: 100%; max-height: none; }
-    .media-link{ min-height: 100px; }
-  }
+.ad-fragment {
+  box-sizing: border-box;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 8px 12px 16px;
+  color: #000;
+  font-family: sans-serif;
+  font-size: 20px;
+  line-height: 1.22;
+}
+.ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
+.ad-fragment .content-wrapper {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0;
+}
+.ad-fragment h1 {
+  margin: 0 0 10px;
+  font-size: 34px;
+  line-height: 1.06;
+  font-weight: 700;
+}
+.ad-fragment p {
+  margin: 0 0 8px;
+}
+.ad-fragment .text-block {
+  max-width: 1080px;
+  margin: 0 auto 12px;
+}
+.ad-fragment .text-block.narrow { max-width: 900px; }
+.ad-fragment .text-block.compact { max-width: 1080px; font-size: 18px; line-height: 1.18; }
+.ad-fragment .text-block.compact h1 { font-size: 32px; }
+.ad-fragment .role-note {
+  font-style: italic;
+  white-space: pre-line;
+}
+.ad-fragment .gallery,
+.ad-fragment .media-grid {
+  display: grid;
+  gap: 14px;
+  align-items: start;
+  margin: 10px auto 0;
+}
+.ad-fragment .gallery.two,
+.ad-fragment .media-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ad-fragment .gallery.three,
+.ad-fragment .media-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ad-fragment .gallery.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ad-fragment .gallery.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ad-fragment figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ad-fragment img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 6px solid #000;
+  border-radius: 6px;
+  background: transparent;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,0.15));
+}
+.ad-fragment .gallery.two img { max-height: 470px; }
+.ad-fragment .gallery.three img { max-height: 340px; }
+.ad-fragment .gallery.four img { max-height: 300px; }
+.ad-fragment .gallery.six img { max-height: 240px; }
+.ad-fragment .gallery.posters img { max-height: 350px; }
+.ad-fragment .gallery.news img { max-height: 560px; }
+.ad-fragment .gallery.single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 900px;
+}
+.ad-fragment .gallery.single img { max-height: 520px; }
+.ad-fragment figcaption {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.15;
+  font-style: italic;
+  text-align: center;
+}
+.ad-fragment .media-link {
+  min-height: 126px;
+  padding: 14px;
+  border: 6px solid #000;
+  border-radius: 6px;
+  color: #000;
+  text-decoration: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,0.15));
+}
+.ad-fragment .media-grid.three .media-link { min-height: 118px; }
+.ad-fragment .media-grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ad-fragment .media-grid.four .media-link { min-height: 112px; }
+.ad-fragment .media-icon { font-size: 14px; font-weight: 700; letter-spacing: .06em; }
+.ad-fragment .media-title { font-size: 18px; line-height: 1.14; }
+.ad-fragment audio { width: 100%; max-width: 520px; }
+.ad-fragment .page.compact { font-size: 18px; line-height: 1.17; }
+.ad-fragment .page.compact h1 { font-size: 32px; }
+.ad-fragment .page.compact .gallery.four img { max-height: 250px; }
+.ad-fragment .page.compact .media-link { min-height: 110px; }
+.ad-fragment .page.compact .media-title { font-size: 17px; }
+.ad-fragment .page.compact figcaption { font-size: 13px; }
+@media (max-width: 1100px) {
+  .ad-fragment { font-size: 18px; }
+  .ad-fragment h1 { font-size: 31px; }
+  .ad-fragment .text-block.compact { font-size: 17px; }
+  .ad-fragment .gallery.two,
+  .ad-fragment .gallery.three,
+  .ad-fragment .gallery.four,
+  .ad-fragment .gallery.six,
+  .ad-fragment .media-grid.two,
+  .ad-fragment .media-grid.three,
+  .ad-fragment .media-grid.four { grid-template-columns: 1fr; }
+  .ad-fragment img,
+  .ad-fragment .gallery.two img,
+  .ad-fragment .gallery.three img,
+  .ad-fragment .gallery.four img,
+  .ad-fragment .gallery.six img,
+  .ad-fragment .gallery.posters img,
+  .ad-fragment .gallery.news img,
+  .ad-fragment .gallery.single img { max-height: none; width: 100%; }
+}
 </style>
-</head>
-<body>
+<div class="ad-fragment">
   <div class="content-wrapper">
-    <div class="header">
-      <p class="section-label">Technology · Page 1</p>
-      <h1>105 mm Howitzer</h1>
-      
-      <p class="lede">It was modified after its use in World War II to increase its mobility in the jungle.  It could be towed behind a truck or by helicopter.  8 men operated it.  It accepted a variety of ammunition, from high explosive shrapnel shells to “beehive” cartridges with thousands of small sharpened darts.  With a range of 12,500 yards and 3-8 rounds per minute, it was an extremely deadly weapon.</p>
-      <p class="lede">Caption / media note:<br>
-Col Edwin S. Schick, the 12th Marines commander, pulls the lanyard of a Battery E, 2d Battalion, 12th Marines M101A1 105mm howitzer. This is the 200,000th round fired by the battery in Vietnam (Photo from Abel Collection)</p>
+    <div class="page">
+<div class="text-block narrow">
+<h1>105 mm Howitzer</h1>
+<p>It was modified after its use in World War II to increase its mobility in the jungle. It could be towed behind a truck or by helicopter. Eight men operated it. It accepted a variety of ammunition, from high explosive shrapnel shells to “beehive” cartridges with thousands of small sharpened darts. With a range of 12,500 yards and 3-8 rounds per minute, it was an extremely deadly weapon.</p>
+<p>Col. Edwin S. Schick, the 12th Marines commander, pulls the lanyard of a Battery E, 2d Battalion, 12th Marines M101A1 105mm howitzer. This is the 200,000th round fired by the battery in Vietnam. Photo from Abel Collection.</p>
+</div>
     </div>
-    <section class="gallery" data-auto="1">
-      <!-- No browser-ready media path was confidently identified from the supplied file list. -->
-    </section>
-    <div class="version-flag">Vietnam HTML Batch v1.0</div>
   </div>
-
-<script>
-(() => {
-  const gallery = document.querySelector('.gallery[data-auto="1"]');
-  if (!gallery) return;
-  const items = Array.from(gallery.querySelectorAll('.tile'));
-  const n = items.length;
-  if (!n) return;
-  const setGrid = (cols, rows) => {
-    gallery.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-    gallery.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
-  };
-  let cols, rows;
-  if (n <= 1) { cols = 1; rows = 1; }
-  else if (n <= 4) { cols = n; rows = 1; }
-  else if (n <= 6) { cols = 3; rows = 2; }
-  else { cols = 4; rows = Math.ceil(n / 4); }
-  setGrid(cols, rows);
-  const imgs = Array.from(gallery.querySelectorAll('img')).filter(img => img.getAttribute('src'));
-  const loadPromises = imgs.map(img => (img.complete && img.naturalWidth)
-    ? Promise.resolve()
-    : new Promise(res => {
-        img.addEventListener('load', res, { once:true });
-        img.addEventListener('error', res, { once:true });
-      })
-  );
-  Promise.all(loadPromises).then(() => {
-    const ars = imgs.filter(img => img.naturalWidth && img.naturalHeight)
-      .map(img => img.naturalWidth / img.naturalHeight);
-    if (!ars.length) return;
-    const maxAR = Math.max(...ars);
-    const VERY_WIDE = 2.0;
-    if (n === 4 && cols === 4 && maxAR >= VERY_WIDE) setGrid(2, 2);
-    if ((n === 5 || n === 6) && cols === 3 && rows === 2 && maxAR >= VERY_WIDE) setGrid(2, 3);
-  });
-
-  // Kiosk safety: shrink text a bit if a long row would otherwise overflow.
-  const wrapper = document.querySelector('.content-wrapper');
-  let size = 28;
-  while (wrapper && wrapper.scrollHeight > window.innerHeight && size > 18) {
-    size -= 1;
-    wrapper.style.fontSize = size + 'px';
-  }
-})();
-</script>
-</body>
-</html>
+</div>

@@ -1,105 +1,72 @@
-<!-- VERSION 1.6 -->
-<!-- World War 2/media-1.html -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World War II - Media 1</title>
 <style>
-  .content-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 15px;
-    color: black;
-    font-family: sans-serif;
-    font-size: 24px;
-  }
-
-  .profile-layout {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-  }
-
-  img.with-border {
-    border: 6px solid black;
-    border-radius: 6px;
-    filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-    flex-shrink: 0;
-  }
-
-  .responsive {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .bio-text {
-    flex: 1;
-  }
-
-  .bio-text > *:first-child {
-    margin-top: 0;
-  }
-
-  h1 {
-    margin-bottom: 0.35em;
-  }
-
-  h2 {
-    font-size: 1.1em;
-    font-weight: normal;
-    margin-top: -0.15em;
-    margin-bottom: 0.9em;
-  }
-
-  .caption {
-    font-style: italic;
-    font-size: 0.9em;
-  }
-
-  .media-gallery {
-    margin-top: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    align-items: flex-start;
-  }
-
-  .media-card {
-    max-width: 430px;
-    font-size: 0.85em;
-  }
-
-  .media-card img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .audio-block,
-  .video-block,
-  .link-block,
-  .media-note {
-    margin-top: 18px;
-    margin-bottom: 18px;
-  }
-
-  audio,
-  video {
-    max-width: 100%;
-  }
-</style>
-</head>
-<body>
-  <div class="content-wrapper">
-    <div class="profile-layout">
-      <div class="bio-text">
-        <h1>World War II - Media and the Message</h1>
-        <p>In the late 1930s and 1940s Americans received their news from three sources - newspaper, radio and newsreels.  The often heroic efforts of such men as newspaper columnist Ernie Pyle, radio broadcaster Edward R. Murrow, cartoonist Sgt. Bill Mauldin as well as the combat photographers of the armed forces and civilian media brought the reality of the war to Americans at home.<br>
-The government established the Office of War Information to coordinate propaganda activities. The OWI staff met with the media, including heads of Hollywood studios, to suggest political themes the government wanted to promote.  The OWI and other agencies that acted as a clearing house for information about the war effort and used a strategy of ‘informational propaganda’ which disseminated information to reassure the public.</p>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+.ad-fragment {
+  --ad-work-w: 1260px;
+  --ad-gap: 12px;
+  --ad-border: 5px solid #000;
+  --ad-radius: 6px;
+  --ad-caption: 14px;
+  box-sizing: border-box;
+  max-width: var(--ad-work-w);
+  margin: 0 auto;
+  padding: 4px 6px 14px;
+  color: #000;
+  font-family: sans-serif;
+  font-size: 20px;
+  line-height: 1.2;
+}
+.ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
+.ad-fragment .content-wrapper { max-width: 100%; margin: 0 auto; padding: 0; color: inherit; font-family: inherit; font-size: inherit; line-height: inherit; }
+.ad-fragment h1 { margin: 0 0 8px; font-size: 33px; line-height: 1.05; }
+.ad-fragment p { margin: 0 0 8px; line-height: 1.2; }
+.ad-fragment .lead-text { width: min(1160px, 100%); max-width: min(1160px, 100%); margin: 0 auto 12px; }
+.ad-fragment .lead-text.wide-title h1 { white-space: nowrap; font-size: 32px; }
+.ad-fragment .lead-text.tight { margin-bottom: 8px; }
+.ad-fragment .split-layout { display: grid; grid-template-columns: minmax(300px,.45fr) minmax(0,.55fr); gap: var(--ad-gap); align-items: start; }
+.ad-fragment .split-layout .lead-text { max-width: 62ch; margin: 0; }
+.ad-fragment .gallery { display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-start; gap: var(--ad-gap); margin: 8px auto 0; width: 100%; }
+.ad-fragment figure { margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; max-width: 100%; text-align: center; }
+.ad-fragment img, .ad-fragment video { display: block; max-width: 100%; height: auto; object-fit: contain; box-sizing: border-box; border: var(--ad-border); border-radius: var(--ad-radius); background: #f3f0e8; filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
+.ad-fragment figcaption { display: block; margin: 3px 0 0; padding: 0; width: 100%; font-size: var(--ad-caption); line-height: 1.12; font-style: italic; text-align: center; overflow-wrap: anywhere; }
+.ad-fragment .one-image figure { width: min(840px, 96%); }
+.ad-fragment .one-image img { max-height: 505px; }
+.ad-fragment .two-images figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 615px; }
+.ad-fragment .two-images img { width: 100%; max-height: 500px; }
+.ad-fragment .three-images figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
+.ad-fragment .three-images img { width: 100%; max-height: 460px; }
+.ad-fragment .four-wide figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 610px; }
+.ad-fragment .four-wide img { width: 100%; max-height: 335px; }
+.ad-fragment .four-posters { flex-wrap: nowrap; gap: 10px; }
+.ad-fragment .four-posters figure { width: calc((100% - 30px) / 4); min-width: 0; }
+.ad-fragment .four-posters img { width: 100%; max-height: 500px; }
+.ad-fragment .five-landscape figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
+.ad-fragment .five-landscape figure:nth-last-child(-n+2) { width: calc((100% - var(--ad-gap)) / 2); max-width: 600px; }
+.ad-fragment .five-landscape img { width: 100%; max-height: 340px; }
+.ad-fragment .five-posters { flex-wrap: nowrap; gap: 9px; }
+.ad-fragment .five-posters figure { width: calc((100% - 36px) / 5); min-width: 0; }
+.ad-fragment .five-posters img { width: 100%; max-height: 475px; }
+.ad-fragment .six-images figure, .ad-fragment .many-images figure { width: calc((100% - (2 * var(--ad-gap))) / 3); min-width: 0; }
+.ad-fragment .six-images img, .ad-fragment .many-images img { width: 100%; max-height: 310px; }
+.ad-fragment .poster-3 { flex-wrap: nowrap; gap: 14px; }
+.ad-fragment .poster-3 figure { width: calc((100% - 28px) / 3); min-width: 0; }
+.ad-fragment .poster-3 img { width: 100%; max-height: 560px; }
+.ad-fragment .headline-top, .ad-fragment .headline-bottom { display: flex; justify-content: center; align-items: flex-start; gap: var(--ad-gap); margin-left: auto; margin-right: auto; }
+.ad-fragment .headline-top { margin-top: 8px; }
+.ad-fragment .headline-bottom { margin-top: 12px; }
+.ad-fragment .headline-top figure { width: calc((100% - var(--ad-gap)) / 2); max-width: 610px; }
+.ad-fragment .headline-bottom figure { width: calc((100% - (2 * var(--ad-gap))) / 3); max-width: 398px; }
+.ad-fragment .headline-top img { width: 100%; max-height: 295px; }
+.ad-fragment .headline-bottom img { width: 100%; max-height: 215px; }
+.ad-fragment .split-layout figure img { width: 100%; max-height: 515px; }
+.ad-fragment .placeholder { width: 100%; min-height: 145px; border: 5px dashed #555; border-radius: var(--ad-radius); background: rgba(240,240,240,.82); display: flex; align-items: center; justify-content: center; padding: 16px; font-weight: bold; text-align: center; }
+.ad-fragment audio { width: min(780px,100%); }
+.ad-fragment .audio-block { margin: 14px auto 0; text-align: center; }
+@media (max-width:1100px){
+  .ad-fragment { font-size: 18px; }
+  .ad-fragment .lead-text.wide-title h1 { white-space: normal; }
+  .ad-fragment .split-layout { grid-template-columns: 1fr; }
+  .ad-fragment .headline-top, .ad-fragment .headline-bottom, .ad-fragment .four-posters, .ad-fragment .five-posters, .ad-fragment .poster-3 { flex-wrap: wrap; }
+  .ad-fragment .two-images figure, .ad-fragment .three-images figure, .ad-fragment .four-wide figure, .ad-fragment .four-posters figure, .ad-fragment .five-landscape figure, .ad-fragment .five-landscape figure:nth-last-child(-n+2), .ad-fragment .five-posters figure, .ad-fragment .six-images figure, .ad-fragment .many-images figure, .ad-fragment .poster-3 figure, .ad-fragment .headline-top figure, .ad-fragment .headline-bottom figure { width: min(720px,96%); max-width: 96%; }
+  .ad-fragment .one-image img, .ad-fragment .two-images img, .ad-fragment .three-images img, .ad-fragment .four-wide img, .ad-fragment .four-posters img, .ad-fragment .five-landscape img, .ad-fragment .five-posters img, .ad-fragment .six-images img, .ad-fragment .many-images img, .ad-fragment .poster-3 img, .ad-fragment .split-layout figure img, .ad-fragment .headline-top img, .ad-fragment .headline-bottom img { max-height: none; }
+}
+</style><div class="ad-fragment"><div class="content-wrapper"><div class="lead-text"><h1>World War II - Media and the Message</h1><p>In the late 1930s and 1940s Americans received their news from three sources - newspaper, radio and newsreels.  The often heroic efforts of such men as newspaper columnist Ernie Pyle, radio broadcaster Edward R. Murrow, cartoonist Sgt. Bill Mauldin as well as the combat photographers of the armed forces and civilian media brought the reality of the war to Americans at home.</p>
+<p>The government established the Office of War Information to coordinate propaganda activities. The OWI staff met with the media, including heads of Hollywood studios, to suggest political themes the government wanted to promote.  The OWI and other agencies that acted as a clearing house for information about the war effort and used a strategy of ‘informational propaganda’ which disseminated information to reassure the public.</p></div></div></div>

@@ -1,107 +1,153 @@
 <style>
 .ad-fragment {
-  --ad-work-w: 1260px;
-  --ad-gap: 16px;
-  --ad-border: 5px solid #000;
-  --ad-radius: 6px;
-  --ad-caption: 15px;
   box-sizing: border-box;
-  max-width: var(--ad-work-w);
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 6px 10px 18px;
+  padding: 8px 12px 16px;
   color: #000;
   font-family: sans-serif;
   font-size: 20px;
   line-height: 1.22;
 }
 .ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
-.ad-fragment .content-wrapper,
-.ad-fragment .wwii-media-2 {
-  max-width: 100%;
+.ad-fragment .content-wrapper {
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
 }
-.ad-fragment h1 { margin: 0 0 10px; font-size: 34px; line-height: 1.06; }
-.ad-fragment h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.1; }
-.ad-fragment p { margin: 0 0 9px; line-height: 1.22; }
-.ad-fragment .section-label { margin: 0 0 4px; font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: #333; }
-.ad-fragment .profile-layout { display: grid; grid-template-columns: minmax(0,.95fr) minmax(340px,.85fr); gap: var(--ad-gap); align-items: start; }
-.ad-fragment .bio-text { min-width: 0; }
-.ad-fragment .media-column,
-.ad-fragment .image-stack,
-.ad-fragment .stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--ad-gap); align-items: start; min-width: 0; max-width: 100%; }
+.ad-fragment h1 {
+  margin: 0 0 10px;
+  font-size: 34px;
+  line-height: 1.06;
+  font-weight: 700;
+}
+.ad-fragment p {
+  margin: 0 0 8px;
+}
+.ad-fragment .text-block {
+  max-width: 1080px;
+  margin: 0 auto 12px;
+}
+.ad-fragment .text-block.narrow { max-width: 900px; }
+.ad-fragment .text-block.compact { max-width: 1080px; font-size: 18px; line-height: 1.18; }
+.ad-fragment .text-block.compact h1 { font-size: 32px; }
+.ad-fragment .role-note {
+  font-style: italic;
+  white-space: pre-line;
+}
 .ad-fragment .gallery,
-.ad-fragment .media-gallery,
-.ad-fragment .headline-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: var(--ad-gap); align-items: start; margin-top: 12px; min-width: 0; }
-.ad-fragment figure,
-.ad-fragment .media-figure,
-.ad-fragment .media-card,
-.ad-fragment .tile { margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-width: 0; max-width: 100%; }
-.ad-fragment img,
-.ad-fragment img.with-border,
-.ad-fragment .with-border,
-.ad-fragment figure img,
-.ad-fragment .media-card img,
-.ad-fragment .media-figure img,
-.ad-fragment .image-stack img,
-.ad-fragment .media-column img,
-.ad-fragment .stack img { display: block; max-width: 100%; width: auto; height: auto; max-height: 520px; object-fit: contain; box-sizing: border-box; border: var(--ad-border); border-radius: var(--ad-radius); background: #f3f0e8; filter: sepia(0.2) brightness(1) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
-.ad-fragment .gallery img,
-.ad-fragment .media-gallery img,
-.ad-fragment .headline-gallery img,
-.ad-fragment .media-column img,
-.ad-fragment .image-stack img,
-.ad-fragment .stack img { max-height: 300px; }
-.ad-fragment .primary-headline img,
-.ad-fragment .hero img,
-.ad-fragment .profile-layout > figure:first-child img,
-.ad-fragment .profile-layout > .media-column:first-child img,
-.ad-fragment .profile-layout > .image-stack:first-child img { max-height: 520px; }
-.ad-fragment figcaption,
-.ad-fragment .caption { display: block; margin: 6px 0 0; padding: 0; max-width: 100%; font-size: var(--ad-caption); line-height: 1.15; font-style: italic; text-align: center; }
-.ad-fragment .caption-list { display: none; }
-.ad-fragment a.media-link,
-.ad-fragment .media-link,
-.ad-fragment .media-link-box { max-width: 100%; color: #000; }
-.ad-fragment audio,
-.ad-fragment video { max-width: 100%; max-height: 520px; }
-@media (max-width:1100px){
-  .ad-fragment{font-size:18px;}
-  .ad-fragment .profile-layout{grid-template-columns:1fr;}
-  .ad-fragment .gallery,.ad-fragment .media-gallery,.ad-fragment .headline-gallery,.ad-fragment .media-column,.ad-fragment .image-stack,.ad-fragment .stack{grid-template-columns:1fr;}
-  .ad-fragment img,.ad-fragment .gallery img,.ad-fragment .media-gallery img,.ad-fragment .headline-gallery img,.ad-fragment .media-column img,.ad-fragment .image-stack img,.ad-fragment .stack img{max-height:none;}
+.ad-fragment .media-grid {
+  display: grid;
+  gap: 14px;
+  align-items: start;
+  margin: 10px auto 0;
+}
+.ad-fragment .gallery.two,
+.ad-fragment .media-grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ad-fragment .gallery.three,
+.ad-fragment .media-grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ad-fragment .gallery.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ad-fragment .gallery.six { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ad-fragment figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.ad-fragment img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border: 6px solid #000;
+  border-radius: 6px;
+  background: transparent;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,0.15));
+}
+.ad-fragment .gallery.two img { max-height: 470px; }
+.ad-fragment .gallery.three img { max-height: 340px; }
+.ad-fragment .gallery.four img { max-height: 300px; }
+.ad-fragment .gallery.six img { max-height: 240px; }
+.ad-fragment .gallery.posters img { max-height: 350px; }
+.ad-fragment .gallery.news img { max-height: 560px; }
+.ad-fragment .gallery.single {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 900px;
+}
+.ad-fragment .gallery.single img { max-height: 520px; }
+.ad-fragment figcaption {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.15;
+  font-style: italic;
+  text-align: center;
+}
+.ad-fragment .media-link {
+  min-height: 126px;
+  padding: 14px;
+  border: 6px solid #000;
+  border-radius: 6px;
+  color: #000;
+  text-decoration: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,0.15));
+}
+.ad-fragment .media-grid.three .media-link { min-height: 118px; }
+.ad-fragment .media-grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ad-fragment .media-grid.four .media-link { min-height: 112px; }
+.ad-fragment .media-icon { font-size: 14px; font-weight: 700; letter-spacing: .06em; }
+.ad-fragment .media-title { font-size: 18px; line-height: 1.14; }
+.ad-fragment audio { width: 100%; max-width: 520px; }
+.ad-fragment .page.compact { font-size: 18px; line-height: 1.17; }
+.ad-fragment .page.compact h1 { font-size: 32px; }
+.ad-fragment .page.compact .gallery.four img { max-height: 250px; }
+.ad-fragment .page.compact .media-link { min-height: 110px; }
+.ad-fragment .page.compact .media-title { font-size: 17px; }
+.ad-fragment .page.compact figcaption { font-size: 13px; }
+@media (max-width: 1100px) {
+  .ad-fragment { font-size: 18px; }
+  .ad-fragment h1 { font-size: 31px; }
+  .ad-fragment .text-block.compact { font-size: 17px; }
+  .ad-fragment .gallery.two,
+  .ad-fragment .gallery.three,
+  .ad-fragment .gallery.four,
+  .ad-fragment .gallery.six,
+  .ad-fragment .media-grid.two,
+  .ad-fragment .media-grid.three,
+  .ad-fragment .media-grid.four { grid-template-columns: 1fr; }
+  .ad-fragment img,
+  .ad-fragment .gallery.two img,
+  .ad-fragment .gallery.three img,
+  .ad-fragment .gallery.four img,
+  .ad-fragment .gallery.six img,
+  .ad-fragment .gallery.posters img,
+  .ad-fragment .gallery.news img,
+  .ad-fragment .gallery.single img { max-height: none; width: 100%; }
 }
 </style>
 <div class="ad-fragment">
-<div class="content-wrapper">
-<div class="header">
-<p class="section-label">Arrival · Page 7</p>
+  <div class="content-wrapper">
+    <div class="page">
+<div class="text-block narrow">
 <h1>Glen Bressette</h1>
-<p class="lede">Helicopter CH 460. He flew as 50 cal gunner.<br/>
-Bunker by living quarters<br/>
-Living quarters, Marble Mountain Air Facility</p>
+<p>Helicopter CH 460. He flew as .50 cal gunner.</p>
+<p>Bunker by living quarters</p>
+<p>Living quarters, Marble Mountain Air Facility</p>
 </div>
-<section class="gallery" data-auto="1">
-<figure class="tile">
-<div class="stack">
-<a class="media-link video-card" href="Vietnam/video/Bressette-Honoring O-GI-CHI-TA - the Warrior.flv"><span class="media-icon">VIDEO</span><span>Bressette - Honoring O-GI-CHI-TA</span></a>
-</div>
-</figure>
-<figure class="tile">
-<div class="stack">
-<a class="media-link video-card" href="Vietnam/video/Bressette-My Mother Accepted Me.flv"><span class="media-icon">VIDEO</span><span>Bressette - My Mother Accepted Me</span></a>
-</div>
-</figure>
-<figure class="tile">
-<div class="stack">
-<img alt="Bressette uniform" src="Vietnam/pics/working/Bressette uniform copy.jpg"/>
-</div>
+<section class="media-grid three">
+<a class="media-link" href="Vietnam/video/Bressette-Honoring O-GI-CHI-TA - the Warrior.flv"><span class="media-icon">VIDEO</span><span class="media-title">Bressette - Honoring O-GI-CHI-TA</span></a>
+<a class="media-link" href="Vietnam/video/Bressette-My Mother Accepted Me.flv"><span class="media-icon">VIDEO</span><span class="media-title">Bressette - My Mother Accepted Me</span></a>
+<figure>
+<img src="Vietnam/pics/working/Bressette uniform copy.jpg" alt="Bressette uniform"/>
 </figure>
 </section>
-
-</div>
+    </div>
+  </div>
 </div>
