@@ -1,108 +1,168 @@
 <style>
 .ad-fragment {
   --ad-work-w: 1260px;
-  --ad-text-w: 960px;
-  --ad-gap: 18px;
+  --ad-text-w: 1040px;
+  --ad-gap: 28px;
   --ad-border: 6px solid #111;
   --ad-radius: 6px;
   box-sizing: border-box;
   max-width: var(--ad-work-w);
   margin: 0 auto;
-  padding: 8px 16px 18px;
+  padding: 4px 8px 8px;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 1.28;
+  line-height: 1.22;
+  cursor: default;
 }
 .ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
 .ad-fragment .content-wrapper {
   width: 100%;
-  max-width: 1220px;
+  max-width: 1235px;
   margin: 0 auto;
+  transform: translateX(-24px);
 }
 .ad-fragment h1 {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   color: #000;
   font-size: 34px;
   line-height: 1.08;
   font-weight: 700;
+  text-align: center;
 }
-.ad-fragment p { margin: 0 0 10px; }
+.ad-fragment h2 {
+  margin: 4px 0 8px;
+  color: #000;
+  font-size: 25px;
+  line-height: 1.08;
+  font-weight: 700;
+  text-align: center;
+}
+.ad-fragment p { margin: 0 0 8px; }
+.ad-fragment em { font-style: italic; }
+.ad-fragment .center-stage {
+  min-height: min(640px, calc(100vh - 255px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .ad-fragment .lead-text,
+.ad-fragment .text-block,
 .ad-fragment .bio-text,
 .ad-fragment .kiosk-text {
   width: min(var(--ad-text-w), 100%);
   max-width: min(var(--ad-text-w), 100%);
   margin: 0 auto 14px;
+  text-align: left;
 }
-.ad-fragment .lead-text,
-.ad-fragment .kiosk-text,
-.ad-fragment .center-copy {
+.ad-fragment .lead-text h1,
+.ad-fragment .text-block h1,
+.ad-fragment .bio-text h1,
+.ad-fragment .kiosk-text h1 { text-align: center; }
+.ad-fragment .lead-text.wide,
+.ad-fragment .text-block.wide,
+.ad-fragment .bio-text.wide,
+.ad-fragment .kiosk-text.wide {
+  width: min(1100px, 100%);
+  max-width: min(1100px, 100%);
+}
+.ad-fragment .center-copy { text-align: center; }
+.ad-fragment .text-only {
+  width: min(940px, 100%);
   text-align: center;
+  font-size: 23px;
+  line-height: 1.24;
 }
-.ad-fragment .center-stage {
-  min-height: min(650px, calc(100vh - 245px));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.ad-fragment .text-only p { text-align: center; }
+.ad-fragment .role-note {
+  margin: 0 0 8px;
+  font-style: italic;
+  white-space: pre-line;
+  text-align: center;
 }
 .ad-fragment .visual-area {
   width: 100%;
   min-height: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 .ad-fragment .split-layout {
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(420px, 0.92fr) minmax(0, 1fr);
-  gap: 24px;
+  grid-template-columns: minmax(360px, 440px) minmax(520px, 690px);
+  gap: 36px;
   align-items: center;
   justify-content: center;
 }
-.ad-fragment .split-layout.image-heavy {
-  grid-template-columns: minmax(500px, 1.08fr) minmax(0, .72fr);
+.ad-fragment .split-layout.media-first {
+  grid-template-columns: minmax(590px, 760px) minmax(360px, 440px);
+  gap: 42px;
 }
-.ad-fragment .image-row,
-.ad-fragment .gallery {
-  width: 100%;
+.ad-fragment .split-layout.image-heavy {
+  grid-template-columns: minmax(650px, 760px) minmax(320px, 410px);
+  gap: 36px;
+}
+.ad-fragment .split-layout.caption-side {
+  grid-template-columns: minmax(580px, 720px) minmax(280px, 360px);
+  gap: 34px;
+  align-items: center;
+}
+.ad-fragment .image-grid,
+.ad-fragment .gallery,
+.ad-fragment .video-grid,
+.ad-fragment .media-stack {
+  width: min(1180px, 100%);
   display: grid;
   gap: var(--ad-gap);
-  align-items: start;
+  justify-content: center;
   justify-items: center;
+  align-items: start;
 }
-.ad-fragment .image-row.two,
-.ad-fragment .gallery.two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
+.ad-fragment .image-grid.two,
+.ad-fragment .gallery.two,
+.ad-fragment .video-grid.two,
+.ad-fragment .media-stack.two { grid-template-columns: repeat(2, auto); }
+.ad-fragment .image-grid.three,
+.ad-fragment .gallery.three,
+.ad-fragment .video-grid.three { grid-template-columns: repeat(3, auto); }
+.ad-fragment .image-grid.four,
+.ad-fragment .gallery.four { grid-template-columns: repeat(2, auto); }
+.ad-fragment .image-grid.six,
+.ad-fragment .gallery.six { grid-template-columns: repeat(3, auto); }
+.ad-fragment .image-grid.five,
 .ad-fragment .gallery.five {
+  width: min(1160px, 100%);
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  row-gap: 12px;
-  column-gap: 18px;
+  gap: 26px 30px;
 }
+.ad-fragment .image-grid.five figure:nth-child(-n+3),
 .ad-fragment .gallery.five figure:nth-child(-n+3) { grid-column: span 2; }
+.ad-fragment .image-grid.five figure:nth-child(n+4),
 .ad-fragment .gallery.five figure:nth-child(n+4) { grid-column: span 3; }
 .ad-fragment .image-stack {
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
   align-items: center;
-  justify-content: center;
 }
-.ad-fragment figure {
+/* Media/caption invariant: borders are only on the actual media element. Figure/video-item is a table so captions inherit the rendered media width. */
+.ad-fragment figure,
+.ad-fragment .video-item {
   margin: 0;
   padding: 0;
   min-width: 0;
   max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
+  width: auto;
+  display: table;
+  border-collapse: collapse;
+  caption-side: bottom;
 }
-.ad-fragment img {
+.ad-fragment img,
+.ad-fragment video {
   display: block;
   width: auto;
   height: auto;
@@ -110,57 +170,116 @@
   object-fit: contain;
   border: var(--ad-border);
   border-radius: var(--ad-radius);
-  background: transparent;
+  background: #000;
 }
+.ad-fragment img { background: transparent; }
+.ad-fragment video { width: 100%; }
 .ad-fragment figcaption,
-.ad-fragment .caption {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  margin: 1px auto 0;
-  padding: 0;
+.ad-fragment .caption,
+.ad-fragment .video-title {
+  display: table-caption;
+  caption-side: bottom;
+  width: auto;
+  margin: 0;
+  padding: 1px 0 0;
   color: #000;
-  font-size: 15px;
-  line-height: 1.08;
+  font-size: 20px;
+  line-height: 1.03;
   font-style: italic;
   text-align: center;
 }
-.ad-fragment .text-only {
-  width: min(900px, 100%);
-  text-align: center;
-}
-.ad-fragment .single-hero img { max-height: 560px; }
-.ad-fragment .split-layout img { max-height: 550px; }
-.ad-fragment .image-row.two img { max-height: 440px; }
-.ad-fragment .gallery.five img { max-height: 245px; }
-.ad-fragment .large-poster img { max-height: 640px; }
-.ad-fragment .wide-headline img { max-height: 230px; }
-.ad-fragment .scene-img img { max-height: 425px; }
-.ad-fragment .plane-img img { max-height: 285px; }
+.ad-fragment .caption-side-text { font-size: 20px; line-height: 1.04; font-style: italic; text-align: right; }
+.ad-fragment .map img { filter: saturate(.82) contrast(.96) brightness(1.06); }
+/* Size media directly; do not force image width to a wrapper. */
+.ad-fragment .headline-large img { max-width: 520px; max-height: 410px; }
+.ad-fragment .headline img { max-width: 360px; max-height: 300px; }
+.ad-fragment .poster img { max-width: 455px; max-height: 455px; }
+.ad-fragment .wide img { max-width: 580px; max-height: 360px; }
+.ad-fragment .wide-tall img { max-width: 790px; max-height: 590px; }
+.ad-fragment .map img { max-width: 340px; max-height: 255px; }
+.ad-fragment .scan img { max-width: 215px; max-height: 195px; }
+.ad-fragment .single-hero img { max-width: 900px; max-height: 610px; }
+.ad-fragment .large-hero img { max-width: 930px; max-height: 630px; }
+.ad-fragment .wide-headline img { max-width: 840px; max-height: 285px; }
+.ad-fragment .scene-img img { max-width: 820px; max-height: 395px; }
+.ad-fragment .plane-img img { max-width: 560px; max-height: 260px; }
+.ad-fragment .balanced-photo img { max-width: 740px; max-height: 500px; }
+.ad-fragment .image-grid.two img,
+.ad-fragment .gallery.two img { max-width: 550px; max-height: 455px; }
+.ad-fragment .image-grid.three img,
+.ad-fragment .gallery.three img { max-width: 365px; max-height: 330px; }
+.ad-fragment .image-grid.four img,
+.ad-fragment .gallery.four img { max-width: 535px; max-height: 285px; }
+.ad-fragment .image-grid.five img,
+.ad-fragment .gallery.five img { max-width: 360px; max-height: 235px; }
+.ad-fragment .image-grid.six img,
+.ad-fragment .gallery.six img { max-width: 340px; max-height: 225px; }
+.ad-fragment video { max-height: 320px; }
+.ad-fragment .video-grid.two .video-item { width: 550px; }
+.ad-fragment .video-grid.three .video-item { width: 365px; }
+.ad-fragment .video-grid.four .video-item { width: 530px; }
+.ad-fragment .video-grid.two video { max-height: 320px; }
+.ad-fragment .video-grid.three video { max-height: 245px; }
+.ad-fragment .video-grid.four video { max-height: 230px; }
+.ad-fragment .single-video { width: min(760px, 100%); margin: 0 auto; }
+.ad-fragment .single-video .video-item { width: min(760px, 100%); }
+.ad-fragment .single-video video { max-height: 430px; }
+.ad-fragment .compact-caption figcaption,
+.ad-fragment .compact-caption .caption,
+.ad-fragment .compact-caption .video-title { font-size: 19px; line-height: 1.03; }
+.ad-fragment .tight-caption figcaption,
+.ad-fragment .tight-caption .caption,
+.ad-fragment .tight-caption .video-title { padding-top: 0; }
+.media-1-panel .image-grid.two,
+.media-2-panel .image-grid.two { width: min(1060px, 100%); gap: 30px; }
+.media-1-panel .headline-large img,
+.media-2-panel .headline-large img { max-width: 505px; }
+.media-3-panel .image-grid.three { width: min(1120px, 100%); gap: 30px; }
+.media-3-panel .headline img { max-width: 350px; }
+.media-3b-panel .headline-large img { max-width: 505px; }
+.media-4-panel .poster img { max-width: 455px; }
+.media-4-panel .gallery.five { width: min(1160px, 100%); gap: 24px 30px; }
+.media-4-panel .gallery.five figure:nth-child(-n+3) img { max-width: 355px; }
+.media-4-panel .gallery.five figure:nth-child(n+4) img { max-width: 350px; }
+.media-5-panel .gallery.five,
+.media-5-panel .image-grid.five { width: min(1040px, 100%); gap: 14px 20px; }
+.media-5-panel .gallery.five img,
+.media-5-panel .image-grid.five img { max-width: 215px; max-height: 180px; }
+.upper-michigan-1-panel .image-grid.four img { max-width: 500px; }
+.upper-michigan-5-panel .image-grid.three img { max-width: 340px; }
+.voices-4-panel .image-grid.five img { max-width: 285px; }
+.korea-media-intro .balanced-photo img { max-width: 740px; max-height: 500px; }
+.korea-media-intro .bio-text { width: min(430px, 100%); max-width: 430px; }
+.korea-media-intro figcaption { font-size: 19px; }
 @media (max-width: 1050px) {
-  .ad-fragment { font-size: 19px; }
+  .ad-fragment { font-size: 18px; }
+  .ad-fragment .content-wrapper { transform: none; }
   .ad-fragment .center-stage { min-height: 0; }
   .ad-fragment .split-layout,
+  .ad-fragment .split-layout.media-first,
   .ad-fragment .split-layout.image-heavy,
-  .ad-fragment .image-row.two,
-  .ad-fragment .gallery.five {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  .ad-fragment .gallery.five figure { grid-column: auto !important; }
-  .ad-fragment img { max-height: none !important; }
+  .ad-fragment .split-layout.caption-side,
+  .ad-fragment .image-grid.two,
+  .ad-fragment .image-grid.three,
+  .ad-fragment .image-grid.four,
+  .ad-fragment .image-grid.five,
+  .ad-fragment .image-grid.six,
+  .ad-fragment .gallery.two,
+  .ad-fragment .gallery.three,
+  .ad-fragment .gallery.four,
+  .ad-fragment .gallery.five,
+  .ad-fragment .gallery.six,
+  .ad-fragment .video-grid.two,
+  .ad-fragment .video-grid.three,
+  .ad-fragment .video-grid.four { display: flex; flex-direction: column; align-items: center; }
 }
 </style>
-
 <div class="ad-fragment media-7-panel">
-  <div class="content-wrapper center-stage">
-    <section class="lead-text">
-      <h1>North Korean Propaganda</h1>
-    </section>
-    <figure class="large-poster">
-      <img decoding="async" src="Korea/Pictures/flyer.jpg" alt="North Korean propaganda flyer">
-      <figcaption>Shows the end of US aggressors: Dean, Walker, Mac Arthur, Clark, Ridgway and Van Fleet</figcaption>
-    </figure>
-  </div>
+<div class="content-wrapper center-stage">
+<section class="lead-text"><h1>North Korean Propaganda</h1></section>
+<figure class="large-poster">
+<img alt="North Korean propaganda flyer" decoding="async" src="Korea/Pictures/flyer.jpg"/>
+<figcaption>Shows the end of U.S. aggressors:<br/>Dean, Walker, MacArthur, Clark,<br/>Ridgway and Van Fleet.</figcaption>
+</figure>
+</div>
 </div>

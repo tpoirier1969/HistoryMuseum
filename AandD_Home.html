@@ -1,4 +1,4 @@
-<!-- Version 4.10 (Buttons spaced, deep-link to Media-1) -->
+<!-- Version 4.12 (Home buttons repositioned upward and tightened) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,18 +20,44 @@
       font-family: Arial, sans-serif;
     }
 
-    table {
-      width: 1867px;
-      height: 962px;
-      border: 2px solid transparent;
-      margin: 0;
-      padding: 0;
+    /*
+      Home button layout v4.12:
+      Replaces the old fixed table layout so the buttons can be positioned
+      intentionally over the background artwork.
+      Coordinates are viewport percentages, matching the existing 1920x1030 kiosk view.
+    */
+    .home-button-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      pointer-events: none;
     }
 
-    td {
-      text-align: center;
-      vertical-align: middle;
+    .home-button {
+      position: absolute;
+      display: block;
+      transform: translate(-50%, -50%);
+      pointer-events: auto;
+      line-height: 0;
     }
+
+    .home-button img {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: none;
+      border: 0;
+    }
+
+    /*
+      Top row moved up roughly one button-height from the old table placement.
+      Bottom row moved up into the former lower edge/top-row zone.
+    */
+    .home-button.civil   { left: 54.1%; top: 43.0%; }
+    .home-button.spanish { left: 73.9%; top: 43.0%; }
+    .home-button.wwi     { left: 54.1%; top: 60.0%; }
+    .home-button.wwii    { left: 73.9%; top: 60.0%; }
+    .home-button.cold    { left: 89.6%; top: 60.0%; }
 
     .glow-animated {
       animation: glowPulse 4s infinite;
@@ -113,7 +139,7 @@
 
     body.glitch-active .noise-overlay { opacity: 0.05; }
 
-    body.glitch-active table img { animation: buttonGlitch 1s infinite; }
+    body.glitch-active .home-button img { animation: buttonGlitch 1s infinite; }
 
     @keyframes buttonGlitch {
       0%, 100% { transform: translate(0, 0); }
@@ -141,73 +167,31 @@
     body.glitch-active .glitch-overlay,
     body.glitch-active .noise-overlay,
     body.glitch-active .scanlines { opacity: 0 !important; animation: none !important; }
-    table img { animation: none !important; }
+    .home-button img { animation: none !important; }
   </style>
 </head>
 <body>
-  <table border="0" align="left" cellpadding="1" cellspacing="1">
-    <tbody>
-      <!-- Column widths row establishes 5 columns -->
-      <tr>
-        <td width="13" height="217"></td>
-        <td width="828"></td>
-        <td width="395"></td>
-        <td width="365"></td>
-        <td width="238"></td>
-      </tr>
+  <nav class="home-button-layer" aria-label="Arrivals and Departures war sections">
+    <a class="home-button civil" href="arrivals%20and%20departures.html?war=civil%20war&amp;section=media&amp;index=0">
+      <img src="images/background images/home/button-civil.png" width="140" height="140" alt="Civil War" class="glow-animated"/>
+    </a>
 
-      <!-- Spacer row (unchanged) -->
-      <tr>
-        <td height="133"></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+    <a class="home-button spanish" href="arrivals%20and%20departures.html?war=spanish&amp;section=media&amp;index=0">
+      <img src="images/background images/home/button-spanish.png" width="210" height="170" alt="Spanish–American War" class="glow-animated"/>
+    </a>
 
-      <!-- ============================ -->
-      <!-- ROW 1 (2 buttons, centered)  -->
-      <!-- ============================ -->
-      <tr>
-        <td height="240"></td>
-        <td></td>
-        <td>
-          <a href="arrivals%20and%20departures.html?war=civil%20war&amp;section=media&amp;index=0">
-            <img src="images/background images/home/button-civil.png" width="140" height="140" alt="Civil War" class="glow-animated"/>
-          </a>
-        </td>
-        <td>
-          <a href="arrivals%20and%20departures.html?war=spanish&amp;section=media&amp;index=0">
-            <img src="images/background images/home/button-spanish.png" width="210" height="170" alt="Spanish–American War" class="glow-animated"/>
-          </a>
-        </td>
-        <td></td>
-      </tr>
+    <a class="home-button wwi" href="arrivals%20and%20departures.html?war=wwi&amp;section=media&amp;index=0">
+      <img src="images/background images/home/button-wwi.png" width="120" height="140" alt="WWI" class="glow-animated"/>
+    </a>
 
-      <!-- ============================ -->
-      <!-- ROW 2 (3 buttons, balanced)  -->
-      <!-- ============================ -->
-      <tr>
-        <td height="84"></td>
-        <td></td>
-        <td>
-          <a href="arrivals%20and%20departures.html?war=wwi&amp;section=media&amp;index=0">
-            <img src="images/background images/home/button-wwi.png" width="120" height="140" alt="WWI" class="glow-animated"/>
-          </a>
-        </td>
-        <td>
-          <a href="arrivals%20and%20departures.html?war=wwii&amp;section=media&amp;index=0">
-            <img src="images/background images/home/button-wwii.png" width="100" height="140" alt="WWII" class="glow-animated"/>
-          </a>
-        </td>
-        <td>
-          <a href="arrivals%20and%20departures.html?war=cold&amp;section=media&amp;index=0">
-            <img src="images/background images/home/button-cold.png" width="170" height="190" alt="Cold War" class="glow-animated"/>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <a class="home-button wwii" href="arrivals%20and%20departures.html?war=wwii&amp;section=media&amp;index=0">
+      <img src="images/background images/home/button-wwii.png" width="100" height="140" alt="WWII" class="glow-animated"/>
+    </a>
+
+    <a class="home-button cold" href="arrivals%20and%20departures.html?war=cold&amp;section=media&amp;index=0">
+      <img src="images/background images/home/button-cold.png" width="170" height="190" alt="Cold War" class="glow-animated"/>
+    </a>
+  </nav>
 
   <div class="glitch-overlay"></div>
   <div class="noise-overlay"></div>

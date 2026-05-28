@@ -1,9 +1,11 @@
+<!-- Version 4.12 (shared kiosk CSS cleanup: legacy/full-page normalization) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Arrivals and Departures</title>
+  <link rel="stylesheet" href="css/kiosk-layout.css">
   <style>
     html, body {
       margin: 0;
@@ -23,7 +25,7 @@
     #mainContent {
       flex: 1;
       padding: 0px 0 0 120px;
-      overflow-y: auto;
+      overflow: hidden;
       position: relative;
       z-index: 1;
     }
@@ -46,7 +48,7 @@
 
     #subNavButtons { display: flex; justify-content: space-between; padding: 8px 150px 0 150px; }
     #subNavButtons img { height: 60px; cursor: pointer; }
-    #mainContent img { max-width: 100%; height: auto; display: block; margin-bottom: 20px; }
+    #mainContent img { max-width: 100%; height: auto; display: block; }
 
     .inactive-glow {
       filter:
@@ -128,12 +130,14 @@
       "vietnam": "Vietnam"
     };
     const warIdFromKey = (warKey) => `btn-${warKey.replace(/\s+/g,'-')}`;
+
     function seedInactiveGlow() {
       document.querySelectorAll('#sidebar img, #sectionNav img, #subNavButtons img').forEach(el => {
         el.classList.remove('active-glow');
         el.classList.add('inactive-glow');
       });
     }
+
     function highlightCurrent(war, section) {
       document.querySelectorAll('#sidebar img, #sectionNav img').forEach(el => {
         el.classList.remove('active-glow');
@@ -151,6 +155,7 @@
         sectionBtn.classList.add('active-glow');
       }
     }
+
     function goToKioskPage(war, section = "media", index = 0) {
       currentWar = war;
       currentSection = section;
@@ -206,6 +211,84 @@
       loadCurrent();
     }
 
+    function buildLoadedFragment(html, displayPath) {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const wrapper = document.createElement('div');
+      const isModernFragment = !!doc.body.querySelector('.ad-fragment');
+
+      wrapper.className = isModernFragment
+        ? 'kiosk-fragment ad-fragment-host'
+        : 'kiosk-fragment legacy-fragment';
+      wrapper.dataset.path = displayPath;
+      wrapper.dataset.war = currentWar;
+      wrapper.dataset.section = currentSection;
+
+      doc.querySelectorAll('style, link[rel="stylesheet"], script').forEach(node => node.remove());
+
+      Array.from(doc.body.childNodes).forEach(node => {
+        wrapper.appendChild(document.importNode(node, true));
+      });
+
+      return wrapper;
+    }
+
+    function normalizeMediaKey(media) {
+      const raw = media.getAttribute('src') || media.currentSrc || '';
+      if (!raw) return '';
+      try {
+        return `${media.tagName.toLowerCase()}::${new URL(raw, location.href).pathname.toLowerCase().replace(/%20/g, ' ')}`;
+      } catch (_) {
+        return `${media.tagName.toLowerCase()}::${raw.toLowerCase().replace(/%20/g, ' ')}`;
+      }
+    }
+
+    function removeExactDuplicateMedia(container) {
+      const seen = new Set();
+      container.querySelectorAll('.kiosk-fragment img[src], .kiosk-fragment video[src], .kiosk-fragment audio[src]').forEach(media => {
+        const key = normalizeMediaKey(media);
+        if (!key) return;
+        if (seen.has(key)) {
+          const removable = media.closest('figure, .video-item, .audio-block, .media-link') || media;
+          removable.remove();
+          return;
+        }
+        seen.add(key);
+      });
+    }
+
+    function neutralizeNonNavigationLinks(container) {
+      container.querySelectorAll('.kiosk-fragment a[href]').forEach(anchor => {
+        const href = (anchor.getAttribute('href') || '').toLowerCase();
+        const isDocumentLink = /\.(pdf|doc|docx|xls|xlsx|ppt|pptx|txt)(\?|#|$)/.test(href);
+        const isDirectMediaLink = /\.(mp3|wav|m4a|mp4|mov|m4v|f4v|flv)(\?|#|$)/.test(href);
+
+        if (isDocumentLink) {
+          anchor.remove();
+          return;
+        }
+
+        if (isDirectMediaLink) {
+          const span = document.createElement('span');
+          span.className = anchor.className || 'media-title';
+          span.innerHTML = anchor.innerHTML;
+          anchor.replaceWith(span);
+          return;
+        }
+
+        const span = document.createElement('span');
+        span.className = anchor.className || 'kiosk-static-text';
+        span.innerHTML = anchor.innerHTML;
+        anchor.replaceWith(span);
+      });
+    }
+
+    function applySharedFragmentCleanup(container) {
+      if (!container.querySelector('.kiosk-fragment')) return;
+      removeExactDuplicateMedia(container);
+      neutralizeNonNavigationLinks(container);
+    }
+
     function loadCurrent() {
       const pages = contentMap[currentWar]?.[currentSection];
       if (pages && pages.length > 0) {
@@ -227,19 +310,11 @@
           })
           .then(html => {
             const container = document.getElementById("mainContent");
-            const temp = document.createElement("div");
-            temp.innerHTML = html;
+            const loadedFragment = buildLoadedFragment(html, displayPath);
 
             container.innerHTML = '<div class="content-background"></div>';
-            temp.querySelectorAll("script").forEach(script => script.remove());
-            container.innerHTML += temp.innerHTML;
-
-            temp.querySelectorAll("script").forEach(script => {
-              const newScript = document.createElement("script");
-              if (script.src) newScript.src = script.src;
-              else newScript.textContent = script.textContent;
-              document.body.appendChild(newScript);
-            });
+            container.appendChild(loadedFragment);
+            applySharedFragmentCleanup(container);
 
             setTimeout(triggerInjectedAudioAutoplay, 100);
           })
@@ -248,6 +323,7 @@
           });
       }
     }
+
     function triggerInjectedAudioAutoplay() {
       const audio = document.querySelector("#mainContent audio");
       const audioEnabled = localStorage.getItem("audio-enabled");
@@ -256,6 +332,7 @@
         audio.play().catch(() => {});
       }
     }
+
     fetch('contentMap.json')
       .then(res => res.json())
       .then(data => {
@@ -274,6 +351,6 @@
         highlightCurrent(currentWar, currentSection);
         loadCurrent();
       });
-  </script>  
+  </script>
 </body>
 </html>
