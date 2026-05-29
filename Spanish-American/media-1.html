@@ -1,95 +1,20 @@
-<!-- VERSION 2.0 -->
-<!-- Spanish-American/media-1.html -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Spanish–American War • Media 1</title>
-  <style>
-    .content-wrapper {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 12px 15px;
-      color: black;
-      font-family: sans-serif;
-      font-size: 24px;
-      box-sizing: border-box;
-    }
-
-    .profile-layout {
-      min-height: 620px;
-      display: grid;
-      grid-template-columns: minmax(650px, 760px) minmax(320px, 390px);
-      gap: 24px;
-      align-items: center;
-      justify-content: center;
-    }
-
-    figure.image-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
-    }
-
-    .image-row {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 18px;
-    }
-
-    .caption,
-    figcaption {
-      margin-top: 4px;
-      font-size: 15px;
-      line-height: 1.08;
-      color: #000;
-      text-align: center;
-      font-style: italic;
-    }
-
-    img.with-border {
-      display: block;
-      border: 6px solid black;
-      border-radius: 6px;
-      filter: sepia(0.20) brightness(1.0) contrast(1)
-              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-      box-sizing: border-box;
-      flex-shrink: 0;
-    }
-
-    .image-row img.with-border.responsive {
-      width: 350px !important;
-      max-height: 430px;
-      height: auto;
-      object-fit: contain;
-    }
-
-    .bio-text {
-      font-size: 23px;
-      line-height: 1.2;
-    }
-
-    .bio-text > *:first-child { margin-top: 0; }
-  </style>
-</head>
-<body>
-  <div class="content-wrapper">
-    <div class="profile-layout">
-      <figure class="image-block">
-        <div class="image-row">
-          <img src="/Spanish-American/photos/18-battleship-maine-a.jpg"
-               class="with-border responsive" width="350"
-               alt="Battleship Maine before the explosion" />
-          <img src="/Spanish-American/photos/17-maine-wreck copy.jpg"
-               class="with-border responsive" width="350"
-               alt="Wreck of the Battleship Maine" />
+<div class="ad-fragment spanish-media spanish-media-1">
+  <div class="content-wrapper center-stage">
+    <div class="split-layout image-heavy">
+      <div class="visual-area">
+        <div class="image-grid two" style="width:min(760px,100%);">
+          <figure>
+            <img src="Spanish-American/photos/18-battleship-maine-a.jpg"
+                 alt="Battleship Maine before the explosion"
+                 decoding="async">
+          </figure>
+          <figure>
+            <img src="Spanish-American/photos/17-maine-wreck copy.jpg"
+                 alt="Wreck of the Battleship Maine"
+                 decoding="async">
+          </figure>
         </div>
-        <figcaption>The Battleship <em>Maine</em> — before and after.</figcaption>
-      </figure>
+      </div>
 
       <div class="bio-text">
         <p>
@@ -97,8 +22,8 @@
           was instrumental in committing American troops to what became the
           Spanish–American War.
         </p>
+        <p class="caption">The Battleship <em>Maine</em> — before and after.</p>
       </div>
     </div>
   </div>
-</body>
-</html>
+</div>

@@ -201,14 +201,12 @@
       "voices-2.html",
       "voices-3.html",
       "voices-4.html",
+      "voices-5.html",
       "voices-6.html",
       "voices-7.html",
       "voices-8.html",
       "voices-9.html",
       "voices-10.html",
-      "voices-11.html",
-      "voices-12.html",
-      "voices-13.html",
       "voices-14.html",
       "voices-15.html",
       "voices-16.html",
@@ -275,15 +273,18 @@
       "upper-michigan-10.html",
       "upper-michigan-11.html",
       "upper-michigan-12.html",
-      "upper-michigan-13.html",
       "upper-michigan-14.html",
       "upper-michigan-15.html",
       "upper-michigan-16.html",
       "upper-michigan-17.html",
       "upper-michigan-18.html",
-      "upper-michigan-19.html"
+      "upper-michigan-19.html",
+      "voices-11.html",
+      "voices-12.html"
     ],
-    "arrival": []
+    "arrival": [
+      "upper-michigan-13.html"
+    ]
   },
   "cold": {
     "media": [

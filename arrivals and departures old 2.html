@@ -1,4 +1,4 @@
-<!-- Version 4.15 (legacy loader stabilization: preserve legacy page-local layout styles) -->
+<!-- Version 4.13 (Shared kiosk CSS + stabilized legacy page layouts) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -216,7 +216,6 @@
       const doc = parser.parseFromString(html, 'text/html');
       const wrapper = document.createElement('div');
       const isModernFragment = !!doc.body.querySelector('.ad-fragment');
-      const isCustomBridge = !!doc.body.querySelector('.cold-war-menu-panel');
 
       wrapper.className = isModernFragment
         ? 'kiosk-fragment ad-fragment-host'
@@ -226,31 +225,25 @@
       wrapper.dataset.section = currentSection;
 
       /*
-        Important:
-        - Modern .ad-fragment pages are supposed to be controlled by shared CSS, so their page-local styles are stripped.
-        - Legacy/full-page sections (Civil War, Spanish-American, WWI, and older custom pages) still depend on their page-local layout CSS until migrated.
-          Those styles are imported into the wrapper, then removed automatically when #mainContent is replaced on navigation.
+        Modern .ad-fragment pages use the shared kiosk stylesheet only.
+        Legacy pages (Civil War, Spanish-American, WWI, and older full-document pages)
+        often depend on page-specific layout CSS for image placement. Preserve that layout
+        CSS, then let css/kiosk-layout.css override only global standards such as captions.
       */
-      doc.querySelectorAll('script').forEach(node => node.remove());
-
-      if (isModernFragment) {
-        doc.querySelectorAll('style, link[rel="stylesheet"]').forEach(node => node.remove());
-      } else {
-        doc.head.querySelectorAll('style').forEach(styleNode => {
-          wrapper.appendChild(document.importNode(styleNode, true));
-        });
-        doc.head.querySelectorAll('link[rel="stylesheet"]').forEach(linkNode => {
-          wrapper.appendChild(document.importNode(linkNode, true));
+      if (!isModernFragment) {
+        doc.querySelectorAll('style').forEach((styleNode, index) => {
+          const keptStyle = document.createElement('style');
+          keptStyle.dataset.legacyPageStyle = String(index + 1);
+          keptStyle.textContent = styleNode.textContent;
+          wrapper.appendChild(keptStyle);
         });
       }
+
+      doc.querySelectorAll('style, link[rel="stylesheet"], script').forEach(node => node.remove());
 
       Array.from(doc.body.childNodes).forEach(node => {
         wrapper.appendChild(document.importNode(node, true));
       });
-
-      if (isCustomBridge) {
-        wrapper.classList.add('custom-bridge-fragment');
-      }
 
       return wrapper;
     }
@@ -305,29 +298,10 @@
       });
     }
 
-    function cleanupCaptionQuoteArtifacts(container) {
-      container.querySelectorAll('.kiosk-fragment figcaption, .kiosk-fragment .caption, .kiosk-fragment .video-title, .kiosk-fragment .media-title').forEach(caption => {
-        const text = caption.textContent.trim();
-        const startsWithDecorativeQuote = text.startsWith('“') || text.startsWith('"');
-        const endsWithDecorativeQuote = text.endsWith('”') || text.endsWith('"');
-
-        /*
-          These captions were often copied from spreadsheet cells with stray wrapping quotes.
-          Only remove quotes when they wrap the whole caption. Quotes inside the caption text are left alone.
-        */
-        if (startsWithDecorativeQuote && endsWithDecorativeQuote && text.length > 2) {
-          caption.innerHTML = caption.innerHTML
-            .replace(/^\s*[“"]/u, '')
-            .replace(/[”"]\s*$/u, '');
-        }
-      });
-    }
-
     function applySharedFragmentCleanup(container) {
       if (!container.querySelector('.kiosk-fragment')) return;
       removeExactDuplicateMedia(container);
       neutralizeNonNavigationLinks(container);
-      cleanupCaptionQuoteArtifacts(container);
     }
 
     function loadCurrent() {
