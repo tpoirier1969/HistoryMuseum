@@ -1,9 +1,10 @@
-/* A&D shared kiosk layout v4.13-legacy-stabilization-r2026-05-28
-   Applies to modern .ad-fragment pages and legacy/full-page content fragments.
-   Page-local <style> blocks are stripped at load time so one shared system controls captions, media, borders, and layout basics.
+/* A&D shared kiosk layout v4.16-r2026-05-28
+   Framework-owned CSS for modern .ad-fragment pages.
+   Legacy/full-page sections keep local layout CSS until migrated.
 */
 
 #mainContent .kiosk-fragment {
+  --work-h: min(650px, calc(100vh - 245px));
   width: min(1260px, 100%);
   max-width: 1260px;
   margin: 0 auto;
@@ -17,14 +18,10 @@
   box-sizing: border-box;
 }
 
-
-
-/* Cold War/Korea/Vietnam custom section-choice menu.
-   This page is intentionally a custom bridge page, not a normal content panel.
-   The loader strips fragment-local <style> blocks, so these rules must live here. */
+/* Cold War/Korea/Vietnam custom section-choice menu. */
 #mainContent .cold-war-menu-panel {
   max-width: 980px;
-  min-height: min(650px, calc(100vh - 245px));
+  min-height: var(--work-h);
   margin: 0 auto;
   padding: 26px 34px 30px;
   color: #000;
@@ -91,12 +88,7 @@
   outline: none;
 }
 
-@media (max-width: 1150px) {
-  #mainContent .cold-war-menu-panel { min-height: 0; }
-  #mainContent .cold-war-menu-buttons { grid-template-columns: 1fr; gap: 14px; }
-  #mainContent .cold-war-menu-button { min-height: 95px; }
-}
-
+/* Modern page foundation. */
 #mainContent .ad-fragment {
   --ad-work-w: 1260px;
   --ad-text-w: 980px;
@@ -104,20 +96,18 @@
   --ad-border: 6px solid #111;
   --ad-radius: 6px;
   --ad-caption: 15px;
+  --ad-body: 20px;
   box-sizing: border-box;
+  width: min(var(--ad-work-w), 100%);
   max-width: var(--ad-work-w);
+  min-height: var(--work-h);
   margin: 0 auto;
   padding: 8px 16px 18px;
   color: #000;
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-size: var(--ad-body);
   line-height: 1.24;
-}
-
-#mainContent .ad-fragment *,
-#mainContent .ad-fragment *::before,
-#mainContent .ad-fragment *::after {
-  box-sizing: border-box;
+  overflow: hidden;
 }
 
 #mainContent .ad-fragment .content-wrapper {
@@ -126,9 +116,17 @@
   margin: 0 auto;
   padding: 0;
   color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
+  font: inherit;
+}
+
+#mainContent .ad-fragment .center-stage,
+#mainContent .ad-fragment.center-stage {
+  min-height: var(--work-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
 }
 
 #mainContent .ad-fragment h1 {
@@ -139,6 +137,14 @@
   font-weight: 700;
 }
 
+#mainContent .ad-fragment h2 {
+  margin: 0 0 8px;
+  color: #000;
+  font-size: 27px;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
 #mainContent .ad-fragment p {
   margin: 0 0 9px;
   line-height: 1.24;
@@ -146,14 +152,7 @@
 
 #mainContent .ad-fragment em { font-style: italic; }
 
-#mainContent .ad-fragment .center-stage {
-  min-height: min(650px, calc(100vh - 245px));
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
+/* Text patterns. */
 #mainContent .ad-fragment .lead-text,
 #mainContent .ad-fragment .header,
 #mainContent .ad-fragment .text-block,
@@ -162,13 +161,13 @@
   width: min(var(--ad-text-w), 100%);
   max-width: min(var(--ad-text-w), 100%);
   margin: 0 auto 14px;
+  text-align: left;
 }
 
-#mainContent .ad-fragment .lead-text,
-#mainContent .ad-fragment .header,
-#mainContent .ad-fragment .kiosk-text,
-#mainContent .ad-fragment .center-copy,
-#mainContent .ad-fragment .lead-text.center {
+#mainContent .ad-fragment .lead-text.center,
+#mainContent .ad-fragment .header.center,
+#mainContent .ad-fragment .kiosk-text.center,
+#mainContent .ad-fragment .center-copy {
   text-align: center;
 }
 
@@ -182,38 +181,32 @@
 
 #mainContent .ad-fragment .lead-text.tight { margin-bottom: 8px; }
 
-#mainContent .ad-fragment .lead-text.wide-title h1 {
-  white-space: nowrap;
-  font-size: 32px;
-}
-
+#mainContent .ad-fragment .title-body-only,
 #mainContent .ad-fragment .text-only {
   width: min(960px, 100%);
+  max-width: min(960px, 100%);
+  min-height: var(--work-h);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
   font-size: 23px;
   line-height: 1.24;
 }
 
+#mainContent .ad-fragment .title-body-only h1,
 #mainContent .ad-fragment .text-only h1 {
   font-size: 40px;
   line-height: 1.06;
   margin-bottom: 12px;
 }
 
-#mainContent .ad-fragment .role-note {
-  margin: 0 0 8px;
-  font-style: italic;
-  white-space: pre-line;
+#mainContent .ad-fragment .title-body-only.left,
+#mainContent .ad-fragment .text-only.left {
+  text-align: left;
 }
 
-#mainContent .ad-fragment .visual-area {
-  width: 100%;
-  min-height: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
+/* Media invariants: border on real media, not wrappers. */
 #mainContent .ad-fragment figure,
 #mainContent .ad-fragment .video-item,
 #mainContent .ad-fragment .audio-block {
@@ -261,14 +254,23 @@
   overflow-wrap: anywhere;
 }
 
-#mainContent .ad-fragment audio {
-  width: min(760px, 100%);
-  max-width: 100%;
+#mainContent .ad-fragment .caption.left,
+#mainContent .ad-fragment figcaption.left {
+  text-align: left;
 }
 
-/* Core grid/flex layout patterns */
+/* Core grid/flex layout patterns. */
+#mainContent .ad-fragment .visual-area {
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 #mainContent .ad-fragment .image-grid,
 #mainContent .ad-fragment .video-grid,
+#mainContent .ad-fragment .media-grid,
 #mainContent .ad-fragment .media-stack,
 #mainContent .ad-fragment .media-card-grid,
 #mainContent .ad-fragment .image-row,
@@ -282,53 +284,62 @@
   margin: 0 auto;
 }
 
-#mainContent .ad-fragment .gallery,
-#mainContent .ad-fragment .headline-top,
-#mainContent .ad-fragment .headline-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: center;
-}
-
 #mainContent .ad-fragment .image-grid.two,
 #mainContent .ad-fragment .video-grid.two,
+#mainContent .ad-fragment .media-grid.two,
 #mainContent .ad-fragment .media-stack.two,
 #mainContent .ad-fragment .image-row.two,
-#mainContent .ad-fragment .gallery.two {
+#mainContent .ad-fragment .gallery.two,
+#mainContent .ad-fragment .two-images {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 #mainContent .ad-fragment .image-grid.three,
 #mainContent .ad-fragment .video-grid.three,
+#mainContent .ad-fragment .media-grid.three,
 #mainContent .ad-fragment .media-stack.three,
-#mainContent .ad-fragment .gallery.three {
+#mainContent .ad-fragment .gallery.three,
+#mainContent .ad-fragment .three-images {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 #mainContent .ad-fragment .image-grid.four,
 #mainContent .ad-fragment .video-grid.four,
-#mainContent .ad-fragment .gallery.four {
+#mainContent .ad-fragment .media-grid.four,
+#mainContent .ad-fragment .gallery.four,
+#mainContent .ad-fragment .four-wide {
   width: min(1080px, 100%);
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 #mainContent .ad-fragment .image-grid.five,
-#mainContent .ad-fragment .gallery.five {
+#mainContent .ad-fragment .media-grid.five,
+#mainContent .ad-fragment .gallery.five,
+#mainContent .ad-fragment .five-landscape {
   width: min(1180px, 100%);
   grid-template-columns: repeat(6, minmax(0, 1fr));
   row-gap: 12px;
   column-gap: 18px;
 }
 
-#mainContent .ad-fragment .image-grid.five figure:nth-child(-n+3),
-#mainContent .ad-fragment .gallery.five figure:nth-child(-n+3) { grid-column: span 2; }
+#mainContent .ad-fragment .image-grid.five > figure:nth-child(-n+3),
+#mainContent .ad-fragment .media-grid.five > figure:nth-child(-n+3),
+#mainContent .ad-fragment .gallery.five > figure:nth-child(-n+3),
+#mainContent .ad-fragment .five-landscape > figure:nth-child(-n+3) {
+  grid-column: span 2;
+}
 
-#mainContent .ad-fragment .image-grid.five figure:nth-child(n+4),
-#mainContent .ad-fragment .gallery.five figure:nth-child(n+4) { grid-column: span 3; }
+#mainContent .ad-fragment .image-grid.five > figure:nth-child(n+4),
+#mainContent .ad-fragment .media-grid.five > figure:nth-child(n+4),
+#mainContent .ad-fragment .gallery.five > figure:nth-child(n+4),
+#mainContent .ad-fragment .five-landscape > figure:nth-child(n+4) {
+  grid-column: span 3;
+}
 
 #mainContent .ad-fragment .image-grid.six,
-#mainContent .ad-fragment .gallery.six {
+#mainContent .ad-fragment .media-grid.six,
+#mainContent .ad-fragment .gallery.six,
+#mainContent .ad-fragment .many-images {
   width: min(1120px, 100%);
   grid-template-columns: repeat(3, minmax(0, 1fr));
   row-gap: 12px;
@@ -339,6 +350,8 @@
 #mainContent .ad-fragment .image-grid > .video-item,
 #mainContent .ad-fragment .video-grid > figure,
 #mainContent .ad-fragment .video-grid > .video-item,
+#mainContent .ad-fragment .media-grid > figure,
+#mainContent .ad-fragment .media-grid > .video-item,
 #mainContent .ad-fragment .media-stack > figure,
 #mainContent .ad-fragment .media-stack > .video-item,
 #mainContent .ad-fragment .image-row > figure,
@@ -348,102 +361,252 @@
   max-width: 100%;
 }
 
+/* Fill rules: fill width first, then cap height. */
 #mainContent .ad-fragment .image-grid.two img,
 #mainContent .ad-fragment .image-row.two img,
-#mainContent .ad-fragment .media-stack.two img { max-height: 455px; }
+#mainContent .ad-fragment .media-grid.two img,
+#mainContent .ad-fragment .media-stack.two img,
+#mainContent .ad-fragment .two-images img {
+  max-height: 455px;
+}
 
 #mainContent .ad-fragment .image-grid.three img,
+#mainContent .ad-fragment .media-grid.three img,
 #mainContent .ad-fragment .media-stack.three img,
-#mainContent .ad-fragment .gallery.three img { max-height: 360px; }
+#mainContent .ad-fragment .gallery.three img,
+#mainContent .ad-fragment .three-images img {
+  max-height: 390px;
+}
 
 #mainContent .ad-fragment .image-grid.four img,
-#mainContent .ad-fragment .gallery.four img { max-height: 295px; }
+#mainContent .ad-fragment .media-grid.four img,
+#mainContent .ad-fragment .gallery.four img,
+#mainContent .ad-fragment .four-wide img {
+  max-height: 295px;
+}
 
 #mainContent .ad-fragment .image-grid.five img,
-#mainContent .ad-fragment .gallery.five img { max-height: 245px; }
+#mainContent .ad-fragment .media-grid.five img,
+#mainContent .ad-fragment .gallery.five img,
+#mainContent .ad-fragment .five-landscape img {
+  max-height: 245px;
+}
+
+#mainContent .ad-fragment .image-grid.five > figure:nth-last-child(-n+2) img,
+#mainContent .ad-fragment .media-grid.five > figure:nth-last-child(-n+2) img,
+#mainContent .ad-fragment .gallery.five > figure:nth-last-child(-n+2) img,
+#mainContent .ad-fragment .five-landscape > figure:nth-last-child(-n+2) img {
+  max-height: 285px;
+}
 
 #mainContent .ad-fragment .image-grid.six img,
-#mainContent .ad-fragment .gallery.six img { max-height: 245px; }
+#mainContent .ad-fragment .media-grid.six img,
+#mainContent .ad-fragment .gallery.six img,
+#mainContent .ad-fragment .many-images img {
+  max-height: 245px;
+}
 
-#mainContent .ad-fragment video { max-height: 360px; }
-#mainContent .ad-fragment .video-grid.two video { max-height: 390px; }
-#mainContent .ad-fragment .video-grid.three video { max-height: 300px; }
-#mainContent .ad-fragment .video-grid.four video { max-height: 295px; }
+/* Hero/single-image patterns. */
+#mainContent .ad-fragment .one-image,
+#mainContent .ad-fragment .single-large,
+#mainContent .ad-fragment .single-hero,
+#mainContent .ad-fragment .hero-image,
+#mainContent .ad-fragment .large-hero {
+  width: min(1040px, 100%);
+  min-height: var(--work-h);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
 
-/* Common page-specific layout patterns retained as reusable shared classes */
+#mainContent .ad-fragment .one-image img,
+#mainContent .ad-fragment .single-large img,
+#mainContent .ad-fragment .single-hero img,
+#mainContent .ad-fragment .hero-image img,
+#mainContent .ad-fragment .large-hero img {
+  max-height: min(620px, calc(100vh - 285px));
+}
+
+/* Image + text split: target 70-85% of work area. */
 #mainContent .ad-fragment .split-layout {
   width: min(1120px, 100%);
+  min-height: var(--work-h);
   display: grid;
   grid-template-columns: minmax(420px, 0.92fr) minmax(0, 1fr);
-  gap: 24px;
+  gap: 28px;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
 
 #mainContent .ad-fragment .split-layout.image-heavy {
-  grid-template-columns: minmax(500px, 1.08fr) minmax(0, .72fr);
+  grid-template-columns: minmax(520px, 1.1fr) minmax(340px, .74fr);
 }
 
 #mainContent .ad-fragment .split-layout.media-first {
   grid-template-columns: minmax(0, .9fr) minmax(480px, 1fr);
 }
 
-#mainContent .ad-fragment .split-layout img { max-height: 550px; }
+#mainContent .ad-fragment .split-layout.text-heavy {
+  grid-template-columns: minmax(360px, .72fr) minmax(520px, 1.1fr);
+}
 
-#mainContent .ad-fragment .image-stack {
+#mainContent .ad-fragment .split-layout img {
+  max-height: min(590px, calc(100vh - 285px));
+}
+
+#mainContent .ad-fragment .split-layout .bio-text,
+#mainContent .ad-fragment .split-layout .text-block,
+#mainContent .ad-fragment .split-layout .kiosk-text {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  align-items: center;
-  justify-content: center;
+  max-width: 100%;
+  margin: 0;
 }
 
-#mainContent .ad-fragment .single-large,
-#mainContent .ad-fragment .single-video {
-  width: min(760px, 100%);
-  margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#mainContent .ad-fragment .single-video { margin-top: 20px; }
-
-#mainContent .ad-fragment .single-hero img,
-#mainContent .ad-fragment .one-image img { max-height: 560px; }
+/* Specific reusable media size hints. */
+#mainContent .ad-fragment .headline-large { width: min(545px, 100%); }
+#mainContent .ad-fragment .headline { width: min(350px, 100%); }
+#mainContent .ad-fragment .poster { width: min(385px, 100%); }
+#mainContent .ad-fragment .wide { width: min(560px, 100%); }
+#mainContent .ad-fragment .wide-tall { width: min(780px, 100%); }
+#mainContent .ad-fragment .map { width: min(500px, 100%); }
+#mainContent .ad-fragment .scan { width: min(285px, 100%); }
 
 #mainContent .ad-fragment .large-poster img { max-height: 640px; }
-#mainContent .ad-fragment .wide-headline img { max-height: 230px; }
+#mainContent .ad-fragment .wide-headline img { max-height: 260px; }
 #mainContent .ad-fragment .scene-img img { max-height: 425px; }
-#mainContent .ad-fragment .plane-img img { max-height: 360px; }
+#mainContent .ad-fragment .plane-img img { max-height: 380px; }
 
-#mainContent .ad-fragment .headline-large { width: min(545px, 100%); }
-#mainContent .ad-fragment .headline { width: min(335px, 100%); }
-#mainContent .ad-fragment .poster { width: min(385px, 100%); }
-#mainContent .ad-fragment .wide { width: min(530px, 100%); }
-#mainContent .ad-fragment .wide-tall { width: min(760px, 100%); }
-#mainContent .ad-fragment .map { width: min(500px, 100%); }
-#mainContent .ad-fragment .scan { width: min(260px, 100%); }
-
-/* WWII reusable gallery variants */
-#mainContent .ad-fragment .one-image,
-#mainContent .ad-fragment .two-images,
-#mainContent .ad-fragment .three-images,
-#mainContent .ad-fragment .many-images {
-  min-height: 555px;
+/* Newspaper/headline layout: 2 large over 3 smaller. */
+#mainContent .ad-fragment .newspaper-2-over-3,
+#mainContent .ad-fragment .headline-2-over-3 {
+  width: min(1140px, 100%);
+  min-height: var(--work-h);
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  column-gap: 16px;
+  row-gap: 12px;
   align-content: center;
-  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
-#mainContent .ad-fragment .two-images figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-#mainContent .ad-fragment .two-images img { max-height: 500px; }
-#mainContent .ad-fragment .three-images { width: min(1180px, 100%); }
-#mainContent .ad-fragment .three-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-#mainContent .ad-fragment .three-images img { max-height: 420px; }
+#mainContent .ad-fragment .newspaper-2-over-3 > figure:nth-child(-n+2),
+#mainContent .ad-fragment .headline-2-over-3 > figure:nth-child(-n+2) {
+  grid-column: span 3;
+}
 
-#mainContent .ad-fragment .four-wide,
+#mainContent .ad-fragment .newspaper-2-over-3 > figure:nth-child(n+3),
+#mainContent .ad-fragment .headline-2-over-3 > figure:nth-child(n+3) {
+  grid-column: span 2;
+}
+
+#mainContent .ad-fragment .newspaper-2-over-3 > figure:nth-child(-n+2) img,
+#mainContent .ad-fragment .headline-2-over-3 > figure:nth-child(-n+2) img {
+  max-height: 260px;
+}
+
+#mainContent .ad-fragment .newspaper-2-over-3 > figure:nth-child(n+3) img,
+#mainContent .ad-fragment .headline-2-over-3 > figure:nth-child(n+3) img {
+  max-height: 185px;
+}
+
+/* Mixed media layout. */
+#mainContent .ad-fragment .mixed-media,
+#mainContent .ad-fragment .mixed-media-grid {
+  width: min(1120px, 100%);
+  min-height: var(--work-h);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-content: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+#mainContent .ad-fragment .mixed-media img,
+#mainContent .ad-fragment .mixed-media video,
+#mainContent .ad-fragment .mixed-media-grid img,
+#mainContent .ad-fragment .mixed-media-grid video {
+  max-height: 310px;
+}
+
+/* Boback-style mixed gallery: one large image, stacked pair, two side images. */
+#mainContent .ad-fragment .boback-mixed {
+  display: grid;
+  grid-template-columns: minmax(155px, .9fr) minmax(330px, 1.5fr) minmax(155px, .9fr) minmax(155px, .9fr);
+  gap: 12px;
+  width: min(1120px, 100%);
+  min-height: 520px;
+  align-content: center;
+  justify-content: center;
+  margin: 12px auto 0;
+}
+
+#mainContent .ad-fragment .boback-mixed figure {
+  width: 100%;
+  max-width: 100%;
+}
+
+#mainContent .ad-fragment .boback-mixed .stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  align-self: center;
+}
+
+#mainContent .ad-fragment .boback-mixed img {
+  max-height: 480px;
+}
+
+#mainContent .ad-fragment .boback-mixed .stack img {
+  max-height: 225px;
+}
+
+/* WWII-era retained shared variants. */
+#mainContent .ad-fragment .four-posters,
+#mainContent .ad-fragment .five-posters,
+#mainContent .ad-fragment .poster-3 {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--ad-gap);
+  min-height: 560px;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+#mainContent .ad-fragment .four-posters { width: min(1160px, 100%); }
+#mainContent .ad-fragment .four-posters figure { max-width: calc((100% - (3 * var(--ad-gap))) / 4); }
+#mainContent .ad-fragment .four-posters img { max-height: 465px; }
+
+#mainContent .ad-fragment .five-posters { width: min(1180px, 100%); }
+#mainContent .ad-fragment .five-posters figure { max-width: calc((100% - (4 * var(--ad-gap))) / 5); }
+#mainContent .ad-fragment .five-posters img { max-height: 390px; }
+
+#mainContent .ad-fragment .poster-3 { width: min(1120px, 100%); min-height: 600px; margin-top: 20px; }
+#mainContent .ad-fragment .poster-3 figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
+#mainContent .ad-fragment .poster-3 img { max-height: 515px; }
+
+#mainContent .ad-fragment .headline-top,
+#mainContent .ad-fragment .headline-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ad-gap);
+  margin: 12px auto 0;
+  width: min(1120px, 100%);
+  justify-content: center;
+}
+
+#mainContent .ad-fragment .headline-bottom { margin-top: 10px; }
+#mainContent .ad-fragment .headline-top figure { max-width: calc((100% - var(--ad-gap)) / 2); }
+#mainContent .ad-fragment .headline-bottom figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
+#mainContent .ad-fragment .headline-top img { max-height: 245px; }
+#mainContent .ad-fragment .headline-bottom img { max-height: 165px; }
+
 #mainContent .ad-fragment .gallery.media6-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -453,54 +616,10 @@
   min-height: 555px;
   align-content: center;
   justify-content: center;
-  margin-top: 14px;
+  margin: 14px auto 0;
 }
 
-#mainContent .ad-fragment .four-wide figure,
-#mainContent .ad-fragment .gallery.media6-grid figure { width: 100%; }
-#mainContent .ad-fragment .four-wide img,
 #mainContent .ad-fragment .gallery.media6-grid img { max-height: 255px; }
-
-#mainContent .ad-fragment .four-posters,
-#mainContent .ad-fragment .five-posters,
-#mainContent .ad-fragment .poster-3 {
-  flex-wrap: nowrap;
-  min-height: 560px;
-  align-content: center;
-  align-items: center;
-}
-
-#mainContent .ad-fragment .four-posters { width: min(1160px, 100%); }
-#mainContent .ad-fragment .four-posters figure { max-width: calc((100% - (3 * var(--ad-gap))) / 4); }
-#mainContent .ad-fragment .four-posters img { max-height: 465px; }
-
-#mainContent .ad-fragment .five-landscape { width: min(1180px, 100%); min-height: 555px; }
-#mainContent .ad-fragment .five-landscape figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-#mainContent .ad-fragment .five-landscape img { max-height: 245px; }
-#mainContent .ad-fragment .five-landscape figure:nth-last-child(-n+2) img { max-height: 285px; }
-
-#mainContent .ad-fragment .five-posters { width: min(1180px, 100%); }
-#mainContent .ad-fragment .five-posters figure { max-width: calc((100% - (4 * var(--ad-gap))) / 5); }
-#mainContent .ad-fragment .five-posters img { max-height: 390px; }
-
-#mainContent .ad-fragment .many-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-#mainContent .ad-fragment .many-images img { max-height: 245px; }
-
-#mainContent .ad-fragment .poster-3 { width: min(1120px, 100%); min-height: 600px; margin-top: 20px; }
-#mainContent .ad-fragment .poster-3 figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-#mainContent .ad-fragment .poster-3 img { max-height: 515px; }
-
-#mainContent .ad-fragment .headline-top,
-#mainContent .ad-fragment .headline-bottom {
-  gap: var(--ad-gap);
-  margin: 12px auto 0;
-  width: min(1120px, 100%);
-}
-#mainContent .ad-fragment .headline-bottom { margin-top: 10px; }
-#mainContent .ad-fragment .headline-top figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-#mainContent .ad-fragment .headline-bottom figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-#mainContent .ad-fragment .headline-top img { max-height: 245px; }
-#mainContent .ad-fragment .headline-bottom img { max-height: 165px; }
 
 #mainContent .ad-fragment .gallery.media8-large {
   min-height: 620px;
@@ -508,8 +627,14 @@
   justify-content: center;
   margin-top: 24px;
 }
-#mainContent .ad-fragment .gallery.media8-large figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-#mainContent .ad-fragment .gallery.media8-large img { max-height: 535px; }
+
+#mainContent .ad-fragment .gallery.media8-large figure {
+  max-width: calc((100% - (2 * var(--ad-gap))) / 3);
+}
+
+#mainContent .ad-fragment .gallery.media8-large img {
+  max-height: 535px;
+}
 
 #mainContent .ad-fragment .gallery.media9-centered {
   min-height: 580px;
@@ -517,8 +642,14 @@
   justify-content: center;
   margin-top: 18px;
 }
-#mainContent .ad-fragment .gallery.media9-centered figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-#mainContent .ad-fragment .gallery.media9-centered img { max-height: 495px; }
+
+#mainContent .ad-fragment .gallery.media9-centered figure {
+  max-width: calc((100% - var(--ad-gap)) / 2);
+}
+
+#mainContent .ad-fragment .gallery.media9-centered img {
+  max-height: 495px;
+}
 
 #mainContent .ad-fragment .gallery.media13-mixed {
   display: grid;
@@ -530,80 +661,83 @@
   min-height: 570px;
   align-content: center;
   justify-content: center;
-  margin-top: 14px;
+  margin: 14px auto 0;
 }
-#mainContent .ad-fragment .gallery.media13-mixed figure { width: 100%; max-width: 100%; }
+
+#mainContent .ad-fragment .gallery.media13-mixed figure {
+  width: 100%;
+  max-width: 100%;
+}
+
 #mainContent .ad-fragment .gallery.media13-mixed figure:nth-of-type(1) { grid-column: 1; grid-row: 1; }
 #mainContent .ad-fragment .gallery.media13-mixed figure:nth-of-type(2) { grid-column: 1; grid-row: 2; }
 #mainContent .ad-fragment .gallery.media13-mixed figure:nth-of-type(3) { grid-column: 2; grid-row: 1 / span 2; align-self: center; }
+
 #mainContent .ad-fragment .gallery.media13-mixed figure:nth-of-type(1) img,
-#mainContent .ad-fragment .gallery.media13-mixed figure:nth-of-type(2) img { max-height: 245px; }
-#mainContent .ad-fragment .gallery.media13-mixed figure:nth-of-type(3) img { max-height: 515px; }
-
-#mainContent .ad-fragment .boback-mixed {
-  display: grid;
-  grid-template-columns: minmax(155px, .9fr) minmax(330px, 1.5fr) minmax(155px, .9fr) minmax(155px, .9fr);
-  gap: 12px;
-  width: min(1120px, 100%);
-  min-height: 520px;
-  align-content: center;
-  justify-content: center;
-  margin-top: 12px;
+#mainContent .ad-fragment .gallery.media13-mixed figure:nth-of-type(2) img {
+  max-height: 245px;
 }
-#mainContent .ad-fragment .boback-mixed figure { width: 100%; max-width: 100%; }
-#mainContent .ad-fragment .boback-mixed .stack { display: grid; grid-template-rows: 1fr 1fr; gap: 12px; align-self: center; }
-#mainContent .ad-fragment .boback-mixed img { max-height: 480px; }
-#mainContent .ad-fragment .boback-mixed .stack img { max-height: 225px; }
 
-#mainContent .ad-fragment.audio-only {
-  min-height: clamp(500px, calc(100vh - 250px), 780px);
+#mainContent .ad-fragment .gallery.media13-mixed figure:nth-of-type(3) img {
+  max-height: 515px;
+}
+
+/* Video/audio patterns. */
+#mainContent .ad-fragment video { max-height: 360px; }
+#mainContent .ad-fragment .video-grid.two video { max-height: 390px; }
+#mainContent .ad-fragment .video-grid.three video { max-height: 300px; }
+#mainContent .ad-fragment .video-grid.four video { max-height: 295px; }
+
+#mainContent .ad-fragment .single-video {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  min-height: var(--work-h);
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#mainContent .ad-fragment.audio-only .content-wrapper { width: min(820px, 100%); margin: auto; text-align: center; }
-#mainContent .ad-fragment.audio-only .lead-text { width: 100%; max-width: 100%; margin: 0 auto 18px; text-align: center; }
-#mainContent .ad-fragment.audio-only .audio-block { margin: 0 auto; }
 
-#mainContent .ad-fragment .placeholder {
-  width: min(280px, 100%);
-  min-height: 145px;
-  border: 5px dashed #555;
-  border-radius: var(--ad-radius);
-  background: rgba(240, 240, 240, .82);
+#mainContent .ad-fragment .single-video video {
+  max-height: 470px;
+}
+
+#mainContent .ad-fragment.audio-only,
+#mainContent .ad-fragment .audio-only {
+  min-height: var(--work-h);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
-  font-weight: bold;
+}
+
+#mainContent .ad-fragment.audio-only .content-wrapper,
+#mainContent .ad-fragment .audio-only .content-wrapper {
+  width: min(820px, 100%);
+  margin: auto;
   text-align: center;
 }
 
-#mainContent .ad-fragment .media-link {
+#mainContent .ad-fragment.audio-only .lead-text,
+#mainContent .ad-fragment .audio-only .lead-text {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 18px;
+  text-align: center;
+}
+
+#mainContent .ad-fragment audio {
+  width: min(760px, 100%);
+  max-width: 100%;
+}
+
+/* Non-clickable link replacement text. */
+#mainContent .ad-fragment .kiosk-static-text,
+#mainContent .ad-fragment .media-link,
+#mainContent .ad-fragment .media-title {
   color: #000;
   text-decoration: none;
 }
-#mainContent .ad-fragment .media-icon {
-  display: block;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: .06em;
-}
 
-#mainContent .ad-fragment .clip-list {
-  width: min(980px, 100%);
-  margin: 20px auto 0;
-  padding: 0;
-  list-style: none;
-  text-align: center;
-}
-#mainContent .ad-fragment .clip-list li { margin: 0 0 9px; }
-
-
-/* Legacy/full-page sections: Civil War, Spanish-American, WWI, and older pages.
-   Stabilization note: legacy pages keep their local layout CSS because many were custom-fit.
-   Shared CSS only normalizes cross-project standards such as captions, media box sizing,
-   and wrapper width. Do not force generic grids/splits onto these older pages. */
+/* Legacy/full-page sections: keep page-local layout CSS until migrated. */
 #mainContent .kiosk-fragment.legacy-fragment {
   --legacy-caption: 15px;
   width: min(1400px, 100%);
@@ -615,12 +749,6 @@
   font-size: 20px;
   line-height: 1.24;
   overflow: visible;
-}
-
-#mainContent .legacy-fragment *,
-#mainContent .legacy-fragment *::before,
-#mainContent .legacy-fragment *::after {
-  box-sizing: border-box;
 }
 
 #mainContent .legacy-fragment .content-wrapper {
@@ -661,23 +789,38 @@
   max-width: 100%;
 }
 
-@media (max-width: 1100px) {
-  #mainContent .legacy-fragment { font-size: 18px; }
+@media (max-width: 1150px) {
+  #mainContent .cold-war-menu-panel { min-height: 0; }
+  #mainContent .cold-war-menu-buttons { grid-template-columns: 1fr; gap: 14px; }
+  #mainContent .cold-war-menu-button { min-height: 95px; }
 }
 
 @media (max-width: 1100px) {
-  #mainContent .ad-fragment { font-size: 18px; }
-  #mainContent .ad-fragment .center-stage { min-height: 0; }
-  #mainContent .ad-fragment .lead-text.wide-title h1 { white-space: normal; }
+  #mainContent .legacy-fragment { font-size: 18px; }
+
+  #mainContent .ad-fragment {
+    --ad-body: 18px;
+  }
+
+  #mainContent .ad-fragment .center-stage,
+  #mainContent .ad-fragment.center-stage {
+    min-height: 0;
+  }
 
   #mainContent .ad-fragment .split-layout,
   #mainContent .ad-fragment .split-layout.image-heavy,
   #mainContent .ad-fragment .split-layout.media-first,
+  #mainContent .ad-fragment .split-layout.text-heavy,
   #mainContent .ad-fragment .image-grid.two,
   #mainContent .ad-fragment .image-grid.three,
   #mainContent .ad-fragment .image-grid.four,
   #mainContent .ad-fragment .image-grid.five,
   #mainContent .ad-fragment .image-grid.six,
+  #mainContent .ad-fragment .media-grid.two,
+  #mainContent .ad-fragment .media-grid.three,
+  #mainContent .ad-fragment .media-grid.four,
+  #mainContent .ad-fragment .media-grid.five,
+  #mainContent .ad-fragment .media-grid.six,
   #mainContent .ad-fragment .video-grid.two,
   #mainContent .ad-fragment .video-grid.three,
   #mainContent .ad-fragment .video-grid.four,
@@ -691,7 +834,11 @@
   #mainContent .ad-fragment .poster-3,
   #mainContent .ad-fragment .gallery.media6-grid,
   #mainContent .ad-fragment .gallery.media13-mixed,
-  #mainContent .ad-fragment .boback-mixed {
+  #mainContent .ad-fragment .boback-mixed,
+  #mainContent .ad-fragment .newspaper-2-over-3,
+  #mainContent .ad-fragment .headline-2-over-3,
+  #mainContent .ad-fragment .mixed-media,
+  #mainContent .ad-fragment .mixed-media-grid {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -706,5 +853,7 @@
   }
 
   #mainContent .ad-fragment img,
-  #mainContent .ad-fragment video { max-height: none; }
+  #mainContent .ad-fragment video {
+    max-height: none;
+  }
 }

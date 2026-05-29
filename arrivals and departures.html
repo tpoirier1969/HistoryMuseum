@@ -1,4 +1,4 @@
-<!-- Version 4.15 (legacy loader stabilization: preserve legacy page-local layout styles) -->
+<!-- Version 4.16 (framework/shared CSS support pass; legacy-safe loader) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,31 +24,55 @@
 
     #mainContent {
       flex: 1;
-      padding: 0px 0 0 120px;
+      padding: 0 0 0 120px;
       overflow: hidden;
       position: relative;
       z-index: 1;
     }
+
     #mainContent::before {
       content: "";
       position: fixed;
-      top: 130px; left: 270px; right: 60px; bottom: 60px;
+      top: 130px;
+      left: 270px;
+      right: 60px;
+      bottom: 60px;
       background: rgba(255, 255, 255, 0.15);
       pointer-events: none;
       z-index: 0;
       border-radius: 50px;
       box-shadow: 0 0 150px 80px rgba(255, 255, 255, 0.1);
     }
-    #mainContent > * { position: relative; z-index: 1; }
 
-    img.responsive {
-      max-width: 800px; max-height: 600px;
-      width: auto; height: auto; display: block;
+    #mainContent > * {
+      position: relative;
+      z-index: 1;
     }
 
-    #subNavButtons { display: flex; justify-content: space-between; padding: 8px 150px 0 150px; }
-    #subNavButtons img { height: 60px; cursor: pointer; }
-    #mainContent img { max-width: 100%; height: auto; display: block; }
+    img.responsive {
+      max-width: 800px;
+      max-height: 600px;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    #subNavButtons {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 150px 0 150px;
+    }
+
+    #subNavButtons img {
+      height: 60px;
+      cursor: pointer;
+    }
+
+    #mainContent img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
     .inactive-glow {
       filter:
@@ -87,20 +111,20 @@
 <body>
   <div id="container">
     <div id="sidebar">
-      <img src="images/background images/home/button-civil.png"  id="btn-civil-war" onclick="switchWar('civil war')" />
-      <img src="images/background images/home/button-spanish.png" id="btn-spanish"    onclick="switchWar('spanish')" />
-      <img src="images/background images/home/button-wwi.png"     id="btn-wwi"       onclick="switchWar('wwi')" />
-      <img src="images/background images/home/button-wwii.png"    id="btn-wwii"      onclick="switchWar('wwii')" />
-      <img src="images/background images/home/button-cold.png"    id="btn-cold"      onclick="switchWar('cold')" />
+      <img src="images/background images/home/button-civil.png"  id="btn-civil-war" onclick="switchWar('civil war')" alt="Civil War" />
+      <img src="images/background images/home/button-spanish.png" id="btn-spanish"    onclick="switchWar('spanish')" alt="Spanish-American War" />
+      <img src="images/background images/home/button-wwi.png"     id="btn-wwi"       onclick="switchWar('wwi')" alt="World War I" />
+      <img src="images/background images/home/button-wwii.png"    id="btn-wwii"      onclick="switchWar('wwii')" alt="World War II" />
+      <img src="images/background images/home/button-cold.png"    id="btn-cold"      onclick="switchWar('cold')" alt="Cold War" />
     </div>
 
     <div id="rightSide">
       <div id="sectionNav">
-        <img src="images/background images/home/Media and the message.png"  id="section-media"      onclick="switchSection('media')" />
-        <img src="images/background images/home/Voices of veterans.png"     id="section-voices"     onclick="switchSection('voices')" />
-        <img src="images/background images/home/technology factors.png"      id="section-technology" onclick="switchSection('technology')" />
-        <img src="images/background images/home/role of upper michigan.png" id="section-upper"      onclick="switchSection('upper')" />
-        <img src="images/background images/home/arrival home.png"           id="section-arrival"    onclick="switchSection('arrival')" />
+        <img src="images/background images/home/Media and the message.png"  id="section-media"      onclick="switchSection('media')" alt="Media and the Message" />
+        <img src="images/background images/home/Voices of veterans.png"     id="section-voices"     onclick="switchSection('voices')" alt="Voices of Veterans" />
+        <img src="images/background images/home/technology factors.png"      id="section-technology" onclick="switchSection('technology')" alt="Technology Factors" />
+        <img src="images/background images/home/role of upper michigan.png" id="section-upper"      onclick="switchSection('upper')" alt="Role of Upper Michigan" />
+        <img src="images/background images/home/arrival home.png"           id="section-arrival"    onclick="switchSection('arrival')" alt="Arrival Home" />
       </div>
 
       <div id="subNavButtons">
@@ -120,6 +144,7 @@
     let currentSection = "media";
     let currentPageIndex = 0;
     let contentMap = {};
+
     const WAR_TO_FOLDER = {
       "civil war": "Civil War",
       "spanish": "Spanish-American",
@@ -129,6 +154,7 @@
       "korea": "Korea",
       "vietnam": "Vietnam"
     };
+
     const warIdFromKey = (warKey) => `btn-${warKey.replace(/\s+/g,'-')}`;
 
     function seedInactiveGlow() {
@@ -143,12 +169,14 @@
         el.classList.remove('active-glow');
         if (!el.classList.contains('inactive-glow')) el.classList.add('inactive-glow');
       });
+
       const activeWarButton = (war === "korea" || war === "vietnam") ? "cold" : war;
       const warBtn = document.getElementById(warIdFromKey(activeWarButton));
       if (warBtn) {
         warBtn.classList.remove('inactive-glow');
         warBtn.classList.add('active-glow');
       }
+
       const sectionBtn = document.getElementById(`section-${section}`);
       if (sectionBtn) {
         sectionBtn.classList.remove('inactive-glow');
@@ -205,17 +233,22 @@
       const sectionIndex = sections.indexOf(currentSection);
       const nextSectionIndex = (sectionIndex + offset + sections.length) % sections.length;
       currentSection = sections[nextSectionIndex];
+
       const nextPages = contentMap[currentWar][currentSection];
       currentPageIndex = offset > 0 ? 0 : nextPages.length - 1;
       highlightCurrent(currentWar, currentSection);
       loadCurrent();
     }
 
+    function isModernKioskFragment(doc) {
+      return !!doc.body.querySelector('.ad-fragment');
+    }
+
     function buildLoadedFragment(html, displayPath) {
       const parser = new DOMParser();
       const doc = parser.parseFromString(html, 'text/html');
       const wrapper = document.createElement('div');
-      const isModernFragment = !!doc.body.querySelector('.ad-fragment');
+      const isModernFragment = isModernKioskFragment(doc);
       const isCustomBridge = !!doc.body.querySelector('.cold-war-menu-panel');
 
       wrapper.className = isModernFragment
@@ -225,15 +258,15 @@
       wrapper.dataset.war = currentWar;
       wrapper.dataset.section = currentSection;
 
-      /*
-        Important:
-        - Modern .ad-fragment pages are supposed to be controlled by shared CSS, so their page-local styles are stripped.
-        - Legacy/full-page sections (Civil War, Spanish-American, WWI, and older custom pages) still depend on their page-local layout CSS until migrated.
-          Those styles are imported into the wrapper, then removed automatically when #mainContent is replaced on navigation.
-      */
       doc.querySelectorAll('script').forEach(node => node.remove());
 
-      if (isModernFragment) {
+      /*
+        Baseline loader behavior:
+        - Modern .ad-fragment pages are controlled by css/kiosk-layout.css, so local page CSS is stripped.
+        - Legacy/full-page pages keep local CSS temporarily so old custom-fit layouts do not collapse before migration.
+        - Custom bridge pages rely on shared CSS rules, not page-local hacks.
+      */
+      if (isModernFragment || isCustomBridge) {
         doc.querySelectorAll('style, link[rel="stylesheet"]').forEach(node => node.remove());
       } else {
         doc.head.querySelectorAll('style').forEach(styleNode => {
@@ -258,6 +291,7 @@
     function normalizeMediaKey(media) {
       const raw = media.getAttribute('src') || media.currentSrc || '';
       if (!raw) return '';
+
       try {
         return `${media.tagName.toLowerCase()}::${new URL(raw, location.href).pathname.toLowerCase().replace(/%20/g, ' ')}`;
       } catch (_) {
@@ -267,55 +301,59 @@
 
     function removeExactDuplicateMedia(container) {
       const seen = new Set();
-      container.querySelectorAll('.kiosk-fragment img[src], .kiosk-fragment video[src], .kiosk-fragment audio[src]').forEach(media => {
+
+      container.querySelectorAll('.kiosk-fragment img[src], .kiosk-fragment video[src], .kiosk-fragment audio[src], .kiosk-fragment source[src]').forEach(media => {
         const key = normalizeMediaKey(media);
         if (!key) return;
+
         if (seen.has(key)) {
           const removable = media.closest('figure, .video-item, .audio-block, .media-link') || media;
           removable.remove();
           return;
         }
+
         seen.add(key);
       });
     }
 
     function neutralizeNonNavigationLinks(container) {
       container.querySelectorAll('.kiosk-fragment a[href]').forEach(anchor => {
-        const href = (anchor.getAttribute('href') || '').toLowerCase();
+        const rawHref = anchor.getAttribute('href') || '';
+        const href = rawHref.toLowerCase().trim();
+
+        const isAllowedInternalNav =
+          anchor.hasAttribute('data-kiosk-nav') ||
+          href.startsWith('javascript:go') ||
+          href.startsWith('javascript:switch') ||
+          href.startsWith('#');
+
+        if (isAllowedInternalNav) return;
+
         const isDocumentLink = /\.(pdf|doc|docx|xls|xlsx|ppt|pptx|txt)(\?|#|$)/.test(href);
         const isDirectMediaLink = /\.(mp3|wav|m4a|mp4|mov|m4v|f4v|flv)(\?|#|$)/.test(href);
+        const isExternalLink = /^https?:\/\//.test(href);
 
         if (isDocumentLink) {
           anchor.remove();
           return;
         }
 
-        if (isDirectMediaLink) {
+        if (isDirectMediaLink || isExternalLink || rawHref) {
           const span = document.createElement('span');
-          span.className = anchor.className || 'media-title';
+          span.className = anchor.className || (isDirectMediaLink ? 'media-title' : 'kiosk-static-text');
           span.innerHTML = anchor.innerHTML;
           anchor.replaceWith(span);
-          return;
         }
-
-        const span = document.createElement('span');
-        span.className = anchor.className || 'kiosk-static-text';
-        span.innerHTML = anchor.innerHTML;
-        anchor.replaceWith(span);
       });
     }
 
     function cleanupCaptionQuoteArtifacts(container) {
       container.querySelectorAll('.kiosk-fragment figcaption, .kiosk-fragment .caption, .kiosk-fragment .video-title, .kiosk-fragment .media-title').forEach(caption => {
         const text = caption.textContent.trim();
-        const startsWithDecorativeQuote = text.startsWith('“') || text.startsWith('"');
-        const endsWithDecorativeQuote = text.endsWith('”') || text.endsWith('"');
+        const startsWithQuote = text.startsWith('“') || text.startsWith('"');
+        const endsWithQuote = text.endsWith('”') || text.endsWith('"');
 
-        /*
-          These captions were often copied from spreadsheet cells with stray wrapping quotes.
-          Only remove quotes when they wrap the whole caption. Quotes inside the caption text are left alone.
-        */
-        if (startsWithDecorativeQuote && endsWithDecorativeQuote && text.length > 2) {
+        if (startsWithQuote && endsWithQuote && text.length > 2) {
           caption.innerHTML = caption.innerHTML
             .replace(/^\s*[“"]/u, '')
             .replace(/[”"]\s*$/u, '');
@@ -332,11 +370,13 @@
 
     function loadCurrent() {
       const pages = contentMap[currentWar]?.[currentSection];
+
       if (pages && pages.length > 0) {
         const folder = (typeof WAR_TO_FOLDER !== "undefined" && WAR_TO_FOLDER[currentWar]) || currentWar;
-        const file   = pages[currentPageIndex];
-        const url    = `${folder}/${file}`;
+        const file = pages[currentPageIndex];
+        const url = `${folder}/${file}`;
         const displayPath = `${folder}/${file}`;
+
         const u = new URL(location.href);
         u.searchParams.set("war", currentWar);
         u.searchParams.set("section", currentSection);
@@ -368,6 +408,7 @@
     function triggerInjectedAudioAutoplay() {
       const audio = document.querySelector("#mainContent audio");
       const audioEnabled = localStorage.getItem("audio-enabled");
+
       if (audio && audioEnabled === "true") {
         audio.muted = false;
         audio.play().catch(() => {});
@@ -379,10 +420,10 @@
       .then(data => {
         contentMap = data;
 
-        const params  = new URLSearchParams(location.search);
-        const war     = params.get("war")     || "civil war";
+        const params = new URLSearchParams(location.search);
+        const war = params.get("war") || "civil war";
         const section = params.get("section") || "media";
-        const index   = parseInt(params.get("index") || "0", 10);
+        const index = parseInt(params.get("index") || "0", 10);
 
         currentWar = war;
         currentSection = section;
