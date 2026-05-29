@@ -1,4 +1,4 @@
-<!-- Version 4.12 (shared kiosk CSS cleanup: legacy/full-page normalization) -->
+<!-- Version 4.13 (Shared kiosk CSS + stabilized legacy page layouts) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,6 +223,21 @@
       wrapper.dataset.path = displayPath;
       wrapper.dataset.war = currentWar;
       wrapper.dataset.section = currentSection;
+
+      /*
+        Modern .ad-fragment pages use the shared kiosk stylesheet only.
+        Legacy pages (Civil War, Spanish-American, WWI, and older full-document pages)
+        often depend on page-specific layout CSS for image placement. Preserve that layout
+        CSS, then let css/kiosk-layout.css override only global standards such as captions.
+      */
+      if (!isModernFragment) {
+        doc.querySelectorAll('style').forEach((styleNode, index) => {
+          const keptStyle = document.createElement('style');
+          keptStyle.dataset.legacyPageStyle = String(index + 1);
+          keptStyle.textContent = styleNode.textContent;
+          wrapper.appendChild(keptStyle);
+        });
+      }
 
       doc.querySelectorAll('style, link[rel="stylesheet"], script').forEach(node => node.remove());
 

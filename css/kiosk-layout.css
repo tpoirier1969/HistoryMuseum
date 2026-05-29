@@ -1,4 +1,4 @@
-/* A&D shared kiosk layout v4.13-css-cleanup-r2026-05-28
+/* A&D shared kiosk layout v4.13-legacy-stabilization-r2026-05-28
    Applies to modern .ad-fragment pages and legacy/full-page content fragments.
    Page-local <style> blocks are stripped at load time so one shared system controls captions, media, borders, and layout basics.
 */
@@ -601,181 +601,59 @@
 
 
 /* Legacy/full-page sections: Civil War, Spanish-American, WWI, and older pages.
-   These pages used to bring their own <html>/<head>/<style>. The loader now extracts body content and this shared CSS normalizes the visible structures. */
-#mainContent .legacy-fragment {
-  --legacy-work-w: 1260px;
-  --legacy-text-w: 980px;
-  --legacy-gap: 20px;
-  --legacy-border: 6px solid #111;
-  --legacy-radius: 6px;
+   Stabilization note: legacy pages keep their local layout CSS because many were custom-fit.
+   Shared CSS only normalizes cross-project standards such as captions, media box sizing,
+   and wrapper width. Do not force generic grids/splits onto these older pages. */
+#mainContent .kiosk-fragment.legacy-fragment {
   --legacy-caption: 15px;
-  --legacy-shadow: 0 0 10px rgba(255, 220, 100, 0.15);
-  padding: 8px 16px 18px;
+  width: min(1400px, 100%);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 0 18px;
+  color: #000;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
   line-height: 1.24;
+  overflow: visible;
+}
+
+#mainContent .legacy-fragment *,
+#mainContent .legacy-fragment *::before,
+#mainContent .legacy-fragment *::after {
+  box-sizing: border-box;
 }
 
 #mainContent .legacy-fragment .content-wrapper {
   width: 100%;
-  max-width: var(--legacy-work-w);
-  margin: 0 auto;
-  padding: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
-
-#mainContent .legacy-fragment h1 {
-  margin: 0 0 10px;
-  color: #000;
-  font-size: 34px;
-  line-height: 1.08;
-  font-weight: 700;
-}
-
-#mainContent .legacy-fragment p,
-#mainContent .legacy-fragment .lede {
-  margin: 0 0 9px;
-  line-height: 1.24;
-}
-
-#mainContent .legacy-fragment em,
-#mainContent .legacy-fragment i { font-style: italic; }
-
-#mainContent .legacy-fragment figure {
-  margin: 0;
-  padding: 0;
-  min-width: 0;
-  max-width: 100%;
-}
-
-#mainContent .legacy-fragment figcaption,
-#mainContent .legacy-fragment .caption {
-  display: block;
-  width: 100%;
-  max-width: 100%;
-  margin: 2px auto 0;
-  padding: 0;
-  color: #000;
-  font-size: var(--legacy-caption);
-  line-height: 1.08;
-  font-style: italic;
-  text-align: center;
-  overflow-wrap: anywhere;
+  max-width: min(1400px, 100%);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #mainContent .legacy-fragment img,
 #mainContent .legacy-fragment video {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  object-fit: contain;
-  margin: 0;
-}
-
-#mainContent .legacy-fragment img.with-border,
-#mainContent .legacy-fragment video.with-border {
-  border: var(--legacy-border);
-  border-radius: var(--legacy-radius);
-  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(var(--legacy-shadow));
-}
-
-#mainContent .legacy-fragment .profile-layout {
-  width: min(1120px, 100%);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(420px, .95fr) minmax(0, 1fr);
-  gap: var(--legacy-gap);
-  align-items: start;
-  justify-content: center;
-}
-
-#mainContent .legacy-fragment .bio-text {
-  min-width: 0;
-  max-width: min(var(--legacy-text-w), 100%);
-}
-
-#mainContent .legacy-fragment .bio-text > *:first-child { margin-top: 0; }
-
-#mainContent .legacy-fragment figure.image-block {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0;
-  width: auto;
+  box-sizing: border-box;
   max-width: 100%;
 }
 
-#mainContent .legacy-fragment .image-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: var(--legacy-gap);
-  flex-wrap: nowrap;
+/* Caption standard wins over preserved legacy page CSS. */
+#mainContent .legacy-fragment figcaption,
+#mainContent .legacy-fragment .caption,
+#mainContent .legacy-fragment .video-title,
+#mainContent .legacy-fragment .media-title {
+  color: #000 !important;
+  font-size: var(--legacy-caption) !important;
+  line-height: 1.08 !important;
+  font-style: italic !important;
+  text-align: center !important;
+  margin-top: 2px !important;
+  margin-bottom: 0 !important;
+  padding: 0 !important;
+  overflow-wrap: anywhere;
+}
+
+#mainContent .legacy-fragment figure {
   max-width: 100%;
-}
-
-#mainContent .legacy-fragment .image-row img.with-border.responsive {
-  width: min(450px, 100%);
-  max-width: 100%;
-  height: auto;
-}
-
-/* WWI newspaper/headline layouts */
-#mainContent .legacy-fragment .gallery {
-  width: min(1120px, 100%);
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-  align-items: start;
-}
-
-#mainContent .legacy-fragment .tile {
-  display: grid;
-  grid-template-rows: auto auto;
-  row-gap: 2px;
-}
-
-#mainContent .legacy-fragment .tile.tight { row-gap: 0; }
-
-#mainContent .legacy-fragment .frame {
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  border: var(--legacy-border);
-  border-radius: var(--legacy-radius);
-  background: transparent;
-  filter: drop-shadow(var(--legacy-shadow));
-}
-
-#mainContent .legacy-fragment .frame.left { height: 340px; }
-#mainContent .legacy-fragment .frame.right { height: 300px; }
-
-#mainContent .legacy-fragment .frame img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  filter: sepia(0.20) brightness(1.0) contrast(1.0);
-}
-
-#mainContent .legacy-fragment .frame.fit {
-  height: auto;
-  overflow: visible;
-}
-
-#mainContent .legacy-fragment .frame.fit img {
-  position: static;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  display: block;
 }
 
 #mainContent .legacy-fragment audio {
@@ -785,25 +663,6 @@
 
 @media (max-width: 1100px) {
   #mainContent .legacy-fragment { font-size: 18px; }
-  #mainContent .legacy-fragment .profile-layout,
-  #mainContent .legacy-fragment .gallery {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  #mainContent .legacy-fragment .image-row {
-    flex-wrap: wrap;
-  }
-  #mainContent .legacy-fragment .frame.left,
-  #mainContent .legacy-fragment .frame.right {
-    height: auto;
-  }
-  #mainContent .legacy-fragment .frame:not(.fit) img {
-    position: static;
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-  }
 }
 
 @media (max-width: 1100px) {
