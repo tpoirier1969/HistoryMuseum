@@ -4,22 +4,22 @@
   --ad-gap: 10px;
   --ad-border: 5px solid #000;
   --ad-radius: 6px;
-  --ad-caption: 13px;
+  --ad-caption: 19px;
   box-sizing: border-box;
   max-width: var(--ad-work-w);
   margin: 0 auto;
   padding: 4px 6px 18px;
   color: #000;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 20px;
-  line-height: 1.2;
+  line-height: 1.24;
 }
 .ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
 .ad-fragment .content-wrapper { max-width: 100%; margin: 0 auto; padding: 0; color: inherit; font-family: inherit; font-size: inherit; line-height: inherit; }
-.ad-fragment h1 { margin: 0 0 8px; font-size: 33px; line-height: 1.05; }
-.ad-fragment p { margin: 0 0 8px; line-height: 1.2; }
+.ad-fragment h1 { margin: 0 0 8px; font-size: 34px; line-height: 1.08; }
+.ad-fragment p { margin: 0 0 8px; line-height: 1.24; }
 .ad-fragment .lead-text { width: min(1160px, 100%); max-width: min(1160px, 100%); margin: 0 auto 12px; }
-.ad-fragment .lead-text.wide-title h1 { white-space: nowrap; font-size: 32px; }
+.ad-fragment .lead-text.wide-title h1 { white-space: normal; font-size: 34px; line-height: 1.08; }
 .ad-fragment .lead-text.tight { margin-bottom: 8px; }
 .ad-fragment .split-layout { display: grid; grid-template-columns: minmax(300px,.45fr) minmax(0,.55fr); gap: var(--ad-gap); align-items: center; }
 .ad-fragment .split-layout .lead-text { max-width: 62ch; margin: 0; }
@@ -62,14 +62,14 @@
   background: transparent;
 }
 .ad-fragment video { background: #000; }
-.ad-fragment figcaption {
+.ad-fragment figcaption{
   display: block;
   margin: 1px auto 0;
   padding: 0;
   width: 100%;
   max-width: 100%;
   font-size: var(--ad-caption);
-  line-height: 1.08;
+  line-height: 1.14;
   font-style: italic;
   text-align: center;
   overflow-wrap: anywhere;

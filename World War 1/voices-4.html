@@ -10,12 +10,12 @@
 
   <style>
     .content-wrapper{
-      max-width: 1100px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 15px;
+      padding: 24px 18px 34px;
       color: black;
-      font-family: sans-serif;
-      font-size: 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
       box-sizing: border-box;
       overflow-wrap: anywhere;
     }
@@ -24,7 +24,7 @@
     .profile-layout.photos-top{
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       align-items: stretch;
     }
 
@@ -38,8 +38,8 @@
     /* Center the two images as a group */
     .photo-row{
       display: grid;
-      grid-template-columns: auto auto;
-      gap: 16px;
+      grid-template-columns: auto;
+      gap: 0;
       justify-content: center;   /* centers both images together */
       align-items: start;
     }
@@ -66,30 +66,40 @@
     .photo-item img.with-border{
       width: auto;
       height: auto;
-      max-width: 1100px;
+      max-width: 960px;
     }
 
     /* Image 1: ~150px wider than before (320 + 150 = 470) */
     .photo-item.first img.with-border{
-      max-width: 450px;
-      max-height: 550px;
-    }
-
-    /* Image 2: allow 50px more height than 550 => 600 */
-    .photo-item.second img.with-border{
-      max-width: 320px;
-      max-height: 500px;
+      max-width: 780px;
+      max-height: 620px;
     }
 
     /* Split captions: one line under each image */
     .caption-line{
-      font-size: 22px;
+      font-size: 18px;
       line-height: 1.2;
       color: #333;
       text-align: center;
     }
 
-    .bio-text > *:first-child{ margin-top: 0; }
+    .bio-text{
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    .bio-text h1{
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.08;
+      text-align: center;
+    }
+
+    .bio-text p{
+      margin: 0 0 12px;
+      line-height: 1.24;
+      text-align: left;
+    }
 
     /* Responsive: stack on narrow screens */
     @media (max-width: 1200px){
@@ -108,6 +118,12 @@
   <div class="content-wrapper">
     <div class="profile-layout photos-top">
 
+      <div class="bio-text">
+        <p>
+          The Division was formed and began conducting training at the hot dusty and barren Camp MacArthur. The extreme Texas climate would be the first on many challenges the men from the UP would face as they prepared for combat.
+        </p>
+      </div>
+
       <figure class="image-block">
         <div class="photo-row">
           <div class="photo-item first">
@@ -119,18 +135,8 @@
  
           </div>
 
-          <div class="photo-item second">
-
-          </div>
         </div>
       </figure>
-
-      <div class="bio-text">
-        <p>
-          The Division was formed and began conducting training at the hot dusty and barren Camp MacArthur. The extreme Texas climate would be the first on many challenges the men from the UP would face as they prepared for combat.
-        </p>
-      </div>
-
     </div>
   </div>
 </body>

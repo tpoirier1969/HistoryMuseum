@@ -10,24 +10,29 @@
 
   <style>
     .content-wrapper{
-      max-width: 1100px;          /* keeps width well under 1920 */
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 15px;
+      padding: 24px 18px 34px;
       color: black;
-      font-family: sans-serif;
-      font-size: 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
       box-sizing: border-box;
       overflow-wrap: anywhere;
+      min-height: 760px;
+      display: flex;
+      align-items: center;
     }
 
     :root{
-      --logoW: 220px;             /* <-- magic number for the logo */
+      --logoW: 280px;
     }
 
     .profile-layout.photos-top{
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      width: min(1060px, 100%);
+      margin: 0 auto;
+      gap: 18px;
       align-items: stretch;
     }
 
@@ -35,12 +40,13 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      margin: 0 0 6px 0;
+      margin: 0 0 10px 0;
     }
 
     .title-bar h1{
       margin: 0;
-      line-height: 1.05;
+      font-size: 34px;
+      line-height: 1.08;
     }
 
     /* General “museum style” image treatment (keep for other pages/images) */
@@ -69,7 +75,7 @@
     }
 
     .bio-text > *:first-child{ margin-top: 0; }
-    .bio-text p{ margin: 0 0 12px 0; }
+    .bio-text p{ margin: 0 0 12px 0; line-height: 1.24; }
 
     @media (max-width: 700px){
       .title-bar{

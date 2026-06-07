@@ -22,9 +22,9 @@
     --glow: 0 0 10px rgba(255, 220, 100, 0.15);
 
     /* captions */
-    --captionSize: 14px;
+    --captionSize: 19px;
     --captionGap: 2px;         /* tight to image */
-    --captionReserve: 36px;    /* space reserved for caption so image can scale down */
+    --captionReserve: 52px;    /* space reserved for caption so image can scale down */
   }
 
   html, body{ height: 100%; margin: 0; }
@@ -37,8 +37,8 @@
     box-sizing: border-box;
 
     color: #000;
-    font-family: sans-serif;
-    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
     overflow-wrap: anywhere;
 
     height: 100vh;
@@ -47,8 +47,8 @@
     row-gap: 6px;
   }
 
-  h1{ margin: 0 0 6px 0; line-height: 1.1; }
-  .lede{ margin: 0; line-height: 1.22; }
+  h1{ margin: 0 0 8px 0; font-size: 34px; line-height: 1.08; }
+  .lede{ margin: 0; line-height: 1.24; }
 
   /* Gallery base (CSS fallback for 1–4 images even if JS fails) */
   .gallery{
@@ -109,10 +109,10 @@
   }
 
   figcaption{
-    margin: 0;                       /* kill default spacing */
+    margin: 0;
     padding: 0;
     font-size: var(--captionSize);
-    line-height: 1.15;
+    line-height: 1.18;
     text-align: center;
   }
   figcaption em{ font-style: italic; }

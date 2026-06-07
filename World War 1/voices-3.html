@@ -12,18 +12,20 @@
     * { box-sizing: border-box; }
 
     .content-wrapper{
-      max-width: 1100px;
+      max-width: 1380px;
       margin: 0 auto;
-      padding: 15px;
+      padding: 24px 18px 40px;
       color: black;
-      font-family: sans-serif;
-      font-size: 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
+      min-height: 760px;
+      display: flex;
+      align-items: center;
     }
 
     .profile-layout{
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
+      width: min(1140px, 100%);
+      margin: 0 auto;
     }
 
     img.with-border{
@@ -35,15 +37,15 @@
       display: block;
     }
 
-    .bio-text{ flex: 1; }
-    .bio-text h1{ margin: 0 0 12px 0; line-height: 1.1; }
+    .bio-text{ max-width: 1100px; }
+    .bio-text h1{ margin: 0 0 12px 0; font-size: 34px; line-height: 1.08; }
 
     /* ===== Two-column organization list ===== */
     .org-columns{
       --indent: 38px;        /* how far the indented lines shift */
       columns: 2;
-      column-gap: 70px;
-      margin-top: 10px;
+      column-gap: 56px;
+      margin-top: 12px;
     }
 
     /* Keep groups together so a heading doesn't get separated from its items */
@@ -54,7 +56,7 @@
     }
 
     .org-line{
-      line-height: 1.18;
+      line-height: 1.22;
       margin: 0;
       padding: 0;
       white-space: normal;
@@ -86,17 +88,14 @@
       <div class="bio-text">
         <h1>Division Organization<br>
           Headquarters, Troops and Detachments</h1>
-        <p>&nbsp;</p>
 <div class="org-columns">
         <div class="org-group">
             <div class="org-line heading">63rd Brigade Headquarters</div>
             <div class="org-line item">125th Infantry Regiment</div>
           <div class="org-line item">126th Infantry Regiment</div>
           <div class="org-line item">120th Machine Gun Battalion</div>
-          <div class="org-line heading">
-            <p>57th Field Artillery Brigade</p>
-          </div>
-<div class="org-line item">119th Field Artillery Regiment</div>
+          <div class="org-line heading">57th Field Artillery Brigade</div>
+            <div class="org-line item">119th Field Artillery Regiment</div>
             <div class="org-line item">120th Field Artillery Regiment</div>
             <div class="org-line item">121st Field Artillery Regiment</div>
             <div class="org-line item">147th Field Artillery Regiment (Attached)</div>
@@ -113,16 +112,11 @@
             <div class="org-line item">127th Infantry Regiment</div>
             <div class="org-line item">128th Infantry Regiment</div>
             <div class="org-line item">121st Machine Gun Battalion</div>
-            <div class="org-line heading">
-              <p>&nbsp;</p>
-              <p>158th Field Artillery Brigade (attached)</p>
-            </div>
+            <div class="org-line heading" style="margin-top: 26px;">158th Field Artillery Brigade (attached)</div>
             <div class="org-line item">322nd Field Artillery Regiment</div>
             <div class="org-line item">323rd Field Artillery Regiment</div>
           </div>
         </div>
-
-        <p>&nbsp;</p>
       </div>
     </div>
   </div>

@@ -12,12 +12,12 @@
     *{ box-sizing: border-box; }
 
     .content-wrapper{
-      max-width: 1300px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 15px;
+      padding: 24px 18px 34px;
       color: black;
-      font-family: sans-serif;
-      font-size: 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 20px;
       overflow-wrap: anywhere;
     }
 
@@ -25,7 +25,7 @@
     .profile-layout.photos-top{
       display: flex;
       flex-direction: column;
-      gap: 6px;                 /* ✅ was 16px — reduced */
+      gap: 18px;
       align-items: stretch;
     }
 
@@ -33,13 +33,14 @@
       margin: 0;
       display: flex;
       flex-direction: column;
-      gap: 8px;                 /* ✅ was 12px — reduced */
+      gap: 12px;
     }
 
     /* Tighten the h1 itself (default h1 margins are big) */
     .bio-text h1{
-      margin: 0 0 4px 0;         /* ✅ smaller bottom margin */
-      line-height: 1.05;
+      margin: 0 0 12px;
+      font-size: 34px;
+      line-height: 1.08;
     }
 
     /* Center image */
@@ -62,18 +63,29 @@
     .photo-row img.with-border{
       width: auto;
       height: auto;
-      max-width: 600px;          /* adjust if you want it larger/smaller */
-      max-height: 550px;
+      max-width: 780px;
+      max-height: 620px;
     }
 
     .caption-line{
-      font-size: 22px;
+      font-size: 18px;
       line-height: 1.2;
       color: #333;
       text-align: center;
     }
 
+    .bio-text{
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
     .bio-text > *:first-child{ margin-top: 0; }
+
+    .bio-text p{
+      margin: 0;
+      line-height: 1.24;
+      text-align: left;
+    }
 
     @media (max-width: 1000px){
       .photo-row img.with-border{
