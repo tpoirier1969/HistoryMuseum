@@ -8,8 +8,8 @@
 
 <style>
   :root{
-    --pageW: 1400px;
-    --gap: 12px;
+    --pageW: 1480px;
+    --gap: 18px;
 
     /* Civil War/Media-1.html image vibe */
     --borderW: 6px;
@@ -33,7 +33,7 @@
   .content-wrapper{
     max-width: var(--pageW);
     margin: 0 auto;
-    padding: 15px;
+    padding: 24px 18px 28px;
     box-sizing: border-box;
 
     color: #000;
@@ -44,11 +44,11 @@
     height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr;  /* header then gallery gets the rest */
-    row-gap: 6px;
+    row-gap: 12px;
   }
 
-  h1{ margin: 0 0 8px 0; font-size: 34px; line-height: 1.08; }
-  .lede{ margin: 0; line-height: 1.24; }
+  h1{ margin: 0 0 12px 0; font-size: 34px; line-height: 1.08; }
+  .lede{ margin: 0 0 6px; line-height: 1.24; }
 
   /* Gallery base (CSS fallback for 1–4 images even if JS fails) */
   .gallery{
