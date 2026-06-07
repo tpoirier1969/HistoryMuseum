@@ -1,82 +1,24 @@
-<!-- VERSION 1.7 — title + paragraph 1 on top; paragraph 2 left + image right; border on image; no crop/no aspect changes -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Civil War Media</title>
-
-  <style>
-    *{ box-sizing: border-box; }
-
-    .content-wrapper{
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 15px;
-      color: #000;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
-      overflow-wrap: anywhere;
-    }
-
-    h1{ margin: 0 0 8px 0; font-size: 34px; line-height: 1.08; }
-    p{ margin: 0; line-height: 1.24; }
-    .p1{ margin-bottom: 14px; }
-
-    /* Row under the first paragraph: text left, image right */
-    .two-col{
-      display: grid;
-      grid-template-columns: 1fr 520px; /* image column width */
-      gap: 24px;
-      align-items: start;
-      min-width: 0;
-    }
-
-    /* Image styling (border hugs image, no crop, no distortion) */
-    img.with-border{
-      display: block;
-      width: 100%;
-      height: auto;           /* preserves aspect ratio */
-      max-width: 100%;
-      border: 6px solid #000;
-      border-radius: 6px;
-      box-sizing: border-box;
-      filter: sepia(0.20) brightness(1.0) contrast(1)
-              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-    }
-
-    /* Keep your figure but remove default margins */
-    figure{ margin: 0; }
-
-    /* Responsive: stack on narrow widths */
-    @media (max-width: 1000px){
-      .two-col{
-        grid-template-columns: 1fr;
-      }
-      img.with-border{
-        width: 100%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="content-wrapper">
-    <h1>The Armistice</h1>
-
-    <p class="p1">
-      At the close of World War I, the Germans began their appeals to President Wilson for peace in October of 1918. Terms were discussed and a rumor emerged that an agreement was reached. New York newspapers announced the end of the war on November 7 and celebrations began. They were stopped later that day when they were realized it was premature.&nbsp;
-    </p>
-
-    <div class="two-col">
-      <p>
-        Finally, on November 11, the Armistice was signed, and news reached the U.S. in the early morning. In Marquette, the AP news service contacted the Mining Journal which contacted the mayors of Negaunee, Ishpeming and Marquette at 2:00 am. They decided to spread the good news around 4:00 am. Newspaper boys got people out of bed with their cries of “Extra!” Ishpeming was reported to have set the local record for the largest celebration. The bells of the fire hall and churches were kept ringing for hours. Men, women and children lined up for the privilege of ringing the fire hall bell. Several hundred people formed a parade headed by the drum corps with noisemakers, the flags of the fraternal societies and a tin can brigade joining along. The railroad men kept the whistles blowing. After the death of over 116,000 U.S. soldiers over 19 months, Americans were relieved to be finished with “The War to End all Wars.”
-      </p>
-
-      <figure>
-        <img class="with-border" src="/World War 1/Pictures/HD-victory.jpg" alt="Victory headline image">
-      </figure>
+<div class="ad-fragment wwi-arrival wwi-arrival-1">
+  <div class="content-wrapper center-stage">
+    <div class="split-layout image-heavy" style="width:min(1420px,100%);min-height:calc(var(--work-h) - 76px);grid-template-columns:minmax(620px,1fr) minmax(620px,1.06fr);gap:22px;align-items:center;align-content:center;padding:38px 0 18px;box-sizing:border-box;">
+      <div class="visual-area">
+        <figure class="single-hero" style="width:min(720px,100%);">
+          <img src="/World War 1/Pictures/HD-victory.jpg"
+               class="with-border responsive"
+               alt="Victory headline image"
+               decoding="async"
+               style="max-height:620px;">
+        </figure>
+      </div>
+      <div class="bio-text" style="max-width:620px;text-align:left;">
+        <h1>The Armistice</h1>
+        <p>
+          At the close of World War I, the Germans began their appeals to President Wilson for peace in October of 1918. Terms were discussed and a rumor emerged that an agreement was reached. New York newspapers announced the end of the war on November 7 and celebrations began. They were stopped later that day when they realized it was premature.
+        </p>
+        <p>
+          Finally, on November 11, the Armistice was signed, and news reached the U.S. in the early morning. In Marquette, the AP news service contacted the Mining Journal which contacted the mayors of Negaunee, Ishpeming and Marquette at 2:00 am. They decided to spread the good news around 4:00 am. Newspaper boys got people out of bed with their cries of “Extra!” Ishpeming was reported to have set the local record for the largest celebration. The bells of the fire hall and churches were kept ringing for hours. Men, women and children lined up for the privilege of ringing the fire hall bell. Several hundred people formed a parade headed by the drum corps with noisemakers, the flags of the fraternal societies and a tin can brigade joining along. The railroad men kept the whistles blowing. After the death of over 116,000 U.S. soldiers over 19 months, Americans were relieved to be finished with “The War to End all Wars.”
+        </p>
+      </div>
     </div>
   </div>
-</body>
-</html>
+</div>

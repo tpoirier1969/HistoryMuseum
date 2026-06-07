@@ -1,141 +1,19 @@
-<!-- VERSION 2.0 -->
-<!-- Civil War/media-1.html -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Civil War Media</title>
-
-  <style>
-    .content-wrapper{
-      max-width: 1360px;
-      margin: 0 auto;
-      padding: 24px 18px 34px;
-      color: black;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
-      box-sizing: border-box;
-      overflow-wrap: anywhere;
-    }
-
-    /* ===== Photos on TOP, captions below each photo, text at the bottom ===== */
-    .profile-layout.photos-top{
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    figure.image-block{
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* Center the two images as a group */
-    .photo-row{
-      display: grid;
-      grid-template-columns: auto;
-      gap: 0;
-      justify-content: center;   /* centers both images together */
-      align-items: start;
-    }
-
-    /* Each image + its caption line */
-    .photo-item{
-      display: flex;
-      flex-direction: column;
-      align-items: center;       /* centers caption under its image */
-      gap: 10px;
-    }
-
-    /* Shared media styles */
-    img.with-border{
-      display: block;
-      border: 6px solid black;
-      border-radius: 6px;
-      box-sizing: border-box;
-      filter: sepia(0.20) brightness(1.0) contrast(1)
-              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-    }
-
-    /* Base image behavior: keep aspect ratio; never overflow */
-    .photo-item img.with-border{
-      width: auto;
-      height: auto;
-      max-width: 960px;
-    }
-
-    /* Image 1: ~150px wider than before (320 + 150 = 470) */
-    .photo-item.first img.with-border{
-      max-width: 760px;
-      max-height: 620px;
-    }
-
-    /* Split captions: one line under each image */
-    .caption-line{
-      font-size: 18px;
-      line-height: 1.2;
-      color: #333;
-      text-align: center;
-    }
-
-    .bio-text{
-      width: min(900px, 100%);
-      margin: 0 auto;
-    }
-
-    .bio-text > *:first-child{ margin-top: 0; }
-
-    .bio-text h1{
-      margin: 0 0 12px;
-      font-size: 34px;
-      line-height: 1.08;
-      text-align: center;
-    }
-
-    .bio-text p{
-      margin: 0 0 12px;
-      line-height: 1.24;
-      text-align: left;
-    }
-
-    /* Responsive: stack on narrow screens */
-    @media (max-width: 980px){
-      .photo-row{
-        grid-template-columns: 1fr;
-      }
-      .photo-item.first img.with-border,
-      .photo-item.second img.with-border{
-        max-width: 100%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <div class="content-wrapper">
-    <div class="profile-layout photos-top">
-      <figure class="image-block">
-        <div class="photo-row">
-          <div class="photo-item first">
-            <img
-              src="/World War 1/Pictures/01-womans-registration.jpg"
-              class="with-border"
-              alt="Company M 125 Infantry (Picnic Rocks)"
-            />
-          </div>
+<div class="ad-fragment wwi-voices wwi-voices-24">
+  <div class="content-wrapper center-stage">
+    <div class="media-stack" style="width:min(980px,100%);min-height:calc(var(--work-h) - 82px);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;padding:34px 0 24px;box-sizing:border-box;">
+      <figure class="single-hero" style="width:min(820px,100%);">
+        <img src="/World War 1/Pictures/01-womans-registration.jpg"
+             class="with-border responsive"
+             alt="Woman's registration document"
+             decoding="async"
+             style="max-height:620px;">
       </figure>
-      <div class="bio-text">
+      <div class="bio-text" style="width:min(900px,100%);max-width:min(900px,100%);margin:0 auto;text-align:left;">
         <h1>Women in the Great War III</h1>
-      </div>
-      <div class="bio-text">
-        <p> Locally the registration of all women 16 years of age or over began on the 15th of June 1918. With large numbers of men called by the selective service, good positions were open and filled by women. In Marquette on June 18 450 women registered. </p>
+        <p>
+          Locally the registration of all women 16 years of age or over began on June 15, 1918. With large numbers of men called by the selective service, good positions were open and filled by women. In Marquette on June 18, 450 women registered.
+        </p>
       </div>
     </div>
   </div>
-</body>
-</html>
+</div>

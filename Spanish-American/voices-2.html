@@ -1,63 +1,23 @@
-<!-- VERSION 1.6 -->
-<!-- Civil War/media-1.html -->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Civil War Media</title>
-  <style>
-    .content-wrapper {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 15px;
-      color: black;
-      font-family: sans-serif;
-      font-size: 28px;
-    }
-	  /* remove default figure margins so images/text align at the top */
-  figure.image-block { margin: 0; }
-  /* optional: keep the row’s children aligned on their top edges */
-  .image-row { align-items: flex-start; }
-
-.profile-layout {
-  display: flex;
-  align-items: flex-start; /* Corrected value */
-  gap: 20px;
-}
-
-img.with-border {
-  border: 6px solid black;
-  border-radius: 6px;
-  filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-  flex-shrink: 0;
-}
-
-.bio-text {
-  flex: 1;
-}
-
-/* 🔥 This is what aligns the top of the text block with the image */
-.bio-text > *:first-child {
-  margin-top: 0;
-}
-	  
-  </style>
-</head>
-<body>
-<div class="content-wrapper">
-  <div class="profile-layout">
-    <img src="/Spanish-American/photos/Parchment_Paper_Texture_by_sinnedaria.jpg" class="with-border responsive" alt="War Meeting" style="margin-top: 0;" />
-    <figure class="image-block" style="margin:0">
-
-    <div class="bio-text">
-      <h1>Hoosit</h1>
-      <p>
-The following letter was written in July.
-      </p>
+<div class="ad-fragment spanish-voices spanish-voices-2">
+  <div class="content-wrapper center-stage">
+    <div class="split-layout text-heavy" style="width:min(1400px,100%);min-height:calc(var(--work-h) - 82px);grid-template-columns:minmax(420px,.76fr) minmax(820px,1.26fr);gap:20px;align-items:center;align-content:center;padding:42px 0 18px;box-sizing:border-box;">
+      <div class="bio-text" style="max-width:400px;margin-left:auto;text-align:right;">
+        <h1>Joe Thoney Letter from Santiago</h1>
+        <p>
+          The following letter was written in July of 1898 by Corporal Joe Thoney of Company L while he was in Cuba.
+        </p>
+        <p>
+          The newspaper article recounts his description of the march south, the fighting around Santiago, and how quickly the men adapted to the conditions at the front.
+        </p>
+      </div>
+      <div class="visual-area" style="display:flex;justify-content:flex-start;">
+        <figure class="single-hero" style="width:min(860px,100%);">
+          <img src="Spanish-American/photos/letter back.tif"
+               alt="Newspaper article reproducing Corporal Joe Thoney's letter from Santiago"
+               decoding="async"
+               style="max-height:660px;">
+        </figure>
+      </div>
     </div>
   </div>
 </div>
-</body>
-</html>
