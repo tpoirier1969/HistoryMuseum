@@ -1,0 +1,15 @@
+USE THESE FILES:
+
+1. update-and-start-kiosk-v2.bat
+   - Use for scheduled updates.
+   - Pulls latest GitHub changes directly into C:\AandD2025remake\HistoryMuseum.
+   - Does NOT copy files to another folder.
+   - Closes Edge before update.
+   - Skips update if offline and starts the kiosk with existing files.
+
+2. start-kiosk-v2.bat
+   - Use for startup-only launch.
+   - Starts Python server from C:\AandD2025remake\HistoryMuseum.
+   - Opens Edge at http://localhost:8000/arrivals%20and%20departures.html
+
+Older batch files may still exist. Ignore them unless you manually replace their contents.
