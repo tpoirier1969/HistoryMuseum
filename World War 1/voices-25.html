@@ -1,4 +1,4 @@
-<!-- VERSION 2.0 -->
+<!-- VERSION 2.3 — caption set to three even no-wrap lines -->
 <!-- Civil War/media-1.html -->
 
 <!DOCTYPE html>
@@ -10,25 +10,19 @@
 
   <style>
     .content-wrapper{
-      max-width: 1460px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 30px 18px 40px;
+      padding: 24px 18px 34px;
       color: black;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 20px;
       box-sizing: border-box;
       overflow-wrap: anywhere;
-      min-height: 820px;
-      display: flex;
-      align-items: center;
     }
 
-    /* ===== Photos on TOP, captions below each photo, text at the bottom ===== */
     .profile-layout.photos-top{
       display: flex;
       flex-direction: column;
-      width: min(1120px, 100%);
-      margin: 0 auto;
       gap: 18px;
       align-items: stretch;
     }
@@ -40,24 +34,21 @@
       gap: 12px;
     }
 
-    /* Center the two images as a group */
     .photo-row{
       display: grid;
       grid-template-columns: auto;
       gap: 0;
-      justify-content: center;   /* centers both images together */
+      justify-content: center;
       align-items: start;
     }
 
-    /* Each image + its caption line */
     .photo-item{
       display: flex;
       flex-direction: column;
-      align-items: center;       /* centers caption under its image */
+      align-items: center;
       gap: 10px;
     }
 
-    /* Shared media styles */
     img.with-border{
       display: block;
       border: 6px solid black;
@@ -67,25 +58,30 @@
               drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
     }
 
-    /* Base image behavior: keep aspect ratio; never overflow */
     .photo-item img.with-border{
       width: auto;
       height: auto;
       max-width: 960px;
     }
 
-    /* Image 1: ~150px wider than before (320 + 150 = 470) */
     .photo-item.first img.with-border{
       max-width: 720px;
       max-height: 700px;
     }
 
-    /* Split captions: one line under each image */
     .caption-line{
+      width: min(1280px, calc(100vw - 48px));
+      margin: 0 auto;
       font-size: 18px;
       line-height: 1.2;
       color: #333;
       text-align: center;
+      overflow-wrap: normal;
+    }
+
+    .caption-line span{
+      display: block;
+      white-space: nowrap;
     }
 
     .bio-text{
@@ -102,14 +98,20 @@
       text-align: center;
     }
 
-    /* Responsive: stack on narrow screens */
     @media (max-width: 980px){
       .photo-row{
         grid-template-columns: 1fr;
       }
+
       .photo-item.first img.with-border,
       .photo-item.second img.with-border{
         max-width: 100%;
+      }
+
+      .caption-line{
+        width: auto;
+        max-width: 100%;
+        font-size: 16px;
       }
     }
   </style>
@@ -118,21 +120,24 @@
 <body>
   <div class="content-wrapper">
     <div class="profile-layout photos-top">
- <div class="bio-text">
+      <div class="bio-text">
         <h1>Women in the Great War IV</h1>
       </div>
+
       <figure class="image-block">
         <div class="photo-row">
           <div class="photo-item first">
             <img
               src="/World War 1/Pictures/Loretta Perfectus Walsh copy.jpg"
               class="with-border"
-              alt="Company M 125 Infantry (Picnic Rocks)"
+              alt="Loretta Perfectus Walsh"
             />
             <div class="caption-line">
-              <em>On 21 Mar 1917, Loretta P. Walsh became the first woman Navy petty officer when she was sworn in <br>
-              as a Chief Yeoman. She served at the U.S. Navy Home at the Philadelphia Naval Shipyard, Philadelphia, Pennsylvania and left the Navy after her four-year enlistment. Chief Petty Officer Walsh died on <br>
-              6 Aug 1925 and is buried at Olyphant's St. Patrick's Cemetery, Olyphant, Pennsylvania.</em>
+              <em>
+                <span>On 21 Mar 1917, Loretta P. Walsh became the first woman Navy petty officer when she was sworn in as a Chief Yeoman.</span>
+                <span>She served at the U.S. Navy Home at the Philadelphia Naval Shipyard, Philadelphia, Pennsylvania, and left the Navy after her four-year enlistment.</span>
+                <span>Chief Petty Officer Walsh died on 6 Aug 1925 and is buried at St. Patrick's Cemetery, Olyphant, Pennsylvania.</span>
+              </em>
             </div>
           </div>
         </div>

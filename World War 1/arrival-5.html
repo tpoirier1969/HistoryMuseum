@@ -1,157 +1,47 @@
-<!-- VERSION 2.0 — true 2x2 grid; top row merged for text; bottom row holds two photos -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Civil War Media</title>
-
+  <title>Taking Care of Veterans at Home</title>
   <style>
-    *{ box-sizing: border-box; }
-
-    .content-wrapper{
-      max-width: 1480px;
-      margin: 0 auto;
-      padding: 24px 18px 28px;
-      color: #000;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
-      overflow-wrap: anywhere;
-    }
-
-    h1{
-      margin: 0 0 10px 0;
-      line-height: 1.08;
-      font-size: 34px;
-    }
-
-    p{
-      margin: 0;
-      line-height: 1.24;
-    }
-
-    .merged-grid{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "text text"
-        "photo1 photo2";
-      gap: 18px 28px;
-      align-items: start;
-    }
-
-    .text-block{
-      grid-area: text;
-    }
-
-    .text-block p + p{
-      margin-top: 14px;
-    }
-
-    .photo-left{
-      grid-area: photo1;
-      display: flex;
-      justify-content: center;
-      align-items: start;
-    }
-
-    .photo-right{
-      grid-area: photo2;
-      display: flex;
-      justify-content: center;
-      align-items: start;
-    }
-
-    figure{
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-    }
-
-    img.with-border{
-      display: block;
-      border: 6px solid #000;
-      border-radius: 6px;
-      box-sizing: border-box;
-      filter: sepia(0.20) brightness(1.0) contrast(1)
-              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-    }
-
-    .caption{
-      font-size: 19px; line-height: 1.14;
-      line-height: 1.18;
-      text-align: center;
-      color: #222;
-      max-width: 100%;
-    }
-
-    @media (max-width: 1100px){
-      .merged-grid{
-        grid-template-columns: 1fr;
-        grid-template-areas:
-          "text"
-          "photo1"
-          "photo2";
-      }
-
-      .photo-left,
-      .photo-right{
-        justify-content: flex-start;
-      }
-
-      figure{
-        align-items: flex-start;
-      }
-
-      .caption{
-        text-align: left;
-        max-width: 100%;
-      }
-
-      img.with-border{
-        max-width: 100%;
-        height: auto !important;
-      }
-    }
-  </style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #000; font-family: Arial, Helvetica, sans-serif; }
+  .content-wrapper { max-width: 1380px; margin: 0 auto; padding: 24px 18px 36px; font-size: 20px; line-height: 1.24; }
+  h1 { margin: 0 0 14px 0; font-size: 34px; line-height: 1.08; }
+  h2 { margin: 0 0 12px 0; font-size: 24px; line-height: 1.12; font-weight: normal; }
+  p { margin: 0 0 12px 0; }
+  .with-border { border: 6px solid #000; border-radius: 6px; box-sizing: border-box; filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
+  figure { margin: 0; }
+  figcaption { margin-top: 8px; font-size: 18px; line-height: 1.18; text-align: center; color: #222; }
+  .two-col { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,520px); gap: 28px; align-items: center; min-height: 720px; }
+  .image-first { grid-template-columns: minmax(320px,520px) minmax(0,1fr); }
+  .single { min-height: 720px; display: flex; align-items: center; }
+  .single > div { width: 100%; }
+  img.fit { display: block; max-width: 100%; max-height: 620px; width: auto; height: auto; margin: 0 auto; }
+  .center { text-align: center; }
+  .quote { font-size: 20px; line-height: 1.25; }
+  .poem { white-space: pre-line; }
+  .title-bar { display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:12px; }
+  .title-audio { width:min(520px,100%); }
+  @media (max-width: 1000px){ .two-col, .image-first { grid-template-columns: 1fr; min-height: 0; } .single { min-height: 0; } img.fit { max-height:none; } }
+</style>
 </head>
-
 <body>
+
   <div class="content-wrapper">
     <h1>Taking Care of Veterans at Home</h1>
-
-    <div class="merged-grid">
-      <div class="text-block">
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,520px);gap:28px;align-items:start;">
+      <div>
         <p>There were approximately 4.5 million American veterans of the 18 month U.S. participation in World War I. The average had served 12 months. Nearly half went overseas for an average of 5.5 months. Some 1.1 actually saw combat; of these 204,000 were wounded or otherwise disabled. Veterans were simply mustered out from their bases in the U.S. The government was unprepared to deal with the problems faced by returning Doughboys, especially those who were unemployed or disabled. A postwar recession brought unemployment to over 16% by 1921. That year the Veterans Bureau was established (forerunner of the Veterans Administration established in 1930). A system of hospitals was established to provide long-term care for war-related wounds and illnesses, tuberculosis caused by poison gas and mental illness caused by “shell shock.”</p>
-
-        <p>In both WWI and WWII an emotional disorder called Post Traumatic Stress Syndrome that develops after a traumatic event was called shell shock. Symptoms include depression, anxiety, nightmares, flashbacks and hyper-vigilance.</p>
+        <p><strong>Post Traumatic Stress Disorder (PTSD)</strong><br>In both WWI and WWII this emotional disorder that develops after a traumatic event was called shell shock. Symptoms include depression, anxiety, nightmares, flashbacks and hyper-vigilance.</p>
       </div>
-
-      <div class="photo-left">
-        <figure>
-          <img
-            class="with-border"
-            src="Pictures/American Legion post 44 firing squad in 1924.jpg"
-            alt="American Legion Post 44 firing squad in 1924"
-            style="height: 500px; width: auto;"
-          >
-        </figure>
-      </div>
-
-      <div class="photo-right">
-        <figure>
-          <img
-            class="with-border"
-            src="/World War 1/Pictures/32-marquette-american-legion.jpg"
-            alt="Second World War I photo"
-            style="height: 500px; width: auto;"
-          >
-          <figcaption class="caption"><em>WWI veterans in the American Legion firing squad, 1924.</em></figcaption>
-        </figure>
-      </div>
+      <figure>
+        <img src="/World War 1/Pictures/32-marquette-american-legion.jpg" class="with-border fit" alt="American Legion firing squad">
+        <figcaption><em>WWI veterans in the American Legion firing squad, 1924.</em></figcaption>
+      </figure>
     </div>
   </div>
+
 </body>
 </html>
