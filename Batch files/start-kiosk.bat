@@ -1,38 +1,42 @@
 @echo off
 setlocal
 
-REM ==================================================
-REM A&D Museum Kiosk Startup
-REM Starts local Python web server and opens Edge kiosk mode.
-REM ==================================================
+REM History Museum A&D kiosk startup
+REM Confirmed working kiosk repo path:
+REM   C:\AandD2025remake\HistoryMuseum
 
-set "SITE_FOLDER=C:\AandD Remake"
-set "HOME_FILE=AandD Home.html"
-set "PORT=8000"
-set "URL=http://localhost:%PORT%/AandD%%20Home.html"
-set "LOG_FILE=C:\AandD Remake\kiosk-start-log.txt"
+set "KIOSK_ROOT=C:\AandD2025remake\HistoryMuseum"
+set "KIOSK_URL=http://localhost:8000/arrivals%%20and%%20departures.html"
+set "EDGE_EXE=%ProgramFiles(x86)%\Microsoft\Edge\Application\msedge.exe"
 
-if not exist "%SITE_FOLDER%" mkdir "%SITE_FOLDER%"
-
-echo ================================================== >> "%LOG_FILE%"
-echo Kiosk start requested: %date% %time% >> "%LOG_FILE%"
-
-cd /d "%SITE_FOLDER%"
-if errorlevel 1 (
-    echo ERROR: Could not open site folder: %SITE_FOLDER% >> "%LOG_FILE%"
-    exit /b 1
+if not exist "%KIOSK_ROOT%" (
+  echo ERROR: Kiosk folder not found:
+  echo   "%KIOSK_ROOT%"
+  pause
+  exit /b 1
 )
 
-REM Start Python web server if nothing is already listening on this port.
-powershell -NoProfile -ExecutionPolicy Bypass -Command ^
-  "$p = Get-NetTCPConnection -LocalPort %PORT% -State Listen -ErrorAction SilentlyContinue; if (-not $p) { Start-Process -WindowStyle Minimized python -ArgumentList '-m http.server %PORT%' -WorkingDirectory '%SITE_FOLDER%' }"
+cd /d "%KIOSK_ROOT%"
 
-REM Give server a moment to start.
-timeout /t 2 /nobreak >nul
+REM Start local Python web server if port 8000 is not already listening.
+netstat -ano | findstr /R /C:":8000 .*LISTENING" >nul
+if errorlevel 1 (
+  echo Starting Python server on http://localhost:8000/
+  start "A&D Python Server" /min cmd /c "cd /d ^"%KIOSK_ROOT%^" && py -m http.server 8000"
+  timeout /t 3 /nobreak >nul
+) else (
+  echo Python server already appears to be running on port 8000.
+)
 
-REM Open Edge in kiosk/fullscreen mode using localhost, NOT file://
-start "" msedge --kiosk "%URL%" --edge-kiosk-type=fullscreen --no-first-run
+if not exist "%EDGE_EXE%" set "EDGE_EXE=%ProgramFiles%\Microsoft\Edge\Application\msedge.exe"
 
-echo Kiosk launched: %URL% >> "%LOG_FILE%"
+if not exist "%EDGE_EXE%" (
+  echo ERROR: Microsoft Edge executable not found.
+  pause
+  exit /b 1
+)
+
+echo Opening kiosk page...
+start "A&D Kiosk" "%EDGE_EXE%" --kiosk "%KIOSK_URL%" --edge-kiosk-type=fullscreen --no-first-run
 
 endlocal
