@@ -1,56 +1,40 @@
-<!-- VERSION 2.2 -->
-<!-- Civil War/media-1.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Civil War Media</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Women in the Great War</title>
   <style>
-    *{ box-sizing: border-box; }
-
-    .content-wrapper{
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 24px 18px 40px;
-      color: black;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
-      overflow-wrap: anywhere;
-      min-height: 760px;
-      display: flex;
-      align-items: center;
-    }
-
-    .profile-layout.photos-top{
-      width: min(1080px, 100%);
-      margin: 0 auto;
-    }
-
-    .bio-text h1{
-      margin: 0 0 12px;
-      font-size: 34px;
-      line-height: 1.08;
-    }
-
-    .bio-text p{
-      margin: 0;
-      line-height: 1.24;
-    }
-  </style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #000; font-family: Arial, Helvetica, sans-serif; }
+  .content-wrapper { max-width: 1380px; margin: 0 auto; padding: 24px 18px 36px; font-size: 20px; line-height: 1.24; }
+  h1 { margin: 0 0 14px 0; font-size: 34px; line-height: 1.08; }
+  h2 { margin: 0 0 12px 0; font-size: 24px; line-height: 1.12; font-weight: normal; }
+  p { margin: 0 0 12px 0; }
+  .with-border { border: 6px solid #000; border-radius: 6px; box-sizing: border-box; filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
+  figure { margin: 0; }
+  figcaption { margin-top: 8px; font-size: 18px; line-height: 1.18; text-align: center; color: #222; }
+  .two-col { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,520px); gap: 28px; align-items: center; min-height: 720px; }
+  .image-first { grid-template-columns: minmax(320px,520px) minmax(0,1fr); }
+  .single { min-height: 720px; display: flex; align-items: center; }
+  .single > div { width: 100%; }
+  img.fit { display: block; max-width: 100%; max-height: 620px; width: auto; height: auto; margin: 0 auto; }
+  .center { text-align: center; }
+  .quote { font-size: 20px; line-height: 1.25; }
+  .poem { white-space: pre-line; }
+  .title-bar { display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:12px; }
+  .title-audio { width:min(520px,100%); }
+  @media (max-width: 1000px){ .two-col, .image-first { grid-template-columns: 1fr; min-height: 0; } .single { min-height: 0; } img.fit { max-height:none; } }
+</style>
 </head>
-
 <body>
-  <div class="content-wrapper">
-    <div class="profile-layout photos-top">
-      <div class="bio-text">
-        <h1>Women in the Great War I</h1>
-        <p>
-        The more than 25,000 US women who served in Europe in World War I did so on an entrepreneurial basis, especially before 1917, They helped nurse the wounded, provide food and other supplies to the military, serve as telephone operators (the "Hello Girls"), entertain troops, and work as journalists. Many of these "self-selected adventurous women ... found their own work, improvised their own tools ,., argued, persuaded, and scrounged for supplies. They created new organizations where none had existed, "Despite hardships, the women had "fun" and "were glad they went." Women sent out to "canteen" for the US Army - providing entertainment, sewing on buttons, handing out cigarettes and sweeps -were "virtuous women" sent to "keep the boys straight."</p>
-      </div>
+
+  <div class="content-wrapper single">
+    <div>
+      <h1>Women in the Great War</h1>
+      <p>The more than 25,000 US women who served in Europe in World War I did so on an entrepreneurial basis, especially before 1917. They helped nurse the wounded, provide food and other supplies to the military, serve as telephone operators (the "Hello Girls"), entertain troops, and work as journalists. Many of these "self-selected adventurous women ... found their own work, improvised their own tools ... argued, persuaded, and scrounged for supplies. They created new organizations where none had existed." Despite hardships, the women had "fun" and "were glad they went." Women sent out to "canteen" for the US Army - providing entertainment, sewing on buttons, handing out cigarettes and sweeps. They were "virtuous women" sent to "keep the boys straight."</p>
     </div>
   </div>
+
 </body>
 </html>

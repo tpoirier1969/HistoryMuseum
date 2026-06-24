@@ -1,125 +1,41 @@
-<!-- VERSION 2.2 -->
-<!-- Civil War/media-1.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Civil War Media</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Alsace Sector</title>
   <style>
-    *{ box-sizing: border-box; }
-
-    .content-wrapper{
-      max-width: 1360px;
-      margin: 0 auto;
-      padding: 24px 18px 34px;
-      color: black;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
-      overflow-wrap: anywhere;
-    }
-
-    /* ↓ This gap is the main spacing between title block and the figure */
-    .profile-layout.photos-top{
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    figure.image-block{
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* Tighten the h1 itself (default h1 margins are big) */
-    .bio-text h1{
-      margin: 0 0 12px;
-      font-size: 34px;
-      line-height: 1.08;
-    }
-
-    /* Center image */
-    .photo-row{
-      display: grid;
-      grid-template-columns: 1fr;
-      justify-items: center;     /* ✅ centers the image */
-      align-items: start;
-    }
-
-    img.with-border{
-      display: block;
-      border: 6px solid black;
-      border-radius: 6px;
-      filter: sepia(0.20) brightness(1.0) contrast(1)
-              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-    }
-
-    /* Image sizing: use max-width + auto height (avoid forced stretching) */
-    .photo-row img.with-border{
-      width: auto;
-      height: auto;
-      max-width: 780px;
-      max-height: 620px;
-    }
-
-    .caption-line{
-      font-size: 18px;
-      line-height: 1.2;
-      color: #333;
-      text-align: center;
-    }
-
-    .bio-text{
-      width: min(900px, 100%);
-      margin: 0 auto;
-    }
-
-    .bio-text > *:first-child{ margin-top: 0; }
-
-    .bio-text p{
-      margin: 0;
-      line-height: 1.24;
-      text-align: left;
-    }
-
-    @media (max-width: 1000px){
-      .photo-row img.with-border{
-        max-width: 100%;
-      }
-    }
-  </style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #000; font-family: Arial, Helvetica, sans-serif; }
+  .content-wrapper { max-width: 1380px; margin: 0 auto; padding: 24px 18px 36px; font-size: 20px; line-height: 1.24; }
+  h1 { margin: 0 0 14px 0; font-size: 34px; line-height: 1.08; }
+  h2 { margin: 0 0 12px 0; font-size: 24px; line-height: 1.12; font-weight: normal; }
+  p { margin: 0 0 12px 0; }
+  .with-border { border: 6px solid #000; border-radius: 6px; box-sizing: border-box; filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
+  figure { margin: 0; }
+  figcaption { margin-top: 8px; font-size: 18px; line-height: 1.18; text-align: center; color: #222; }
+  .two-col { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,520px); gap: 28px; align-items: center; min-height: 720px; }
+  .image-first { grid-template-columns: minmax(320px,520px) minmax(0,1fr); }
+  .single { min-height: 720px; display: flex; align-items: center; }
+  .single > div { width: 100%; }
+  img.fit { display: block; max-width: 100%; max-height: 620px; width: auto; height: auto; margin: 0 auto; }
+  .center { text-align: center; }
+  .quote { font-size: 20px; line-height: 1.25; }
+  .poem { white-space: pre-line; }
+  .title-bar { display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:12px; }
+  .title-audio { width:min(520px,100%); }
+  @media (max-width: 1000px){ .two-col, .image-first { grid-template-columns: 1fr; min-height: 0; } .single { min-height: 0; } img.fit { max-height:none; } }
+</style>
 </head>
-
 <body>
-  <div class="content-wrapper">
-    <div class="profile-layout photos-top">
 
-      <div class="bio-text">
-        <h1>The Alsace Sector</h1>
-      </div>
-
-      <figure class="image-block">
-        <div class="photo-row">
-          <img
-            src="/World War 1/Pictures/map-3-Alsace Sector.JPG"
-            class="with-border"
-            alt="Alsace sector map"
-          />
-        </div>
-      </figure>
-
-      <div class="bio-text">
-        <p>
-          Between late February and the middle of May, the division performed support duties, obtained replacements and continued to train for combat. On 14 May the division moved to the vicinity of La Chapefle-sous-Rougemont in the 7th French Army sector. On the night of 20/21 May 1918, the Doughboys of the 32nd Division-lumberjacks, miners, farmers, shop keepers, railroad men and students from the cities, villages and farms of the U.P. entered the world of the trenches. Operating with the 9th and 10th French divisions in the Alsace sector, the Doughboys would receive their baptism of fire as they patrolled No Man's Land and raided German trenches. For the next two months, men from the U.P, like the millions of other  men who went before them, would experience the misery of life in the trenches. During this Time, 55 men were killed and 202 wounded in the division.
-        </p>
-      </div>
-
+  <div class="content-wrapper two-col image-first">
+    <figure><img src="/World War 1/Pictures/map-3-Alsace Sector.JPG" class="with-border fit" alt="Alsace sector map"></figure>
+    <div>
+      <h1>The Alsace Sector</h1>
+      <p>Between late February and the middle of May, the division performed support duties, obtained replacements and continued to train for combat. On 14 May the division moved to the vicinity of La Chapefle-sous-Rougemont in the 7th French Army sector. On the night of 20/21 May 1918, the Doughboys of the 32nd Division-lumberjacks, miners, farmers, shop keepers, railroad men and students from the cities, villages and farms of the U.P. entered the world of the trenches. Operating with the 9th and 10th French divisions in the Alsace sector, the Doughboys would receive their baptism of fire as they patrolled No Man's Land and raided German trenches. For the next two months, men from the U.P, like the millions of other men who went before them, would experience the misery of life in the trenches. During this time, 55 men were killed and 202 were wounded in the division.</p>
     </div>
   </div>
+
 </body>
 </html>

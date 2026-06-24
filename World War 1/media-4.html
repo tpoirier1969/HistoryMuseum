@@ -1,142 +1,44 @@
-<!-- VERSION 3.7.9 — One-row layout under title: Text | Certificate | Dear Flag (fills space; no crop; no distortion; no scroll) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>World War I Media</title>
-
-<style>
-  :root{
-    --pageW: 1480px;
-    --gap: 18px;
-
-    /* tune these if needed */
-    --colTextMin: 560px;
-    --colCertMin: 330px;
-    --colFlagMin: 260px;
-
-    /* Civil War/Media-1.html image vibe */
-    --borderW: 6px;
-    --borderC: #000;
-    --radius: 6px;
-    --sepia: 0.20;
-    --bright: 1.0;
-    --contrast: 1.0;
-    --glow: 0 0 10px rgba(255, 220, 100, 0.15);
-  }
-
-  html, body{ height: 100%; margin: 0; }
-  body{ overflow: hidden; } /* no vertical scroll */
-
-  .content-wrapper{
-    max-width: var(--pageW);
-    margin: 0 auto;
-    padding: 24px 18px 28px;
-    box-sizing: border-box;
-
-    color: #000;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    overflow-wrap: anywhere;
-
-    height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    row-gap: 10px;
-  }
-
-  h1{ margin: 0 0 12px 0; font-size: 34px; line-height: 1.08; }
-  .lede{ margin: 0 0 6px; line-height: 1.24; }
-
-  /* ===== Main one-row layout ===== */
-  .main{
-    min-height: 0;  /* critical: allows children to fit inside 1fr without forcing scroll */
-    display: grid;
-    gap: var(--gap);
-
-    /* Text gets the biggest share; certificate medium; flag narrower */
-    grid-template-columns:
-      minmax(var(--colTextMin), 1.65fr)
-      minmax(var(--colCertMin), 1.05fr)
-      minmax(var(--colFlagMin), 0.85fr);
-
-    align-items: start;
-  }
-
-  .text-block{
-    min-width: 0;
-  }
-
-  .img-cell{
-    min-height: 0;
-    display: flex;
-    align-items: flex-start;   /* top-align so it feels “attached” to the text block */
-    justify-content: center;
-  }
-
-  /* SAFE IMAGE RULES: no crop, no distortion */
-  .img-cell img{
-    display: block;
-    box-sizing: border-box;
-
-    width: auto;
-    height: auto;
-    max-width: 100%;
-    max-height: 100%;
-
-    object-fit: contain;   /* full image visible */
-    object-position: center;
-
-    border: var(--borderW) solid var(--borderC);
-    border-radius: var(--radius);
-
-    filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
-            drop-shadow(var(--glow));
-  }
-
-  /* Small-screen behavior (kiosk probably won't hit this, but safe) */
-  @media (max-width: 1100px){
-    body{ overflow: auto; }
-    .content-wrapper{ height: auto; }
-
-    .main{
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto auto;
-    }
-
-    .img-cell img{
-      width: 100%;
-      max-height: none;
-    }
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Casualties</title>
+  <style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #000; font-family: Arial, Helvetica, sans-serif; }
+  .content-wrapper { max-width: 1380px; margin: 0 auto; padding: 24px 18px 36px; font-size: 20px; line-height: 1.24; }
+  h1 { margin: 0 0 14px 0; font-size: 34px; line-height: 1.08; }
+  h2 { margin: 0 0 12px 0; font-size: 24px; line-height: 1.12; font-weight: normal; }
+  p { margin: 0 0 12px 0; }
+  .with-border { border: 6px solid #000; border-radius: 6px; box-sizing: border-box; filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
+  figure { margin: 0; }
+  figcaption { margin-top: 8px; font-size: 18px; line-height: 1.18; text-align: center; color: #222; }
+  .two-col { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,520px); gap: 28px; align-items: center; min-height: 720px; }
+  .image-first { grid-template-columns: minmax(320px,520px) minmax(0,1fr); }
+  .single { min-height: 720px; display: flex; align-items: center; }
+  .single > div { width: 100%; }
+  img.fit { display: block; max-width: 100%; max-height: 620px; width: auto; height: auto; margin: 0 auto; }
+  .center { text-align: center; }
+  .quote { font-size: 20px; line-height: 1.25; }
+  .poem { white-space: pre-line; }
+  .title-bar { display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:12px; }
+  .title-audio { width:min(520px,100%); }
+  @media (max-width: 1000px){ .two-col, .image-first { grid-template-columns: 1fr; min-height: 0; } .single { min-height: 0; } img.fit { max-height:none; } }
 </style>
 </head>
-
 <body>
+
   <div class="content-wrapper">
-    <div class="header">
-      <h1>First Casualties</h1>
-    </div>
-
-    <section class="main">
-      <!-- 1) Text -->
-      <div class="text-block">
-        <p class="lede">
-          The doughboys suffered their first casualties: three were killed and eleven captured when the Germans conducted a trench raid on their position. Throughout the winter of 1917 and the spring of 1918, American units would continue their training with the Allies and take over portions of the Allies' trench to sharpen their combat skills. In April 1918, a German attack on the American trenches near Seicheprey France left over 650 American killed and wounded and 100 taken prisoner. It was a costly learning experience for the Doughboys, but they quickly learned the skills they would need to take the fight to the Germans. In the great battles of the fall of 1918, the AEF would leave the trenches, going on the offense and bringing about the final deft of the enemy and an end to the Great War.
-        </p>
+    <h1>First Casualties</h1>
+    <section style="display:grid;grid-template-columns:minmax(0,1.65fr) minmax(280px,1fr) minmax(240px,.85fr);gap:18px;align-items:start;">
+      <div>
+        <p>The doughboys suffered their first casualties: three were killed and eleven captured when the Germans conducted a trench raid on their position. Throughout the winter of 1917 and the spring of 1918, American units would continue their training with the Allies and take over portions of the Allies' trench to sharpen their combat skills. In April 1918, a German attack on the American trenches near Seicheprey, France left over 650 Americans killed and wounded and 100 taken prisoner. It was a costly learning experience for the Doughboys, but they quickly learned the skills they would need to take the fight to the Germans. In the great battles of the fall of 1918, the AEF would leave the trenches, going on the offense and bringing about the final defeat of the enemy and an end to the Great War.</p>
       </div>
-
-      <!-- 2) Certificate (medium/wide) -->
-      <div class="img-cell">
-        <img src="/World%20War%201/Pictures/15-certificate.jpg" alt="Certificate image">
-      </div>
-
-      <!-- 3) Dear Flag (narrower column) -->
-      <div class="img-cell">
-        <img src="/World%20War%201/Pictures/16-dear-flag.jpg" alt="Dear Flag image">
-      </div>
+      <figure><img src="/World%20War%201/Pictures/15-certificate.jpg" class="with-border fit" alt="Certificate image"></figure>
+      <figure><img src="/World%20War%201/Pictures/16-dear-flag.jpg" class="with-border fit" alt="Dear Flag image"></figure>
     </section>
   </div>
+
 </body>
 </html>

@@ -1,64 +1,40 @@
-<!-- VERSION 1.6 -->
-<!-- Civil War/media-1.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Civil War Media</title>
+  <title>The Olse - Alsne Operation</title>
   <style>
-    .content-wrapper {
-      max-width: 1380px;
-      margin: 0 auto;
-      padding: 24px 18px 40px;
-      color: black;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 20px;
-      min-height: 760px;
-      display: flex;
-      align-items: center;
-    }
-
-    .profile-layout {
-      width: min(1120px, 100%);
-      margin: 0 auto;
-    }
-
-    img.with-border {
-      border: 6px solid black;
-      border-radius: 6px;
-      filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-      flex-shrink: 0;
-    }
-
-    .bio-text {
-      max-width: 1040px;
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: 34px;
-      line-height: 1.08;
-    }
-
-    p {
-      margin: 0;
-      line-height: 1.24;
-    }
-  </style>
+  * { box-sizing: border-box; }
+  body { margin: 0; color: #000; font-family: Arial, Helvetica, sans-serif; }
+  .content-wrapper { max-width: 1380px; margin: 0 auto; padding: 24px 18px 36px; font-size: 20px; line-height: 1.24; }
+  h1 { margin: 0 0 14px 0; font-size: 34px; line-height: 1.08; }
+  h2 { margin: 0 0 12px 0; font-size: 24px; line-height: 1.12; font-weight: normal; }
+  p { margin: 0 0 12px 0; }
+  .with-border { border: 6px solid #000; border-radius: 6px; box-sizing: border-box; filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255,220,100,.15)); }
+  figure { margin: 0; }
+  figcaption { margin-top: 8px; font-size: 18px; line-height: 1.18; text-align: center; color: #222; }
+  .two-col { display: grid; grid-template-columns: minmax(0,1fr) minmax(320px,520px); gap: 28px; align-items: center; min-height: 720px; }
+  .image-first { grid-template-columns: minmax(320px,520px) minmax(0,1fr); }
+  .single { min-height: 720px; display: flex; align-items: center; }
+  .single > div { width: 100%; }
+  img.fit { display: block; max-width: 100%; max-height: 620px; width: auto; height: auto; margin: 0 auto; }
+  .center { text-align: center; }
+  .quote { font-size: 20px; line-height: 1.25; }
+  .poem { white-space: pre-line; }
+  .title-bar { display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:12px; }
+  .title-audio { width:min(520px,100%); }
+  @media (max-width: 1000px){ .two-col, .image-first { grid-template-columns: 1fr; min-height: 0; } .single { min-height: 0; } img.fit { max-height:none; } }
+</style>
 </head>
 <body>
-  <div class="content-wrapper">
-    <div class="profile-layout">
-     <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson"/>-->
-      <div class="bio-text">
-        <h1>The Olse - Alsne Operation <br>
-        August 18 - September 2, 1918 </h1>
-        <p>
-        After securing their hard won sector near Fismes, the division moved to the vicinity of Juvigny on the night of 27/28 August. On the morning of 28 August, the division attacked and captured the rail road line west of Juvigny. The Germans launched a fierce counterattack but "Les Terribles" defeated the attack and held their ground. On the next day the Allies resume their attack but are stopped cold by the well-prepared German defenses. On 30 August the Allies once again attacked, and after bitter fighting the division captured the Village of Juvigny, From 3 August to 2 September the division continued to attack through determined resistance, finally taking its objective near Beaumont Fme. The five days of heavy fighting cost "Les Terribles" 485 men Killed, 1231 wounded and 19 missing or captured. The division earned a well-deserved rest out of the trenches.</p>
-      </div>
+
+  <div class="content-wrapper single">
+    <div>
+      <h1>The Olse - Alsne Operation<br>August 18 - September 2, 1918</h1>
+      <p>After securing their hard won sector near Fismes, the division moved to the vicinity of Juvigny on the night of 27/28 August. On the morning of 28 August, the division attacked and captured the rail road line west of Juvigny. The Germans launched a fierce counterattack but &quot;Les Terribles&quot; defeated the attack and held their ground. On the next day the Allies resumed their attack but are stopped cold by the well-prepared German defenses. On 30 August the Allies once again attacked, and after bitter fighting the division captured the Village of Juvigny, From 3 August to 2 September the division continued to attack through determined resistance, finally taking its objective near Beaumont Fme. The five days of heavy fighting cost &quot;Les Terribles&quot; 485 men killed, with another 1231 wounded and 19 missing or captured. The division earned a well-deserved rest out of the trenches.</p>
     </div>
   </div>
+
 </body>
 </html>

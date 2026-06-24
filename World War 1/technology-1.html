@@ -1,12 +1,10 @@
-<!-- VERSION 1.6 -->
-<!-- Civil War/media-1.html -->
-
+<!-- VERSION 1.7 — Added WWI identification tag image -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Civil War Media</title>
+  <title>Identification of Soldiers</title>
   <style>
     .content-wrapper {
       max-width: 1380px;
@@ -21,15 +19,24 @@
     }
 
     .profile-layout {
-      width: min(1120px, 100%);
+      width: min(1180px, 100%);
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 480px);
+      gap: 28px;
+      align-items: center;
     }
 
     img.with-border {
+      display: block;
       border: 6px solid black;
       border-radius: 6px;
       filter: sepia(0.20) brightness(1.0) contrast(1) drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
-      flex-shrink: 0;
+      box-sizing: border-box;
+      width: 100%;
+      height: auto;
+      max-height: 620px;
+      object-fit: contain;
     }
 
     .bio-text {
@@ -46,17 +53,37 @@
       margin: 0;
       line-height: 1.24;
     }
+
+    figure {
+      margin: 0;
+    }
+
+    @media (max-width: 1000px) {
+      .profile-layout {
+        grid-template-columns: 1fr;
+      }
+
+      img.with-border {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="content-wrapper">
     <div class="profile-layout">
-     <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson"/>-->
       <div class="bio-text">
         <h1>Identification of Soldiers </h1>
         <p> Personal identity for soldiers fallen in battle was up to the individual until 1913. In 1899 Chaplin Charles C. Piece recommended the use of “identity discs” as part of a combat field kit. By 1913, identification tags were mandated by the Federal Government and by 1917 all combat soldiers wore aluminum disc on chains around their necks. &nbsp;</p>
-     
       </div>
+
+      <figure>
+        <img
+          src="/World War 1/Pictures/WWI dog tag single.jpg"
+          class="with-border"
+          alt="World War I round identification tag"
+        />
+      </figure>
     </div>
   </div>
 </body>
