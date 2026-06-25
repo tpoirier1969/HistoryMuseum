@@ -1,0 +1,160 @@
+World War 1
+├── .DS_Store
+├── Pictures
+│   ├── .DS_Store
+│   ├── 01-womans-registration.jpg
+│   ├── 02-christmas-card.jpg
+│   ├── 03-ambulance.jpg
+│   ├── 04-Jopling-ambulance-france.jpg
+│   ├── 05-CompanyM-125infintry.jpg
+│   ├── 06-CCI-Gwinn-Service-Men.jpg
+│   ├── 07-negaunee-mine-service-men.jpg
+│   ├── 08-song-book.jpg
+│   ├── 09-marquette-naval-brigade.jpg
+│   ├── 10-Joplin-Co-C-9th TR-Reg.jpg
+│   ├── 11-Joplin-Beck Mnt camp.jpg
+│   ├── 12-Joplin-1st Bat-9th Th Reg.jpg
+│   ├── 13-answer-the-call.jpg
+│   ├── 14-unidentified.jpg
+│   ├── 15-certificate.jpg
+│   ├── 16-dear-flag.jpg
+│   ├── 17-up-company.jpg
+│   ├── 18-ladies.jpg
+│   ├── 19-save-food.jpg
+│   ├── 20-home-card.jpg
+│   ├── 21-Wheat Substitutes.jpg
+│   ├── 22-Meat substitutes.jpg
+│   ├── 23-companyM-125infintry.jpg
+│   ├── 23-m-company-125-infintry.jpg
+│   ├── 24-v-victory.jpg
+│   ├── 25-marquette-victory-jubilee.jpg
+│   ├── 26-ishpeming-departure.jpg
+│   ├── 27-certificate.jpg
+│   ├── 28-palmer-soldiers-welcome-home.jpg
+│   ├── 29-marquette-victory-arch.jpg
+│   ├── 30-ishpeming-arch.jpg
+│   ├── 31-children-at-parade.jpg
+│   ├── 32-marquette-american-legion.jpg
+│   ├── 32nd Div Symbol.jpg
+│   ├── American Legion post #44 firing squad in 1924 1961.28.8.jpg
+│   ├── American Legion post 44 firing squad in 1924.jpg
+│   ├── HD-Heir to throne killed.jpg
+│   ├── HD-Lusitania.jpg
+│   ├── HD-Victory.jpg
+│   ├── HD-War in Europe.jpg
+│   ├── HD-War is declared.jpg
+│   ├── HD-Yankees Advance.jpg
+│   ├── Loretta Perfectus Walsh copy.jpg
+│   ├── MTU Nara-cropped.jpg
+│   ├── MTU-Book LD3328H3-42-3.jpg
+│   ├── MTU-MS043-008-012-176-01.jpg
+│   ├── Poppy.jpg
+│   ├── Post-Fruit.jpg
+│   ├── Post-Woman.jpg
+│   ├── Post-music-battlefield in france.jpg
+│   ├── Post-music-blue star.jpg
+│   ├── Post-music-going over.jpg
+│   ├── Post-music-over there.jpg
+│   ├── Post-navy.jpg
+│   ├── Public_Domain_Pictures_WWI_British_Aircraft_Flying_Formation-1.jpg
+│   ├── Thumbs.db
+│   ├── Tuscania.jpg
+│   ├── Uboat.jpg
+│   ├── Vickers_machine_gun_crew_with_gas_masks.jpg
+│   ├── WWI-Buy Bond-WinsorMcCay.jpg
+│   ├── card-closed.jpg
+│   ├── card-open.jpg
+│   ├── drive-download-20260119T163304Z-1-001.zip
+│   ├── gold-star-logo-300x273.jpg
+│   ├── headline-Yankees advance.jpg
+│   ├── hockey credits.JPG
+│   ├── logging credits.JPG
+│   ├── map-1-Fort MacArthur.jpg
+│   ├── map-2-to Europe.jpg
+│   ├── map-3-Alsace Sector.JPG
+│   ├── map-4-back to USA.jpg
+│   ├── post red cross.jpg
+│   ├── post-baby prayer.jpg
+│   ├── post-canning.jpg
+│   ├── post-eat more less.jpg
+│   ├── post-halt the hun.jpg
+│   ├── post-join the navy.jpg
+│   ├── post-litalia.jpg
+│   ├── post-music-Mr Zip.jpg
+│   ├── post-music-germ out of germany.jpg
+│   ├── post-music-home fires.jpg
+│   ├── post-music.jpg
+│   ├── service flag WWI.JPG
+│   ├── sheet music combined.png
+│   └── tags group again.jpg
+├── WWI  GRID (new death-wounded-dead counts).doc
+├── WWI  GRID 2nd (DONE).doc
+├── WWI  GRID begining (duplicate of very early maybe).doc
+├── WWI GRID (DONE).doc
+├── WWI GRID begining (very early).doc
+├── WWI Table of stats - Mobilized-Deaths-etc-1.doc
+├── WWI Table of stats - Mobilized-Deaths-etc.doc
+├── arrival-1.html
+├── arrival-2.html
+├── arrival-3.html
+├── arrival-4.html
+├── arrival-5.html
+├── arrival-6.html
+├── arrival-7.html
+├── audio
+│   ├── WWI-Richard Mather Joplin.mp3
+│   ├── WWI-Tom S. Smith - CELEBRATION.mp3
+│   ├── WWI-Tom S. Smith - CURRENT NEWS.mp3
+│   ├── WWI-Tom S. Smith - NEWS OF OTHER SOLDIERS.mp3
+│   ├── WWI-Wisti1.mp3
+│   └── WWI-Wisti2.mp3
+├── databases-1.html
+├── media-1.html
+├── media-2.html
+├── media-3.html
+├── media-4.html
+├── media-5.html
+├── media-6 OLD.html
+├── media-6.html
+├── media-7.html
+├── technology-1.html
+├── technology-2.html
+├── technology-3.html
+├── technology-4.html
+├── technology-5.html
+├── technology-6.html
+├── upper-michigan-1.html
+├── upper-michigan-2.html
+├── upper-michigan-3.html
+├── upper-michigan-4.5.html
+├── upper-michigan-4.html
+├── upper-michigan-5.html
+├── upper-michigan-6.html
+├── upper-michigan-7.html
+├── voices-1.html
+├── voices-10.html
+├── voices-11.html
+├── voices-12.html
+├── voices-13.html
+├── voices-14.html
+├── voices-15.html
+├── voices-16.html
+├── voices-17.html
+├── voices-18.html
+├── voices-19.html
+├── voices-2.html
+├── voices-20.html
+├── voices-21.html
+├── voices-22.html
+├── voices-23.html
+├── voices-24.html
+├── voices-25.html
+├── voices-3.html
+├── voices-4.html
+├── voices-5.html
+├── voices-6.html
+├── voices-7.html
+├── voices-8.html
+└── voices-9.html
+
+3 directories, 155 files

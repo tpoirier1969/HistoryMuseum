@@ -1,4 +1,4 @@
-<!-- VERSION 3.7.3 — auto layout + safeguard + TOP-aligned images (removes big gap between text and images) -->
+<!-- VERSION 3.7.6 — fixed Calesthenics image path to local Pictures folder -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,24 +38,20 @@
 
     height: 100vh;
     display: grid;
-    grid-template-rows: auto 1fr;   /* header then gallery gets the rest */
-    row-gap: 12px;                  /* slightly tighter; adjust if desired */
+    grid-template-rows: auto 1fr;
+    row-gap: 12px;
   }
 
   h1{ margin: 0 0 12px 0; font-size: 34px; line-height: 1.08; }
   .lede{ margin: 0 0 6px; line-height: 1.24; }
 
-  /* ===== Gallery Plan (auto) ===== */
   .gallery{
     min-height: 0;
     height: 100%;
     display: grid;
     gap: var(--gap);
-
-    /* JS sets these */
     --cols: 4;
     --rows: 1;
-
     grid-template-columns: repeat(var(--cols), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr);
   }
@@ -66,15 +62,10 @@
     min-height: 0;
     height: 100%;
     display: flex;
-
-    /* FIX: pin images to the top of each tile */
     align-items: flex-start;
-
-    /* keep horizontal centering */
     justify-content: center;
   }
 
-  /* Full image, no crop. Scales down to fit its tile. Border hugs image exactly. */
   .tile img{
     max-width: 100%;
     max-height: 100%;
@@ -82,16 +73,13 @@
     height: auto;
     display: block;
     box-sizing: border-box;
-
     border: var(--borderW) solid var(--borderC);
     border-radius: var(--radius);
-
     filter: sepia(var(--sepia)) brightness(var(--bright)) contrast(var(--contrast))
             drop-shadow(var(--glow));
   }
 
   @media (max-width: 900px){
-    /* On narrow screens: allow scroll + stack */
     body{ overflow: auto; }
     .content-wrapper{ height: auto; display: block; }
     .gallery{
@@ -114,23 +102,21 @@
       </p>
     </div>
 
-    <!-- Optional manual override per-problem-page:
-         data-cols="2" data-rows="2" (or whatever) -->
     <section class="gallery" data-auto="1" data-cols="2" data-rows="2">
       <figure class="tile">
-        <img src="/World%20War%201/Pictures/post-join the navy.jpg" alt="Enlist in the Navy poster">
+        <img src="/World War 1/Pictures/post-join the navy.jpg" alt="Enlist in the Navy poster">
       </figure>
 
       <figure class="tile">
-        <img src="/World%20War%201/Pictures/10-Joplin-Co-C-9th TR-Reg.jpg" alt="Troops marching photograph">
+        <img src="/World War 1/Pictures/10-Joplin-Co-C-9th TR-Reg.jpg" alt="Troops marching photograph">
       </figure>
 
       <figure class="tile">
-        <img src="../images/world war 1 media/Pictures/working/Calesthenics copy.jpg" alt="Calisthenics at Camp Custer">
+        <img src="/World War 1/Pictures/Calesthenics copy.jpg" alt="Calisthenics at Camp Custer">
       </figure>
 
       <figure class="tile">
-        <img src="/World%20War%201/Pictures/13-answer-the-call.jpg" alt="Answer the call postcard">
+        <img src="/World War 1/Pictures/13-answer-the-call.jpg" alt="Answer the call postcard">
       </figure>
     </section>
   </div>
@@ -143,7 +129,6 @@
   const imgs = Array.from(gallery.querySelectorAll('img')).filter(img => img.getAttribute('src'));
   const n = imgs.length;
 
-  // Manual override (reliable): set data-cols/data-rows and JS applies it.
   const manualCols = parseInt(gallery.getAttribute('data-cols') || '', 10);
   const manualRows = parseInt(gallery.getAttribute('data-rows') || '', 10);
   if (Number.isFinite(manualCols) && Number.isFinite(manualRows) && manualCols > 0 && manualRows > 0){
@@ -152,7 +137,6 @@
     return;
   }
 
-  // Base layout by count:
   let cols, rows;
   if (n <= 4) { cols = Math.max(n, 1); rows = 1; }
   else if (n <= 6) { cols = 3; rows = 2; }
@@ -161,7 +145,6 @@
   gallery.style.setProperty('--cols', cols);
   gallery.style.setProperty('--rows', rows);
 
-  // Aspect-ratio safeguard (very wide images):
   const loadPromises = imgs.map(img => (img.complete && img.naturalWidth)
     ? Promise.resolve()
     : new Promise(res => {

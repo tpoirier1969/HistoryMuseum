@@ -1,0 +1,86 @@
+World War 1/upper-michigan-1.html:49:     <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson"/>-->
+World War 1/upper-michigan-1.html:58:          <img src="/World War 1/Pictures/05-CompanyM-125infintry.jpg" alt="Unidentified WWI photo" class="with-border">
+World War 1/voices-1.html:36:        <img src="/World War 1/Pictures/32nd Div Symbol.jpg" class="fit" alt="32nd Division symbol">
+World War 1/voices-13.html:34:      <img src="/World%20War%201/Pictures/04-Jopling-ambulance-france.jpg" class="with-border" alt="Army Field Service ambulance in France" style="width:350px;height:auto;">
+World War 1/voices-13.html:35:      <img src="/World%20War%201/Pictures/03-ambulance.jpg" class="with-border" alt="Ambulance and crew" style="width:350px;height:auto;">
+World War 1/voices-13.html:36:      <img src="/World%20War%201/Pictures/10-Joplin-Co-C-9th%20TR-Reg.jpg" class="with-border" alt="Richard Mather Jopling with unit" style="width:350px;height:auto;">
+World War 1/voices-13.html:41:        <source src="../World%20War%201/audio/WWI-Richard%20Mather%20Joplin.mp3" type="audio/mpeg">
+World War 1/technology-5.html:37:    <figure><img src="/World War 1/Pictures/Public_Domain_Pictures_WWI_British_Aircraft_Flying_Formation-1.jpg" class="with-border fit" alt="World War I aircraft flying in formation"></figure>
+World War 1/arrival-4.html:154:          <img src="/World War 1/Pictures/30-ishpeming-arch.jpg" alt="Ishpeming welcome home arch">
+World War 1/arrival-4.html:161:          <img src="/World War 1/Pictures/28-palmer-soldiers-welcome-home.jpg" alt="Palmer Armistice Day celebration">
+World War 1/arrival-4.html:169:          <img src="/World War 1/Pictures/31-children-at-parade.jpg" alt="Children at parade">
+World War 1/voices-25.html:131:              src="/World War 1/Pictures/Loretta Perfectus Walsh copy.jpg"
+World War 1/voices-24.html:33:    <figure><img src="/World War 1/Pictures/01-womans-registration.jpg" class="with-border fit" alt="Woman's registration document"></figure>
+World War 1/arrival-5.html:40:        <img src="/World War 1/Pictures/32-marquette-american-legion.jpg" class="with-border fit" alt="American Legion firing squad">
+World War 1/media-1.html:130:            src="/World%20War%201/Pictures/HD-Heir%20to%20throne%20killed.jpg"
+World War 1/media-1.html:140:            src="/World%20War%201/Pictures/HD-War%20in%20Europe.jpg"
+World War 1/media-1.html:150:            src="/World%20War%201/Pictures/HD-Lusitania.jpg"
+World War 1/media-1.html:160:            src="/World%20War%201/Pictures/HD-War%20is%20declared.jpg"
+World War 1/technology-4.html:54:     <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson"/>-->
+World War 1/voices-12.html:5:        <img src="/World War 1/Pictures/06-CCI-Gwinn-Service-Men.jpg"
+World War 1/voices-19.html:118:              src="/World War 1/Pictures/07-negaunee-mine-service-men.jpg"
+World War 1/voices-19.html:130:              src="/World War 1/Pictures/09-marquette-naval-brigade.jpg"
+World War 1/media-6.html:25:        <img src="/World War 1/Pictures/sheet music combined.png"
+World War 1/databases-1.html:56:     <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson"/>-->
+World War 1/arrival-2.html:149:          <img src="/World War 1/Pictures/29-marquette-victory-arch.jpg" alt="Troops departing">
+World War 1/arrival-2.html:155:          <img src="/World War 1/Pictures/25-marquette-victory-jubilee.jpg" alt="Unidentified WWI photo">
+World War 1/upper-michigan-7.html:54:     <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson"/>-->
+World War 1/voices-7.html:33:    <figure><img src="/World War 1/Pictures/map-3-Alsace Sector.JPG" class="with-border fit" alt="Alsace sector map"></figure>
+World War 1/voices-15.html:101:          <source src="../World%20War%201/audio/WWI-Tom S. Smith - CELEBRATION.mp3" type="audio/mpeg">
+World War 1/technology-3.html:103:      <img src="/World War 1/Pictures/Vickers_machine_gun_crew_with_gas_masks.jpg" alt="World War I soldiers wearing gas masks with a Vickers machine gun">
+World War 1/voices-6.html:33:    <figure><img src="/World War 1/Pictures/Tuscania.jpg" class="with-border fit" alt="S.S. Tuscania"></figure>
+World War 1/upper-michigan-6.html:148:          <img src="/World War 1/Pictures/24-v-victory.jpg" alt="Troops departing">
+World War 1/upper-michigan-6.html:154:          <img src="/World War 1/Pictures/post-halt the hun.jpg" alt="Unidentified WWI photo">
+World War 1/media-6 OLD.html:147:        <div class="tile"><img src="/World%20War%201/Pictures/Post-music-battlefield%20in%20france.jpg" alt="On a Battlefield in France sheet music cover"></div>
+World War 1/media-6 OLD.html:148:        <div class="tile"><img src="/World%20War%201/Pictures/Post-music-blue%20star.jpg" alt="There's a Little Blue Star in the Window sheet music cover"></div>
+World War 1/media-6 OLD.html:149:        <div class="tile"><img src="/World%20War%201/Pictures/post-music-germ%20out%20of%20germany.jpg" alt="We'll Take the Germ Out of Germany sheet music cover"></div>
+World War 1/media-6 OLD.html:150:        <div class="tile"><img src="/World%20War%201/Pictures/Post-music-going%20over.jpg" alt="We're Going Over sheet music cover"></div>
+World War 1/media-6 OLD.html:155:        <div class="tile"><img src="/World%20War%201/Pictures/post-music-home%20fires.jpg" alt="Keep the Home Fires Burning sheet music cover"></div>
+World War 1/media-6 OLD.html:156:        <div class="tile"><img src="/World%20War%201/Pictures/post-music-Mr%20Zip.jpg" alt="Good Morning Mr. Zip-Zip-Zip sheet music cover"></div>
+World War 1/media-6 OLD.html:157:        <div class="tile"><img src="/World%20War%201/Pictures/Post-music-over%20there.jpg" alt="Over There sheet music cover"></div>
+World War 1/media-6 OLD.html:158:        <div class="tile"><img src="/World%20War%201/Pictures/post-music.jpg" alt="Don't Try to Steal the Sweetheart of a Soldier sheet music cover"></div>
+World War 1/arrival-3.html:6:          <img src="/World war 1/Pictures/27-certificate.jpg"
+World War 1/media-7.html:118:        <img src="/World War 1/Pictures/card-closed.jpg" alt="Certificate image">
+World War 1/media-7.html:122:        <img src="/World War 1/Pictures/card-open.jpg" alt="Dear Flag image">
+World War 1/voices-18.html:115:              src="/World War 1/Pictures/02-christmas-card.jpg"
+World War 1/voices-21.html:98:          src="/World War 1/Pictures/gold-star-logo-300x273.jpg"
+World War 1/media-4.html:38:      <figure><img src="/World%20War%201/Pictures/15-certificate.jpg" class="with-border fit" alt="Certificate image"></figure>
+World War 1/media-4.html:39:      <figure><img src="/World%20War%201/Pictures/16-dear-flag.jpg" class="with-border fit" alt="Dear Flag image"></figure>
+World War 1/technology-1.html:82:          src="/World War 1/Pictures/WWI dog tag single.jpg"
+World War 1/voices-17.html:88:          src="/World War 1/Pictures/08-song-book.jpg"
+World War 1/voices-17.html:110:          <source src="../World%20War%201/audio/WWI-Wisti1.mp3" type="audio/mpeg">
+World War 1/voices-17.html:121:          <source src="../World%20War%201/audio/WWI-Wisti2.mp3" type="audio/mpeg">
+World War 1/voices-5.html:33:    <figure><img src="/World War 1/Pictures/map-2-to Europe.jpg" class="with-border fit" alt="Movement overseas map"></figure>
+World War 1/upper-michigan-5.html:148:          <img src="/World War 1/Pictures/post-canning.jpg" alt="Troops departing">
+World War 1/upper-michigan-5.html:154:          <img src="/World War 1/Pictures/Post-Fruit.jpg" alt="Unidentified WWI photo">
+World War 1/upper-michigan-4.html:149:            src="/World%20War%201/Pictures/19-save-food.jpg"
+World War 1/upper-michigan-4.html:157:            src="/World%20War%201/Pictures/20-home-card.jpg"
+World War 1/upper-michigan-4.html:165:            src="/World%20War%201/Pictures/post-eat%20more%20less.jpg"
+World War 1/upper-michigan-4.html:173:            src="/World%20War%201/Pictures/post-litalia.jpg"
+World War 1/voices-4.html:33:    <figure><img src="/World War 1/Pictures/map-1-Fort MacArthur.jpg" class="with-border fit" alt="Fort MacArthur map"></figure>
+World War 1/voices-16.html:101:          <source src="../World%20War%201/audio/WWI-Tom S. Smith - NEWS OF OTHER SOLDIERS.mp3" type="audio/mpeg">
+World War 1/media-5.html:117:        <img src="/World War 1/Pictures/HD-Yankees Advance.jpg" alt="Certificate image">
+World War 1/media-5.html:121:        <img src="/World War 1/Pictures/HD-Victory.jpg" alt="Dear Flag image">
+World War 1/arrival-1.html:6:          <img src="/World War 1/Pictures/HD-victory.jpg"
+World War 1/voices-20.html:36:        <img src="/World War 1/Pictures/service flag WWI.JPG" class="with-border fit" alt="World War I service flag with two blue stars" style="max-width:520px;">
+World War 1/voices-11.html:5:        <img src="/World War 1/Pictures/map-4-back to USA.jpg"
+World War 1/upper-michigan-4.5.html:149:          <img src="/World War 1/Pictures/21-Wheat Substitutes.jpg" alt="Troops departing">
+World War 1/upper-michigan-4.5.html:155:          <img src="/World War 1/Pictures/22-Meat substitutes.jpg" alt="Unidentified WWI photo">
+World War 1/voices-3.html:86:      <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson" /> -->
+World War 1/upper-michigan-3.html:148:          <img src="/World War 1/Pictures/post red cross.jpg" alt="Troops departing">
+World War 1/upper-michigan-3.html:154:          <img src="/World War 1/Pictures/18-ladies.jpg" alt="Unidentified WWI photo">
+World War 1/arrival-6.html:57:     <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson"/>-->
+World War 1/media-2.html:121:        <img src="/World%20War%201/Pictures/post-join the navy.jpg" alt="Enlist in the Navy poster">
+World War 1/media-2.html:125:        <img src="/World%20War%201/Pictures/10-Joplin-Co-C-9th TR-Reg.jpg" alt="Troops marching photograph">
+World War 1/media-2.html:129:        <img src="../images/world war 1 media/Pictures/working/Calesthenics copy.jpg" alt="Calisthenics at Camp Custer">
+World War 1/media-2.html:133:        <img src="/World%20War%201/Pictures/13-answer-the-call.jpg" alt="Answer the call postcard">
+World War 1/media-3.html:37:      <figure><img src="/World War 1/Pictures/26-ishpeming-departure.jpg" class="with-border fit" alt="WWI servicemen leaving Ishpeming"><figcaption><em>WWI servicemen leaving Ishpeming</em></figcaption></figure>
+World War 1/media-3.html:38:      <figure><img src="/World War 1/Pictures/14-unidentified.jpg" class="with-border fit" alt="Unidentified WWI servicemen"></figure>
+World War 1/media-3.html:39:      <figure><img src="/World War 1/Pictures/11-Joplin-Beck Mnt camp.jpg" class="with-border fit" alt="WWI camp image"></figure>
+World War 1/arrival-7.html:103:        <img class="with-border" src="/World War 1/Pictures/Poppy.jpg" alt="Poppy image">
+World War 1/upper-michigan-2.html:148:          <img src="/World War 1/Pictures/05-CompanyM-125infintry.jpg" alt="Troops departing">
+World War 1/upper-michigan-2.html:155:          <img src="/World War 1/Pictures/23-m-company-125-infintry.jpg" alt="Unidentified WWI photo">
+World War 1/upper-michigan-2.html:161:          <img src="/World War 1/Pictures/32nd Div Symbol.jpg" alt="Camp photo">
+World War 1/voices-2.html:115:              src="/World War 1/Pictures/05-CompanyM-125infintry.jpg"
+World War 1/voices-2.html:127:              src="/World War 1/Pictures/23-companyM-125infintry.jpg"
+World War 1/voices-10.html:41:     <!-- <img src="../images/civil war media/Pics/edward-watson.jpg" class="with-border" width="467" height="600" alt="Edward M Watson"/>-->
