@@ -1,5 +1,38 @@
 <style>
-.ad-fragment{--ad-work-w:1260px;--ad-gap:12px;--ad-border:5px solid #000;--ad-radius:6px;--ad-caption:19px;box-sizing:border-box;max-width:var(--ad-work-w);margin:0 auto;padding:4px 6px 18px;color:#000;font-family:Arial, Helvetica, sans-serif;font-size:20px;line-height:1.24}.ad-fragment *,.ad-fragment *::before,.ad-fragment *::after{box-sizing:border-box}.ad-fragment .content-wrapper{max-width:100%;margin:0 auto;padding:0;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.ad-fragment h1{margin:0 0 8px;font-size:34px;line-height:1.08}.ad-fragment p{margin:0 0 8px;line-height:1.24}.ad-fragment .lead-text{width:min(980px,100%);max-width:min(980px,100%);margin:0 auto 12px;text-align:left}.ad-fragment .gallery{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:var(--ad-gap);margin:12px auto 0;width:100%}.ad-fragment figure{margin:0;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;flex:0 1 auto;width:auto;min-width:0;max-width:100%;text-align:center; gap: 2px;
-}.ad-fragment img,.ad-fragment video{display:block;width:auto;max-width:100%;height:auto;object-fit:contain;box-sizing:border-box;border:var(--ad-border);border-radius:var(--ad-radius);background:transparent}.ad-fragment figcaption {display:block;margin: 1px auto 0;padding: 0;width:100%;max-width:100%;font-size:var(--ad-caption);line-height: 1.14;font-style:italic;text-align:center;overflow-wrap:anywhere}.ad-fragment .audio-block{margin:14px auto 0;text-align:center;display:flex;flex-direction:column;align-items:center}.ad-fragment audio{width:min(780px,100%)}.ad-fragment .one-image img{max-height:500px}.ad-fragment .two-images{min-height:450px;align-content:center}.ad-fragment .two-images figure{max-width:calc((100% - var(--ad-gap))/2)}.ad-fragment .two-images img{max-height:470px}.ad-fragment .three-images{min-height:520px;align-content:center}.ad-fragment .three-images figure{max-width:calc((100% - (2 * var(--ad-gap)))/3)}.ad-fragment .three-images img{max-height:355px}.ad-fragment .placeholder{width:min(280px,100%);min-height:145px;border:5px dashed #555;border-radius:var(--ad-radius);background:rgba(240,240,240,.82);display:flex;align-items:center;justify-content:center;padding:16px;font-weight:bold;text-align:center}@media(max-width:1100px){.ad-fragment{font-size:18px}.ad-fragment .two-images figure,.ad-fragment .three-images figure{max-width:min(720px,96%)}.ad-fragment .one-image img,.ad-fragment .two-images img,.ad-fragment .three-images img{max-height:none}}
-.ad-fragment.audio-only{min-height:clamp(500px,calc(100vh - 250px),780px);display:flex;align-items:center;justify-content:center}.ad-fragment.audio-only .content-wrapper{width:min(820px,100%);margin:auto;text-align:center}.ad-fragment.audio-only .lead-text{width:100%;max-width:100%;margin:0 auto 18px;text-align:center}.ad-fragment.audio-only .audio-block{margin:0 auto}.ad-fragment.audio-only audio{width:min(760px,100%)}
-</style><div class="ad-fragment audio-only"><div class="content-wrapper"><div class="lead-text center"><h1>Dana Varvil, Pilot, 210th Coastal Artillery<br>Escape Attempt, Liberation</h1></div><div class="audio-block"><audio controls><source src="World War 2/Audio/Varvil-Liberation.mp3"></audio></div></div></div>
+.ad-fragment{--ad-work-w:1260px;--ad-gap:12px;--ad-border:5px solid #000;--ad-radius:6px;--ad-caption:19px;box-sizing:border-box;max-width:var(--ad-work-w);margin:0 auto;padding:4px 6px 18px;color:#000;font-family:Arial, Helvetica, sans-serif;font-size:20px;line-height:1.24}
+.ad-fragment *,.ad-fragment *::before,.ad-fragment *::after{box-sizing:border-box}
+.ad-fragment .content-wrapper{max-width:100%;margin:0 auto;padding:0;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit}
+.ad-fragment h1{margin:0 0 8px;font-size:34px;line-height:1.08}
+.ad-fragment h2{margin:0 0 8px;font-size:24px;line-height:1.12;font-weight:normal}
+.ad-fragment p{margin:0 0 8px;line-height:1.24}
+.ad-fragment .lead-text{width:min(980px,100%);max-width:min(980px,100%);margin:0 auto 12px;text-align:left}
+.ad-fragment .lead-text.center{text-align:center}
+.ad-fragment figure{margin:0;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;flex:0 1 auto;width:auto;min-width:0;max-width:100%;text-align:center;gap:2px}
+.ad-fragment img,.ad-fragment video{display:block;width:auto;max-width:100%;height:auto;object-fit:contain;box-sizing:border-box;border:var(--ad-border);border-radius:var(--ad-radius);background:transparent}
+.ad-fragment figcaption{display:block;margin:1px auto 0;padding:0;width:100%;max-width:100%;font-size:var(--ad-caption);line-height:1.14;font-style:italic;text-align:center;overflow-wrap:anywhere}
+.ad-fragment .audio-block{width:100%;margin:14px auto 0;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ad-fragment audio{display:block;width:min(760px,100%);max-width:100%;height:54px;margin:0 auto}
+.ad-fragment.audio-only{min-height:clamp(500px,calc(100vh - 250px),780px);display:flex;align-items:center;justify-content:center}
+.ad-fragment.audio-only .content-wrapper{width:min(820px,100%);margin:auto;text-align:center}
+.ad-fragment.audio-only .lead-text{width:100%;max-width:100%;margin:0 auto 18px;text-align:center}
+.ad-fragment.audio-only .audio-block{margin:0 auto}
+.ad-fragment .media-two{width:min(1020px,100%);display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start;justify-items:center;margin:0 auto}
+.ad-fragment .media-one{width:min(760px,100%);display:flex;justify-content:center;align-items:start;margin:0 auto}
+.ad-fragment .media-two figure,.ad-fragment .media-one figure{width:100%;max-width:100%}
+.ad-fragment .media-one img{max-height:430px}
+.ad-fragment .media-two img{max-height:390px}
+.ad-fragment .text-letter{width:min(1040px,100%);margin:0 auto;text-align:left;font-size:18px;line-height:1.18;column-count:2;column-gap:32px}
+.ad-fragment .text-letter.single{width:min(940px,100%);font-size:19px;line-height:1.22;column-count:1}
+@media(max-width:1100px){.ad-fragment{font-size:18px}.ad-fragment .media-two{grid-template-columns:1fr}.ad-fragment .text-letter{column-count:1}.ad-fragment img{max-height:none !important}.ad-fragment audio{height:auto}}
+</style><div class="ad-fragment wwii-voices">
+  <div class="content-wrapper">
+    <div class="lead-text center">
+      <h1>Dana Varvil, Pilot, 210th Coastal Artillery<br>Escape Attempt, Liberation</h1>
+    </div>
+    <div class="audio-block" style="width:100%;margin:14px auto 0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+      <audio controls preload="metadata" style="display:block;width:min(760px,100%);max-width:100%;height:54px;margin:0 auto;">
+        <source src="World War 2/Audio/Varvil-Liberation.mp3">
+      </audio>
+    </div>
+  </div>
+</div>
