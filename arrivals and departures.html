@@ -1,4 +1,4 @@
-<!-- Version 4.16 (framework/shared CSS support pass; legacy-safe loader) -->
+<!-- Version 4.17 (credits landing page; framework/shared CSS support pass; legacy-safe loader) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,14 +31,8 @@
       cursor: default;
     }
 
-    #mainContent * {
-      cursor: default;
-    }
-
-    #mainContent > * {
-      position: relative;
-      z-index: 1;
-    }
+    #mainContent * { cursor: default; }
+    #mainContent > * { position: relative; z-index: 1; }
 
     img.responsive {
       max-width: 800px;
@@ -54,10 +48,7 @@
       padding: 8px 150px 0 150px;
     }
 
-    #subNavButtons img {
-      height: 60px;
-      cursor: pointer;
-    }
+    #subNavButtons img { height: 60px; cursor: pointer; }
 
     #mainContent img {
       max-width: 100%;
@@ -124,8 +115,7 @@
       </div>
 
       <div id="mainContent">
-        <h1>Welcome</h1>
-        <p>Select a war from the left to begin.</p>
+        <div class="content-background"></div>
       </div>
     </div>
   </div>
@@ -161,6 +151,8 @@
         if (!el.classList.contains('inactive-glow')) el.classList.add('inactive-glow');
       });
 
+      if (!war) return;
+
       const activeWarButton = (war === "korea" || war === "vietnam") ? "cold" : war;
       const warBtn = document.getElementById(warIdFromKey(activeWarButton));
       if (warBtn) {
@@ -188,6 +180,7 @@
     }
 
     function switchSection(section) {
+      if (!currentWar) return;
       currentSection = section;
       currentPageIndex = 0;
       highlightCurrent(currentWar, section);
@@ -201,6 +194,7 @@
     }
 
     function navigate(offset) {
+      if (!currentWar) return;
       const sections = getAvailableSections(currentWar);
       if (!sections.length) return;
 
@@ -251,12 +245,6 @@
 
       doc.querySelectorAll('script').forEach(node => node.remove());
 
-      /*
-        Baseline loader behavior:
-        - Modern .ad-fragment pages are controlled by css/kiosk-layout.css, so local page CSS is stripped.
-        - Legacy/full-page pages keep local CSS temporarily so old custom-fit layouts do not collapse before migration.
-        - Custom bridge pages rely on shared CSS rules, not page-local hacks.
-      */
       if (isModernFragment || isCustomBridge) {
         doc.querySelectorAll('style, link[rel="stylesheet"]').forEach(node => node.remove());
       } else {
@@ -272,17 +260,13 @@
         wrapper.appendChild(document.importNode(node, true));
       });
 
-      if (isCustomBridge) {
-        wrapper.classList.add('custom-bridge-fragment');
-      }
-
+      if (isCustomBridge) wrapper.classList.add('custom-bridge-fragment');
       return wrapper;
     }
 
     function normalizeMediaKey(media) {
       const raw = media.getAttribute('src') || media.currentSrc || '';
       if (!raw) return '';
-
       try {
         return `${media.tagName.toLowerCase()}::${new URL(raw, location.href).pathname.toLowerCase().replace(/%20/g, ' ')}`;
       } catch (_) {
@@ -292,17 +276,14 @@
 
     function removeExactDuplicateMedia(container) {
       const seen = new Set();
-
       container.querySelectorAll('.kiosk-fragment img[src], .kiosk-fragment video[src], .kiosk-fragment audio[src], .kiosk-fragment source[src]').forEach(media => {
         const key = normalizeMediaKey(media);
         if (!key) return;
-
         if (seen.has(key)) {
           const removable = media.closest('figure, .video-item, .audio-block, .media-link') || media;
           removable.remove();
           return;
         }
-
         seen.add(key);
       });
     }
@@ -359,6 +340,33 @@
       cleanupCaptionQuoteArtifacts(container);
     }
 
+    function injectFragment(html, displayPath) {
+      const container = document.getElementById("mainContent");
+      const loadedFragment = buildLoadedFragment(html, displayPath);
+      container.innerHTML = '<div class="content-background"></div>';
+      container.appendChild(loadedFragment);
+      applySharedFragmentCleanup(container);
+      setTimeout(triggerInjectedAudioAutoplay, 100);
+    }
+
+    function loadLandingCredits() {
+      currentWar = "";
+      currentSection = "media";
+      currentPageIndex = 0;
+      highlightCurrent("", "");
+
+      fetch("credits.html")
+        .then(res => {
+          if (!res.ok) throw new Error(`${res.status} credits.html`);
+          return res.text();
+        })
+        .then(html => injectFragment(html, "credits.html"))
+        .catch(() => {
+          document.getElementById("mainContent").innerHTML =
+            '<div class="content-background"></div><div style="padding:80px 40px;text-align:center;"><h1>Pick a war to start</h1></div>';
+        });
+    }
+
     function loadCurrent() {
       const pages = contentMap[currentWar]?.[currentSection];
 
@@ -380,16 +388,7 @@
             if (!res.ok) throw new Error(`${res.status} ${url}`);
             return res.text();
           })
-          .then(html => {
-            const container = document.getElementById("mainContent");
-            const loadedFragment = buildLoadedFragment(html, displayPath);
-
-            container.innerHTML = '<div class="content-background"></div>';
-            container.appendChild(loadedFragment);
-            applySharedFragmentCleanup(container);
-
-            setTimeout(triggerInjectedAudioAutoplay, 100);
-          })
+          .then(html => injectFragment(html, displayPath))
           .catch(() => {
             document.getElementById("mainContent").innerHTML = "<p>Error loading content.</p>";
           });
@@ -410,9 +409,17 @@
       .then(res => res.json())
       .then(data => {
         contentMap = data;
-
         const params = new URLSearchParams(location.search);
-        const war = params.get("war") || "civil war";
+        const requestedWar = params.get("war");
+
+        seedInactiveGlow();
+
+        if (!requestedWar) {
+          loadLandingCredits();
+          return;
+        }
+
+        const war = requestedWar;
         const section = params.get("section") || "media";
         const index = parseInt(params.get("index") || "0", 10);
 
@@ -420,7 +427,6 @@
         currentSection = section;
         currentPageIndex = Number.isFinite(index) ? index : 0;
 
-        seedInactiveGlow();
         highlightCurrent(currentWar, currentSection);
         loadCurrent();
       });
