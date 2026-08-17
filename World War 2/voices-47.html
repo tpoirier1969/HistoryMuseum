@@ -1,82 +1,17 @@
-<style>
-.ad-fragment{--ad-work-w:1260px;--ad-gap:14px;--ad-border:5px solid #000;--ad-radius:6px;--ad-caption:19px;box-sizing:border-box;max-width:var(--ad-work-w);margin:0 auto;padding:4px 6px 18px;color:#000;font-family:Arial, Helvetica, sans-serif;font-size:20px;line-height:1.24}
-.ad-fragment *,.ad-fragment *::before,.ad-fragment *::after{box-sizing:border-box}
-.ad-fragment .content-wrapper{max-width:100%;margin:0 auto;padding:0;color:inherit;font-family:inherit;font-size:inherit;line-height:inherit;text-align:center}
-.ad-fragment h1{margin:0 0 8px;font-size:34px;line-height:1.08}
-.ad-fragment p{margin:0 0 8px;line-height:1.24}
-.ad-fragment .lead-text{width:min(980px,100%);max-width:min(980px,100%);margin:0 auto 12px;text-align:left}
-.ad-fragment .lead-text.center{text-align:center}
-.ad-fragment .lead-text.wide-title h1{white-space:nowrap;font-size:31px}
-.ad-fragment .lead-text.tight{margin-bottom:8px}
-.ad-fragment .gallery,.ad-fragment .headline-top,.ad-fragment .headline-bottom{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:var(--ad-gap);margin:12px auto 0;width:min(1120px,100%)}
-.ad-fragment .headline-bottom{margin-top:10px}
-.ad-fragment figure{margin:0;padding:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;flex:0 1 auto;width:auto;min-width:0;max-width:100%;text-align:center; gap: 2px;
-}
-.ad-fragment img,.ad-fragment video{display:block;width:auto;max-width:100%;height:auto;object-fit:contain;box-sizing:border-box;border:var(--ad-border);border-radius:var(--ad-radius);background:transparent}
-.ad-fragment figcaption {display:block;margin: 1px auto 0;padding: 0;width:100%;max-width:100%;font-size:var(--ad-caption);line-height: 1.14;font-style:italic;text-align:center;overflow-wrap:anywhere}
-.ad-fragment .audio-block{margin:14px auto 0;text-align:center;display:flex;flex-direction:column;align-items:center}
-.ad-fragment audio{width:min(780px,100%)}
-.ad-fragment .one-image{min-height:555px;align-content:center;align-items:center}
-.ad-fragment .one-image img{max-height:550px}
-.ad-fragment .two-images{min-height:555px;align-content:center;align-items:center}
-.ad-fragment .two-images figure{max-width:calc((100% - var(--ad-gap))/2)}
-.ad-fragment .two-images img{max-height:500px;max-width:100%}
-.ad-fragment .three-images{width:min(1180px,100%);min-height:555px;align-content:center;align-items:center}
-.ad-fragment .three-images figure{max-width:calc((100% - (2 * var(--ad-gap)))/3)}
-.ad-fragment .three-images img{max-height:420px;max-width:100%}
-.ad-fragment .four-wide{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px;row-gap:12px;width:min(1080px,100%);min-height:555px;align-content:center;justify-content:center;margin-top:14px}
-.ad-fragment .four-wide figure{width:100%;max-width:100%}
-.ad-fragment .four-wide img{max-height:255px;max-width:100%}
-.ad-fragment .four-posters{flex-wrap:nowrap;width:min(1160px,100%);min-height:560px;align-content:center;align-items:center}
-.ad-fragment .four-posters figure{max-width:calc((100% - (3 * var(--ad-gap)))/4)}
-.ad-fragment .four-posters img{max-height:465px;max-width:100%}
-.ad-fragment .five-landscape{width:min(1180px,100%);min-height:555px;align-content:center;align-items:center}
-.ad-fragment .five-landscape figure{max-width:calc((100% - (2 * var(--ad-gap)))/3)}
-.ad-fragment .five-landscape figure:nth-last-child(-n+2) img{max-height:285px}
-.ad-fragment .five-landscape img{max-height:245px;max-width:100%}
-.ad-fragment .five-posters{flex-wrap:nowrap;width:min(1180px,100%);min-height:560px;align-items:center}
-.ad-fragment .five-posters figure{max-width:calc((100% - (4 * var(--ad-gap)))/5)}
-.ad-fragment .five-posters img{max-height:390px;max-width:100%}
-.ad-fragment .many-images{width:min(1180px,100%);min-height:555px;align-content:center;align-items:center}
-.ad-fragment .many-images figure{max-width:calc((100% - (2 * var(--ad-gap)))/3)}
-.ad-fragment .many-images img{max-height:245px;max-width:100%}
-.ad-fragment .poster-3{flex-wrap:nowrap;width:min(1120px,100%);min-height:600px;align-content:center;align-items:center;margin-top:20px}
-.ad-fragment .poster-3 figure{max-width:calc((100% - (2 * var(--ad-gap)))/3)}
-.ad-fragment .poster-3 img{max-height:515px;max-width:100%}
-.ad-fragment .headline-top figure{max-width:calc((100% - var(--ad-gap))/2)}
-.ad-fragment .headline-bottom figure{max-width:calc((100% - (2 * var(--ad-gap)))/3)}
-.ad-fragment .headline-top img{max-height:245px;max-width:100%}
-.ad-fragment .headline-bottom img{max-height:165px;max-width:100%}
-.ad-fragment .split-layout{display:grid;grid-template-columns:minmax(300px,.42fr) minmax(0,.58fr);gap:var(--ad-gap);align-items:center;width:min(1120px,100%);margin:0 auto;min-height:560px}
-.ad-fragment .split-layout .lead-text{max-width:62ch;margin:0}
-.ad-fragment .split-layout figure img{max-width:min(520px,100%);max-height:520px}
-.ad-fragment .placeholder{width:min(280px,100%);min-height:145px;border:5px dashed #555;border-radius:var(--ad-radius);background:rgba(240,240,240,.82);display:flex;align-items:center;justify-content:center;padding:16px;font-weight:bold;text-align:center}
-.ad-fragment .gallery.media6-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px;row-gap:12px;width:min(1080px,100%);min-height:555px;align-content:center;justify-content:center;margin-top:14px}
-.ad-fragment .gallery.media6-grid figure{width:100%}
-.ad-fragment .gallery.media6-grid img{width:auto;max-width:100%;max-height:255px}
-.ad-fragment .gallery.media6-grid figcaption {width:min(92%,320px);max-width:min(92%,320px);margin: 1px auto 0;line-height: 1.14; padding: 0;}
-.ad-fragment .gallery.media8-large{min-height:620px;align-content:center;justify-content:center;margin-top:24px}
-.ad-fragment .gallery.media8-large figure{max-width:calc((100% - (2 * var(--ad-gap)))/3)}
-.ad-fragment .gallery.media8-large img{max-height:535px;max-width:100%}
-.ad-fragment .gallery.media9-centered{min-height:580px;align-content:center;justify-content:center;margin-top:18px}
-.ad-fragment .gallery.media9-centered figure{max-width:calc((100% - var(--ad-gap))/2)}
-.ad-fragment .gallery.media9-centered img{max-height:495px;max-width:100%}
-.ad-fragment .gallery.media13-mixed{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.9fr);grid-template-rows:auto auto;column-gap:16px;row-gap:12px;width:min(1080px,100%);min-height:570px;align-content:center;justify-content:center;margin-top:14px}
-.ad-fragment .gallery.media13-mixed figure{width:100%;max-width:100%}
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(1){grid-column:1;grid-row:1}
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(2){grid-column:1;grid-row:2}
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(3){grid-column:2;grid-row:1 / span 2;align-self:center}
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(1) img,.ad-fragment .gallery.media13-mixed figure:nth-of-type(2) img{max-height:245px;max-width:100%}
-.ad-fragment .gallery.media13-mixed figure:nth-of-type(3) img{max-height:515px;max-width:100%}
-.ad-fragment .boback-mixed{display:grid;grid-template-columns:minmax(155px,.9fr) minmax(330px,1.5fr) minmax(155px,.9fr) minmax(155px,.9fr);gap:12px;width:min(1120px,100%);min-height:520px;align-content:center;justify-content:center;margin-top:12px}
-.ad-fragment .boback-mixed figure{width:100%;max-width:100%}
-.ad-fragment .boback-mixed .stack{display:grid;grid-template-rows:1fr 1fr;gap:12px;align-self:center}
-.ad-fragment .boback-mixed img{max-height:480px}
-.ad-fragment .boback-mixed .stack img{max-height:225px}
-.ad-fragment.audio-only{min-height:clamp(500px,calc(100vh - 250px),780px);display:flex;align-items:center;justify-content:center}
-.ad-fragment.audio-only .content-wrapper{width:min(820px,100%);margin:auto;text-align:center}
-.ad-fragment.audio-only .lead-text{width:100%;max-width:100%;margin:0 auto 18px;text-align:center}
-.ad-fragment.audio-only .audio-block{margin:0 auto}
-.ad-fragment.audio-only audio{width:min(760px,100%)}
-@media (max-width:1100px){.ad-fragment{font-size:18px}.ad-fragment .lead-text.wide-title h1{white-space:normal}.ad-fragment .split-layout,.ad-fragment .four-wide,.ad-fragment .four-posters,.ad-fragment .five-posters,.ad-fragment .poster-3,.ad-fragment .gallery.media6-grid,.ad-fragment .gallery.media13-mixed,.ad-fragment .boback-mixed{display:flex;flex-wrap:wrap;justify-content:center}.ad-fragment .two-images figure,.ad-fragment .three-images figure,.ad-fragment .four-wide figure,.ad-fragment .four-posters figure,.ad-fragment .five-landscape figure,.ad-fragment .five-posters figure,.ad-fragment .many-images figure,.ad-fragment .poster-3 figure,.ad-fragment .gallery.media8-large figure,.ad-fragment .gallery.media9-centered figure,.ad-fragment .gallery.media13-mixed figure,.ad-fragment .headline-top figure,.ad-fragment .headline-bottom figure,.ad-fragment .boback-mixed figure{max-width:min(720px,96%)}.ad-fragment .gallery.media6-grid figure{width:min(720px,96%)}.ad-fragment img,.ad-fragment video{max-height:none}}
-</style><div class="ad-fragment"><div class="content-wrapper"><div class="lead-text center"><h1>Marie Wassberg, 1LT, Nurse 117th Station Hospital — USA Show, Return of USS Baton Nurse</h1></div><div class="gallery one-image"><figure><div class="placeholder">placeholder</div><figcaption>Wassberg-Marie-WWII-Standing.jpg</figcaption></figure></div><div class="audio-block"><audio controls><source src="World War 2/Audio/Wassberg-USO Show and Bataan POW Nurses.mp3"></audio></div><div class="audio-block"><audio controls><source src="World War 2/Audio/Wassberg=To Australia and New Guinea2.mp3"></audio></div></div></div>
+<div class="ad-fragment wwii-voices voices-47">
+  <div class="content-wrapper center-stage">
+    <div style="width:min(980px,100%);display:flex;flex-direction:column;align-items:center;gap:12px;">
+      <div class="lead-text center" style="width:100%;max-width:100%;margin:0;">
+        <h1>Marie Wassberg, 1LT, Nurse 117th Station Hospital<br>USO Show and Bataan POW Nurses</h1>
+      </div>
+      <figure style="width:min(720px,100%);margin:0 auto;">
+        <img src="World War 2/Pictures/wassberg-standing.jpg" alt="Marie Wassberg" decoding="async" style="max-height:430px;">
+      </figure>
+      <div class="audio-block" style="width:100%;margin:2px auto 0;">
+        <audio controls style="width:min(760px,100%);">
+          <source src="World War 2/Audio/Wassberg-USO Show and Bataan POW Nurses.mp3">
+        </audio>
+      </div>
+    </div>
+  </div>
+</div>

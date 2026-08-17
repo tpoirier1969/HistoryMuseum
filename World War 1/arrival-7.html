@@ -1,4 +1,4 @@
-<!-- VERSION 2.0 — 3 columns: left=3 paragraphs, middle=poem (smaller font), right=image -->
+<!-- VERSION 2.4 — compact balanced layout; poppy aspect ratio preserved -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,55 +9,110 @@
   <style>
     * { box-sizing: border-box; }
 
-    .content-wrapper{
-      max-width: 1480px;
+    #subNavButtons {
+      padding-top: 20px;
+    }
+
+    .content-wrapper {
+      width: min(1120px, 100%);
       margin: 0 auto;
-      padding: 24px 18px 28px;
+      padding: 14px 0 18px;
       color: #000;
       font-family: Arial, Helvetica, sans-serif;
       font-size: 20px;
-      overflow-wrap: anywhere;
+      line-height: 1.22;
     }
 
-    h1{ margin: 0 0 10px 0; font-size: 34px; line-height: 1.08; }
-    p{ margin: 0; line-height: 1.24; }
-    .p1{ margin-bottom: 14px; }
-
-    /* Three columns under the title */
-    .three-col{
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) 420px; /* change 260px to resize image column */
-      gap: 26px;
-      align-items: start;
+    h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.08;
     }
 
-    /* Poem styling: 3 points smaller than base */
-    .poem{
-      font-size: 18px;
-      line-height: 1.24;
-      white-space: pre-line;  /* preserves line breaks typed in HTML */
+    p {
       margin: 0;
     }
 
-    /* Image styling */
-    img.with-border{
-      display: block;
-      width: 100%;
-      height: auto;
-      border: 6px solid #000;
-      border-radius: 6px;
-      filter: sepia(0.20) brightness(1.0) contrast(1)
-              drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 410px) minmax(0, 680px);
+      gap: 30px;
+      align-items: start;
     }
 
-    figure{ margin: 0; }
+    .history p + p {
+      margin-top: 10px;
+    }
 
-    /* Responsive: stack columns on narrow screens */
-    @media (max-width: 1100px){
-      .three-col{
-        grid-template-columns: 1fr; /* stack */
+    .media-poem {
+      display: grid;
+      grid-template-columns: minmax(0, 255px) minmax(0, 390px);
+      gap: 22px;
+      align-items: start;
+      justify-content: start;
+    }
+
+    figure {
+      margin: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    img.with-border {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 255px;
+      max-height: 510px;
+      object-fit: contain;
+      border: 6px solid #000;
+      border-radius: 6px;
+      box-sizing: border-box;
+      filter:
+        sepia(0.20)
+        brightness(1.0)
+        contrast(1)
+        drop-shadow(0 0 10px rgba(255, 220, 100, 0.15));
+    }
+
+    .poem {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.18;
+      white-space: pre-line;
+      text-align: left;
+    }
+
+    @media (max-width: 1100px) {
+      .content-wrapper {
+        width: min(94%, 900px);
       }
-      .poem{ font-size: 18px; }
+
+      .content-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .media-poem {
+        grid-template-columns: minmax(0, 255px) minmax(0, 1fr);
+      }
+
+      #subNavButtons {
+        padding-top: 8px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .media-poem {
+        grid-template-columns: 1fr;
+      }
+
+      img.with-border {
+        max-width: 100%;
+        max-height: none;
+      }
     }
   </style>
 </head>
@@ -66,18 +121,23 @@
   <div class="content-wrapper">
     <h1>Armistice Day</h1>
 
-    <div class="three-col">
-      <!-- Left column: the 3 paragraphs -->
-      <div>
-        <p class="p1">Some of the worst fighting of World War I took place in the Flanders and Picardy regions of Northern France. The poppy was the only thing which grew in the devastated landscape. John McCrae, a Canadian doctor was moved by the sight and wrote the following poem in 1915.</p>
+    <div class="content-grid">
+      <div class="history">
+        <p>Some of the worst fighting of World War I took place in the Flanders and Picardy regions of Northern France. The poppy was the only thing which grew in the devastated landscape. John McCrae, a Canadian doctor was moved by the sight and wrote the following poem in 1915.</p>
 
-        <p class="p1">Inspired by the poem, both Americans and European allies soon began selling poppies as a memorial and to raise money. Support went both to veterans and to the Franco-American Children’s League. The poppy was soon adopted by the Veterans of Foreign Wars. The poppy was assembled by disabled and needy veterans, and the VFW had the “Buddy Poppy” patented.&nbsp;</p>
+        <p>Inspired by the poem, both Americans and European allies soon began selling poppies as a memorial and to raise money. Support went both to veterans and to the Franco-American Children’s League. The poppy was soon adopted by the Veterans of Foreign Wars. The poppy was assembled by disabled and needy veterans, and the VFW had the “Buddy Poppy” patented.</p>
 
-        <p class="p1">In 1954, following World War II and the Korean War, Armistice Day–November 11–was officially changed to Veteran’s Day.&nbsp;</p>
+        <p>In 1954, following World War II and the Korean War, Armistice Day–November 11–was officially changed to Veteran’s Day.</p>
       </div>
 
-      <!-- Middle column: poem -->
-      <div>
+      <div class="media-poem">
+        <figure>
+          <img
+            class="with-border"
+            src="/World War 1/Pictures/Poppy.jpg"
+            alt="Poppy image">
+        </figure>
+
         <p class="poem">In Flanders’ Fields
 In Flanders’ fields the poppies blow
 Between the crosses, row on row,
@@ -97,11 +157,6 @@ If ye break faith with us who die
 We shall not sleep, though poppies grow
 In Flanders’ field.</p>
       </div>
-
-      <!-- Right column: image -->
-      <figure>
-        <img class="with-border" src="/World War 1/Pictures/Poppy.jpg" alt="Poppy image">
-      </figure>
     </div>
   </div>
 </body>

@@ -1,132 +1,14 @@
-<style>
-.ad-fragment {
-  --ad-work-w: 1260px;
-  --ad-gap: 10px;
-  --ad-border: 5px solid #000;
-  --ad-radius: 6px;
-  --ad-caption: 19px;
-  box-sizing: border-box;
-  max-width: var(--ad-work-w);
-  margin: 0 auto;
-  padding: 4px 6px 18px;
-  color: #000;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  line-height: 1.24;
-}
-.ad-fragment *, .ad-fragment *::before, .ad-fragment *::after { box-sizing: border-box; }
-.ad-fragment .content-wrapper { max-width: 100%; margin: 0 auto; padding: 0; color: inherit; font-family: inherit; font-size: inherit; line-height: inherit; }
-.ad-fragment h1 { margin: 0 0 8px; font-size: 34px; line-height: 1.08; }
-.ad-fragment p { margin: 0 0 8px; line-height: 1.24; }
-.ad-fragment .lead-text { width: min(1160px, 100%); max-width: min(1160px, 100%); margin: 0 auto 12px; }
-.ad-fragment .lead-text.wide-title h1 { white-space: normal; font-size: 34px; line-height: 1.08; }
-.ad-fragment .lead-text.tight { margin-bottom: 8px; }
-.ad-fragment .split-layout { display: grid; grid-template-columns: minmax(300px,.45fr) minmax(0,.55fr); gap: var(--ad-gap); align-items: center; }
-.ad-fragment .split-layout .lead-text { max-width: 62ch; margin: 0; }
-.ad-fragment .gallery,
-.ad-fragment .headline-top,
-.ad-fragment .headline-bottom {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: flex-start;
-  gap: var(--ad-gap);
-  margin: 12px auto 0;
-  width: 100%;
-}
-.ad-fragment .headline-bottom { margin-top: 10px; }
-.ad-fragment figure {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 2px;
-  flex: 0 1 auto;
-  width: auto;
-  min-width: 0;
-  max-width: 100%;
-  text-align: center;
-}
-.ad-fragment img,
-.ad-fragment video {
-  display: block;
-  width: auto;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  box-sizing: border-box;
-  border: var(--ad-border);
-  border-radius: var(--ad-radius);
-  background: transparent;
-}
-.ad-fragment video { background: #000; }
-.ad-fragment figcaption{
-  display: block;
-  margin: 1px auto 0;
-  padding: 0;
-  width: 100%;
-  max-width: 100%;
-  font-size: var(--ad-caption);
-  line-height: 1.14;
-  font-style: italic;
-  text-align: center;
-  overflow-wrap: anywhere;
-}
-.ad-fragment .one-image img { max-height: 500px; }
-.ad-fragment .two-images { min-height: 450px; align-content: center; }
-.ad-fragment .two-images figure { max-width: calc((100% - var(--ad-gap)) / 2); }
-.ad-fragment .two-images img { max-height: 470px; max-width: 100%; }
-.ad-fragment .three-images { min-height: 520px; align-content: center; }
-.ad-fragment .three-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .three-images img,
-.ad-fragment .three-images video { max-height: 355px; max-width: 100%; }
-.ad-fragment .four-wide {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 14px;
-  row-gap: 12px;
-  width: min(1060px, 100%);
-  min-height: 560px;
-  align-content: center;
-  justify-content: center;
-  margin-top: 18px;
-}
-.ad-fragment .four-wide figure { width: 100%; }
-.ad-fragment .four-wide img { max-height: 265px; max-width: 100%; }
-.ad-fragment .five-landscape figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .five-landscape figure:nth-last-child(-n+2) img { max-height: 290px; }
-.ad-fragment .five-landscape img { max-height: 250px; max-width: 100%; }
-.ad-fragment .many-images figure { max-width: calc((100% - (2 * var(--ad-gap))) / 3); }
-.ad-fragment .many-images img { max-height: 250px; max-width: 100%; }
-.ad-fragment .placeholder {
-  width: min(280px, 100%);
-  min-height: 145px;
-  border: 5px dashed #555;
-  border-radius: var(--ad-radius);
-  background: rgba(240,240,240,.82);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  font-weight: bold;
-  text-align: center;
-}
-.ad-fragment .audio-block { margin: 14px auto 0; text-align: center; display: flex; flex-direction: column; align-items: center; }
-.ad-fragment audio { width: min(780px,100%); }
-@media (max-width: 1100px) {
-  .ad-fragment { font-size: 18px; }
-  .ad-fragment .lead-text.wide-title h1 { white-space: normal; }
-  .ad-fragment .split-layout,
-  .ad-fragment .four-wide { display: flex; flex-wrap: wrap; justify-content: center; }
-  .ad-fragment .two-images figure,
-  .ad-fragment .three-images figure,
-  .ad-fragment .four-wide figure,
-  .ad-fragment .five-landscape figure,
-  .ad-fragment .many-images figure { max-width: min(720px,96%); }
-  .ad-fragment img,
-  .ad-fragment video { max-height: none; }
-}
-</style>
-<div class="ad-fragment"><div class="content-wrapper"><div class="lead-text"><h1>July 21, 1943<br>Japs swimming</h1><p>July 21, 1943</p><p>At three in the afternoon, Lt. (J.G.) Tavernetti with Kukuk as wingman and Allan other wingman strafed Bairiki Harbor. When we dove over harbor we saw about 18 Japs in swimming. We opened up our guns and watched them scamper. I guess we killed a few in the water, and we also strafed a few landing barrages. The woods was full of Japs; so we knew our stray bullets massacred many a yellow bodies from Tokyo.</p></div><div class="gallery one-image"><figure><div class="placeholder">placeholder</div><figcaption>???</figcaption></figure></div></div></div>
+<div class="ad-fragment wwii-voices wwii-voices-21">
+  <div class="content-wrapper center-stage">
+    <div class="text-only left" style="width:min(900px,100%);max-width:min(900px,100%);min-height:0;margin:0 auto;">
+      <h1>July 21, 1943<br>Japs swimming</h1>
+      <p>July 21, 1943</p>
+      <p>At three in the afternoon, Lt. (J.G.) Tavernetti with Kukuk as wingman and Allan other wingman strafed Bairiki Harbor. When we dove over harbor we saw about 18 Japs in swimming. We opened up our guns and watched them scamper. I guess we killed a few in the water, and we also strafed a few landing barrages. The woods was full of Japs; so we knew our stray bullets massacred many a yellow bodies from Tokyo.</p>
+      <div class="audio-block" style="width:100%;margin:16px auto 0;align-self:center;">
+        <audio controls style="width:min(760px,100%);">
+          <source src="World War 2/Audio/Boots - Japanese at the beach.mp3">
+        </audio>
+      </div>
+    </div>
+  </div>
+</div>
