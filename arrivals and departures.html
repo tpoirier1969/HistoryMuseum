@@ -1,4 +1,4 @@
-<!-- Version 4.22 (single credits page; credits bookend each war) -->
+<!-- Version 4.23 (credits bookends; visible-audio-control guard) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -423,7 +423,95 @@
       container.innerHTML = '<div class="content-background"></div>';
       container.appendChild(loadedFragment);
       applySharedFragmentCleanup(container);
-      setTimeout(triggerInjectedAudioAutoplay, 100);
+      scheduleAudioControlVisibilityCheck();
+      setTimeout(triggerInjectedAudioAutoplay, 120);
+    }
+
+    function ensureAudioControlsVisible() {
+      const container = document.getElementById("mainContent");
+      if (!container) return true;
+
+      const containerRect = container.getBoundingClientRect();
+      let allVisible = true;
+
+      container.querySelectorAll("audio").forEach(audio => {
+        audio.controls = true;
+        audio.setAttribute("playsinline", "");
+        audio.style.display = "block";
+        audio.style.width = "min(760px, 100%)";
+        audio.style.maxWidth = "100%";
+        audio.style.height = "54px";
+        audio.style.margin = "0 auto";
+
+        let rect = audio.getBoundingClientRect();
+        const visible =
+          rect.width > 0 &&
+          rect.height > 0 &&
+          rect.top >= containerRect.top - 2 &&
+          rect.bottom <= containerRect.bottom + 2;
+
+        if (visible) return;
+
+        allVisible = false;
+
+        let block = audio.closest(".audio-block");
+        if (!block) {
+          block = document.createElement("div");
+          block.className = "audio-block";
+          audio.parentNode.insertBefore(block, audio);
+          block.appendChild(audio);
+        }
+
+        block.style.width = "100%";
+        block.style.maxWidth = "100%";
+        block.style.margin = "5px auto 8px";
+        block.style.padding = "0";
+        block.style.display = "flex";
+        block.style.flexDirection = "column";
+        block.style.alignItems = "center";
+        block.style.justifyContent = "center";
+        block.style.position = "relative";
+        block.style.zIndex = "5";
+
+        const fragment = audio.closest(".ad-fragment");
+        if (fragment) {
+          const heading = fragment.querySelector(".lead-text, .header");
+          const wrapper = fragment.querySelector(".content-wrapper") || fragment;
+
+          if (heading && heading.parentNode) {
+            heading.insertAdjacentElement("afterend", block);
+          } else {
+            wrapper.insertBefore(block, wrapper.firstChild);
+          }
+        }
+
+        rect = audio.getBoundingClientRect();
+        if (
+          rect.width > 0 &&
+          rect.height > 0 &&
+          rect.top >= containerRect.top - 2 &&
+          rect.bottom <= containerRect.bottom + 2
+        ) {
+          allVisible = true;
+        }
+      });
+
+      return allVisible;
+    }
+
+    function scheduleAudioControlVisibilityCheck() {
+      const container = document.getElementById("mainContent");
+      if (!container) return;
+
+      const check = () => ensureAudioControlsVisible();
+
+      requestAnimationFrame(check);
+      setTimeout(check, 120);
+      setTimeout(check, 500);
+
+      container.querySelectorAll("img").forEach(img => {
+        if (!img.complete) img.addEventListener("load", check, { once: true });
+      });
     }
 
     function updateCreditsUrl(mode) {
@@ -497,9 +585,24 @@
       const audio = document.querySelector("#mainContent audio");
       const audioEnabled = localStorage.getItem("audio-enabled");
 
-      if (audio && audioEnabled === "true") {
-        audio.muted = false;
-        audio.play().catch(() => {});
+      if (!audio) return;
+
+      ensureAudioControlsVisible();
+
+      if (audioEnabled === "true") {
+        const container = document.getElementById("mainContent");
+        const containerRect = container.getBoundingClientRect();
+        const rect = audio.getBoundingClientRect();
+        const controlsVisible =
+          rect.width > 0 &&
+          rect.height > 0 &&
+          rect.top >= containerRect.top - 2 &&
+          rect.bottom <= containerRect.bottom + 2;
+
+        if (controlsVisible) {
+          audio.muted = false;
+          audio.play().catch(() => {});
+        }
       }
     }
 
