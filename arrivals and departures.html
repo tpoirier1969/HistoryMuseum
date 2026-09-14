@@ -1,4 +1,4 @@
-<!-- Version 4.21 (credits layout rework) -->
+<!-- Version 4.22 (single credits page; credits bookend each war) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,42 +116,6 @@
 
       <div id="mainContent">
         <div class="content-background"></div>
-        <div class="kiosk-fragment ad-fragment-host" data-path="credits">
-          <div class="ad-fragment kiosk-credits">
-            <div class="content-wrapper center-stage">
-              <div style="width:min(1100px,100%);margin:0 auto;padding:6px 0 10px;box-sizing:border-box;text-align:center;">
-                <h1 style="font-size:46px;line-height:1.04;margin:0 0 14px;">Credits</h1>
-
-                <div style="width:min(1060px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 34px;text-align:left;font-size:17px;line-height:1.16;">
-                  <div>
-                    <p style="margin:0 0 9px;"><strong>References:</strong></p>
-                    <p style="margin:0 0 8px;">The United States Army in World War I, The United States Army Center of Military History, CD-ROM</p>
-                    <p style="margin:0 0 8px;">The 32nd Division in the World War 1917 -1919 &nbsp;&nbsp; The Red Arrow Division, Issued by the Joint War History Commission of Michigan and Wisconsin, 1920</p>
-                    <p style="margin:0 0 8px;">Michigan In The World War, C. H. Landrum</p>
-                    <p style="margin:0 0 8px;">107th Engineer Association Web Page Combat Engineer! History of the 197th Engineer Battalion (1881 -1981), Fred Stonehouse</p>
-                    <p style="margin:0;">Photo of S.S. Tuscaniafrom www.islayinfo.corn</p>
-                  </div>
-
-                  <div style="padding-top:28px;">
-                    <p style="margin:0 0 8px;">Goldstein, Joshua S War and Gender: How Gender Shapes the War System and Vice Versa. Cambridge University Press, 2001</p>
-                    <p style="margin:0 0 8px;">John Moschetti</p>
-                    <p style="margin:0 0 8px;"><strong>World War II page featuring Lowell Thomas:</strong> Fielding, Raymond. <em>The American Newsreel, 1911-1967.</em> Norman, Oklahoma: University of Oklahoma Press, 1972. Print</p>
-                    <p style="margin:0;"><strong>Vietnam page about Napalm:</strong> image credit to Rod Linn</p>
-                  </div>
-                </div>
-
-                <div style="width:min(980px,100%);margin:18px auto 0;text-align:center;font-size:18px;line-height:1.18;">
-                  <p style="margin:0 0 7px;"><strong>Design and Development:</strong> Marquette Regional History Center; Babette Welch; Tod Poirier</p>
-                  <p style="margin:0;">Thanks to all veterans and their families who contributed to this work.</p>
-                </div>
-
-                <div style="width:min(900px,100%);margin:34px auto 0;padding-top:14px;border-top:2px solid rgba(70,45,20,.55);">
-                  <p style="margin:0;font-size:28px;line-height:1.08;font-weight:700;">Pick a war to start</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -161,6 +125,8 @@
     let currentSection = "media";
     let currentPageIndex = 0;
     let contentMap = {};
+    let creditsState = null;
+    let introCreditsAvailable = false;
 
     const WAR_TO_FOLDER = {
       "civil war": "Civil War",
@@ -170,6 +136,16 @@
       "cold": "Cold War",
       "korea": "Korea",
       "vietnam": "Vietnam"
+    };
+
+    const WAR_LABELS = {
+      "civil war": "the Civil War",
+      "spanish": "the Spanish-American War",
+      "wwi": "World War I",
+      "wwii": "World War II",
+      "cold": "the Cold War",
+      "korea": "the Korean War",
+      "vietnam": "the Vietnam War"
     };
 
     const warIdFromKey = (warKey) => `btn-${warKey.replace(/\s+/g,'-')}`;
@@ -196,6 +172,8 @@
         warBtn.classList.add('active-glow');
       }
 
+      if (!section) return;
+
       const sectionBtn = document.getElementById(`section-${section}`);
       if (sectionBtn) {
         sectionBtn.classList.remove('inactive-glow');
@@ -203,22 +181,30 @@
       }
     }
 
+    function clearCreditsState() {
+      creditsState = null;
+    }
+
     function goToKioskPage(war, section = "media", index = 0) {
       currentWar = war;
       currentSection = section;
       currentPageIndex = index;
+      clearCreditsState();
       highlightCurrent(currentWar, currentSection);
       loadCurrent();
     }
 
     function switchWar(war) {
+      introCreditsAvailable = false;
       goToKioskPage(war, "media", 0);
     }
 
     function switchSection(section) {
       if (!currentWar) return;
+      introCreditsAvailable = false;
       currentSection = section;
       currentPageIndex = 0;
+      clearCreditsState();
       highlightCurrent(currentWar, section);
       loadCurrent();
     }
@@ -229,8 +215,46 @@
       return sectionOrder.filter(section => Array.isArray(warMap[section]) && warMap[section].length > 0);
     }
 
+    function goToLastContentPage() {
+      const sections = getAvailableSections(currentWar);
+      if (!sections.length) return;
+
+      currentSection = sections[sections.length - 1];
+      const pages = contentMap[currentWar][currentSection];
+      currentPageIndex = pages.length - 1;
+      clearCreditsState();
+      highlightCurrent(currentWar, currentSection);
+      loadCurrent();
+    }
+
     function navigate(offset) {
       if (!currentWar) return;
+
+      if (creditsState === "intro") {
+        if (offset < 0) {
+          window.location.href = "AandD_Home.html";
+          return;
+        }
+
+        const sections = getAvailableSections(currentWar);
+        if (!sections.length) return;
+        currentSection = sections[0];
+        currentPageIndex = 0;
+        clearCreditsState();
+        highlightCurrent(currentWar, currentSection);
+        loadCurrent();
+        return;
+      }
+
+      if (creditsState === "outro") {
+        if (offset < 0) {
+          goToLastContentPage();
+        } else {
+          window.location.href = "AandD_Home.html";
+        }
+        return;
+      }
+
       const sections = getAvailableSections(currentWar);
       if (!sections.length) return;
 
@@ -252,11 +276,28 @@
       }
 
       const sectionIndex = sections.indexOf(currentSection);
-      const nextSectionIndex = (sectionIndex + offset + sections.length) % sections.length;
-      currentSection = sections[nextSectionIndex];
 
-      const nextPages = contentMap[currentWar][currentSection];
-      currentPageIndex = offset > 0 ? 0 : nextPages.length - 1;
+      if (offset > 0) {
+        if (sectionIndex === sections.length - 1) {
+          loadCredits("outro");
+          return;
+        }
+
+        currentSection = sections[sectionIndex + 1];
+        currentPageIndex = 0;
+        highlightCurrent(currentWar, currentSection);
+        loadCurrent();
+        return;
+      }
+
+      if (sectionIndex === 0) {
+        if (introCreditsAvailable) loadCredits("intro");
+        return;
+      }
+
+      currentSection = sections[sectionIndex - 1];
+      const previousPages = contentMap[currentWar][currentSection];
+      currentPageIndex = previousPages.length - 1;
       highlightCurrent(currentWar, currentSection);
       loadCurrent();
     }
@@ -385,49 +426,42 @@
       setTimeout(triggerInjectedAudioAutoplay, 100);
     }
 
-    function loadLandingCredits() {
-      currentWar = "";
+    function updateCreditsUrl(mode) {
+      const u = new URL(location.href);
+      u.searchParams.set("war", currentWar);
+      u.searchParams.set("credits", mode);
+      u.searchParams.delete("section");
+      u.searchParams.delete("index");
+      u.hash = "credits";
+      history.replaceState(null, "", u);
+    }
+
+    function loadCredits(mode) {
+      creditsState = mode;
       currentSection = "media";
       currentPageIndex = 0;
-      highlightCurrent("", "");
+      highlightCurrent(currentWar, "");
+      updateCreditsUrl(mode);
 
-      document.getElementById("mainContent").innerHTML = `<div class="content-background"></div>
-        <div class="kiosk-fragment ad-fragment-host" data-path="credits">
-          <div class="ad-fragment kiosk-credits">
-            <div class="content-wrapper center-stage">
-              <div style="width:min(1100px,100%);margin:0 auto;padding:6px 0 10px;box-sizing:border-box;text-align:center;">
-                <h1 style="font-size:46px;line-height:1.04;margin:0 0 14px;">Credits</h1>
+      fetch("credits.html")
+        .then(res => {
+          if (!res.ok) throw new Error(`${res.status} credits.html`);
+          return res.text();
+        })
+        .then(html => {
+          injectFragment(html, "credits.html");
 
-                <div style="width:min(1060px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 34px;text-align:left;font-size:17px;line-height:1.16;">
-                  <div>
-                    <p style="margin:0 0 9px;"><strong>References:</strong></p>
-                    <p style="margin:0 0 8px;">The United States Army in World War I, The United States Army Center of Military History, CD-ROM</p>
-                    <p style="margin:0 0 8px;">The 32nd Division in the World War 1917 -1919 &nbsp;&nbsp; The Red Arrow Division, Issued by the Joint War History Commission of Michigan and Wisconsin, 1920</p>
-                    <p style="margin:0 0 8px;">Michigan In The World War, C. H. Landrum</p>
-                    <p style="margin:0 0 8px;">107th Engineer Association Web Page Combat Engineer! History of the 197th Engineer Battalion (1881 -1981), Fred Stonehouse</p>
-                    <p style="margin:0;">Photo of S.S. Tuscaniafrom www.islayinfo.corn</p>
-                  </div>
+          const context = document.querySelector("#mainContent .credits-context");
+          if (!context) return;
 
-                  <div style="padding-top:28px;">
-                    <p style="margin:0 0 8px;">Goldstein, Joshua S War and Gender: How Gender Shapes the War System and Vice Versa. Cambridge University Press, 2001</p>
-                    <p style="margin:0 0 8px;">John Moschetti</p>
-                    <p style="margin:0 0 8px;"><strong>World War II page featuring Lowell Thomas:</strong> Fielding, Raymond. <em>The American Newsreel, 1911-1967.</em> Norman, Oklahoma: University of Oklahoma Press, 1972. Print</p>
-                    <p style="margin:0;"><strong>Vietnam page about Napalm:</strong> image credit to Rod Linn</p>
-                  </div>
-                </div>
-
-                <div style="width:min(980px,100%);margin:18px auto 0;text-align:center;font-size:18px;line-height:1.18;">
-                  <p style="margin:0 0 7px;"><strong>Design and Development:</strong> Marquette Regional History Center; Babette Welch; Tod Poirier</p>
-                  <p style="margin:0;">Thanks to all veterans and their families who contributed to this work.</p>
-                </div>
-
-                <div style="width:min(900px,100%);margin:34px auto 0;padding-top:14px;border-top:2px solid rgba(70,45,20,.55);">
-                  <p style="margin:0;font-size:28px;line-height:1.08;font-weight:700;">Pick a war to start</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>`;
+          const warLabel = WAR_LABELS[currentWar] || "this section";
+          context.textContent = mode === "intro"
+            ? `Press the forward arrow to begin ${warLabel}.`
+            : `${warLabel.charAt(0).toUpperCase() + warLabel.slice(1)} complete. Press the forward arrow to return to the main menu.`;
+        })
+        .catch(() => {
+          document.getElementById("mainContent").innerHTML = "<p>Error loading credits.</p>";
+        });
     }
 
     function loadCurrent() {
@@ -443,6 +477,7 @@
         u.searchParams.set("war", currentWar);
         u.searchParams.set("section", currentSection);
         u.searchParams.set("index", String(currentPageIndex));
+        u.searchParams.delete("credits");
         u.hash = encodeURIComponent(displayPath);
         history.replaceState(null, "", u);
 
@@ -468,25 +503,56 @@
       }
     }
 
+    function arrivedFromHome() {
+      const navigation = performance.getEntriesByType("navigation")[0];
+      if (navigation && navigation.type === "reload") return false;
+      if (!document.referrer) return false;
+
+      try {
+        const referrer = new URL(document.referrer);
+        return decodeURIComponent(referrer.pathname).toLowerCase().endsWith("/aandd_home.html");
+      } catch (_) {
+        return false;
+      }
+    }
+
     fetch('contentMap.json')
       .then(res => res.json())
       .then(data => {
         contentMap = data;
         const params = new URLSearchParams(location.search);
         const requestedWar = params.get("war");
+        const requestedCredits = params.get("credits");
 
         seedInactiveGlow();
 
         if (!requestedWar) {
-          loadLandingCredits();
+          window.location.replace("AandD_Home.html");
           return;
         }
 
-        const war = requestedWar;
+        currentWar = requestedWar;
+
+        if (requestedCredits === "intro") {
+          introCreditsAvailable = true;
+          loadCredits("intro");
+          return;
+        }
+
+        if (requestedCredits === "outro") {
+          loadCredits("outro");
+          return;
+        }
+
+        if (arrivedFromHome()) {
+          introCreditsAvailable = true;
+          loadCredits("intro");
+          return;
+        }
+
         const section = params.get("section") || "media";
         const index = parseInt(params.get("index") || "0", 10);
 
-        currentWar = war;
         currentSection = section;
         currentPageIndex = Number.isFinite(index) ? index : 0;
 
